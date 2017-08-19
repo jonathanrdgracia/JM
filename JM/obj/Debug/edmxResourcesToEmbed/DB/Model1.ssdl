@@ -1,0 +1,1186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PresupuestoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Abonado">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Apellidos" Type="nvarchar" MaxLength="50" />
+    <Property Name="TipoEmpleado" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha_inscripcion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Lugar" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
+    <Property Name="IdTipoEmpleado" Type="int" />
+  </EntityType>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="17" />
+    <Property Name="Estado" Type="int" />
+    <Property Name="TipoCliente" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sexo" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Compania">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Logo" Type="image" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="20" />
+    <Property Name="RNC" Type="nvarchar" MaxLength="20" />
+    <Property Name="Web" Type="nvarchar" MaxLength="50" />
+    <Property Name="Correo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Comprobante_Pago">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha_Pago" Type="date" />
+    <Property Name="Periodo_Pago" Type="nvarchar" MaxLength="50" />
+    <Property Name="IdProyecto" Type="int" />
+    <Property Name="Concepto" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Valor" Type="int" />
+    <Property Name="IdAbonado" Type="int" />
+  </EntityType>
+  <EntityType Name="Comprobante_pago_informal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Razon" Type="nvarchar" MaxLength="50" />
+    <Property Name="CajaChica" Type="int" />
+    <Property Name="Fecha_Pago" Type="date" />
+    <Property Name="Periodo_pago" Type="nvarchar" MaxLength="50" />
+    <Property Name="IdPagoInformal" Type="int" />
+  </EntityType>
+  <EntityType Name="ComprobantePagoSinPresupuesto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Periodo_Pago" Type="nvarchar" MaxLength="50" />
+    <Property Name="IdProyectoDetalle" Type="int" />
+    <Property Name="IdEmpleado" Type="int" />
+    <Property Name="Concepto" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EmpleadoPresupuesto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPresupuesto" Type="int" />
+    <Property Name="IdEmpleado" Type="int" />
+  </EntityType>
+  <EntityType Name="Materiales">
+    <Key>
+      <PropertyRef Name="IdMaterial" />
+    </Key>
+    <Property Name="IdMaterial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+    <Property Name="PrecioUnidad" Type="int" />
+    <Property Name="IdVendedor" Type="int" />
+    <Property Name="FechaEntrada" Type="date" />
+    <Property Name="FechaActualizada" Type="date" />
+  </EntityType>
+  <EntityType Name="Materiales_detalle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPresupuesto" Type="int" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Unidad" Type="nvarchar" MaxLength="20" />
+    <Property Name="Precio" Type="int" />
+    <Property Name="Cantidad" Type="int" />
+    <Property Name="Total" Type="int" />
+    <Property Name="Tipo" Type="int" />
+  </EntityType>
+  <EntityType Name="Obra_detalle">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPresupuesto" Type="int" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Unidad" Type="nvarchar" MaxLength="40" />
+    <Property Name="Cantidad" Type="int" />
+    <Property Name="Precio" Type="int" />
+    <Property Name="Total" Type="int" />
+    <Property Name="Tipo" Type="int" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="70" />
+  </EntityType>
+  <EntityType Name="Pago">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Valor" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fecha" Type="nvarchar" MaxLength="15" />
+    <Property Name="IdProyecto" Type="int" />
+    <Property Name="IdEmpleado" Type="int" />
+  </EntityType>
+  <EntityType Name="Pago_Concepto">
+    <Key>
+      <PropertyRef Name="idConceptoPago" />
+    </Key>
+    <Property Name="idConceptoPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Concepto" Type="nvarchar" MaxLength="50" />
+    <Property Name="valor" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pago_Informal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Concepto" Type="nvarchar" MaxLength="50" />
+    <Property Name="Valor" Type="int" />
+    <Property Name="IdAbonado" Type="int" />
+  </EntityType>
+  <EntityType Name="PagoDetalle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEmpleado" Type="int" />
+    <Property Name="IdPagoMaestro" Type="int" />
+  </EntityType>
+  <EntityType Name="PagoMaestro">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Idproyecto" Type="int" />
+  </EntityType>
+  <EntityType Name="Presupuestos">
+    <Key>
+      <PropertyRef Name="IdPresupuestos" />
+    </Key>
+    <Property Name="IdPresupuestos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaCreacion" Type="nvarchar" MaxLength="50" />
+    <Property Name="IdCliente" Type="int" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="100" />
+    <Property Name="Estado" Type="int" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="70" />
+    <Property Name="TotalGeneral" Type="int" />
+  </EntityType>
+  <EntityType Name="Proyecto_detalle">
+    <Key>
+      <PropertyRef Name="IdProyectoDetalle" />
+    </Key>
+    <Property Name="IdProyectoDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEmpleado" Type="int" />
+    <Property Name="IdProyecto" Type="int" />
+  </EntityType>
+  <EntityType Name="ProyectoConPresupuesto">
+    <Key>
+      <PropertyRef Name="IdProyecto" />
+    </Key>
+    <Property Name="IdProyecto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="100" />
+    <Property Name="IdPresupuesto" Type="int" />
+    <Property Name="Estado" Type="int" />
+    <Property Name="CantidadPresupuestada" Type="int" />
+    <Property Name="FechaCreacion" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ProyectoDetalleSinPresupuesto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEmpleado" Type="int" />
+    <Property Name="IdProyecto" Type="int" />
+  </EntityType>
+  <EntityType Name="ProyectoSinPresupuesto">
+    <Key>
+      <PropertyRef Name="IdProyecto" />
+    </Key>
+    <Property Name="IdProyecto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="50" />
+    <Property Name="CantidadPresupuestada" Type="int" />
+    <Property Name="IdCliente" Type="int" Nullable="false" />
+    <Property Name="FechaCreacion" Type="nvarchar" MaxLength="15" />
+    <Property Name="Estado" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TipoEmpleado">
+    <Key>
+      <PropertyRef Name="IdTipoEmpleado" />
+    </Key>
+    <Property Name="IdTipoEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Unidad">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Unidad" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tipo" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Usuario" />
+    </Key>
+    <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Pass" Type="nvarchar" MaxLength="50" />
+    <Property Name="Pass2" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Vendedores">
+    <Key>
+      <PropertyRef Name="IdVendedor" />
+    </Key>
+    <Property Name="IdVendedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.g' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="g">
+    <Key>
+      <PropertyRef Name="IdPresupuestos" />
+    </Key>
+    <Property Name="IdPresupuestos" Type="int" Nullable="false" />
+    <Property Name="Total" Type="int" />
+    <Property Name="TipoCliente" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="17" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.hola' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="hola">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+    <Property Name="DescripcionPresupuesto" Type="nvarchar" MaxLength="400" />
+    <Property Name="Expr1" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.View_CabeceraAmbos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_CabeceraAmbos">
+    <Key>
+      <PropertyRef Name="IdPresupuestos" />
+      <PropertyRef Name="IdCliente" />
+      <PropertyRef Name="IdListadoPresupuesto" />
+    </Key>
+    <Property Name="IdPresupuestos" Type="int" Nullable="false" />
+    <Property Name="Comentario" Type="nvarchar" MaxLength="400" />
+    <Property Name="Fecha" Type="nvarchar" MaxLength="50" />
+    <Property Name="IdCliente" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
+    <Property Name="TotalMateriales" Type="int" />
+    <Property Name="TotalObra" Type="int" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="250" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="17" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Unidad" Type="nvarchar" MaxLength="20" />
+    <Property Name="Cantidad" Type="int" />
+    <Property Name="IdListadoPresupuesto" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.View_Guardar_Materiales_Detalle' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_Guardar_Materiales_Detalle">
+    <Key>
+      <PropertyRef Name="IdPresupuestos" />
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="IdPresupuestos" Type="int" Nullable="false" />
+    <Property Name="Comentario" Type="nvarchar" MaxLength="400" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="250" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="17" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Cantidad" Type="int" />
+    <Property Name="Precio" Type="int" />
+    <Property Name="Total" Type="int" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.View_Guardar_Obra_Detalle' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_Guardar_Obra_Detalle">
+    <Key>
+      <PropertyRef Name="IdPresupuestos" />
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="IdPresupuestos" Type="int" Nullable="false" />
+    <Property Name="Comentario" Type="nvarchar" MaxLength="400" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="250" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="17" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Cantidad" Type="int" />
+    <Property Name="Precio" Type="int" />
+    <Property Name="Total" Type="int" />
+    <Property Name="id" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.View_Listar_Obra_2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_Listar_Obra_2">
+    <Key>
+      <PropertyRef Name="IdPresupuestos" />
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdPresupuestos" Type="int" Nullable="false" />
+    <Property Name="Comentario" Type="nvarchar" MaxLength="400" />
+    <Property Name="Fecha" Type="nvarchar" MaxLength="50" />
+    <Property Name="IdCliente" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="250" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="17" />
+    <Property Name="Total" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.View_materiales_detalle' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_materiales_detalle">
+    <Key>
+      <PropertyRef Name="IdPresupuestos" />
+    </Key>
+    <Property Name="IdPresupuestos" Type="int" Nullable="false" />
+    <Property Name="Comentario" Type="nvarchar" MaxLength="400" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="250" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="17" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Cantidad" Type="int" />
+    <Property Name="Precio" Type="int" />
+    <Property Name="Total" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.View_PresupuestoListarProyectoSinPresupuestoActivos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_PresupuestoListarProyectoSinPresupuestoActivos">
+    <Key>
+      <PropertyRef Name="IdProyecto" />
+    </Key>
+    <Property Name="IdProyecto" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="50" />
+    <Property Name="CantidadPresupuestada" Type="int" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.Vista_ListaDeMateriales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Vista_ListaDeMateriales">
+    <Key>
+      <PropertyRef Name="IdPresupuestos" />
+    </Key>
+    <Property Name="IdPresupuestos" Type="int" Nullable="false" />
+    <Property Name="Total" Type="int" />
+    <Property Name="TipoCliente" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="17" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoMateriales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Vista_ListadoPresupuestoMateriales">
+    <Key>
+      <PropertyRef Name="IdPresupuestos" />
+    </Key>
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="400" />
+    <Property Name="Total" Type="int" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="TipoCliente" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="17" />
+    <Property Name="FechaCreacion" Type="nvarchar" MaxLength="50" />
+    <Property Name="IdPresupuestos" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Vista_ListadoPresupuestoObra">
+    <Key>
+      <PropertyRef Name="IdPresupuestos" />
+    </Key>
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="400" />
+    <Property Name="Total" Type="int" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="TipoCliente" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="17" />
+    <Property Name="FechaCreacion" Type="nvarchar" MaxLength="50" />
+    <Property Name="IdPresupuestos" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Abonado_TipoEmpleado">
+    <End Role="TipoEmpleado" Type="Self.TipoEmpleado" Multiplicity="0..1" />
+    <End Role="Abonado" Type="Self.Abonado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoEmpleado">
+        <PropertyRef Name="IdTipoEmpleado" />
+      </Principal>
+      <Dependent Role="Abonado">
+        <PropertyRef Name="IdTipoEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comprobante_pago_informal_Pago_Informal">
+    <End Role="Pago_Informal" Type="Self.Pago_Informal" Multiplicity="0..1" />
+    <End Role="Comprobante_pago_informal" Type="Self.Comprobante_pago_informal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pago_Informal">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comprobante_pago_informal">
+        <PropertyRef Name="IdPagoInformal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmpleadoPresupuesto_Abonado">
+    <End Role="Abonado" Type="Self.Abonado" Multiplicity="0..1" />
+    <End Role="EmpleadoPresupuesto" Type="Self.EmpleadoPresupuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Abonado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmpleadoPresupuesto">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmpleadoPresupuesto_Presupuestos">
+    <End Role="Presupuestos" Type="Self.Presupuestos" Multiplicity="0..1" />
+    <End Role="EmpleadoPresupuesto" Type="Self.EmpleadoPresupuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Presupuestos">
+        <PropertyRef Name="IdPresupuestos" />
+      </Principal>
+      <Dependent Role="EmpleadoPresupuesto">
+        <PropertyRef Name="IdPresupuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Materiales_Vendedores">
+    <End Role="Vendedores" Type="Self.Vendedores" Multiplicity="0..1" />
+    <End Role="Materiales" Type="Self.Materiales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendedores">
+        <PropertyRef Name="IdVendedor" />
+      </Principal>
+      <Dependent Role="Materiales">
+        <PropertyRef Name="IdVendedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Obra_detalle_Presupuestos">
+    <End Role="Presupuestos" Type="Self.Presupuestos" Multiplicity="0..1" />
+    <End Role="Obra_detalle" Type="Self.Obra_detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Presupuestos">
+        <PropertyRef Name="IdPresupuestos" />
+      </Principal>
+      <Dependent Role="Obra_detalle">
+        <PropertyRef Name="IdPresupuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pago_Abonado">
+    <End Role="Abonado" Type="Self.Abonado" Multiplicity="0..1" />
+    <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Abonado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pago">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pago_Informal_Abonado">
+    <End Role="Abonado" Type="Self.Abonado" Multiplicity="0..1" />
+    <End Role="Pago_Informal" Type="Self.Pago_Informal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Abonado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pago_Informal">
+        <PropertyRef Name="IdAbonado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pago_ProyectoConPresupuesto">
+    <End Role="ProyectoConPresupuesto" Type="Self.ProyectoConPresupuesto" Multiplicity="0..1" />
+    <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProyectoConPresupuesto">
+        <PropertyRef Name="IdProyecto" />
+      </Principal>
+      <Dependent Role="Pago">
+        <PropertyRef Name="IdProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PagoDetalle_PagoMaestro">
+    <End Role="PagoMaestro" Type="Self.PagoMaestro" Multiplicity="0..1" />
+    <End Role="PagoDetalle" Type="Self.PagoDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PagoMaestro">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="PagoDetalle">
+        <PropertyRef Name="IdPagoMaestro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PagoDetalle_Proyecto_detalle">
+    <End Role="Proyecto_detalle" Type="Self.Proyecto_detalle" Multiplicity="0..1" />
+    <End Role="PagoDetalle" Type="Self.PagoDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyecto_detalle">
+        <PropertyRef Name="IdProyectoDetalle" />
+      </Principal>
+      <Dependent Role="PagoDetalle">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PagoMaestro_ProyectoConPresupuesto">
+    <End Role="ProyectoConPresupuesto" Type="Self.ProyectoConPresupuesto" Multiplicity="0..1" />
+    <End Role="PagoMaestro" Type="Self.PagoMaestro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProyectoConPresupuesto">
+        <PropertyRef Name="IdProyecto" />
+      </Principal>
+      <Dependent Role="PagoMaestro">
+        <PropertyRef Name="Idproyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Presupuestos_Clientes">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+    <End Role="Presupuestos" Type="Self.Presupuestos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Presupuestos">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Presupuestos_listado_Presupuestos">
+    <End Role="Presupuestos" Type="Self.Presupuestos" Multiplicity="0..1" />
+    <End Role="Materiales_detalle" Type="Self.Materiales_detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Presupuestos">
+        <PropertyRef Name="IdPresupuestos" />
+      </Principal>
+      <Dependent Role="Materiales_detalle">
+        <PropertyRef Name="IdPresupuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proyecto_detalle_Abonado">
+    <End Role="Abonado" Type="Self.Abonado" Multiplicity="0..1" />
+    <End Role="Proyecto_detalle" Type="Self.Proyecto_detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Abonado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Proyecto_detalle">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proyecto_detalle_ProyectoConPresupuesto">
+    <End Role="ProyectoConPresupuesto" Type="Self.ProyectoConPresupuesto" Multiplicity="0..1" />
+    <End Role="Proyecto_detalle" Type="Self.Proyecto_detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProyectoConPresupuesto">
+        <PropertyRef Name="IdProyecto" />
+      </Principal>
+      <Dependent Role="Proyecto_detalle">
+        <PropertyRef Name="IdProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProyectoConPresupuesto_Presupuestos">
+    <End Role="Presupuestos" Type="Self.Presupuestos" Multiplicity="0..1" />
+    <End Role="ProyectoConPresupuesto" Type="Self.ProyectoConPresupuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Presupuestos">
+        <PropertyRef Name="IdPresupuestos" />
+      </Principal>
+      <Dependent Role="ProyectoConPresupuesto">
+        <PropertyRef Name="IdPresupuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProyectoDetalleSinPresupuesto_Abonado">
+    <End Role="Abonado" Type="Self.Abonado" Multiplicity="0..1" />
+    <End Role="ProyectoDetalleSinPresupuesto" Type="Self.ProyectoDetalleSinPresupuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Abonado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProyectoDetalleSinPresupuesto">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProyectoDetalleSinPresupuesto_ProyectoSinPresupuesto">
+    <End Role="ProyectoSinPresupuesto" Type="Self.ProyectoSinPresupuesto" Multiplicity="0..1" />
+    <End Role="ProyectoDetalleSinPresupuesto" Type="Self.ProyectoDetalleSinPresupuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProyectoSinPresupuesto">
+        <PropertyRef Name="IdProyecto" />
+      </Principal>
+      <Dependent Role="ProyectoDetalleSinPresupuesto">
+        <PropertyRef Name="IdProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProyectoSinPresupuesto_Clientes">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+    <End Role="ProyectoSinPresupuesto" Type="Self.ProyectoSinPresupuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProyectoSinPresupuesto">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Acceso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="usuario" Type="nvarchar" Mode="In" />
+    <Parameter Name="pass" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="BorrarTodoMateriales_detalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="BorrarTodoObra_detalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CompaniaDato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="descripcionDireccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Filtrar_Abonado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StudentID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Filtrar_Empleados_activos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="query" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Filtrar_pago_concepto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="FiltrarConceptoPago" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="valor" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="guardar_materiales_listado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="nvarchar" Mode="In" />
+    <Parameter Name="Unidad" Type="nvarchar" Mode="In" />
+    <Parameter Name="Precio" Type="int" Mode="In" />
+    <Parameter Name="Cantidad" Type="int" Mode="In" />
+    <Parameter Name="Total" Type="int" Mode="In" />
+    <Parameter Name="Tipo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="guardar_obras_listado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="nvarchar" Mode="In" />
+    <Parameter Name="Unidad" Type="nvarchar" Mode="In" />
+    <Parameter Name="Precio" Type="int" Mode="In" />
+    <Parameter Name="Cantidad" Type="int" Mode="In" />
+    <Parameter Name="Total" Type="int" Mode="In" />
+    <Parameter Name="Tipo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="guardar_presupuesto_cabeza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha" Type="nvarchar" Mode="In" />
+    <Parameter Name="idCliente" Type="int" Mode="In" />
+    <Parameter Name="direccion" Type="nvarchar" Mode="In" />
+    <Parameter Name="comentario" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="guardar_presupuestos_listado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="nvarchar" Mode="In" />
+    <Parameter Name="Unidad" Type="nvarchar" Mode="In" />
+    <Parameter Name="Precio" Type="int" Mode="In" />
+    <Parameter Name="Cantidad" Type="int" Mode="In" />
+    <Parameter Name="Total" Type="int" Mode="In" />
+  </Function>
+  <Function Name="guardar_presupuestos_listados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="nvarchar" Mode="In" />
+    <Parameter Name="Unidad" Type="nvarchar" Mode="In" />
+    <Parameter Name="Precio" Type="int" Mode="In" />
+    <Parameter Name="Cantidad" Type="int" Mode="In" />
+    <Parameter Name="Total" Type="int" Mode="In" />
+    <Parameter Name="Tipo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GuardarProyecto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPresupuesto" Type="int" Mode="In" />
+    <Parameter Name="Valor" Type="int" Mode="In" />
+    <Parameter Name="Direccion" Type="nvarchar" Mode="In" />
+    <Parameter Name="Decripcion" Type="nvarchar" Mode="In" />
+    <Parameter Name="fe" Type="nvarchar" Mode="In" />
+    <Parameter Name="estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GuardarProyectoDetalleSinPresupuesto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Empleado" Type="int" Mode="In" />
+    <Parameter Name="IdProyecto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GuardarProyectoSinPresupuestos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdCliente" Type="int" Mode="In" />
+    <Parameter Name="Valor" Type="int" Mode="In" />
+    <Parameter Name="Direccion" Type="nvarchar" Mode="In" />
+    <Parameter Name="Decripcion" Type="nvarchar" Mode="In" />
+    <Parameter Name="fe" Type="nvarchar" Mode="In" />
+    <Parameter Name="estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="holae" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="idEmpleado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="holamundo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tipo" Type="int" Mode="In" />
+    <Parameter Name="Query" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="holamundoManoDeObra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tipo" Type="int" Mode="In" />
+    <Parameter Name="Query" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="holamundopresupuesto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tipo" Type="int" Mode="In" />
+    <Parameter Name="Query" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="holasi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="insert_Materiales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idPresupuesto" Type="int" Mode="In" />
+    <Parameter Name="descrip" Type="nvarchar" Mode="In" />
+    <Parameter Name="unidad" Type="nvarchar" Mode="In" />
+    <Parameter Name="precio" Type="int" Mode="In" />
+    <Parameter Name="cantidad" Type="int" Mode="In" />
+    <Parameter Name="total" Type="int" Mode="In" />
+    <Parameter Name="totalgeneral" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ListadoPagosPorProyecto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Presupuestos_listado_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ProyectoListaEmpleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="recuperar_idPresupuesto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idcliente" Type="int" Mode="In" />
+    <Parameter Name="fecha" Type="nvarchar" Mode="In" />
+    <Parameter Name="descripcion" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ReporteManoObra5" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ReporteMateriales5" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="SP_Borrrado_deEmpleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idPresupuesto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_BorrradoeInsertado_deEmpleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="idEmpleado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_FiltrarClienteActivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="query" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_insertado_deEmpleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="idEmpleado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_ListadoPresupuestoDeManoDeObra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tipo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_ListadoPresupuestoDeManoDeObraQuery" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tipo" Type="int" Mode="In" />
+    <Parameter Name="Query" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_ListadoPresupuestoDeManoDeObraQuery1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tipo" Type="int" Mode="In" />
+    <Parameter Name="Query" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_ListadoPresupuestoDeMateriales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tipo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_ListadoPresupuestoDeMaterialesFiltrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="query" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_ListadoPresupuestoDeMaterialesQury" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tipo" Type="int" Mode="In" />
+    <Parameter Name="query" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_ListaEmpleadosAsignados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_ListaPresupuestoMateriales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tipo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_ListarObraDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="tipo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_ListarObraMateriales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="tipo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_listarProyectoSinPresupuestoActivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_ModificarProyecto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_ModificarProyectoCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_ModificarProyectoFiltro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="query" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_ProyectoDetalleSinPresupuesto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idEmpleado" Type="int" Mode="In" />
+    <Parameter Name="IdProyecto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_Reporte_Detalle_Materiales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Reporte_Detalles_Cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Reporte_Detalles_Materiales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Reporte_Detalles_Materiales3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Reporte_Detalles_Materiales4" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Reporte_DetallesManoObra4" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Reporte_Empleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Reporte_Materiales_Cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Traer_ObrasDetalles_Por_Id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="myId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="TraerMaterialesDetallesPorId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="myId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="update_Materiales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idPresupuesto" Type="int" Mode="In" />
+    <Parameter Name="descrip" Type="nvarchar" Mode="In" />
+    <Parameter Name="unidad" Type="nvarchar" Mode="In" />
+    <Parameter Name="precio" Type="int" Mode="In" />
+    <Parameter Name="cantidad" Type="int" Mode="In" />
+    <Parameter Name="total" Type="int" Mode="In" />
+    <Parameter Name="totalgeneral" Type="int" Mode="In" />
+  </Function>
+  <Function Name="update_Obra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idPresupuesto" Type="int" Mode="In" />
+    <Parameter Name="descrip" Type="nvarchar" Mode="In" />
+    <Parameter Name="unidad" Type="nvarchar" Mode="In" />
+    <Parameter Name="precio" Type="int" Mode="In" />
+    <Parameter Name="cantidad" Type="int" Mode="In" />
+    <Parameter Name="total" Type="int" Mode="In" />
+    <Parameter Name="totalgeneral" Type="int" Mode="In" />
+  </Function>
+  <Function Name="x" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tipo" Type="int" Mode="In" />
+    <Parameter Name="Query" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="PresupuestoModelStoreContainer">
+    <EntitySet Name="Abonado" EntityType="Self.Abonado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Compania" EntityType="Self.Compania" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comprobante_Pago" EntityType="Self.Comprobante_Pago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comprobante_pago_informal" EntityType="Self.Comprobante_pago_informal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComprobantePagoSinPresupuesto" EntityType="Self.ComprobantePagoSinPresupuesto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmpleadoPresupuesto" EntityType="Self.EmpleadoPresupuesto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Materiales" EntityType="Self.Materiales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Materiales_detalle" EntityType="Self.Materiales_detalle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Obra_detalle" EntityType="Self.Obra_detalle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pago" EntityType="Self.Pago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pago_Concepto" EntityType="Self.Pago_Concepto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pago_Informal" EntityType="Self.Pago_Informal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PagoDetalle" EntityType="Self.PagoDetalle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PagoMaestro" EntityType="Self.PagoMaestro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Presupuestos" EntityType="Self.Presupuestos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Proyecto_detalle" EntityType="Self.Proyecto_detalle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProyectoConPresupuesto" EntityType="Self.ProyectoConPresupuesto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProyectoDetalleSinPresupuesto" EntityType="Self.ProyectoDetalleSinPresupuesto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProyectoSinPresupuesto" EntityType="Self.ProyectoSinPresupuesto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoEmpleado" EntityType="Self.TipoEmpleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Unidad" EntityType="Self.Unidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vendedores" EntityType="Self.Vendedores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="g" EntityType="Self.g" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [g].[IdPresupuestos] AS [IdPresupuestos], 
+    [g].[Total] AS [Total], 
+    [g].[TipoCliente] AS [TipoCliente], 
+    [g].[Telefono] AS [Telefono], 
+    [g].[Nombre] AS [Nombre]
+    FROM [dbo].[g] AS [g]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="hola" EntityType="Self.hola" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [hola].[id] AS [id], 
+    [hola].[Descripcion] AS [Descripcion], 
+    [hola].[DescripcionPresupuesto] AS [DescripcionPresupuesto], 
+    [hola].[Expr1] AS [Expr1]
+    FROM [dbo].[hola] AS [hola]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_CabeceraAmbos" EntityType="Self.View_CabeceraAmbos" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_CabeceraAmbos].[IdPresupuestos] AS [IdPresupuestos], 
+    [View_CabeceraAmbos].[Comentario] AS [Comentario], 
+    [View_CabeceraAmbos].[Fecha] AS [Fecha], 
+    [View_CabeceraAmbos].[IdCliente] AS [IdCliente], 
+    [View_CabeceraAmbos].[Nombre] AS [Nombre], 
+    [View_CabeceraAmbos].[Apellido] AS [Apellido], 
+    [View_CabeceraAmbos].[TotalMateriales] AS [TotalMateriales], 
+    [View_CabeceraAmbos].[TotalObra] AS [TotalObra], 
+    [View_CabeceraAmbos].[Direccion] AS [Direccion], 
+    [View_CabeceraAmbos].[Telefono] AS [Telefono], 
+    [View_CabeceraAmbos].[Descripcion] AS [Descripcion], 
+    [View_CabeceraAmbos].[Unidad] AS [Unidad], 
+    [View_CabeceraAmbos].[Cantidad] AS [Cantidad], 
+    [View_CabeceraAmbos].[IdListadoPresupuesto] AS [IdListadoPresupuesto]
+    FROM [dbo].[View_CabeceraAmbos] AS [View_CabeceraAmbos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_Guardar_Materiales_Detalle" EntityType="Self.View_Guardar_Materiales_Detalle" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_Guardar_Materiales_Detalle].[IdPresupuestos] AS [IdPresupuestos], 
+    [View_Guardar_Materiales_Detalle].[Comentario] AS [Comentario], 
+    [View_Guardar_Materiales_Detalle].[Direccion] AS [Direccion], 
+    [View_Guardar_Materiales_Detalle].[Nombre] AS [Nombre], 
+    [View_Guardar_Materiales_Detalle].[Apellido] AS [Apellido], 
+    [View_Guardar_Materiales_Detalle].[Telefono] AS [Telefono], 
+    [View_Guardar_Materiales_Detalle].[Descripcion] AS [Descripcion], 
+    [View_Guardar_Materiales_Detalle].[Cantidad] AS [Cantidad], 
+    [View_Guardar_Materiales_Detalle].[Precio] AS [Precio], 
+    [View_Guardar_Materiales_Detalle].[Total] AS [Total], 
+    [View_Guardar_Materiales_Detalle].[Id] AS [Id]
+    FROM [dbo].[View_Guardar_Materiales_Detalle] AS [View_Guardar_Materiales_Detalle]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_Guardar_Obra_Detalle" EntityType="Self.View_Guardar_Obra_Detalle" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_Guardar_Obra_Detalle].[IdPresupuestos] AS [IdPresupuestos], 
+    [View_Guardar_Obra_Detalle].[Comentario] AS [Comentario], 
+    [View_Guardar_Obra_Detalle].[Direccion] AS [Direccion], 
+    [View_Guardar_Obra_Detalle].[Nombre] AS [Nombre], 
+    [View_Guardar_Obra_Detalle].[Apellido] AS [Apellido], 
+    [View_Guardar_Obra_Detalle].[Telefono] AS [Telefono], 
+    [View_Guardar_Obra_Detalle].[Descripcion] AS [Descripcion], 
+    [View_Guardar_Obra_Detalle].[Cantidad] AS [Cantidad], 
+    [View_Guardar_Obra_Detalle].[Precio] AS [Precio], 
+    [View_Guardar_Obra_Detalle].[Total] AS [Total], 
+    [View_Guardar_Obra_Detalle].[id] AS [id]
+    FROM [dbo].[View_Guardar_Obra_Detalle] AS [View_Guardar_Obra_Detalle]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_Listar_Obra_2" EntityType="Self.View_Listar_Obra_2" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_Listar_Obra_2].[IdPresupuestos] AS [IdPresupuestos], 
+    [View_Listar_Obra_2].[Comentario] AS [Comentario], 
+    [View_Listar_Obra_2].[Fecha] AS [Fecha], 
+    [View_Listar_Obra_2].[IdCliente] AS [IdCliente], 
+    [View_Listar_Obra_2].[Nombre] AS [Nombre], 
+    [View_Listar_Obra_2].[Apellido] AS [Apellido], 
+    [View_Listar_Obra_2].[Direccion] AS [Direccion], 
+    [View_Listar_Obra_2].[Telefono] AS [Telefono], 
+    [View_Listar_Obra_2].[Total] AS [Total]
+    FROM [dbo].[View_Listar_Obra_2] AS [View_Listar_Obra_2]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_materiales_detalle" EntityType="Self.View_materiales_detalle" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_materiales_detalle].[IdPresupuestos] AS [IdPresupuestos], 
+    [View_materiales_detalle].[Comentario] AS [Comentario], 
+    [View_materiales_detalle].[Direccion] AS [Direccion], 
+    [View_materiales_detalle].[Nombre] AS [Nombre], 
+    [View_materiales_detalle].[Apellido] AS [Apellido], 
+    [View_materiales_detalle].[Telefono] AS [Telefono], 
+    [View_materiales_detalle].[Descripcion] AS [Descripcion], 
+    [View_materiales_detalle].[Cantidad] AS [Cantidad], 
+    [View_materiales_detalle].[Precio] AS [Precio], 
+    [View_materiales_detalle].[Total] AS [Total]
+    FROM [dbo].[View_materiales_detalle] AS [View_materiales_detalle]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_PresupuestoListarProyectoSinPresupuestoActivos" EntityType="Self.View_PresupuestoListarProyectoSinPresupuestoActivos" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_PresupuestoListarProyectoSinPresupuestoActivos].[IdProyecto] AS [IdProyecto], 
+    [View_PresupuestoListarProyectoSinPresupuestoActivos].[Descripcion] AS [Descripcion], 
+    [View_PresupuestoListarProyectoSinPresupuestoActivos].[Direccion] AS [Direccion], 
+    [View_PresupuestoListarProyectoSinPresupuestoActivos].[CantidadPresupuestada] AS [CantidadPresupuestada], 
+    [View_PresupuestoListarProyectoSinPresupuestoActivos].[Nombre] AS [Nombre], 
+    [View_PresupuestoListarProyectoSinPresupuestoActivos].[Apellido] AS [Apellido]
+    FROM [dbo].[View_PresupuestoListarProyectoSinPresupuestoActivos] AS [View_PresupuestoListarProyectoSinPresupuestoActivos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Vista_ListaDeMateriales" EntityType="Self.Vista_ListaDeMateriales" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Vista_ListaDeMateriales].[IdPresupuestos] AS [IdPresupuestos], 
+    [Vista_ListaDeMateriales].[Total] AS [Total], 
+    [Vista_ListaDeMateriales].[TipoCliente] AS [TipoCliente], 
+    [Vista_ListaDeMateriales].[Telefono] AS [Telefono], 
+    [Vista_ListaDeMateriales].[Nombre] AS [Nombre]
+    FROM [dbo].[Vista_ListaDeMateriales] AS [Vista_ListaDeMateriales]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Vista_ListadoPresupuestoMateriales" EntityType="Self.Vista_ListadoPresupuestoMateriales" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Vista_ListadoPresupuestoMateriales].[Descripcion] AS [Descripcion], 
+    [Vista_ListadoPresupuestoMateriales].[Total] AS [Total], 
+    [Vista_ListadoPresupuestoMateriales].[Nombre] AS [Nombre], 
+    [Vista_ListadoPresupuestoMateriales].[TipoCliente] AS [TipoCliente], 
+    [Vista_ListadoPresupuestoMateriales].[Telefono] AS [Telefono], 
+    [Vista_ListadoPresupuestoMateriales].[FechaCreacion] AS [FechaCreacion], 
+    [Vista_ListadoPresupuestoMateriales].[IdPresupuestos] AS [IdPresupuestos]
+    FROM [dbo].[Vista_ListadoPresupuestoMateriales] AS [Vista_ListadoPresupuestoMateriales]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Vista_ListadoPresupuestoObra" EntityType="Self.Vista_ListadoPresupuestoObra" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Vista_ListadoPresupuestoObra].[Descripcion] AS [Descripcion], 
+    [Vista_ListadoPresupuestoObra].[Total] AS [Total], 
+    [Vista_ListadoPresupuestoObra].[Nombre] AS [Nombre], 
+    [Vista_ListadoPresupuestoObra].[TipoCliente] AS [TipoCliente], 
+    [Vista_ListadoPresupuestoObra].[Telefono] AS [Telefono], 
+    [Vista_ListadoPresupuestoObra].[FechaCreacion] AS [FechaCreacion], 
+    [Vista_ListadoPresupuestoObra].[IdPresupuestos] AS [IdPresupuestos]
+    FROM [dbo].[Vista_ListadoPresupuestoObra] AS [Vista_ListadoPresupuestoObra]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Abonado_TipoEmpleado" Association="Self.FK_Abonado_TipoEmpleado">
+      <End Role="TipoEmpleado" EntitySet="TipoEmpleado" />
+      <End Role="Abonado" EntitySet="Abonado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comprobante_pago_informal_Pago_Informal" Association="Self.FK_Comprobante_pago_informal_Pago_Informal">
+      <End Role="Pago_Informal" EntitySet="Pago_Informal" />
+      <End Role="Comprobante_pago_informal" EntitySet="Comprobante_pago_informal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmpleadoPresupuesto_Abonado" Association="Self.FK_EmpleadoPresupuesto_Abonado">
+      <End Role="Abonado" EntitySet="Abonado" />
+      <End Role="EmpleadoPresupuesto" EntitySet="EmpleadoPresupuesto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmpleadoPresupuesto_Presupuestos" Association="Self.FK_EmpleadoPresupuesto_Presupuestos">
+      <End Role="Presupuestos" EntitySet="Presupuestos" />
+      <End Role="EmpleadoPresupuesto" EntitySet="EmpleadoPresupuesto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Materiales_Vendedores" Association="Self.FK_Materiales_Vendedores">
+      <End Role="Vendedores" EntitySet="Vendedores" />
+      <End Role="Materiales" EntitySet="Materiales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Obra_detalle_Presupuestos" Association="Self.FK_Obra_detalle_Presupuestos">
+      <End Role="Presupuestos" EntitySet="Presupuestos" />
+      <End Role="Obra_detalle" EntitySet="Obra_detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pago_Abonado" Association="Self.FK_Pago_Abonado">
+      <End Role="Abonado" EntitySet="Abonado" />
+      <End Role="Pago" EntitySet="Pago" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pago_Informal_Abonado" Association="Self.FK_Pago_Informal_Abonado">
+      <End Role="Abonado" EntitySet="Abonado" />
+      <End Role="Pago_Informal" EntitySet="Pago_Informal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pago_ProyectoConPresupuesto" Association="Self.FK_Pago_ProyectoConPresupuesto">
+      <End Role="ProyectoConPresupuesto" EntitySet="ProyectoConPresupuesto" />
+      <End Role="Pago" EntitySet="Pago" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PagoDetalle_PagoMaestro" Association="Self.FK_PagoDetalle_PagoMaestro">
+      <End Role="PagoMaestro" EntitySet="PagoMaestro" />
+      <End Role="PagoDetalle" EntitySet="PagoDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PagoDetalle_Proyecto_detalle" Association="Self.FK_PagoDetalle_Proyecto_detalle">
+      <End Role="Proyecto_detalle" EntitySet="Proyecto_detalle" />
+      <End Role="PagoDetalle" EntitySet="PagoDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PagoMaestro_ProyectoConPresupuesto" Association="Self.FK_PagoMaestro_ProyectoConPresupuesto">
+      <End Role="ProyectoConPresupuesto" EntitySet="ProyectoConPresupuesto" />
+      <End Role="PagoMaestro" EntitySet="PagoMaestro" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Presupuestos_Clientes" Association="Self.FK_Presupuestos_Clientes">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Presupuestos" EntitySet="Presupuestos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Presupuestos_listado_Presupuestos" Association="Self.FK_Presupuestos_listado_Presupuestos">
+      <End Role="Presupuestos" EntitySet="Presupuestos" />
+      <End Role="Materiales_detalle" EntitySet="Materiales_detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proyecto_detalle_Abonado" Association="Self.FK_Proyecto_detalle_Abonado">
+      <End Role="Abonado" EntitySet="Abonado" />
+      <End Role="Proyecto_detalle" EntitySet="Proyecto_detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proyecto_detalle_ProyectoConPresupuesto" Association="Self.FK_Proyecto_detalle_ProyectoConPresupuesto">
+      <End Role="ProyectoConPresupuesto" EntitySet="ProyectoConPresupuesto" />
+      <End Role="Proyecto_detalle" EntitySet="Proyecto_detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProyectoConPresupuesto_Presupuestos" Association="Self.FK_ProyectoConPresupuesto_Presupuestos">
+      <End Role="Presupuestos" EntitySet="Presupuestos" />
+      <End Role="ProyectoConPresupuesto" EntitySet="ProyectoConPresupuesto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProyectoDetalleSinPresupuesto_Abonado" Association="Self.FK_ProyectoDetalleSinPresupuesto_Abonado">
+      <End Role="Abonado" EntitySet="Abonado" />
+      <End Role="ProyectoDetalleSinPresupuesto" EntitySet="ProyectoDetalleSinPresupuesto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProyectoDetalleSinPresupuesto_ProyectoSinPresupuesto" Association="Self.FK_ProyectoDetalleSinPresupuesto_ProyectoSinPresupuesto">
+      <End Role="ProyectoSinPresupuesto" EntitySet="ProyectoSinPresupuesto" />
+      <End Role="ProyectoDetalleSinPresupuesto" EntitySet="ProyectoDetalleSinPresupuesto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProyectoSinPresupuesto_Clientes" Association="Self.FK_ProyectoSinPresupuesto_Clientes">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="ProyectoSinPresupuesto" EntitySet="ProyectoSinPresupuesto" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Project ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<!-- Select a Product Configuration -->
+		<InstallShieldProductConfiguration>Express</InstallShieldProductConfiguration>
+		<!-- Select a Visual Studio Configuration / InstallShield Release -->
+		<Configuration>Debug</Configuration>
+		<InstallShieldRelease>$(Configuration)</InstallShieldRelease>
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- The InstallShieldProject item selects the project to build -->
+		<InstallShieldProject Include="$(MSBuildProjectDirectory)\$(MSBuildProjectName).isl"/>
+		<!-- The InstallShieldReleaseFlags sets Release Flags -->
+		<!--<InstallShieldReleaseFlags Include=""/>-->
+		<!-- The InstallShieldMergeModulePath specifies what directories are
+		searched for Merge Modules -->
+		<!--<InstallShieldMergeModulePath Include=""/>-->
+	</ItemGroup>
+	<ItemGroup>
+		<!-- The ProjectReference items refer to any Visual Studio solutions you want to automatically probe for Project Output Groups.  -->
+	</ItemGroup>
+	<ItemGroup>
+		<!-- The TaggedOutputs items allow you to explicitly add extra files to output groups. Each item must include both Name and OutputGroup, as well as TargetPath metadata values. -->
+		<!--<TaggedOutputs Include="C:\My Test Exe.exe">
+			<Name>My Test Project</Name>
+			<OutputGroup>Primary output</OutputGroup>
+			<TargetPath>My Test Exe.exe</TargetPath>
+		</TaggedOutputs> -->
+	</ItemGroup>
+	<Import Project="$(MSBuildExtensionsPath32)\InstallShield\2015Limited\InstallShield.targets"/>
+	<ItemGroup>
+		<ProjectReference Include="..\Hola\Hola.csproj">
+			<Name>Hola</Name>
+			<Project>{93D83439-4914-4CB0-95E9-3657F3089EFB}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\JM\JM.csproj">
+			<Name>JM</Name>
+			<Project>{CD1B83EA-B768-4709-96CF-C43BC92ADF8F}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\Lista\Lista.csproj">
+			<Name>Lista</Name>
+			<Project>{2AF8BA0D-FA08-44F7-B51D-0F37CEB47B07}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\LogicaLogin\LogicaLogin.csproj">
+			<Name>LogicaLogin</Name>
+			<Project>{EC42EDB3-7873-4993-A63A-99C21FEE1248}</Project>
+		</ProjectReference>
+	</ItemGroup>
+</Project>

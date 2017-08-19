@@ -1,0 +1,1453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PresupuestoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Abonado">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TipoEmpleado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fecha_inscripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Lugar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Estado" Type="Int32" Nullable="false" />
+    <Property Name="IdTipoEmpleado" Type="Int32" />
+    <NavigationProperty Name="TipoEmpleado1" Relationship="Self.FK_Abonado_TipoEmpleado" FromRole="Abonado" ToRole="TipoEmpleado" />
+    <NavigationProperty Name="EmpleadoPresupuestoes" Relationship="Self.FK_EmpleadoPresupuesto_Abonado" FromRole="Abonado" ToRole="EmpleadoPresupuesto" />
+    <NavigationProperty Name="Pago_Informal" Relationship="Self.FK_Pago_Informal_Abonado" FromRole="Abonado" ToRole="Pago_Informal" />
+    <NavigationProperty Name="Proyecto_detalle" Relationship="Self.FK_Proyecto_detalle_Abonado" FromRole="Abonado" ToRole="Proyecto_detalle" />
+    <NavigationProperty Name="ProyectoDetalleSinPresupuestoes" Relationship="Self.FK_ProyectoDetalleSinPresupuesto_Abonado" FromRole="Abonado" ToRole="ProyectoDetalleSinPresupuesto" />
+    <NavigationProperty Name="Pagoes" Relationship="PresupuestoModel.FK_Pago_Abonado" FromRole="Abonado" ToRole="Pago" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+    <Property Name="Estado" Type="Int32" />
+    <Property Name="TipoCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sexo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Presupuestos" Relationship="Self.FK_Presupuestos_Clientes" FromRole="Clientes" ToRole="Presupuestos" />
+    <NavigationProperty Name="ProyectoSinPresupuestoes" Relationship="Self.FK_ProyectoSinPresupuesto_Clientes" FromRole="Clientes" ToRole="ProyectoSinPresupuesto" />
+  </EntityType>
+  <EntityType Name="Compania">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="RNC" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Web" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Comprobante_Pago">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha_Pago" Type="DateTime" Precision="0" />
+    <Property Name="Periodo_Pago" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdProyecto" Type="Int32" />
+    <Property Name="Concepto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Valor" Type="Int32" />
+    <Property Name="IdAbonado" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Comprobante_pago_informal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Razon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CajaChica" Type="Int32" />
+    <Property Name="Fecha_Pago" Type="DateTime" Precision="0" />
+    <Property Name="Periodo_pago" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdPagoInformal" Type="Int32" />
+    <NavigationProperty Name="Pago_Informal" Relationship="Self.FK_Comprobante_pago_informal_Pago_Informal" FromRole="Comprobante_pago_informal" ToRole="Pago_Informal" />
+  </EntityType>
+  <EntityType Name="ComprobantePagoSinPresupuesto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Periodo_Pago" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdProyectoDetalle" Type="Int32" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <Property Name="Concepto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="EmpleadoPresupuesto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPresupuesto" Type="Int32" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <NavigationProperty Name="Abonado" Relationship="Self.FK_EmpleadoPresupuesto_Abonado" FromRole="EmpleadoPresupuesto" ToRole="Abonado" />
+    <NavigationProperty Name="Presupuesto" Relationship="Self.FK_EmpleadoPresupuesto_Presupuestos" FromRole="EmpleadoPresupuesto" ToRole="Presupuestos" />
+  </EntityType>
+  <EntityType Name="Materiale">
+    <Key>
+      <PropertyRef Name="IdMaterial" />
+    </Key>
+    <Property Name="IdMaterial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrecioUnidad" Type="Int32" />
+    <Property Name="IdVendedor" Type="Int32" />
+    <Property Name="FechaEntrada" Type="DateTime" Precision="0" />
+    <Property Name="FechaActualizada" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Vendedore" Relationship="Self.FK_Materiales_Vendedores" FromRole="Materiales" ToRole="Vendedores" />
+  </EntityType>
+  <EntityType Name="Pago_Concepto">
+    <Key>
+      <PropertyRef Name="idConceptoPago" />
+    </Key>
+    <Property Name="idConceptoPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Concepto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="valor" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pago_Informal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Concepto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Valor" Type="Int32" />
+    <Property Name="IdAbonado" Type="Int32" />
+    <NavigationProperty Name="Abonado" Relationship="Self.FK_Pago_Informal_Abonado" FromRole="Pago_Informal" ToRole="Abonado" />
+    <NavigationProperty Name="Comprobante_pago_informal" Relationship="Self.FK_Comprobante_pago_informal_Pago_Informal" FromRole="Pago_Informal" ToRole="Comprobante_pago_informal" />
+  </EntityType>
+  <EntityType Name="PagoDetalle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <Property Name="IdPagoMaestro" Type="Int32" />
+    <NavigationProperty Name="PagoMaestro" Relationship="Self.FK_PagoDetalle_PagoMaestro" FromRole="PagoDetalle" ToRole="PagoMaestro" />
+    <NavigationProperty Name="Proyecto_detalle" Relationship="Self.FK_PagoDetalle_Proyecto_detalle" FromRole="PagoDetalle" ToRole="Proyecto_detalle" />
+  </EntityType>
+  <EntityType Name="PagoMaestro">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Idproyecto" Type="Int32" />
+    <NavigationProperty Name="PagoDetalles" Relationship="Self.FK_PagoDetalle_PagoMaestro" FromRole="PagoMaestro" ToRole="PagoDetalle" />
+    <NavigationProperty Name="ProyectoConPresupuesto" Relationship="Self.FK_PagoMaestro_ProyectoConPresupuesto" FromRole="PagoMaestro" ToRole="ProyectoConPresupuesto" />
+  </EntityType>
+  <EntityType Name="Presupuesto">
+    <Key>
+      <PropertyRef Name="IdPresupuestos" />
+    </Key>
+    <Property Name="IdPresupuestos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdCliente" Type="Int32" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Estado" Type="Int32" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK_Presupuestos_Clientes" FromRole="Presupuestos" ToRole="Clientes" />
+    <NavigationProperty Name="EmpleadoPresupuestoes" Relationship="Self.FK_EmpleadoPresupuesto_Presupuestos" FromRole="Presupuestos" ToRole="EmpleadoPresupuesto" />
+    <NavigationProperty Name="ProyectoConPresupuestoes" Relationship="Self.FK_ProyectoConPresupuesto_Presupuestos" FromRole="Presupuestos" ToRole="ProyectoConPresupuesto" />
+    <Property Name="Direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="TotalGeneral" Type="Int32" />
+    <NavigationProperty Name="Materiales_detalle" Relationship="PresupuestoModel.FK_Presupuestos_listado_Presupuestos" FromRole="Presupuesto" ToRole="Materiales_detalle" />
+    <NavigationProperty Name="Obra_detalle" Relationship="PresupuestoModel.FK_Obra_detalle_Presupuestos" FromRole="Presupuesto" ToRole="Obra_detalle" />
+  </EntityType>
+  <EntityType Name="Proyecto_detalle">
+    <Key>
+      <PropertyRef Name="IdProyectoDetalle" />
+    </Key>
+    <Property Name="IdProyectoDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <Property Name="IdProyecto" Type="Int32" />
+    <NavigationProperty Name="Abonado" Relationship="Self.FK_Proyecto_detalle_Abonado" FromRole="Proyecto_detalle" ToRole="Abonado" />
+    <NavigationProperty Name="PagoDetalles" Relationship="Self.FK_PagoDetalle_Proyecto_detalle" FromRole="Proyecto_detalle" ToRole="PagoDetalle" />
+    <NavigationProperty Name="ProyectoConPresupuesto" Relationship="Self.FK_Proyecto_detalle_ProyectoConPresupuesto" FromRole="Proyecto_detalle" ToRole="ProyectoConPresupuesto" />
+  </EntityType>
+  <EntityType Name="ProyectoConPresupuesto">
+    <Key>
+      <PropertyRef Name="IdProyecto" />
+    </Key>
+    <Property Name="IdProyecto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IdPresupuesto" Type="Int32" />
+    <Property Name="Estado" Type="Int32" />
+    <Property Name="CantidadPresupuestada" Type="Int32" />
+    <Property Name="FechaCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PagoMaestroes" Relationship="Self.FK_PagoMaestro_ProyectoConPresupuesto" FromRole="ProyectoConPresupuesto" ToRole="PagoMaestro" />
+    <NavigationProperty Name="Presupuesto" Relationship="Self.FK_ProyectoConPresupuesto_Presupuestos" FromRole="ProyectoConPresupuesto" ToRole="Presupuestos" />
+    <NavigationProperty Name="Proyecto_detalle" Relationship="Self.FK_Proyecto_detalle_ProyectoConPresupuesto" FromRole="ProyectoConPresupuesto" ToRole="Proyecto_detalle" />
+    <NavigationProperty Name="Pagoes" Relationship="PresupuestoModel.FK_Pago_ProyectoConPresupuesto" FromRole="ProyectoConPresupuesto" ToRole="Pago" />
+  </EntityType>
+  <EntityType Name="ProyectoDetalleSinPresupuesto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <Property Name="IdProyecto" Type="Int32" />
+    <NavigationProperty Name="Abonado" Relationship="Self.FK_ProyectoDetalleSinPresupuesto_Abonado" FromRole="ProyectoDetalleSinPresupuesto" ToRole="Abonado" />
+    <NavigationProperty Name="ProyectoSinPresupuesto" Relationship="Self.FK_ProyectoDetalleSinPresupuesto_ProyectoSinPresupuesto" FromRole="ProyectoDetalleSinPresupuesto" ToRole="ProyectoSinPresupuesto" />
+  </EntityType>
+  <EntityType Name="ProyectoSinPresupuesto">
+    <Key>
+      <PropertyRef Name="IdProyecto" />
+    </Key>
+    <Property Name="IdProyecto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CantidadPresupuestada" Type="Int32" />
+    <Property Name="IdCliente" Type="Int32" Nullable="false" />
+    <Property Name="FechaCreacion" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Estado" Type="Int32" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK_ProyectoSinPresupuesto_Clientes" FromRole="ProyectoSinPresupuesto" ToRole="Clientes" />
+    <NavigationProperty Name="ProyectoDetalleSinPresupuestoes" Relationship="Self.FK_ProyectoDetalleSinPresupuesto_ProyectoSinPresupuesto" FromRole="ProyectoSinPresupuesto" ToRole="ProyectoDetalleSinPresupuesto" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TipoEmpleado">
+    <Key>
+      <PropertyRef Name="IdTipoEmpleado" />
+    </Key>
+    <Property Name="IdTipoEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Abonadoes" Relationship="Self.FK_Abonado_TipoEmpleado" FromRole="TipoEmpleado" ToRole="Abonado" />
+  </EntityType>
+  <EntityType Name="Unidad">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Unidad1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tipo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Vendedore">
+    <Key>
+      <PropertyRef Name="IdVendedor" />
+    </Key>
+    <Property Name="IdVendedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Materiales" Relationship="Self.FK_Materiales_Vendedores" FromRole="Vendedores" ToRole="Materiales" />
+  </EntityType>
+  <EntityType Name="g">
+    <Key>
+      <PropertyRef Name="IdPresupuestos" />
+    </Key>
+    <Property Name="IdPresupuestos" Type="Int32" Nullable="false" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="TipoCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="hola">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DescripcionPresupuesto" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Expr1" Type="Int32" />
+  </EntityType>
+  <EntityType Name="View_CabeceraAmbos">
+    <Key>
+      <PropertyRef Name="IdPresupuestos" />
+      <PropertyRef Name="IdCliente" />
+      <PropertyRef Name="IdListadoPresupuesto" />
+    </Key>
+    <Property Name="IdPresupuestos" Type="Int32" Nullable="false" />
+    <Property Name="Comentario" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Fecha" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdCliente" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TotalMateriales" Type="Int32" />
+    <Property Name="TotalObra" Type="Int32" />
+    <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Unidad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="IdListadoPresupuesto" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="View_Guardar_Materiales_Detalle">
+    <Key>
+      <PropertyRef Name="IdPresupuestos" />
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="IdPresupuestos" Type="Int32" Nullable="false" />
+    <Property Name="Comentario" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="Precio" Type="Int32" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="Id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="View_Guardar_Obra_Detalle">
+    <Key>
+      <PropertyRef Name="IdPresupuestos" />
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="IdPresupuestos" Type="Int32" Nullable="false" />
+    <Property Name="Comentario" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="Precio" Type="Int32" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="View_Listar_Obra_2">
+    <Key>
+      <PropertyRef Name="IdPresupuestos" />
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdPresupuestos" Type="Int32" Nullable="false" />
+    <Property Name="Comentario" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Fecha" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdCliente" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+    <Property Name="Total" Type="Int32" />
+  </EntityType>
+  <EntityType Name="View_materiales_detalle">
+    <Key>
+      <PropertyRef Name="IdPresupuestos" />
+    </Key>
+    <Property Name="IdPresupuestos" Type="Int32" Nullable="false" />
+    <Property Name="Comentario" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="Precio" Type="Int32" />
+    <Property Name="Total" Type="Int32" />
+  </EntityType>
+  <EntityType Name="View_PresupuestoListarProyectoSinPresupuestoActivos">
+    <Key>
+      <PropertyRef Name="IdProyecto" />
+    </Key>
+    <Property Name="IdProyecto" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CantidadPresupuestada" Type="Int32" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Vista_ListaDeMateriales">
+    <Key>
+      <PropertyRef Name="IdPresupuestos" />
+    </Key>
+    <Property Name="IdPresupuestos" Type="Int32" Nullable="false" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="TipoCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Vista_ListadoPresupuestoMateriales">
+    <Key>
+      <PropertyRef Name="IdPresupuestos" />
+    </Key>
+    <Property Name="Descripcion" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TipoCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+    <Property Name="FechaCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdPresupuestos" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vista_ListadoPresupuestoObra">
+    <Key>
+      <PropertyRef Name="IdPresupuestos" />
+    </Key>
+    <Property Name="Descripcion" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TipoCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+    <Property Name="FechaCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdPresupuestos" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Abonado_TipoEmpleado">
+    <End Role="TipoEmpleado" Type="Self.TipoEmpleado" Multiplicity="0..1" />
+    <End Role="Abonado" Type="Self.Abonado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoEmpleado">
+        <PropertyRef Name="IdTipoEmpleado" />
+      </Principal>
+      <Dependent Role="Abonado">
+        <PropertyRef Name="IdTipoEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmpleadoPresupuesto_Abonado">
+    <End Role="Abonado" Type="Self.Abonado" Multiplicity="0..1" />
+    <End Role="EmpleadoPresupuesto" Type="Self.EmpleadoPresupuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Abonado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmpleadoPresupuesto">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pago_Informal_Abonado">
+    <End Role="Abonado" Type="Self.Abonado" Multiplicity="0..1" />
+    <End Role="Pago_Informal" Type="Self.Pago_Informal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Abonado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pago_Informal">
+        <PropertyRef Name="IdAbonado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proyecto_detalle_Abonado">
+    <End Role="Abonado" Type="Self.Abonado" Multiplicity="0..1" />
+    <End Role="Proyecto_detalle" Type="Self.Proyecto_detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Abonado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Proyecto_detalle">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProyectoDetalleSinPresupuesto_Abonado">
+    <End Role="Abonado" Type="Self.Abonado" Multiplicity="0..1" />
+    <End Role="ProyectoDetalleSinPresupuesto" Type="Self.ProyectoDetalleSinPresupuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Abonado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProyectoDetalleSinPresupuesto">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Presupuestos_Clientes">
+    <End Role="Clientes" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="Presupuestos" Type="Self.Presupuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Presupuestos">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProyectoSinPresupuesto_Clientes">
+    <End Role="Clientes" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="ProyectoSinPresupuesto" Type="Self.ProyectoSinPresupuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProyectoSinPresupuesto">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comprobante_pago_informal_Pago_Informal">
+    <End Role="Pago_Informal" Type="Self.Pago_Informal" Multiplicity="0..1" />
+    <End Role="Comprobante_pago_informal" Type="Self.Comprobante_pago_informal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pago_Informal">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comprobante_pago_informal">
+        <PropertyRef Name="IdPagoInformal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmpleadoPresupuesto_Presupuestos">
+    <End Role="Presupuestos" Type="Self.Presupuesto" Multiplicity="0..1" />
+    <End Role="EmpleadoPresupuesto" Type="Self.EmpleadoPresupuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Presupuestos">
+        <PropertyRef Name="IdPresupuestos" />
+      </Principal>
+      <Dependent Role="EmpleadoPresupuesto">
+        <PropertyRef Name="IdPresupuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Materiales_Vendedores">
+    <End Role="Vendedores" Type="Self.Vendedore" Multiplicity="0..1" />
+    <End Role="Materiales" Type="Self.Materiale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendedores">
+        <PropertyRef Name="IdVendedor" />
+      </Principal>
+      <Dependent Role="Materiales">
+        <PropertyRef Name="IdVendedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PagoDetalle_PagoMaestro">
+    <End Role="PagoMaestro" Type="Self.PagoMaestro" Multiplicity="0..1" />
+    <End Role="PagoDetalle" Type="Self.PagoDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PagoMaestro">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="PagoDetalle">
+        <PropertyRef Name="IdPagoMaestro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PagoDetalle_Proyecto_detalle">
+    <End Role="Proyecto_detalle" Type="Self.Proyecto_detalle" Multiplicity="0..1" />
+    <End Role="PagoDetalle" Type="Self.PagoDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyecto_detalle">
+        <PropertyRef Name="IdProyectoDetalle" />
+      </Principal>
+      <Dependent Role="PagoDetalle">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PagoMaestro_ProyectoConPresupuesto">
+    <End Role="ProyectoConPresupuesto" Type="Self.ProyectoConPresupuesto" Multiplicity="0..1" />
+    <End Role="PagoMaestro" Type="Self.PagoMaestro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProyectoConPresupuesto">
+        <PropertyRef Name="IdProyecto" />
+      </Principal>
+      <Dependent Role="PagoMaestro">
+        <PropertyRef Name="Idproyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProyectoConPresupuesto_Presupuestos">
+    <End Role="Presupuestos" Type="Self.Presupuesto" Multiplicity="0..1" />
+    <End Role="ProyectoConPresupuesto" Type="Self.ProyectoConPresupuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Presupuestos">
+        <PropertyRef Name="IdPresupuestos" />
+      </Principal>
+      <Dependent Role="ProyectoConPresupuesto">
+        <PropertyRef Name="IdPresupuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proyecto_detalle_ProyectoConPresupuesto">
+    <End Role="ProyectoConPresupuesto" Type="Self.ProyectoConPresupuesto" Multiplicity="0..1" />
+    <End Role="Proyecto_detalle" Type="Self.Proyecto_detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProyectoConPresupuesto">
+        <PropertyRef Name="IdProyecto" />
+      </Principal>
+      <Dependent Role="Proyecto_detalle">
+        <PropertyRef Name="IdProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProyectoDetalleSinPresupuesto_ProyectoSinPresupuesto">
+    <End Role="ProyectoSinPresupuesto" Type="Self.ProyectoSinPresupuesto" Multiplicity="0..1" />
+    <End Role="ProyectoDetalleSinPresupuesto" Type="Self.ProyectoDetalleSinPresupuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProyectoSinPresupuesto">
+        <PropertyRef Name="IdProyecto" />
+      </Principal>
+      <Dependent Role="ProyectoDetalleSinPresupuesto">
+        <PropertyRef Name="IdProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PresupuestoEntities5" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Abonadoes" EntityType="Self.Abonado" />
+    <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+    <EntitySet Name="Companias" EntityType="Self.Compania" />
+    <EntitySet Name="Comprobante_Pago" EntityType="Self.Comprobante_Pago" />
+    <EntitySet Name="Comprobante_pago_informal" EntityType="Self.Comprobante_pago_informal" />
+    <EntitySet Name="ComprobantePagoSinPresupuestoes" EntityType="Self.ComprobantePagoSinPresupuesto" />
+    <EntitySet Name="EmpleadoPresupuestoes" EntityType="Self.EmpleadoPresupuesto" />
+    <EntitySet Name="Materiales" EntityType="Self.Materiale" />
+    <EntitySet Name="Pago_Concepto" EntityType="Self.Pago_Concepto" />
+    <EntitySet Name="Pago_Informal" EntityType="Self.Pago_Informal" />
+    <EntitySet Name="PagoDetalles" EntityType="Self.PagoDetalle" />
+    <EntitySet Name="PagoMaestroes" EntityType="Self.PagoMaestro" />
+    <EntitySet Name="Presupuestos" EntityType="Self.Presupuesto" />
+    <EntitySet Name="Proyecto_detalle" EntityType="Self.Proyecto_detalle" />
+    <EntitySet Name="ProyectoConPresupuestoes" EntityType="Self.ProyectoConPresupuesto" />
+    <EntitySet Name="ProyectoDetalleSinPresupuestoes" EntityType="Self.ProyectoDetalleSinPresupuesto" />
+    <EntitySet Name="ProyectoSinPresupuestoes" EntityType="Self.ProyectoSinPresupuesto" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TipoEmpleadoes" EntityType="Self.TipoEmpleado" />
+    <EntitySet Name="Unidads" EntityType="Self.Unidad" />
+    <EntitySet Name="Vendedores" EntityType="Self.Vendedore" />
+    <EntitySet Name="g" EntityType="Self.g" />
+    <EntitySet Name="holas" EntityType="Self.hola" />
+    <EntitySet Name="View_CabeceraAmbos" EntityType="Self.View_CabeceraAmbos" />
+    <EntitySet Name="View_Guardar_Materiales_Detalle" EntityType="Self.View_Guardar_Materiales_Detalle" />
+    <EntitySet Name="View_Guardar_Obra_Detalle" EntityType="Self.View_Guardar_Obra_Detalle" />
+    <EntitySet Name="View_Listar_Obra_2" EntityType="Self.View_Listar_Obra_2" />
+    <EntitySet Name="View_materiales_detalle" EntityType="Self.View_materiales_detalle" />
+    <EntitySet Name="View_PresupuestoListarProyectoSinPresupuestoActivos" EntityType="Self.View_PresupuestoListarProyectoSinPresupuestoActivos" />
+    <EntitySet Name="Vista_ListaDeMateriales" EntityType="Self.Vista_ListaDeMateriales" />
+    <EntitySet Name="Vista_ListadoPresupuestoMateriales" EntityType="Self.Vista_ListadoPresupuestoMateriales" />
+    <EntitySet Name="Vista_ListadoPresupuestoObra" EntityType="Self.Vista_ListadoPresupuestoObra" />
+    <AssociationSet Name="FK_Abonado_TipoEmpleado" Association="Self.FK_Abonado_TipoEmpleado">
+      <End Role="TipoEmpleado" EntitySet="TipoEmpleadoes" />
+      <End Role="Abonado" EntitySet="Abonadoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmpleadoPresupuesto_Abonado" Association="Self.FK_EmpleadoPresupuesto_Abonado">
+      <End Role="Abonado" EntitySet="Abonadoes" />
+      <End Role="EmpleadoPresupuesto" EntitySet="EmpleadoPresupuestoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pago_Informal_Abonado" Association="Self.FK_Pago_Informal_Abonado">
+      <End Role="Abonado" EntitySet="Abonadoes" />
+      <End Role="Pago_Informal" EntitySet="Pago_Informal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proyecto_detalle_Abonado" Association="Self.FK_Proyecto_detalle_Abonado">
+      <End Role="Abonado" EntitySet="Abonadoes" />
+      <End Role="Proyecto_detalle" EntitySet="Proyecto_detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProyectoDetalleSinPresupuesto_Abonado" Association="Self.FK_ProyectoDetalleSinPresupuesto_Abonado">
+      <End Role="Abonado" EntitySet="Abonadoes" />
+      <End Role="ProyectoDetalleSinPresupuesto" EntitySet="ProyectoDetalleSinPresupuestoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Presupuestos_Clientes" Association="Self.FK_Presupuestos_Clientes">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Presupuestos" EntitySet="Presupuestos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProyectoSinPresupuesto_Clientes" Association="Self.FK_ProyectoSinPresupuesto_Clientes">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="ProyectoSinPresupuesto" EntitySet="ProyectoSinPresupuestoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comprobante_pago_informal_Pago_Informal" Association="Self.FK_Comprobante_pago_informal_Pago_Informal">
+      <End Role="Pago_Informal" EntitySet="Pago_Informal" />
+      <End Role="Comprobante_pago_informal" EntitySet="Comprobante_pago_informal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmpleadoPresupuesto_Presupuestos" Association="Self.FK_EmpleadoPresupuesto_Presupuestos">
+      <End Role="Presupuestos" EntitySet="Presupuestos" />
+      <End Role="EmpleadoPresupuesto" EntitySet="EmpleadoPresupuestoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Materiales_Vendedores" Association="Self.FK_Materiales_Vendedores">
+      <End Role="Vendedores" EntitySet="Vendedores" />
+      <End Role="Materiales" EntitySet="Materiales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PagoDetalle_PagoMaestro" Association="Self.FK_PagoDetalle_PagoMaestro">
+      <End Role="PagoMaestro" EntitySet="PagoMaestroes" />
+      <End Role="PagoDetalle" EntitySet="PagoDetalles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PagoDetalle_Proyecto_detalle" Association="Self.FK_PagoDetalle_Proyecto_detalle">
+      <End Role="Proyecto_detalle" EntitySet="Proyecto_detalle" />
+      <End Role="PagoDetalle" EntitySet="PagoDetalles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PagoMaestro_ProyectoConPresupuesto" Association="Self.FK_PagoMaestro_ProyectoConPresupuesto">
+      <End Role="ProyectoConPresupuesto" EntitySet="ProyectoConPresupuestoes" />
+      <End Role="PagoMaestro" EntitySet="PagoMaestroes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProyectoConPresupuesto_Presupuestos" Association="Self.FK_ProyectoConPresupuesto_Presupuestos">
+      <End Role="Presupuestos" EntitySet="Presupuestos" />
+      <End Role="ProyectoConPresupuesto" EntitySet="ProyectoConPresupuestoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proyecto_detalle_ProyectoConPresupuesto" Association="Self.FK_Proyecto_detalle_ProyectoConPresupuesto">
+      <End Role="ProyectoConPresupuesto" EntitySet="ProyectoConPresupuestoes" />
+      <End Role="Proyecto_detalle" EntitySet="Proyecto_detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProyectoDetalleSinPresupuesto_ProyectoSinPresupuesto" Association="Self.FK_ProyectoDetalleSinPresupuesto_ProyectoSinPresupuesto">
+      <End Role="ProyectoSinPresupuesto" EntitySet="ProyectoSinPresupuestoes" />
+      <End Role="ProyectoDetalleSinPresupuesto" EntitySet="ProyectoDetalleSinPresupuestoes" />
+    </AssociationSet>
+    <FunctionImport Name="CompaniaDato" ReturnType="Collection(PresupuestoModel.CompaniaDato_Result)" />
+    <FunctionImport Name="Filtrar_Abonado" ReturnType="Collection(PresupuestoModel.Filtrar_Abonado_Result)">
+      <Parameter Name="StudentID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Filtrar_Empleados_activos" ReturnType="Collection(PresupuestoModel.Filtrar_Empleados_activos_Result)">
+      <Parameter Name="query" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Filtrar_pago_concepto" ReturnType="Collection(PresupuestoModel.Filtrar_pago_concepto_Result)">
+      <Parameter Name="id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="FiltrarConceptoPago" ReturnType="Collection(PresupuestoModel.FiltrarConceptoPago_Result)">
+      <Parameter Name="valor" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="guardar_obras_listado">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Unidad" Mode="In" Type="String" />
+      <Parameter Name="Precio" Mode="In" Type="Int32" />
+      <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+      <Parameter Name="Total" Mode="In" Type="Int32" />
+      <Parameter Name="Tipo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="guardar_presupuesto_cabeza">
+      <Parameter Name="fecha" Mode="In" Type="String" />
+      <Parameter Name="idCliente" Mode="In" Type="Int32" />
+      <Parameter Name="direccion" Mode="In" Type="String" />
+      <Parameter Name="comentario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="guardar_presupuestos_listado">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Unidad" Mode="In" Type="String" />
+      <Parameter Name="Precio" Mode="In" Type="Int32" />
+      <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+      <Parameter Name="Total" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="guardar_presupuestos_listados">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Unidad" Mode="In" Type="String" />
+      <Parameter Name="Precio" Mode="In" Type="Int32" />
+      <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+      <Parameter Name="Total" Mode="In" Type="Int32" />
+      <Parameter Name="Tipo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GuardarProyecto">
+      <Parameter Name="IdPresupuesto" Mode="In" Type="Int32" />
+      <Parameter Name="Valor" Mode="In" Type="Int32" />
+      <Parameter Name="Direccion" Mode="In" Type="String" />
+      <Parameter Name="Decripcion" Mode="In" Type="String" />
+      <Parameter Name="fe" Mode="In" Type="String" />
+      <Parameter Name="estado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GuardarProyectoDetalleSinPresupuesto">
+      <Parameter Name="Empleado" Mode="In" Type="Int32" />
+      <Parameter Name="IdProyecto" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GuardarProyectoSinPresupuestos">
+      <Parameter Name="IdCliente" Mode="In" Type="Int32" />
+      <Parameter Name="Valor" Mode="In" Type="Int32" />
+      <Parameter Name="Direccion" Mode="In" Type="String" />
+      <Parameter Name="Decripcion" Mode="In" Type="String" />
+      <Parameter Name="fe" Mode="In" Type="String" />
+      <Parameter Name="estado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="holasi" ReturnType="Collection(PresupuestoModel.holasi_Result)" />
+    <FunctionImport Name="Presupuestos_listado_ID">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ProyectoListaEmpleados" ReturnType="Collection(PresupuestoModel.ProyectoListaEmpleados_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="recuperar_idPresupuesto" ReturnType="Collection(Int32)">
+      <Parameter Name="idcliente" Mode="In" Type="Int32" />
+      <Parameter Name="fecha" Mode="In" Type="String" />
+      <Parameter Name="descripcion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_FiltrarClienteActivo" ReturnType="Collection(PresupuestoModel.SP_FiltrarClienteActivo_Result)">
+      <Parameter Name="query" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PresupuestoModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PresupuestoModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ListadoPresupuestoDeMateriales" ReturnType="Collection(PresupuestoModel.SP_ListadoPresupuestoDeMateriales_Result)">
+      <Parameter Name="tipo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ListadoPresupuestoDeMaterialesFiltrar" ReturnType="Collection(PresupuestoModel.SP_ListadoPresupuestoDeMaterialesFiltrar_Result)">
+      <Parameter Name="query" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ListaEmpleadosAsignados" ReturnType="Collection(PresupuestoModel.SP_ListaEmpleadosAsignados_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ListaPresupuestoMateriales" ReturnType="Collection(PresupuestoModel.SP_ListaPresupuestoMateriales_Result)">
+      <Parameter Name="tipo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ListarObraDetalle" ReturnType="Collection(PresupuestoModel.SP_ListarObraDetalle_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="tipo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ListarObraMateriales" ReturnType="Collection(PresupuestoModel.SP_ListarObraMateriales_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="tipo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_listarProyectoSinPresupuestoActivos" ReturnType="Collection(PresupuestoModel.SP_listarProyectoSinPresupuestoActivos_Result)" />
+    <FunctionImport Name="SP_ModificarProyecto" ReturnType="Collection(PresupuestoModel.SP_ModificarProyecto_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ModificarProyectoCliente" ReturnType="Collection(PresupuestoModel.SP_ModificarProyectoCliente_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ModificarProyectoFiltro" ReturnType="Collection(PresupuestoModel.SP_ModificarProyectoFiltro_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="query" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ProyectoDetalleSinPresupuesto">
+      <Parameter Name="idEmpleado" Mode="In" Type="Int32" />
+      <Parameter Name="IdProyecto" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Reporte_Detalle_Materiales" ReturnType="Collection(PresupuestoModel.SP_Reporte_Detalle_Materiales_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Reporte_Detalles_Cliente" ReturnType="Collection(PresupuestoModel.SP_Reporte_Detalles_Cliente_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Reporte_Detalles_Materiales" ReturnType="Collection(PresupuestoModel.SP_Reporte_Detalles_Materiales_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Reporte_Detalles_Materiales3" ReturnType="Collection(PresupuestoModel.SP_Reporte_Detalles_Materiales3_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Reporte_Detalles_Materiales4" ReturnType="Collection(PresupuestoModel.SP_Reporte_Detalles_Materiales4_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Reporte_Empleados" ReturnType="Collection(PresupuestoModel.SP_Reporte_Empleados_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Reporte_Materiales_Cliente" ReturnType="Collection(PresupuestoModel.SP_Reporte_Materiales_Cliente_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="Traer_ObrasDetalles_Por_Id" ReturnType="Collection(PresupuestoModel.Traer_ObrasDetalles_Por_Id_Result)">
+      <Parameter Name="myId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="TraerMaterialesDetallesPorId" ReturnType="Collection(PresupuestoModel.TraerMaterialesDetallesPorId_Result)">
+      <Parameter Name="myId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ListadoPagosPorProyecto" ReturnType="Collection(PresupuestoModel.ListadoPagosPorProyecto_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ListadoPresupuestoDeManoDeObra" ReturnType="Collection(PresupuestoModel.SP_ListadoPresupuestoDeManoDeObra_Result)">
+      <Parameter Name="tipo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Reporte_DetallesManoObra4" ReturnType="Collection(PresupuestoModel.SP_Reporte_DetallesManoObra4_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="descripcionDireccion" ReturnType="Collection(PresupuestoModel.descripcionDireccion_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ReporteManoObra5" ReturnType="Collection(PresupuestoModel.ReporteManoObra5_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ReporteMateriales5" ReturnType="Collection(PresupuestoModel.ReporteMateriales5_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Pagoes" EntityType="PresupuestoModel.Pago" />
+    <AssociationSet Name="FK_Pago_Abonado" Association="PresupuestoModel.FK_Pago_Abonado">
+      <End Role="Abonado" EntitySet="Abonadoes" />
+      <End Role="Pago" EntitySet="Pagoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pago_ProyectoConPresupuesto" Association="PresupuestoModel.FK_Pago_ProyectoConPresupuesto">
+      <End Role="ProyectoConPresupuesto" EntitySet="ProyectoConPresupuestoes" />
+      <End Role="Pago" EntitySet="Pagoes" />
+    </AssociationSet>
+    <FunctionImport Name="update_Materiales">
+      <Parameter Name="idPresupuesto" Mode="In" Type="Int32" />
+      <Parameter Name="descrip" Mode="In" Type="String" />
+      <Parameter Name="unidad" Mode="In" Type="String" />
+      <Parameter Name="precio" Mode="In" Type="Int32" />
+      <Parameter Name="cantidad" Mode="In" Type="Int32" />
+      <Parameter Name="total" Mode="In" Type="Int32" />
+      <Parameter Name="totalgeneral" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="update_Obra">
+      <Parameter Name="idPresupuesto" Mode="In" Type="Int32" />
+      <Parameter Name="descrip" Mode="In" Type="String" />
+      <Parameter Name="unidad" Mode="In" Type="String" />
+      <Parameter Name="precio" Mode="In" Type="Int32" />
+      <Parameter Name="cantidad" Mode="In" Type="Int32" />
+      <Parameter Name="total" Mode="In" Type="Int32" />
+      <Parameter Name="totalgeneral" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="insert_Materiales">
+      <Parameter Name="idPresupuesto" Mode="In" Type="Int32" />
+      <Parameter Name="descrip" Mode="In" Type="String" />
+      <Parameter Name="unidad" Mode="In" Type="String" />
+      <Parameter Name="precio" Mode="In" Type="Int32" />
+      <Parameter Name="cantidad" Mode="In" Type="Int32" />
+      <Parameter Name="total" Mode="In" Type="Int32" />
+      <Parameter Name="totalgeneral" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Materiales_detalle" EntityType="PresupuestoModel.Materiales_detalle" />
+    <EntitySet Name="Obra_detalle" EntityType="PresupuestoModel.Obra_detalle" />
+    <AssociationSet Name="FK_Presupuestos_listado_Presupuestos" Association="PresupuestoModel.FK_Presupuestos_listado_Presupuestos">
+      <End Role="Presupuesto" EntitySet="Presupuestos" />
+      <End Role="Materiales_detalle" EntitySet="Materiales_detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Obra_detalle_Presupuestos" Association="PresupuestoModel.FK_Obra_detalle_Presupuestos">
+      <End Role="Presupuesto" EntitySet="Presupuestos" />
+      <End Role="Obra_detalle" EntitySet="Obra_detalle" />
+    </AssociationSet>
+    <FunctionImport Name="BorrarTodoMateriales_detalle">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="BorrarTodoObra_detalle">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="guardar_materiales_listado">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Unidad" Mode="In" Type="String" />
+      <Parameter Name="Precio" Mode="In" Type="Int32" />
+      <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+      <Parameter Name="Total" Mode="In" Type="Int32" />
+      <Parameter Name="Tipo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="holae">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="idEmpleado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Borrrado_deEmpleados">
+      <Parameter Name="idPresupuesto" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_BorrradoeInsertado_deEmpleados">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="idEmpleado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_insertado_deEmpleados">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="idEmpleado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ListadoPresupuestoDeManoDeObraQuery" ReturnType="Collection(PresupuestoModel.SP_ListadoPresupuestoDeManoDeObraQuery_Result)">
+      <Parameter Name="tipo" Mode="In" Type="Int32" />
+      <Parameter Name="Query" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ListadoPresupuestoDeManoDeObraQuery1" ReturnType="Collection(PresupuestoModel.SP_ListadoPresupuestoDeManoDeObraQuery1_Result)">
+      <Parameter Name="tipo" Mode="In" Type="Int32" />
+      <Parameter Name="Query" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Acceso" ReturnType="Collection(PresupuestoModel.Acceso_Result)">
+      <Parameter Name="usuario" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Usuarios" EntityType="PresupuestoModel.Usuario" />
+    <FunctionImport Name="holamundo" ReturnType="Collection(PresupuestoModel.holamundo_Result)">
+      <Parameter Name="tipo" Mode="In" Type="Int32" />
+      <Parameter Name="Query" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="holamundoManoDeObra" ReturnType="Collection(PresupuestoModel.holamundoManoDeObra_Result)">
+      <Parameter Name="tipo" Mode="In" Type="Int32" />
+      <Parameter Name="Query" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="holamundopresupuesto" ReturnType="Collection(PresupuestoModel.holamundopresupuesto_Result)">
+      <Parameter Name="tipo" Mode="In" Type="Int32" />
+      <Parameter Name="Query" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="x" ReturnType="Collection(PresupuestoModel.x_Result)">
+      <Parameter Name="tipo" Mode="In" Type="Int32" />
+      <Parameter Name="Query" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ListadoPresupuestoDeMaterialesQury" ReturnType="Collection(PresupuestoModel.SP_ListadoPresupuestoDeMaterialesQury_Result)">
+      <Parameter Name="tipo" Mode="In" Type="Int32" />
+      <Parameter Name="query" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="CompaniaDato_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="Binary" Name="Logo" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="Direccion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="RNC" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="Filtrar_Abonado_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Fecha_inscripcion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Lugar" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Estado" Nullable="false" />
+    <Property Type="Int32" Name="IdTipoEmpleado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Filtrar_Empleados_activos_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Fecha_inscripcion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Lugar" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Estado" Nullable="false" />
+    <Property Type="Int32" Name="IdTipoEmpleado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Filtrar_pago_concepto_Result">
+    <Property Type="Int32" Name="idConceptoPago" Nullable="false" />
+    <Property Type="String" Name="Concepto" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="valor" Nullable="false" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="FiltrarConceptoPago_Result">
+    <Property Type="Int32" Name="idConceptoPago" Nullable="false" />
+    <Property Type="String" Name="Concepto" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="valor" Nullable="false" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="holasi_Result">
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="400" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="17" />
+    <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="IdPresupuestos" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="ProyectoListaEmpleados_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Direccion" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CantidadPresupuestada" Nullable="true" />
+    <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_FiltrarClienteActivo_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="17" />
+    <Property Type="Int32" Name="Estado" Nullable="true" />
+    <Property Type="String" Name="TipoCliente" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Sexo" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SP_ListadoPresupuestoDeMateriales_Result">
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="400" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TipoCliente" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="17" />
+    <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="IdPresupuestos" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SP_ListadoPresupuestoDeMaterialesFiltrar_Result">
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="400" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TipoCliente" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="17" />
+    <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="IdPresupuestos" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SP_ListaEmpleadosAsignados_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_ListaPresupuestoMateriales_Result">
+    <Property Type="Int32" Name="IdPresupuestos" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="400" />
+    <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="total" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_ListarObraDetalle_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="IdPresupuesto" Nullable="true" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unidad" Nullable="true" MaxLength="40" />
+    <Property Type="Int32" Name="Cantidad" Nullable="true" />
+    <Property Type="Int32" Name="Precio" Nullable="true" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+    <Property Type="Int32" Name="Tipo" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_ListarObraMateriales_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="IdPresupuesto" Nullable="true" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unidad" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="Precio" Nullable="true" />
+    <Property Type="Int32" Name="Cantidad" Nullable="true" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+    <Property Type="Int32" Name="Tipo" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_listarProyectoSinPresupuestoActivos_Result">
+    <Property Type="Int32" Name="IdProyecto" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Direccion" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CantidadPresupuestada" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_ModificarProyecto_Result">
+    <Property Type="Int32" Name="IdEmpleado" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="DescripcionProyecto" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="direcccionempleado" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="CantidadPresupuestada" Nullable="true" />
+    <Property Type="String" Name="Direccion" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_ModificarProyectoCliente_Result">
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="17" />
+  </ComplexType>
+  <ComplexType Name="SP_ModificarProyectoFiltro_Result">
+    <Property Type="Int32" Name="IdEmpleado" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="DescripcionProyecto" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="direcccionempleado" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="CantidadPresupuestada" Nullable="true" />
+    <Property Type="String" Name="Direccion" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_Reporte_Detalle_Materiales_Result">
+    <Property Type="Int32" Name="IdPresupuestos" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="400" />
+    <Property Type="String" Name="Unidad" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Precio" Nullable="true" />
+    <Property Type="Int32" Name="Cantidad" Nullable="true" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_Reporte_Detalles_Cliente_Result">
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Sexo" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="SP_Reporte_Detalles_Materiales_Result">
+    <Property Type="Int32" Name="IdPresupuestos" Nullable="false" />
+    <Property Type="String" Name="DescripcionPropuesta" Nullable="true" MaxLength="400" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unidad" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Precio" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Cantidad" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Total" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="SP_Reporte_Detalles_Materiales3_Result">
+    <Property Type="Int32" Name="IdPresupuestos" Nullable="false" />
+    <Property Type="String" Name="DescripcionPropuesta" Nullable="true" MaxLength="400" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unidad" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Precio" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Cantidad" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Total" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="SP_Reporte_Detalles_Materiales4_Result">
+    <Property Type="Int32" Name="IdPresupuestos" Nullable="false" />
+    <Property Type="String" Name="DescripcionPropuesta" Nullable="true" MaxLength="400" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unidad" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Precio" Nullable="true" />
+    <Property Type="String" Name="sexo" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="Cantidad" Nullable="true" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_Reporte_Empleados_Result">
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Tipo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_Reporte_Materiales_Cliente_Result">
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Sexo" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="Traer_ObrasDetalles_Por_Id_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unidad" Nullable="true" MaxLength="40" />
+    <Property Type="Int32" Name="Cantidad" Nullable="true" />
+    <Property Type="Int32" Name="Precio" Nullable="true" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="TraerMaterialesDetallesPorId_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unidad" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="Cantidad" Nullable="true" />
+    <Property Type="Int32" Name="Precio" Nullable="true" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ListadoPagosPorProyecto_Result">
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Valor" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fecha" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SP_ListadoPresupuestoDeManoDeObra_Result">
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TipoCliente" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="17" />
+    <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="IdPresupuestos" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SP_Reporte_DetallesManoObra4_Result">
+    <Property Type="Int32" Name="IdPresupuestos" Nullable="false" />
+    <Property Type="String" Name="DescripcionPropuesta" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unidad" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Precio" Nullable="true" />
+    <Property Type="String" Name="sexo" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="TotalGenetal" Nullable="true" />
+    <Property Type="Int32" Name="Cantidad" Nullable="true" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="descripcionDireccion_Result">
+    <Property Type="Int32" Name="IdPresupuestos" Nullable="false" />
+    <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="IdCliente" Nullable="true" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Estado" Nullable="true" />
+    <Property Type="String" Name="Direccion" Nullable="true" MaxLength="70" />
+  </ComplexType>
+  <ComplexType Name="ReporteManoObra5_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="IdPresupuesto" Nullable="true" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unidad" Nullable="true" MaxLength="40" />
+    <Property Type="Int32" Name="Cantidad" Nullable="true" />
+    <Property Type="Int32" Name="Precio" Nullable="true" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+    <Property Type="Int32" Name="Tipo" Nullable="true" />
+    <Property Type="Int32" Name="TotalGeneral" Nullable="true" />
+    <Property Type="String" Name="Direccion" Nullable="true" MaxLength="70" />
+  </ComplexType>
+  <ComplexType Name="ReporteMateriales5_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="IdPresupuesto" Nullable="true" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unidad" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="Precio" Nullable="true" />
+    <Property Type="Int32" Name="Cantidad" Nullable="true" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+    <Property Type="Int32" Name="Tipo" Nullable="true" />
+    <Property Type="Int32" Name="TotalGenetal" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Pago">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Valor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fecha" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="IdProyecto" Type="Int32" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <NavigationProperty Name="Abonado" Relationship="PresupuestoModel.FK_Pago_Abonado" FromRole="Pago" ToRole="Abonado" />
+    <NavigationProperty Name="ProyectoConPresupuesto" Relationship="PresupuestoModel.FK_Pago_ProyectoConPresupuesto" FromRole="Pago" ToRole="ProyectoConPresupuesto" />
+  </EntityType>
+  <Association Name="FK_Pago_Abonado">
+    <End Type="PresupuestoModel.Abonado" Role="Abonado" Multiplicity="0..1" />
+    <End Type="PresupuestoModel.Pago" Role="Pago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Abonado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pago">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pago_ProyectoConPresupuesto">
+    <End Type="PresupuestoModel.ProyectoConPresupuesto" Role="ProyectoConPresupuesto" Multiplicity="0..1" />
+    <End Type="PresupuestoModel.Pago" Role="Pago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProyectoConPresupuesto">
+        <PropertyRef Name="IdProyecto" />
+      </Principal>
+      <Dependent Role="Pago">
+        <PropertyRef Name="IdProyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Materiales_detalle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPresupuesto" Type="Int32" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Unidad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Precio" Type="Int32" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="Tipo" Type="Int32" />
+    <NavigationProperty Name="Presupuesto" Relationship="PresupuestoModel.FK_Presupuestos_listado_Presupuestos" FromRole="Materiales_detalle" ToRole="Presupuesto" />
+  </EntityType>
+  <EntityType Name="Obra_detalle">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPresupuesto" Type="Int32" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Unidad" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="Precio" Type="Int32" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="Tipo" Type="Int32" />
+    <Property Name="Direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Presupuesto" Relationship="PresupuestoModel.FK_Obra_detalle_Presupuestos" FromRole="Obra_detalle" ToRole="Presupuesto" />
+  </EntityType>
+  <Association Name="FK_Presupuestos_listado_Presupuestos">
+    <End Type="PresupuestoModel.Presupuesto" Role="Presupuesto" Multiplicity="0..1" />
+    <End Type="PresupuestoModel.Materiales_detalle" Role="Materiales_detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Presupuesto">
+        <PropertyRef Name="IdPresupuestos" />
+      </Principal>
+      <Dependent Role="Materiales_detalle">
+        <PropertyRef Name="IdPresupuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Obra_detalle_Presupuestos">
+    <End Type="PresupuestoModel.Presupuesto" Role="Presupuesto" Multiplicity="0..1" />
+    <End Type="PresupuestoModel.Obra_detalle" Role="Obra_detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Presupuesto">
+        <PropertyRef Name="IdPresupuestos" />
+      </Principal>
+      <Dependent Role="Obra_detalle">
+        <PropertyRef Name="IdPresupuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="SP_ListadoPresupuestoDeManoDeObraQuery_Result">
+    <Property Type="Int32" Name="IdPresupuestos" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TipoCliente" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="17" />
+    <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="IdPresupuestos1" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SP_ListadoPresupuestoDeManoDeObraQuery1_Result">
+    <Property Type="Int32" Name="IdPresupuestos" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TipoCliente" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="17" />
+    <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="IdPresupuestos1" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Acceso_Result">
+    <Property Type="String" Name="Usuario" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Pass" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Pass2" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Usuario1" />
+    </Key>
+    <Property Name="Usuario1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Pass2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="holamundo_Result">
+    <Property Type="Int32" Name="IdPresupuestos" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TipoCliente" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="17" />
+    <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="IdPresupuestos1" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="holamundoManoDeObra_Result">
+    <Property Type="Int32" Name="IdPresupuestos" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TipoCliente" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="17" />
+    <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="IdPresupuestos1" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="holamundopresupuesto_Result">
+    <Property Type="Int32" Name="IdPresupuestos" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TipoCliente" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="17" />
+    <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="IdPresupuestos1" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="x_Result">
+    <Property Type="Int32" Name="IdPresupuestos" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TipoCliente" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="17" />
+    <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_ListadoPresupuestoDeMaterialesQury_Result">
+    <Property Type="Int32" Name="IdPresupuestos" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TipoCliente" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="17" />
+    <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

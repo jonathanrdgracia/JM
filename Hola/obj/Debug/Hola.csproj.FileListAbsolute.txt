@@ -1,0 +1,9 @@
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\Hola\bin\Debug\Hola.exe.config
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\Hola\bin\Debug\Hola.exe
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\Hola\bin\Debug\Hola.pdb
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\Hola\obj\Debug\Hola.csprojResolveAssemblyReference.cache
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\Hola\obj\Debug\Hola.Form1.resources
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\Hola\obj\Debug\Hola.Properties.Resources.resources
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\Hola\obj\Debug\Hola.csproj.GenerateResource.Cache
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\Hola\obj\Debug\Hola.exe
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\Hola\obj\Debug\Hola.pdb

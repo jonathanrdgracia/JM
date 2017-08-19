@@ -1,0 +1,5 @@
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\LogicaLogin\bin\Debug\LogicaLogin.dll
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\LogicaLogin\bin\Debug\LogicaLogin.pdb
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\LogicaLogin\obj\Debug\LogicaLogin.dll
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\LogicaLogin\obj\Debug\LogicaLogin.pdb
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\LogicaLogin\obj\Debug\LogicaLogin.csprojResolveAssemblyReference.cache

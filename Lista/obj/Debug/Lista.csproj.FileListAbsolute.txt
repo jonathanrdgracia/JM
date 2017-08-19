@@ -1,0 +1,6 @@
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\Lista\bin\Debug\Lista.exe.config
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\Lista\bin\Debug\Lista.exe
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\Lista\bin\Debug\Lista.pdb
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\Lista\obj\Debug\Lista.exe
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\Lista\obj\Debug\Lista.pdb
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\Lista\obj\Debug\Lista.csprojResolveAssemblyReference.cache
