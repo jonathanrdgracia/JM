@@ -148,7 +148,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "CrearFolderPago";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Crear filder de pagos";
+            this.Text = "Crear folder de pagos";
             this.Load += new System.EventHandler(this.CrearFolderPago_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
