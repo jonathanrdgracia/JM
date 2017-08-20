@@ -150,14 +150,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JM.exe" size="2411952">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JM.exe" size="2412464">
       <assemblyIdentity name="JM" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>bgr/bXhjzslm0wB7U9fvJg3KUHj7zFYgI1+6y43Jhls=</dsig:DigestValue>
+        <dsig:DigestValue>2xphyQSXoa0b0mRdVnqPmOX2F7ecVGJmm0LbwX8q+ow=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

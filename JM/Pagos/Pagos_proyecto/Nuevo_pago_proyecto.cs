@@ -92,14 +92,14 @@ namespace JM.Pagos.Pagos_proyecto
 
                         var id = Convert.ToInt32(row.Cells[0].Value.ToString());
 
-                        DB.PagoDetalle PD = new PagoDetalle 
-                       
-                        { IdPagoMaestro = IdPagoMaestro, 
-                            IdEmpleado = id 
-                        };
+                       // DB.PagoDetalle PD = new PagoDetalle 
+                       //{ IdPagoMaestro = IdPagoMaestro, 
+                       //     IdEmpleado = id 
+                       // };
 
-                        db.PagoDetalles.Add(PD);
-                        db.SaveChanges();
+                       // MessageBox.Show(" id del pago maestro "+IdPagoMaestro.ToString() + " :  empleado " + id.ToString());
+                        //db.PagoDetalles.Add(PD);
+                        //db.SaveChanges();
                     }
 
 

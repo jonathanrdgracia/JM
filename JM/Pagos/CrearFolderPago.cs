@@ -52,11 +52,11 @@ namespace JM.Pagos
         private void button2_Click(object sender, EventArgs e)
         {
             var x0 = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
-           // Nuevo_pago_proyecto m = new Nuevo_pago_proyecto();
-           // m.IdProyecto = Convert.ToInt32(x0);
-            
-           // m.ShowDialog();
-           // this.Close();
+            Nuevo_pago_proyecto m = new Nuevo_pago_proyecto();
+            m.IdProyecto = Convert.ToInt32(x0);
+
+            m.ShowDialog();
+            this.Close();
         }
 
         private void button17_Click(object sender, EventArgs e)
