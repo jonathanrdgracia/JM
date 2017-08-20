@@ -56,12 +56,34 @@ namespace JM.Proyecto
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ModificarProyecto m = new ModificarProyecto();
-            
+       
+            try
+            {
+                ModificarProyecto m = new ModificarProyecto();
 
-            var x0 = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            m.IdProtecto = Convert.ToInt32(x0);
-            m.ShowDialog();
+
+                var x0 = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                m.IdProtecto = Convert.ToInt32(x0);
+                m.ShowDialog();
+
+            }
+            catch (NullReferenceException es)
+            {
+
+                MessageBox.Show("Todos los campos son requeridos", "Presupuesto",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (FormatException este)
+            {
+                MessageBox.Show("Verifique que todos los datos sean correctos ", "Presupuesto",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Algo ha salido mal " + ex.Message, "Presupuesto",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

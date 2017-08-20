@@ -38,6 +38,7 @@ namespace JM.Proyecto
             
             using(var db = new PresupuestoEntities5())
             {
+                MessageBox.Show(idProyecto.ToString());
                 try
                 {
                     var query = db.SP_ModificarProyectoCliente(idProyecto).FirstOrDefault();
