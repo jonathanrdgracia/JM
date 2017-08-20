@@ -198,12 +198,13 @@ namespace JM.Proyecto
             }
         }
 
-        private void ejecutar3(string dato, string dato2, string dato3, string dato4, string dato5)
+        private void ejecutar3(string dato, string dato2, string dato3, string dato4, string dato5,string dato7)
         {
 
                 Cantidad = Convert.ToInt32(dato5);
                 textBox1.Text=dato2;
                 textBox3.Text = dato3;
+                textBox2.Text = dato7;
                 textBox4.Text = dato4;
                 IdPresupuesto =Convert.ToInt32(dato);
                 textBox7.Text =Convert.ToInt32(dato5).ToString("C",nfi);

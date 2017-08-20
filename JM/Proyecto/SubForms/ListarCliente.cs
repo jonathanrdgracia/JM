@@ -42,7 +42,10 @@ namespace JM.Proyecto.SubForms
                         TipoCliente=i.TipoCliente,
                         Telefono=i.Telefono,
                         FechaCreacion=i.FechaCreacion,
-                        Total=Convert.ToInt32(i.Total)
+                        Total=Convert.ToInt32(i.Total),
+                        Direccion = i.Direccion
+                        
+                       
                     });
                 }
                 foreach (var i in db.Vista_ListadoPresupuestoMateriales.OrderByDescending(c => c.IdPresupuestos))
@@ -55,7 +58,8 @@ namespace JM.Proyecto.SubForms
                         TipoCliente = i.TipoCliente,
                         Telefono = i.Telefono,
                         FechaCreacion = i.FechaCreacion,
-                        Total = Convert.ToInt32(i.Total)
+                        Total = Convert.ToInt32(i.Total),
+                        Direccion = i.Direccion
                     });
                 }
 
@@ -70,7 +74,8 @@ namespace JM.Proyecto.SubForms
                     i.TipoCliente,
                     i.Telefono,
                     i.FechaCreacion,
-                    i.Total
+                    i.Total,
+                    i.Direccion
                     );
             }
         }
@@ -84,7 +89,7 @@ namespace JM.Proyecto.SubForms
         {
             this.Close();
         }
-        public delegate void enviar(string dato, string dato2,string dato3,string string4,string dato5);
+        public delegate void enviar(string dato, string dato2,string dato3,string string4,string dato5,string dato7);
         public event enviar enviado;
 
         //private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -121,12 +126,13 @@ namespace JM.Proyecto.SubForms
                 var x2 = this.dataGridView1.CurrentRow.Cells[2].Value.ToString();
                 var x3 = this.dataGridView1.CurrentRow.Cells[4].Value.ToString();
                 var x4 = this.dataGridView1.CurrentRow.Cells[6].Value.ToString();
+                var x7 = this.dataGridView1.CurrentRow.Cells[7].Value.ToString();
 
 
 
 
             Proyecto.Nuevo c = new Proyecto.Nuevo();
-                enviado(x0, x1, x2, x3, x4);
+                enviado(x0, x1, x2, x3, x4,x7);
 
 
             using (var db = new PresupuestoEntities5())
@@ -172,6 +178,7 @@ namespace JM.Proyecto.SubForms
         public string Telefono { get; set; }
         public string FechaCreacion { get; set; }
         public int Total { get; set; }
+        public string Direccion { get; set; }
 
     }
     public class EmpleadosEx

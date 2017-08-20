@@ -372,25 +372,27 @@
     <Key>
       <PropertyRef Name="IdPresupuestos" />
     </Key>
-    <Property Name="Descripcion" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Total" Type="Int32" />
     <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="TipoCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Telefono" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
     <Property Name="FechaCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="IdPresupuestos" Type="Int32" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Vista_ListadoPresupuestoObra">
     <Key>
       <PropertyRef Name="IdPresupuestos" />
     </Key>
-    <Property Name="Descripcion" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Total" Type="Int32" />
     <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="TipoCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Telefono" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
     <Property Name="FechaCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="IdPresupuestos" Type="Int32" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_Abonado_TipoEmpleado">
     <End Role="TipoEmpleado" Type="Self.TipoEmpleado" Multiplicity="0..1" />

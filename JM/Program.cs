@@ -16,7 +16,7 @@ namespace JM
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Splash.SplashScreen());
+            Application.Run(new Form1());
         }
     }
 }
