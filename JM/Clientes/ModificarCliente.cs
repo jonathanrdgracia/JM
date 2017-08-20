@@ -58,35 +58,41 @@ namespace JM.Clientes
 
         private void button13_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBox2.Text) || string.IsNullOrEmpty(textBox3.Text) || string.IsNullOrEmpty(comboBox1.SelectedItem.ToString()))
+            {
+                MessageBox.Show("Todos los campos son requeridos");
 
-            using (var db = new PresupuestoEntities5())
-                {
-                  //  var i =Convert.ToInt32(IdCliente.ToString().Substring(2, IdCliente.ToString().Length));
-                  //  MessageBox.Show(IdCliente.ToString());
-                 var  c = (from x in db.Clientes
-                         where x.id == IdCliente
-                         select x).First();
-
-
-                 c.Nombre = textBox2.Text;
-                 c.Telefono = textBox3.Text;
-                 c.TipoCliente = comboBox1.SelectedItem.ToString();
-                 db.SaveChanges();
-                 this.dataGridView1.Rows.Clear();
-                 cc.LlenarGridClientesActivos(dataGridView1);
-                 textBox6.Text = "";
+            }
+            else
+            {
                 
+                using (var db = new PresupuestoEntities5())
+                {
+                    //  var i =Convert.ToInt32(IdCliente.ToString().Substring(2, IdCliente.ToString().Length));
+                    //  MessageBox.Show(IdCliente.ToString());
+                    var c = (from x in db.Clientes
+                             where x.id == IdCliente
+                             select x).First();
+
+
+                    c.Nombre = textBox2.Text;
+                    c.Telefono = textBox3.Text;
+                    c.TipoCliente = comboBox1.SelectedItem.ToString();
+                    db.SaveChanges();
+                    this.dataGridView1.Rows.Clear();
+                    cc.LlenarGridClientesActivos(dataGridView1);
+                    textBox6.Text = "";
+
                 }
 
- 
-            
-
-              //  MessageBox.Show("Verifique que todo este en orden e intentelo de nuevo "+ex.Message);
-            
+            }
+           
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            try
+            {
             IdCliente = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells[0].Value.ToString());
             var x1 = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
             var x2 = this.dataGridView1.CurrentRow.Cells[2].Value.ToString();
@@ -94,6 +100,12 @@ namespace JM.Clientes
             comboBox1.SelectedItem = x3;
             textBox2.Text = x1;
             textBox3.Text = x2;
+            }
+            catch (NullReferenceException)
+            {
+                
+             
+            }
 
         }
     }

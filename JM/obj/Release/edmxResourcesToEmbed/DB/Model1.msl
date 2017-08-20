@@ -361,6 +361,7 @@
     <EntitySetMapping Name="Vista_ListadoPresupuestoMateriales">
       <EntityTypeMapping TypeName="PresupuestoModel.Vista_ListadoPresupuestoMateriales">
         <MappingFragment StoreEntitySet="Vista_ListadoPresupuestoMateriales">
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="Total" ColumnName="Total" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -374,6 +375,7 @@
     <EntitySetMapping Name="Vista_ListadoPresupuestoObra">
       <EntityTypeMapping TypeName="PresupuestoModel.Vista_ListadoPresupuestoObra">
         <MappingFragment StoreEntitySet="Vista_ListadoPresupuestoObra">
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="Total" ColumnName="Total" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
