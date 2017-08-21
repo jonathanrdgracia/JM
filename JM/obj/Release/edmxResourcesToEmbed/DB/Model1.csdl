@@ -982,6 +982,12 @@
       <Parameter Name="tipo" Mode="In" Type="Int32" />
       <Parameter Name="query" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="ListadoPagosPorProyectoDetalle" ReturnType="Collection(PresupuestoModel.ListadoPagosPorProyectoDetalle_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ListadoPagosPorProyectoDetalles" ReturnType="Collection(PresupuestoModel.ListadoPagosPorProyectoDetalles_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="CompaniaDato_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
@@ -1451,5 +1457,20 @@
     <Property Type="String" Name="TipoCliente" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Telefono" Nullable="true" MaxLength="17" />
     <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ListadoPagosPorProyectoDetalle_Result">
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fecha" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="Valor" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ListadoPagosPorProyectoDetalles_Result">
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="Valor" Nullable="true" />
   </ComplexType>
 </Schema>

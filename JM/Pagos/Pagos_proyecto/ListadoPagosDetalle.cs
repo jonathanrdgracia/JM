@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using JM.DB;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace JM.Pagos.Pagos_proyecto
 {
@@ -17,6 +18,7 @@ namespace JM.Pagos.Pagos_proyecto
         {
             InitializeComponent();
         }
+        NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
         private int _id;
 
         public int Id
@@ -27,10 +29,19 @@ namespace JM.Pagos.Pagos_proyecto
         
         private void ListadoPagosDetalle_Load(object sender, EventArgs e)
         {
+           nfi.CurrencyDecimalDigits = 2;
+
             PresupuestoEntities5 db = new PresupuestoEntities5();
-            foreach (var i in db.ListadoPagosPorProyectoDetalle(5))
+            var query = db.ListadoPagosPorProyectoDetalles(_id);
+            
+            foreach (var i in query)
             {
-                
+                this.dataGridView1.Rows.Add(
+                    i.Id,
+                    i.TipoEmpleado,
+                    i.Nombre ,
+                   i.Valor // Convert.ToInt32(i.Valor.ToString()).ToString("C", nfi)
+                );
             }
             //ListadoPagosPorProyectoDetalle
         }

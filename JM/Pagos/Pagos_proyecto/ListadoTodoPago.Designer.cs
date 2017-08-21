@@ -36,11 +36,11 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button17 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verPagosDetalladosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button17 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -100,25 +100,6 @@
             this.Column3.ReadOnly = true;
             this.Column3.Width = 120;
             // 
-            // button17
-            // 
-            this.button17.BackColor = System.Drawing.Color.Transparent;
-            this.button17.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button17.FlatAppearance.BorderSize = 0;
-            this.button17.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button17.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button17.Image = ((System.Drawing.Image)(resources.GetObject("button17.Image")));
-            this.button17.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button17.Location = new System.Drawing.Point(547, 350);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(72, 34);
-            this.button17.TabIndex = 63;
-            this.button17.Text = "Salir";
-            this.button17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button17.UseVisualStyleBackColor = false;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -140,8 +121,9 @@
             // verPagosDetalladosToolStripMenuItem
             // 
             this.verPagosDetalladosToolStripMenuItem.Name = "verPagosDetalladosToolStripMenuItem";
-            this.verPagosDetalladosToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.verPagosDetalladosToolStripMenuItem.Text = "Ver pagos detallados";
+            this.verPagosDetalladosToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.verPagosDetalladosToolStripMenuItem.Text = "Ver pagos totales";
+            this.verPagosDetalladosToolStripMenuItem.Click += new System.EventHandler(this.verPagosDetalladosToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -152,6 +134,25 @@
             this.groupBox1.TabIndex = 65;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pagos realizados";
+            // 
+            // button17
+            // 
+            this.button17.BackColor = System.Drawing.Color.Transparent;
+            this.button17.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button17.FlatAppearance.BorderSize = 0;
+            this.button17.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button17.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button17.Image = ((System.Drawing.Image)(resources.GetObject("button17.Image")));
+            this.button17.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button17.Location = new System.Drawing.Point(547, 350);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(72, 34);
+            this.button17.TabIndex = 63;
+            this.button17.Text = "Salir";
+            this.button17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button17.UseVisualStyleBackColor = false;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
             // ListadoTodoPago
             // 

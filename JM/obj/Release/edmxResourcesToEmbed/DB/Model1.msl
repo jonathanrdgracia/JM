@@ -1004,5 +1004,28 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ListadoPagosPorProyectoDetalle" FunctionName="PresupuestoModel.Store.ListadoPagosPorProyectoDetalle">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PresupuestoModel.ListadoPagosPorProyectoDetalle_Result">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ListadoPagosPorProyectoDetalles" FunctionName="PresupuestoModel.Store.ListadoPagosPorProyectoDetalles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PresupuestoModel.ListadoPagosPorProyectoDetalles_Result">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

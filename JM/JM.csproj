@@ -389,6 +389,12 @@
     <Compile Include="DB\holasi_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\ListadoPagosPorProyectoDetalles_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\ListadoPagosPorProyectoDetalle_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\ListadoPagosPorProyecto_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

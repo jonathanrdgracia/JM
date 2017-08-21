@@ -50,5 +50,21 @@ namespace JM.Pagos.Pagos_proyecto
         {
             this.Close();
         }
+
+        private void verPagosDetalladosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+               ListadoPagosDetalle l = new ListadoPagosDetalle();
+                l.Id = IdProyecto;
+                l.ShowDialog();
+
+            }
+            catch (Exception)
+            {
+                
+              
+            }
+        }
     }
 }

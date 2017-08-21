@@ -790,6 +790,9 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
         <Function Name="ListadoPagosPorProyectoDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
+        <Function Name="ListadoPagosPorProyectoDetalles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
         <Function Name="Presupuestos_listado_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
@@ -2182,6 +2185,9 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
             <Parameter Name="query" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ListadoPagosPorProyectoDetalle" ReturnType="Collection(PresupuestoModel.ListadoPagosPorProyectoDetalle_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListadoPagosPorProyectoDetalles" ReturnType="Collection(PresupuestoModel.ListadoPagosPorProyectoDetalles_Result)">
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
@@ -2658,6 +2664,13 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Fecha" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="TipoEmpleado" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Valor" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ListadoPagosPorProyectoDetalles_Result">
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="TipoEmpleado" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="Int32" Name="Valor" Nullable="true" />
@@ -3677,6 +3690,17 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListadoPagosPorProyectoDetalles" FunctionName="PresupuestoModel.Store.ListadoPagosPorProyectoDetalles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PresupuestoModel.ListadoPagosPorProyectoDetalles_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
                 <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Valor" ColumnName="Valor" />
