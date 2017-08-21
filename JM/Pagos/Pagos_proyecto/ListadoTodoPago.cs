@@ -66,5 +66,10 @@ namespace JM.Pagos.Pagos_proyecto
               
             }
         }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

@@ -35,7 +35,7 @@ namespace JM.Clientes
             var id = Convert.ToInt32(x0);
             var db = new PresupuestoEntities5();
 
-            DialogResult dialogResult = MessageBox.Show("(¿Seguro que deseas eliminar este cliente?", "Cliente", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas eliminar este cliente?", "Cliente", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 var c = (from x in db.Clientes

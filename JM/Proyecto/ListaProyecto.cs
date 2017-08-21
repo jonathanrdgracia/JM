@@ -24,7 +24,16 @@ namespace JM.Proyecto
 
         private void ListaProyecto_Load(object sender, EventArgs e)
         {
-            Llenar();
+            try
+            {
+                Llenar();
+
+            }
+            catch (Exception)
+            {
+                
+                
+            }
         }
 
         private void Llenar()
@@ -60,8 +69,6 @@ namespace JM.Proyecto
             try
             {
                 ModificarProyecto m = new ModificarProyecto();
-
-
                 var x0 = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
                 m.IdProtecto = Convert.ToInt32(x0);
                 m.ShowDialog();

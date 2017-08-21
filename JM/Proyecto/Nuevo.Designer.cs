@@ -79,6 +79,7 @@
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.Transparent;
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
@@ -157,7 +158,7 @@
             this.textBox7.Location = new System.Drawing.Point(655, 62);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(96, 25);
+            this.textBox7.Size = new System.Drawing.Size(122, 25);
             this.textBox7.TabIndex = 25;
             // 
             // label4
@@ -209,21 +210,22 @@
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Location = new System.Drawing.Point(9, 127);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(839, 233);
+            this.groupBox2.Size = new System.Drawing.Size(839, 284);
             this.groupBox2.TabIndex = 53;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ingrese nuevo cliente";
+            this.groupBox2.Text = "Listado de empleados asingados a este proyecto";
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Transparent;
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(749, 181);
+            this.button3.Location = new System.Drawing.Point(749, 244);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(84, 34);
             this.button3.TabIndex = 59;
@@ -250,7 +252,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(824, 156);
+            this.dataGridView1.Size = new System.Drawing.Size(824, 219);
             this.dataGridView1.TabIndex = 58;
             // 
             // Column1
@@ -288,13 +290,14 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(9, 366);
+            this.button2.Location = new System.Drawing.Point(9, 417);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(84, 34);
             this.button2.TabIndex = 58;
@@ -308,7 +311,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(860, 402);
+            this.ClientSize = new System.Drawing.Size(860, 463);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

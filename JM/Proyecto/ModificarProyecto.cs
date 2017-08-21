@@ -38,8 +38,6 @@ namespace JM.Proyecto
             
             using(var db = new PresupuestoEntities5())
             {
-                MessageBox.Show(idProyecto.ToString());
-              
                     var query = db.SP_ModificarProyectoCliente(idProyecto).FirstOrDefault();
                     Nombtre = query.Nombre;
                     Telefono = query.Telefono;
@@ -125,30 +123,40 @@ namespace JM.Proyecto
             try
             {
                  DB.ProyectoConPresupuesto PP;
-
-
-                 using (var db = new PresupuestoEntities5())
+                DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas modificar este proyecto?", "Proyecto", MessageBoxButtons.YesNo);
+                 if (dialogResult == DialogResult.Yes)
                  {
-                     PP = (from c in db.ProyectoConPresupuestoes
-                           where c.IdProyecto == idProyecto
-                           select c).First();
-
-                     PP.Descripcion = textBox1.Text;
-                     PP.Direccion = textBox2.Text;
-                     db.SaveChanges();
-
-
-                     foreach (var i in ListadoEmpleado2)
+                     using (var db = new PresupuestoEntities5())
                      {
-                         DB.Proyecto_detalle PD = new Proyecto_detalle
-                         {
-                             IdEmpleado = i.Id,
-                             IdProyecto = idProyecto
-                         };
-                         db.Proyecto_detalle.Add(PD);
+                         PP = (from c in db.ProyectoConPresupuestoes
+                             where c.IdProyecto == idProyecto
+                             select c).First();
+
+                         PP.Descripcion = textBox1.Text;
+                         PP.Direccion = textBox2.Text;
                          db.SaveChanges();
+
+
+                         foreach (var i in ListadoEmpleado2)
+                         {
+                             DB.Proyecto_detalle PD = new Proyecto_detalle
+                             {
+                                 IdEmpleado = i.Id,
+                                 IdProyecto = idProyecto
+                             };
+                             db.Proyecto_detalle.Add(PD);
+                             db.SaveChanges();
+                         }
                      }
+                     MessageBox.Show("Proyecto modificado con exito");
+                     this.Close();
+
                  }
+                 else if (dialogResult == DialogResult.No)
+                 {
+
+                 }
+
             }
             catch (Exception)
             {

@@ -84,52 +84,72 @@ namespace JM.Proyecto
 
         private void button2_Click(object sender, EventArgs e)
         {
-           
-            f = Fecha();
-            var descripcion = textBox1.Text;
-            var direccion = textBox2.Text;
-
-
-
-            using (var db = new PresupuestoEntities5()) //para devolver el ID del proyecto en IdProyecto
+            if (this.dataGridView1.RowCount == 0 || string.IsNullOrEmpty(textBox3.Text))
             {
-                db.GuardarProyecto(IdPresupuesto, Cantidad, direccion, descripcion, f, 1);
-                db.SaveChanges();//Guardo la cabecera del proyecto
-
-
-                /*Busco el id del proyecto*/
-                this.IdProyecto = db.ProyectoConPresupuestoes.Where(c => c.Descripcion == descripcion).
-                    Where(c => c.Direccion == direccion).
-                    Where(c => c.CantidadPresupuestada == Cantidad).
-                    Where(c => c.FechaCreacion == f).Select(x => x.IdProyecto).FirstOrDefault();
-
-                /**/
-
-                foreach (DataGridViewRow row in dataGridView1.Rows)
+                MessageBox.Show("Todos los campos son requeridos", "Campos vacios",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                try
                 {
+                    f = Fecha();
+                    var descripcion = textBox1.Text;
+                    var direccion = textBox2.Text;
 
-                
-                    DB.Proyecto_detalle Py = new Proyecto_detalle
+
+
+                    using (var db = new PresupuestoEntities5()) //para devolver el ID del proyecto en IdProyecto
                     {
+                        db.GuardarProyecto(IdPresupuesto, Cantidad, direccion, descripcion, f, 1);
+                        db.SaveChanges();//Guardo la cabecera del proyecto
 
-                        IdEmpleado = Convert.ToInt32(row.Cells[0].Value.ToString()),
-                        IdProyecto = this.IdProyecto
-                    };
-                 
-                    db.Proyecto_detalle.Add(Py);
-                    db.SaveChanges();
+
+                        /*Busco el id del proyecto*/
+                        this.IdProyecto = db.ProyectoConPresupuestoes.Where(c => c.Descripcion == descripcion).
+                            Where(c => c.Direccion == direccion).
+                            Where(c => c.CantidadPresupuestada == Cantidad).
+                            Where(c => c.FechaCreacion == f).Select(x => x.IdProyecto).FirstOrDefault();
+
+                        /**/
+
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        {
+
+
+                            DB.Proyecto_detalle Py = new Proyecto_detalle
+                            {
+
+                                IdEmpleado = Convert.ToInt32(row.Cells[0].Value.ToString()),
+                                IdProyecto = this.IdProyecto
+                            };
+
+                            db.Proyecto_detalle.Add(Py);
+                            db.SaveChanges();
+
+                        }
+                  
+                        /*Pasa el presupuesto a estado=2 (ya tiene folder de pago)*/
+                        DB.Presupuesto p = new DB.Presupuesto();
+                        p = (from c in db.Presupuestos
+                             where c.IdPresupuestos == this.IdPresupuesto
+                             select c).First();
+                        p.Estado = 2;
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("Proyecto agregado con exito");
+                    this.Close();
+
 
                 }
-                MessageBox.Show(this.IdProyecto.ToString());
-                /*Pasa el presupuesto a estado=2 (ya tiene folder de pago)*/
-                DB.Presupuesto p = new DB.Presupuesto();
-                p = (from c in db.Presupuestos
-                     where c.IdPresupuestos == this.IdPresupuesto
-                     select c).First();
-                p.Estado = 2;
-                db.SaveChanges();
+                catch (Exception)
+                {
+                    
+                    
+                }
             }
-
+            /**/ 
+            
 
 
 
