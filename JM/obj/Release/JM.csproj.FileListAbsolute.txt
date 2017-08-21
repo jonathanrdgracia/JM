@@ -115,7 +115,7 @@ C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\bin\Release\System
 C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\bin\Release\System.Xml.Linq.dll
 C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\bin\Release\Microsoft.VisualBasic.PowerPacks.xml
 C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\bin\Release\es\Microsoft.SqlServer.Management.Sdk.Sfc.resources.dll
-C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\obj\Release\JM.csprojResolveAssemblyReference.cache
 C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\obj\Release\JM.Pagos.Pagos_proyecto.ListadoPagosDetalle.resources
 C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\obj\Release\JM.Opciones.Proyecto.resources
 C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\obj\Release\JM.Opciones.Empleados.resources
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\obj\Release\JM.Opciones.Clientes.resources

@@ -153,8 +153,9 @@
             // eliminadosToolStripMenuItem
             // 
             this.eliminadosToolStripMenuItem.Name = "eliminadosToolStripMenuItem";
-            this.eliminadosToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.eliminadosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.eliminadosToolStripMenuItem.Text = "Eliminados";
+            this.eliminadosToolStripMenuItem.Click += new System.EventHandler(this.eliminadosToolStripMenuItem_Click);
             // 
             // empleadosToolStripMenuItem
             // 

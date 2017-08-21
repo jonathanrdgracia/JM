@@ -48,7 +48,7 @@
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(695, 243);
+            this.groupBox1.Size = new System.Drawing.Size(695, 399);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Folder de  pagos";
@@ -71,7 +71,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(683, 204);
+            this.dataGridView1.Size = new System.Drawing.Size(683, 374);
             this.dataGridView1.TabIndex = 59;
             // 
             // Column2
@@ -118,7 +118,7 @@
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
             this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button13.Location = new System.Drawing.Point(12, 261);
+            this.button13.Location = new System.Drawing.Point(12, 417);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(107, 34);
             this.button13.TabIndex = 61;
@@ -137,7 +137,7 @@
             this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button17.Image = ((System.Drawing.Image)(resources.GetObject("button17.Image")));
             this.button17.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button17.Location = new System.Drawing.Point(635, 261);
+            this.button17.Location = new System.Drawing.Point(635, 417);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(72, 34);
             this.button17.TabIndex = 62;
@@ -151,7 +151,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(719, 307);
+            this.ClientSize = new System.Drawing.Size(719, 463);
             this.Controls.Add(this.button17);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.groupBox1);

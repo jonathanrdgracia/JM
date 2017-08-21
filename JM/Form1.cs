@@ -402,5 +402,11 @@ namespace JM
             Opciones.Empleados op = new Opciones.Empleados();
             op.ShowDialog();
         }
+
+        private void eliminadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Opciones.Clientes op = new Opciones.Clientes();
+            op.ShowDialog();
+        }
     }
 }

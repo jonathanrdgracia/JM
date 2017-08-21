@@ -58,6 +58,31 @@ namespace JM.Presupuesto
 
         }
 
+        public void Llenar()
+        {
+            nfi.CurrencyDecimalDigits = 2;
+            this.dataGridView1.Rows.Clear();
+            using (var db = new PresupuestoEntities5())
+            {
+                foreach (var item in db.SP_ListadoPresupuestoDeMateriales(Tipo).OrderByDescending(c => c.IdPresupuestos))
+                {
+                    dataGridView1.Rows.Add(
+
+                item.IdPresupuestos,
+                item.Descripcion,
+                item.Nombre,
+                item.TipoCliente,
+                item.Telefono,
+                item.FechaCreacion,
+                Convert.ToInt32(item.Total).ToString("C", nfi)
+                );
+
+                }
+
+
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             var  x0 = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells[0].Value.ToString());
@@ -190,6 +215,38 @@ namespace JM.Presupuesto
                 );
 
                 }
+
+
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            var x0 = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells[0].Value.ToString());
+            try
+            {
+                PresupuestoEntities5 db = new PresupuestoEntities5();
+                DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas eliminar este presupuesto?", "Presupuesto", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+
+                   
+
+                    var c = (from x in db.Presupuestos
+                             where x.IdPresupuestos == x0
+                             select x).First();
+                    c.Estado = 0;
+                    db.SaveChanges();
+                    Llenar();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+
+                }
+
+            }
+            catch (Exception)
+            {
 
 
             }
