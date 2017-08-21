@@ -614,6 +614,18 @@
     </Compile>
     <Compile Include="Logear\Logica.cs" />
     <Compile Include="ManoDeObra.cs" />
+    <Compile Include="Opciones\Empleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opciones\Empleados.Designer.cs">
+      <DependentUpon>Empleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opciones\Proyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opciones\Proyecto.Designer.cs">
+      <DependentUpon>Proyecto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pagos\CrearFolderPago.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -977,6 +989,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opciones\Empleados.resx">
+      <DependentUpon>Empleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opciones\Proyecto.resx">
+      <DependentUpon>Proyecto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pagos\CrearFolderPago.resx">
       <DependentUpon>CrearFolderPago.cs</DependentUpon>

@@ -170,14 +170,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JM.exe" size="2376624">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JM.exe" size="2394544">
       <assemblyIdentity name="JM" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>YhaKvWlcmZHsawy12NndNik90y5ORlhFAs7RaF62Mn0=</dsig:DigestValue>
+        <dsig:DigestValue>b9dxZ+al29kwxVkwNpKesbB9rkKoSpwcUmF/U8B6+sA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -499,13 +499,13 @@
       <dsig:DigestValue>YzBObX5qbJ4LtfxQnSVy4dDSwAaHN4D6UOKQ7Fn8Okk=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="JM.exe.config" size="2469">
+  <file name="JM.exe.config" size="2477">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>X3vYFp5sJN6+Stj8yLv9KFxKSpq16amjy5J6EWDBeAU=</dsig:DigestValue>
+      <dsig:DigestValue>/cRkOK639YIUqNpOhM9aVq6CJAhqOo4DUGBzfJpG5YM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="ok.ico" size="370070">

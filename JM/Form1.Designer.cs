@@ -139,6 +139,7 @@
             this.proyectosInactivosToolStripMenuItem.Name = "proyectosInactivosToolStripMenuItem";
             this.proyectosInactivosToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.proyectosInactivosToolStripMenuItem.Text = "Proyectos inactivos";
+            this.proyectosInactivosToolStripMenuItem.Click += new System.EventHandler(this.proyectosInactivosToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem2
             // 
@@ -152,7 +153,7 @@
             // eliminadosToolStripMenuItem
             // 
             this.eliminadosToolStripMenuItem.Name = "eliminadosToolStripMenuItem";
-            this.eliminadosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.eliminadosToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.eliminadosToolStripMenuItem.Text = "Eliminados";
             // 
             // empleadosToolStripMenuItem
@@ -169,6 +170,7 @@
             this.borradosToolStripMenuItem.Name = "borradosToolStripMenuItem";
             this.borradosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.borradosToolStripMenuItem.Text = "Borrados";
+            this.borradosToolStripMenuItem.Click += new System.EventHandler(this.borradosToolStripMenuItem_Click);
             // 
             // empresaToolStripMenuItem
             // 
@@ -381,7 +383,7 @@
             this.crearFolderDePagoToolStripMenuItem});
             this.pagosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pagosToolStripMenuItem.Image")));
             this.pagosToolStripMenuItem.Name = "pagosToolStripMenuItem";
-            this.pagosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pagosToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.pagosToolStripMenuItem.Text = "Pagos";
             // 
             // porProyectoToolStripMenuItem
@@ -426,7 +428,7 @@
             this.categoriasToolStripMenuItem});
             this.abonadoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("abonadoToolStripMenuItem.Image")));
             this.abonadoToolStripMenuItem.Name = "abonadoToolStripMenuItem";
-            this.abonadoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.abonadoToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.abonadoToolStripMenuItem.Text = "Empleados";
             // 
             // nuevoAbonadoToolStripMenuItem

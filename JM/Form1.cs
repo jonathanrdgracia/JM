@@ -390,5 +390,17 @@ namespace JM
             User v = new User();
             v.ShowDialog();
         }
+
+        private void proyectosInactivosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Opciones.Proyecto p = new Opciones.Proyecto();
+            p.ShowDialog();
+        }
+
+        private void borradosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Opciones.Empleados op = new Opciones.Empleados();
+            op.ShowDialog();
+        }
     }
 }
