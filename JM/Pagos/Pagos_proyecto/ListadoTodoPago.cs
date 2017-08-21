@@ -30,7 +30,7 @@ namespace JM.Pagos.Pagos_proyecto
         {
             using (var db = new PresupuestoEntities5()) 
             {
-                var query = db.ListadoPagosPorProyecto(Idproyecto);
+                var query = db.ListadoPagosPorProyecto(Idproyecto).OrderByDescending(c=>c.Fecha);
 
                 foreach (var i in query.OrderByDescending(c=>c.Fecha))
                 {
