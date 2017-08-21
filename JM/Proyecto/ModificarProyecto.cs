@@ -39,8 +39,7 @@ namespace JM.Proyecto
             using(var db = new PresupuestoEntities5())
             {
                 MessageBox.Show(idProyecto.ToString());
-                try
-                {
+              
                     var query = db.SP_ModificarProyectoCliente(idProyecto).FirstOrDefault();
                     Nombtre = query.Nombre;
                     Telefono = query.Telefono;
@@ -63,16 +62,7 @@ namespace JM.Proyecto
                     }
 
                     overCargar(ListadoEmpleado);
-                }
-                catch (NullReferenceException es)
-                {
-
-                    MessageBox.Show("Debes seleccionar una fila");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Intentelo de nuevo");
-                }
+              
 
             }
         }

@@ -39,7 +39,7 @@ namespace JM.Proyecto
                             join t2 in db.Presupuestos on t1.IdPresupuesto equals t2.IdPresupuestos
                             join t3 in db.Clientes on t2.IdCliente equals t3.id
                             where t1.Estado != 0
-                            select new { t1.IdProyecto, t1.Descripcion, t3.Nombre, t3.Apellido, t3.Telefono };
+                            select new { t1.IdProyecto, t1.Descripcion, t3.Nombre, t3.Apellido, t3.Telefono, t2.Direccion };
 
 
                 foreach (var i in query.OrderByDescending(c => c.IdProyecto))

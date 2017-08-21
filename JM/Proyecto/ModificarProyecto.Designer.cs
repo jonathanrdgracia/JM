@@ -295,7 +295,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "ModificarProyecto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Modificar presupuesto";
+            this.Text = "Modificar proyecto";
             this.Load += new System.EventHandler(this.ModificarProyecto_Load);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
