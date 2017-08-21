@@ -257,8 +257,8 @@
           <Property Name="IdVendedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Presupuesto.dbo.g' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.g' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="g">
           <Key>
             <PropertyRef Name="IdPresupuestos" />
@@ -269,8 +269,8 @@ advertencia 6002: La tabla o vista 'Presupuesto.dbo.g' no tiene definida ninguna
           <Property Name="Telefono" Type="nvarchar" MaxLength="17" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Presupuesto.dbo.hola' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.hola' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="hola">
           <Key>
             <PropertyRef Name="id" />
@@ -280,8 +280,8 @@ advertencia 6002: La tabla o vista 'Presupuesto.dbo.hola' no tiene definida ning
           <Property Name="DescripcionPresupuesto" Type="nvarchar" MaxLength="400" />
           <Property Name="Expr1" Type="int" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Presupuesto.dbo.View_CabeceraAmbos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.View_CabeceraAmbos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="View_CabeceraAmbos">
           <Key>
             <PropertyRef Name="IdPresupuestos" />
@@ -303,8 +303,8 @@ advertencia 6002: La tabla o vista 'Presupuesto.dbo.View_CabeceraAmbos' no tiene
           <Property Name="Cantidad" Type="int" />
           <Property Name="IdListadoPresupuesto" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Presupuesto.dbo.View_Guardar_Materiales_Detalle' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.View_Guardar_Materiales_Detalle' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="View_Guardar_Materiales_Detalle">
           <Key>
             <PropertyRef Name="IdPresupuestos" />
@@ -322,8 +322,8 @@ advertencia 6002: La tabla o vista 'Presupuesto.dbo.View_Guardar_Materiales_Deta
           <Property Name="Total" Type="int" />
           <Property Name="Id" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Presupuesto.dbo.View_Guardar_Obra_Detalle' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.View_Guardar_Obra_Detalle' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="View_Guardar_Obra_Detalle">
           <Key>
             <PropertyRef Name="IdPresupuestos" />
@@ -341,8 +341,8 @@ advertencia 6002: La tabla o vista 'Presupuesto.dbo.View_Guardar_Obra_Detalle' n
           <Property Name="Total" Type="int" />
           <Property Name="id" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Presupuesto.dbo.View_Listar_Obra_2' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.View_Listar_Obra_2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="View_Listar_Obra_2">
           <Key>
             <PropertyRef Name="IdPresupuestos" />
@@ -358,8 +358,8 @@ advertencia 6002: La tabla o vista 'Presupuesto.dbo.View_Listar_Obra_2' no tiene
           <Property Name="Telefono" Type="nvarchar" MaxLength="17" />
           <Property Name="Total" Type="int" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Presupuesto.dbo.View_materiales_detalle' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.View_materiales_detalle' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="View_materiales_detalle">
           <Key>
             <PropertyRef Name="IdPresupuestos" />
@@ -375,8 +375,8 @@ advertencia 6002: La tabla o vista 'Presupuesto.dbo.View_materiales_detalle' no 
           <Property Name="Precio" Type="int" />
           <Property Name="Total" Type="int" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Presupuesto.dbo.View_PresupuestoListarProyectoSinPresupuestoActivos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.View_PresupuestoListarProyectoSinPresupuestoActivos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="View_PresupuestoListarProyectoSinPresupuestoActivos">
           <Key>
             <PropertyRef Name="IdProyecto" />
@@ -388,8 +388,8 @@ advertencia 6002: La tabla o vista 'Presupuesto.dbo.View_PresupuestoListarProyec
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
           <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Presupuesto.dbo.Vista_ListaDeMateriales' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.Vista_ListaDeMateriales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Vista_ListaDeMateriales">
           <Key>
             <PropertyRef Name="IdPresupuestos" />
@@ -400,8 +400,8 @@ advertencia 6002: La tabla o vista 'Presupuesto.dbo.Vista_ListaDeMateriales' no 
           <Property Name="Telefono" Type="nvarchar" MaxLength="17" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Presupuesto.dbo.Vista_ListadoPresupuestoMateriales' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoMateriales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Vista_ListadoPresupuestoMateriales">
           <Key>
             <PropertyRef Name="IdPresupuestos" />
@@ -415,8 +415,8 @@ advertencia 6002: La tabla o vista 'Presupuesto.dbo.Vista_ListadoPresupuestoMate
           <Property Name="IdPresupuestos" Type="int" Nullable="false" />
           <Property Name="Direccion" Type="nvarchar" MaxLength="70" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Vista_ListadoPresupuestoObra">
           <Key>
             <PropertyRef Name="IdPresupuestos" />
@@ -785,6 +785,9 @@ advertencia 6002: La tabla o vista 'Presupuesto.dbo.Vista_ListadoPresupuestoObra
           <Parameter Name="totalgeneral" Type="int" Mode="In" />
         </Function>
         <Function Name="ListadoPagosPorProyecto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListadoPagosPorProyectoDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="Presupuestos_listado_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2178,6 +2181,9 @@ advertencia 6002: La tabla o vista 'Presupuesto.dbo.Vista_ListadoPresupuestoObra
             <Parameter Name="tipo" Mode="In" Type="Int32" />
             <Parameter Name="query" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="ListadoPagosPorProyectoDetalle" ReturnType="Collection(PresupuestoModel.ListadoPagosPorProyectoDetalle_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="CompaniaDato_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -2647,6 +2653,14 @@ advertencia 6002: La tabla o vista 'Presupuesto.dbo.Vista_ListadoPresupuestoObra
           <Property Type="String" Name="TipoCliente" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Telefono" Nullable="true" MaxLength="17" />
           <Property Type="String" Name="FechaCreacion" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ListadoPagosPorProyectoDetalle_Result">
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Fecha" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="TipoEmpleado" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Valor" Nullable="true" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -3654,6 +3668,18 @@ advertencia 6002: La tabla o vista 'Presupuesto.dbo.Vista_ListadoPresupuestoObra
                 <ScalarProperty Name="TipoCliente" ColumnName="TipoCliente" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListadoPagosPorProyectoDetalle" FunctionName="PresupuestoModel.Store.ListadoPagosPorProyectoDetalle">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PresupuestoModel.ListadoPagosPorProyectoDetalle_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

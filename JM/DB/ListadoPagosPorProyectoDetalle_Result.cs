@@ -11,16 +11,13 @@ namespace JM.DB
 {
     using System;
     
-    public partial class SP_Reporte_Detalles_Materiales3_Result
+    public partial class ListadoPagosPorProyectoDetalle_Result
     {
-        public int IdPresupuestos { get; set; }
-        public string DescripcionPropuesta { get; set; }
-        public string Descripcion { get; set; }
-        public string Unidad { get; set; }
         public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Precio { get; set; }
-        public string Cantidad { get; set; }
-        public string Total { get; set; }
+        public string Apellidos { get; set; }
+        public string Fecha { get; set; }
+        public string TipoEmpleado { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> Valor { get; set; }
     }
 }

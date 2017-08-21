@@ -663,6 +663,12 @@
     <Compile Include="Pagos\Pagos_proyecto\ListadoPagoProyecto.Designer.cs">
       <DependentUpon>ListadoPagoProyecto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pagos\Pagos_proyecto\ListadoPagosDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pagos\Pagos_proyecto\ListadoPagosDetalle.Designer.cs">
+      <DependentUpon>ListadoPagosDetalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pagos\Pagos_proyecto\ListadoTodoPago.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -992,6 +998,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pagos\Pagos_proyecto\ListadoPagoProyecto.resx">
       <DependentUpon>ListadoPagoProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pagos\Pagos_proyecto\ListadoPagosDetalle.resx">
+      <DependentUpon>ListadoPagosDetalle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pagos\Pagos_proyecto\ListadoTodoPago.resx">
       <DependentUpon>ListadoTodoPago.cs</DependentUpon>
