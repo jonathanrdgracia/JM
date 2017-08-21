@@ -36,6 +36,7 @@ namespace JM.BackupDB
                 dbBackup.PercentComplete+=dbBackup_PercentComplete;
                 dbBackup.Complete+=dbBackup_Complete;
                 dbBackup.SqlBackupAsync(dbserver);
+                
             }
             catch (Exception ex)
             {
@@ -52,7 +53,11 @@ namespace JM.BackupDB
                 {
                     lbStatus.Text = e.Error.Message;
                 });
+                MessageBox.Show("Proceso finalizado");
+              
+
             }
+           
         }
 
         private void dbBackup_PercentComplete(object sender, PercentCompleteEventArgs e)
@@ -67,6 +72,11 @@ namespace JM.BackupDB
            {
                label1.Text = e.Percent + "%";
            });
+        }
+
+        private void Back_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

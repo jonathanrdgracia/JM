@@ -64,8 +64,11 @@ namespace JM.Proyecto.SubForms
                 }
 
             }
+            /* foreach (var i in ListaObra.GroupBy(c=>c.IdPresupuestos).
+                Select(c=>c.First()))*/
 
-            foreach (var i in ListaObra.OrderByDescending(c=>c.IdPresupuestos))
+            foreach (var i in ListaObra.GroupBy(c => c.IdPresupuestos).
+                 Select(c => c.First()).OrderByDescending(c=>c.IdPresupuestos))
             {
                 dataGridView1.Rows.Add(
                     i.IdPresupuestos,

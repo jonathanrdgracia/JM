@@ -93,6 +93,7 @@
             this.Name = "Back";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Realizar backup";
+            this.Load += new System.EventHandler(this.Back_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
