@@ -26,11 +26,11 @@ namespace JM.Pagos.Pagos_proyecto
             get { return _id; }
             set { _id = value; }
         }
-        
+        public int Total { get; set; }
         private void ListadoPagosDetalle_Load(object sender, EventArgs e)
         {
            nfi.CurrencyDecimalDigits = 2;
-
+          
             PresupuestoEntities5 db = new PresupuestoEntities5();
             var query = db.ListadoPagosPorProyectoDetalles(_id);
             
@@ -39,10 +39,12 @@ namespace JM.Pagos.Pagos_proyecto
                 this.dataGridView1.Rows.Add(
                     i.Id,
                     i.TipoEmpleado,
-                    i.Nombre ,
-                   i.Valor // Convert.ToInt32(i.Valor.ToString()).ToString("C", nfi)
+                    i.Nombre+" "+i.Apellidos ,
+                    "RD"+Convert.ToInt32(i.Valor.ToString()).ToString("C",nfi) // Convert.ToInt32(i.Valor.ToString()).ToString("C", nfi)
                 );
+                Total += Convert.ToInt32(i.Valor);
             }
+            label22.Text = "Pago suma total: RD" + Total.ToString("C",nfi);
             //ListadoPagosPorProyectoDetalle
         }
 

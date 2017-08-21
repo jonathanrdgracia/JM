@@ -114,6 +114,7 @@
             // button17
             // 
             this.button17.BackColor = System.Drawing.Color.Transparent;
+            this.button17.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button17.FlatAppearance.BorderSize = 0;
             this.button17.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.button17.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
