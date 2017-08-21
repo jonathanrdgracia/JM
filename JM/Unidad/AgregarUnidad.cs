@@ -30,40 +30,51 @@ namespace JM.Unidad
 
             try
             {
-                using (var db = new PresupuestoEntities5())
+                if (string.IsNullOrEmpty(textBox6.Text))
                 {
-
-                    if (materialRadioButton1.Checked)
-                    {
-                        tipo = "material";
-                    }
-                    else if (materialRadioButton2.Checked)
-                    {
-                        tipo = "mano";
-                    }
-                    else
-                    {
-                        MessageBox.Show("Debes seleccionar un tipo de unidad");
-                    }
-
-                    DB.Unidad u = new DB.Unidad
-                    {
-                        Tipo = tipo,
-                        Unidad1 = textBox6.Text
-                    };
-
-                    db.Unidads.Add(u);
-                    db.SaveChanges();
+                    MessageBox.Show("Todos los campos son requeridos", "Unidad",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                textBox6.Text = "";
-                pm.LLenarCombobox(pm.comboBox3, "material");
-               // uni.LLenarCombobox(uni.comboBox3, "material");
-              // ----------------------------------------------
-                MessageBox.Show("Unidad agregada con exito");
-               
-              
-                this.Close();
-              }
+                else
+                {
+                    using (var db = new PresupuestoEntities5())
+                    {
+
+                        if (materialRadioButton1.Checked)
+                        {
+                            tipo = "material";
+                        }
+                        else if (materialRadioButton2.Checked)
+                        {
+                            tipo = "mano";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Debes seleccionar un tipo de unidad");
+                        }
+
+                        DB.Unidad u = new DB.Unidad
+                        {
+                            Tipo = tipo,
+                            Unidad1 = textBox6.Text
+                        };
+
+                        db.Unidads.Add(u);
+                        db.SaveChanges();
+                        MessageBox.Show("Unidad agregada con exito");
+                        this.Close();
+                    }
+                    textBox6.Text = "";
+                    pm.LLenarCombobox(pm.comboBox3, "material");
+                    // uni.LLenarCombobox(uni.comboBox3, "material");
+                    // ----------------------------------------------
+                    MessageBox.Show("Unidad agregada con exito");
+
+
+                    this.Close();
+                }
+
+            }
             catch (Exception)
             {
 

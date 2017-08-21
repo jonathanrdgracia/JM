@@ -48,7 +48,7 @@ namespace JM.Unidad
         {
             try
             {
-                if (string.IsNullOrEmpty(comboBox1.SelectedItem.ToString()))
+                if (string.IsNullOrEmpty(comboBox1.SelectedItem.ToString()) || string.IsNullOrEmpty(textBox1.Text))
                 {
                     MessageBox.Show("Debes seleccionar el tipo unidad");
                 }

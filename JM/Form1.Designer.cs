@@ -56,14 +56,6 @@
             this.manosDeObraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.materialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ambosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificarPresupuestoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manoDeObraToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.materialesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ambosToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.equilibarPresupuestoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manoDeObraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.materialesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ambosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.unidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarUnidadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -137,6 +129,7 @@
             // 
             this.proyectosToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.proyectosInactivosToolStripMenuItem});
+            this.proyectosToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("proyectosToolStripMenuItem1.Image")));
             this.proyectosToolStripMenuItem1.Name = "proyectosToolStripMenuItem1";
             this.proyectosToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.proyectosToolStripMenuItem1.Text = "Proyectos";
@@ -151,6 +144,7 @@
             // 
             this.clientesToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.eliminadosToolStripMenuItem});
+            this.clientesToolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("clientesToolStripMenuItem2.Image")));
             this.clientesToolStripMenuItem2.Name = "clientesToolStripMenuItem2";
             this.clientesToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.clientesToolStripMenuItem2.Text = "Clientes";
@@ -158,13 +152,14 @@
             // eliminadosToolStripMenuItem
             // 
             this.eliminadosToolStripMenuItem.Name = "eliminadosToolStripMenuItem";
-            this.eliminadosToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.eliminadosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.eliminadosToolStripMenuItem.Text = "Eliminados";
             // 
             // empleadosToolStripMenuItem
             // 
             this.empleadosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.borradosToolStripMenuItem});
+            this.empleadosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("empleadosToolStripMenuItem.Image")));
             this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
             this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.empleadosToolStripMenuItem.Text = "Empleados";
@@ -172,13 +167,14 @@
             // borradosToolStripMenuItem
             // 
             this.borradosToolStripMenuItem.Name = "borradosToolStripMenuItem";
-            this.borradosToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.borradosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.borradosToolStripMenuItem.Text = "Borrados";
             // 
             // empresaToolStripMenuItem
             // 
             this.empresaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.modificarParametrosToolStripMenuItem});
+            this.empresaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("empresaToolStripMenuItem.Image")));
             this.empresaToolStripMenuItem.Name = "empresaToolStripMenuItem";
             this.empresaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.empresaToolStripMenuItem.Text = "Empresa";
@@ -195,6 +191,7 @@
             this.usuarioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cambiarContraseñaToolStripMenuItem,
             this.cambiarNombreDeSuarioToolStripMenuItem});
+            this.usuarioToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("usuarioToolStripMenuItem.Image")));
             this.usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
             this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.usuarioToolStripMenuItem.Text = "Usuario";
@@ -261,8 +258,6 @@
             this.presupuestosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.realizarPrespuestoToolStripMenuItem,
             this.verToolStripMenuItem,
-            this.modificarPresupuestoToolStripMenuItem,
-            this.equilibarPresupuestoToolStripMenuItem,
             this.unidadesToolStripMenuItem});
             this.presupuestosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("presupuestosToolStripMenuItem.Image")));
             this.presupuestosToolStripMenuItem.Name = "presupuestosToolStripMenuItem";
@@ -341,71 +336,6 @@
             this.ambosToolStripMenuItem.Text = "Mixto";
             this.ambosToolStripMenuItem.Click += new System.EventHandler(this.ambosToolStripMenuItem_Click);
             // 
-            // modificarPresupuestoToolStripMenuItem
-            // 
-            this.modificarPresupuestoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.manoDeObraToolStripMenuItem1,
-            this.materialesToolStripMenuItem2,
-            this.ambosToolStripMenuItem2});
-            this.modificarPresupuestoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("modificarPresupuestoToolStripMenuItem.Image")));
-            this.modificarPresupuestoToolStripMenuItem.Name = "modificarPresupuestoToolStripMenuItem";
-            this.modificarPresupuestoToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.modificarPresupuestoToolStripMenuItem.Text = "Modificar presupuesto";
-            // 
-            // manoDeObraToolStripMenuItem1
-            // 
-            this.manoDeObraToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("manoDeObraToolStripMenuItem1.Image")));
-            this.manoDeObraToolStripMenuItem1.Name = "manoDeObraToolStripMenuItem1";
-            this.manoDeObraToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
-            this.manoDeObraToolStripMenuItem1.Text = "Materiales";
-            this.manoDeObraToolStripMenuItem1.Click += new System.EventHandler(this.manoDeObraToolStripMenuItem1_Click);
-            // 
-            // materialesToolStripMenuItem2
-            // 
-            this.materialesToolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("materialesToolStripMenuItem2.Image")));
-            this.materialesToolStripMenuItem2.Name = "materialesToolStripMenuItem2";
-            this.materialesToolStripMenuItem2.Size = new System.Drawing.Size(148, 22);
-            this.materialesToolStripMenuItem2.Text = "Mano de obra";
-            // 
-            // ambosToolStripMenuItem2
-            // 
-            this.ambosToolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("ambosToolStripMenuItem2.Image")));
-            this.ambosToolStripMenuItem2.Name = "ambosToolStripMenuItem2";
-            this.ambosToolStripMenuItem2.Size = new System.Drawing.Size(148, 22);
-            this.ambosToolStripMenuItem2.Text = "Ambos";
-            // 
-            // equilibarPresupuestoToolStripMenuItem
-            // 
-            this.equilibarPresupuestoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.manoDeObraToolStripMenuItem,
-            this.materialesToolStripMenuItem1,
-            this.ambosToolStripMenuItem1});
-            this.equilibarPresupuestoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("equilibarPresupuestoToolStripMenuItem.Image")));
-            this.equilibarPresupuestoToolStripMenuItem.Name = "equilibarPresupuestoToolStripMenuItem";
-            this.equilibarPresupuestoToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.equilibarPresupuestoToolStripMenuItem.Text = "Equilibar presupuesto";
-            // 
-            // manoDeObraToolStripMenuItem
-            // 
-            this.manoDeObraToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("manoDeObraToolStripMenuItem.Image")));
-            this.manoDeObraToolStripMenuItem.Name = "manoDeObraToolStripMenuItem";
-            this.manoDeObraToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.manoDeObraToolStripMenuItem.Text = "Mano de obra";
-            // 
-            // materialesToolStripMenuItem1
-            // 
-            this.materialesToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("materialesToolStripMenuItem1.Image")));
-            this.materialesToolStripMenuItem1.Name = "materialesToolStripMenuItem1";
-            this.materialesToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
-            this.materialesToolStripMenuItem1.Text = "Materiales";
-            // 
-            // ambosToolStripMenuItem1
-            // 
-            this.ambosToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("ambosToolStripMenuItem1.Image")));
-            this.ambosToolStripMenuItem1.Name = "ambosToolStripMenuItem1";
-            this.ambosToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
-            this.ambosToolStripMenuItem1.Text = "Ambos";
-            // 
             // unidadesToolStripMenuItem
             // 
             this.unidadesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -451,7 +381,7 @@
             this.crearFolderDePagoToolStripMenuItem});
             this.pagosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pagosToolStripMenuItem.Image")));
             this.pagosToolStripMenuItem.Name = "pagosToolStripMenuItem";
-            this.pagosToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.pagosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pagosToolStripMenuItem.Text = "Pagos";
             // 
             // porProyectoToolStripMenuItem
@@ -496,7 +426,7 @@
             this.categoriasToolStripMenuItem});
             this.abonadoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("abonadoToolStripMenuItem.Image")));
             this.abonadoToolStripMenuItem.Name = "abonadoToolStripMenuItem";
-            this.abonadoToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.abonadoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.abonadoToolStripMenuItem.Text = "Empleados";
             // 
             // nuevoAbonadoToolStripMenuItem
@@ -549,6 +479,7 @@
             // 
             // agregarNuevoToolStripMenuItem
             // 
+            this.agregarNuevoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("agregarNuevoToolStripMenuItem.Image")));
             this.agregarNuevoToolStripMenuItem.Name = "agregarNuevoToolStripMenuItem";
             this.agregarNuevoToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.agregarNuevoToolStripMenuItem.Text = "Agregar nuevo Proyecto";
@@ -556,6 +487,7 @@
             // 
             // mToolStripMenuItem
             // 
+            this.mToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("mToolStripMenuItem.Image")));
             this.mToolStripMenuItem.Name = "mToolStripMenuItem";
             this.mToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.mToolStripMenuItem.Text = "Modificar proyecto";
@@ -563,6 +495,7 @@
             // 
             // listarProyectosActivosToolStripMenuItem
             // 
+            this.listarProyectosActivosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("listarProyectosActivosToolStripMenuItem.Image")));
             this.listarProyectosActivosToolStripMenuItem.Name = "listarProyectosActivosToolStripMenuItem";
             this.listarProyectosActivosToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.listarProyectosActivosToolStripMenuItem.Text = "Listar proyectos activos";
@@ -827,14 +760,6 @@
         private System.Windows.Forms.ToolStripMenuItem eliminadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem borradosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modificarPresupuestoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem equilibarPresupuestoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem manoDeObraToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem materialesToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem ambosToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem manoDeObraToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem materialesToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem ambosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem unidadesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem agregarUnidadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem;
