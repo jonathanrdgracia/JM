@@ -49,8 +49,10 @@ namespace JM.Pagos.Pagos_proyecto
             try
             {
                     var x0 = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                    var des = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
                     ListadoTodoPago a = new ListadoTodoPago();
                     a.IdProyecto = Convert.ToInt32(x0);
+                    a.Descripcion = des.ToString();
                     a.ShowDialog();
                    
             }

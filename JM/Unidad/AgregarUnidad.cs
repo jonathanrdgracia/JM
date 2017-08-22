@@ -68,7 +68,7 @@ namespace JM.Unidad
                     pm.LLenarCombobox(pm.comboBox3, "material");
                     // uni.LLenarCombobox(uni.comboBox3, "material");
                     // ----------------------------------------------
-                    MessageBox.Show("Unidad agregada con exito");
+                 
 
 
                     this.Close();

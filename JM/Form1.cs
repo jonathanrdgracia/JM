@@ -190,8 +190,7 @@ namespace JM
 
         private void nuevoAbonadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Nuevo_Abonado d = new Nuevo_Abonado();
-            d.ShowDialog();
+           
         }
 
         private void Form1_Load_1(object sender, EventArgs e)
@@ -218,15 +217,12 @@ namespace JM
 
         private void modificarAbonadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Modificar_abonado m = new Modificar_abonado();
-            m.ShowDialog();
+           
         }
 
         private void eliminarAbonadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BorrarAbonado b = new BorrarAbonado();
-
-            b.ShowDialog();
+          
         }
 
         private void controlDePagosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -310,8 +306,7 @@ namespace JM
 
         private void agregarNuevaCategoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Abonado.Tipo.AgregarNuevo a = new Abonado.Tipo.AgregarNuevo();
-            a.ShowDialog();
+          
         }
 
         private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -413,6 +408,35 @@ namespace JM
         {
             usuario.User a = new usuario.User();
             a.ShowDialog();
+        }
+
+        private void agregarNuevaCategoriaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Abonado.Tipo.AgregarNuevo a = new Abonado.Tipo.AgregarNuevo();
+            a.ShowDialog();
+        }
+
+        private void registrarEmpleadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Nuevo_Abonado d = new Nuevo_Abonado();
+            d.ShowDialog();
+        }
+
+        private void modificarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Modificar_abonado m = new Modificar_abonado();
+            m.ShowDialog();
+        }
+
+        private void eliminarEmpleadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BorrarAbonado b = new BorrarAbonado();
+            b.ShowDialog();
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

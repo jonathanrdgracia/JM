@@ -18,6 +18,14 @@ namespace JM.Pagos.Pagos_proyecto
         {
             InitializeComponent();
         }
+        private string _descripcion;
+
+        public string Descripcion
+        {
+            get { return _descripcion; }
+            set { _descripcion = value; }
+        }
+        
         private int Idproyecto;
         NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
         public int IdProyecto
@@ -28,8 +36,9 @@ namespace JM.Pagos.Pagos_proyecto
         
         private void ListadoTodoPago_Load(object sender, EventArgs e)
         {
-            using (var db = new PresupuestoEntities5()) 
+            using (var db = new PresupuestoEntities5())
             {
+                this.label4.Text = "Pagos relacionados al proyecto: " + Descripcion;
                 var query = db.ListadoPagosPorProyecto(Idproyecto).OrderByDescending(c=>c.Fecha);
 
                 foreach (var i in query.OrderByDescending(c=>c.Fecha))
@@ -70,6 +79,11 @@ namespace JM.Pagos.Pagos_proyecto
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

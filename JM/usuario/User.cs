@@ -56,6 +56,7 @@ namespace JM.usuario
                         x.Usuario1 = _usuario;
                         db.SaveChanges();
                         MessageBox.Show("Usuario actualizado correctamente");
+                        this.Close();
                     }
 
                 }

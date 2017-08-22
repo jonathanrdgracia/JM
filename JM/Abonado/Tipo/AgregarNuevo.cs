@@ -53,17 +53,31 @@ namespace JM.Abonado.Tipo
 
         private void button13_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(textBox3.Text))
+            try
             {
-                MessageBox.Show("Debes ingresar el valor correspondiente");
+                if (string.IsNullOrEmpty(textBox3.Text))
+                {
+                    MessageBox.Show("Debes ingresar el valor correspondiente");
+                }
+                else
+                {
+
+                    agregar(textBox3);
+                    this.textBox3.Text = "";
+                    ActualizarDato(dataGridView1);
+                }
+
             }
-            else
+            catch (Exception)
             {
-               
-                agregar(textBox3);
-                this.textBox3.Text = "";
-                ActualizarDato(dataGridView1);
+                    
+             
             }
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

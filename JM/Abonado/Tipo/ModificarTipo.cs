@@ -38,5 +38,10 @@ namespace JM.Abonado.Tipo
 
         }
 
+        private void button17_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }
