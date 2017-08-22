@@ -58,5 +58,10 @@ namespace JM.Presupuesto
         public delegate void enviar(int id, string nombre, string telefono, string ocupacion);
         public event enviar enviado;
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }

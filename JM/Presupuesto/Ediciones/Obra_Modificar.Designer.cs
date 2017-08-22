@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Obra_Modificar));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reduccirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -71,8 +73,6 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reduccirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
@@ -91,6 +91,21 @@
             this.menuStrip1.Size = new System.Drawing.Size(763, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // opcionesToolStripMenuItem
+            // 
+            this.opcionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reduccirToolStripMenuItem});
+            this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
+            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.opcionesToolStripMenuItem.Text = "Opciones";
+            // 
+            // reduccirToolStripMenuItem
+            // 
+            this.reduccirToolStripMenuItem.Name = "reduccirToolStripMenuItem";
+            this.reduccirToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.reduccirToolStripMenuItem.Text = "Reduccir detalles";
+            this.reduccirToolStripMenuItem.Click += new System.EventHandler(this.reduccirToolStripMenuItem_Click);
             // 
             // groupBox5
             // 
@@ -121,6 +136,7 @@
             this.button3.TabIndex = 43;
             this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -145,8 +161,8 @@
             // 
             this.dataGridView4.AllowUserToAddRows = false;
             this.dataGridView4.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataGridView4.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dataGridView4.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView4.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -194,6 +210,7 @@
             // button7
             // 
             this.button7.BackColor = System.Drawing.Color.Transparent;
+            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
@@ -207,6 +224,7 @@
             this.button7.Text = "Guardar";
             this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // groupBox8
             // 
@@ -270,8 +288,8 @@
             // 
             this.dataGridView3.AllowUserToAddRows = false;
             this.dataGridView3.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataGridView3.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dataGridView3.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView3.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -551,20 +569,6 @@
             this.label18.Size = new System.Drawing.Size(74, 16);
             this.label18.TabIndex = 5;
             this.label18.Text = "Telefono:";
-            // 
-            // opcionesToolStripMenuItem
-            // 
-            this.opcionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reduccirToolStripMenuItem});
-            this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
-            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
-            this.opcionesToolStripMenuItem.Text = "Opciones";
-            // 
-            // reduccirToolStripMenuItem
-            // 
-            this.reduccirToolStripMenuItem.Name = "reduccirToolStripMenuItem";
-            this.reduccirToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.reduccirToolStripMenuItem.Text = "Reduccir detalles";
             // 
             // Obra_Modificar
             // 

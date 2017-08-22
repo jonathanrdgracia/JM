@@ -35,7 +35,7 @@ namespace JM.Presupuesto.Ediciones
         List<empleadosC> Jefes = new List<empleadosC>();
         List<DB.Obra_detalle> obras = new List<DB.Obra_detalle>();
         private int _id;
-
+        
         public int MyId
         {
             get { return _id; }
@@ -336,6 +336,128 @@ namespace JM.Presupuesto.Ediciones
                     r.Telefono
 
                     );
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            using (var db = new PresupuestoEntities5())
+            {
+
+                //delete borro todo de la db materiales
+                db.BorrarTodoObra_detalle(MyId);
+
+
+                //inserto los materiales
+                foreach (var i in listaMateriales)
+                {
+                    db.guardar_obras_listado(MyId, i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total, 1);
+                }
+
+
+
+                //inserto los materiales nuevos
+                foreach (var i in listaMaterialesNuevos)
+                {
+                    db.guardar_obras_listado(MyId, i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total, 1);
+                }
+                int a = 0;
+                int b = 0;
+                int d = 0;
+                // listaMateriales.AddRange(listaMaterialesNuevos);
+                foreach (var i in listaMateriales)
+                {
+                    b = b + Convert.ToInt32(i.Total) * 1;
+                }
+
+                a = b + d;
+                foreach (var item in db.Presupuestos.Where(c => c.IdPresupuestos == MyId))
+                {
+                    TotalGeneralDB = +Convert.ToInt32(item.TotalGeneral);
+                }
+
+                //Actualizar presupuesto cabecera
+                int nuevo = (a - TotalGeneralDB);
+
+                // var tot = TotalGeneralDB - a;
+                var tot = (Math.Abs(TotalGeneralDB + a)) - (Rebaja);
+
+                foreach (var i in Jefes)
+                {
+                    db.SP_Borrrado_deEmpleados(MyId);
+                }
+
+                foreach (var i in Jefes)
+                {
+                    db.SP_insertado_deEmpleados(MyId, i.ID);
+                }
+
+                DB.Presupuesto zz;
+                zz = (from c in db.Presupuestos where c.IdPresupuestos == MyId select c).First();
+
+                zz.Descripcion = Descripciontxxt.Text;
+                zz.Direccion = textBoxdire.Text;
+                zz.Estado = 1;
+                if (cambio == 1)
+                {
+                    zz.TotalGeneral = TotalGeneralDB;
+                }
+                else
+                {
+                    zz.TotalGeneral = tot;
+                }
+                db.SaveChanges();
+
+
+
+
+                //////////
+                MessageBox.Show("Presupuesto actualizado con exito");
+                this.Close();
+
+            }
+        }
+
+        private void reduccirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var listauno = dataGridView4.CurrentRow.Cells[0].Value.ToString();
+
+
+                Jefes.RemoveAll(c => c.ID == Convert.ToInt32(listauno));
+
+
+                this.dataGridView4.Rows.Clear();
+
+                foreach (var i in Jefes)
+                {
+                    dataGridView4.Rows.Add(i.ID, i.Nombre, i.Ocupacion, i.Telefono);
+
+                }
+
+            }
+            catch (NullReferenceException es)
+            {
+
+                MessageBox.Show("Algo ha salido mal " + es.Message, "Presupuesto",
+               MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (FormatException este)
+            {
+                MessageBox.Show("Algo ha salido mal " + este.Message, "Presupuesto",
+            MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Algo ha salido mal " + ex.Message, "Presupuesto",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

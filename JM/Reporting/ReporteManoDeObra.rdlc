@@ -948,7 +948,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>="Total general: RD" &amp; Format(First(Fields!TotalGeneral.Value, "TT"), "C")</Value>
+                  <Value>="Total general: RD" &amp; Format(First(Fields!TotalGeneral.Value, "TT"), "C0")</Value>
                   <Style>
                     <FontSize>12pt</FontSize>
                     <FontWeight>Bold</FontWeight>

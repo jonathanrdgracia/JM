@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button13 = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -46,7 +47,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button13 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -58,9 +58,9 @@
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(356, 36);
+            this.pictureBox1.Location = new System.Drawing.Point(374, 36);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(301, 202);
+            this.pictureBox1.Size = new System.Drawing.Size(283, 202);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -132,6 +132,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de la compañia";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.Transparent;
+            this.button13.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button13.FlatAppearance.BorderSize = 0;
+            this.button13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
+            this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button13.Location = new System.Drawing.Point(564, 254);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(93, 34);
+            this.button13.TabIndex = 5;
+            this.button13.Text = "Examinar";
+            this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // textBox5
             // 
@@ -236,24 +255,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(260, 25);
             this.textBox1.TabIndex = 2;
-            // 
-            // button13
-            // 
-            this.button13.BackColor = System.Drawing.Color.Transparent;
-            this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
-            this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button13.Location = new System.Drawing.Point(564, 254);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(93, 34);
-            this.button13.TabIndex = 5;
-            this.button13.Text = "Examinar";
-            this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button13.UseVisualStyleBackColor = false;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // EditarParametro
             // 
