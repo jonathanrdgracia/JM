@@ -185,8 +185,8 @@ namespace JM.Presupuesto
                 dataGridView1.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
                 contador1 = contador1 + Convert.ToInt32(i.Total);
             }
-            label22.Text = "Subtotal: RD$" + contador1.ToString("C", nfi);
-            label40.Text = "Total general: RD$" + (contador1 + contador2).ToString("C", nfi);
+            label22.Text = "Subtotal: RD" + contador1.ToString("C", nfi);
+            label40.Text = "Total general: RD" + (contador1 + contador2).ToString("C", nfi);
             textBox22.Text = string.Empty;
             textBox21.Text = string.Empty;
             textBox20.Text = string.Empty;

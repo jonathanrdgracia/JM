@@ -263,9 +263,9 @@
             this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label25.Location = new System.Drawing.Point(418, 290);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(228, 20);
+            this.label25.Size = new System.Drawing.Size(223, 20);
             this.label25.TabIndex = 45;
-            this.label25.Text = "Subtotal: RD$0,000,000.00";
+            this.label25.Text = "Subtotal: RD 0,000,000.00";
             // 
             // comboBox2
             // 
@@ -526,9 +526,9 @@
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label22.Location = new System.Drawing.Point(403, 290);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(228, 20);
+            this.label22.Size = new System.Drawing.Size(223, 20);
             this.label22.TabIndex = 42;
-            this.label22.Text = "Subtotal: RD$0,000,000.00";
+            this.label22.Text = "Subtotal: RD 0,000,000.00";
             // 
             // button4
             // 

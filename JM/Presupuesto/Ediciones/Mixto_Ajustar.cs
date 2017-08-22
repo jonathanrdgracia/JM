@@ -146,7 +146,7 @@ namespace JM.Presupuesto.Ediciones
                 nfi.CurrencyDecimalDigits = 2;
                 totalGeneralDB1 = TotalGeneral1;
                 label8.Text = TotalGeneral1.ToString();
-                g2 = TotalGeneral;
+                g2 = TotalGeneral1;
                 label6.Text = TotalGeneral1.ToString("C", nfi);
                
                 foreach (var item in listaObra)
@@ -366,7 +366,7 @@ namespace JM.Presupuesto.Ediciones
                 if (textBox3.Text != Rebajado.ToString())
                 {
 
-                    MessageBox.Show("El total se reducirá " + Rebajado.ToString("C", nfi));
+                    MessageBox.Show("El valor se actualizará a " + Rebajado.ToString("C", nfi));
                     textBox3.Text = (TotalGenetalEstatico - TotalGeneral).ToString();
                 }
                 label9.Text = TotalGeneral.ToString();
@@ -528,7 +528,7 @@ namespace JM.Presupuesto.Ediciones
                     }
 
                     label8.Text = TotalGeneral1.ToString();
-                    g2 = TotalGeneral;
+                    g2 = TotalGeneral1;
                     label6.Text = TotalGeneral1.ToString("C", nfi);
                     totalGeneralDB1 = TotalGeneral1;
 
@@ -666,7 +666,7 @@ namespace JM.Presupuesto.Ediciones
                         MessageBox.Show("El valor introducido actualizará a: " + Rebajado1.ToString("C", nfi));
                         textBox4.Text = (TotalGenetalEstatico1 - TotalGeneral1).ToString();
                     }
-                    g2 = TotalGeneral;
+                    g2 = TotalGeneral1;
                     label6.Text = TotalGeneral1.ToString("C", nfi);
                     label8.Text = TotalGeneral1.ToString();
 
@@ -723,7 +723,7 @@ namespace JM.Presupuesto.Ediciones
         {
             try
             {
-
+               
                 var cantidadtotal = g1 + g2;
                 using (var db = new PresupuestoEntities5())
                 {
@@ -750,7 +750,7 @@ namespace JM.Presupuesto.Ediciones
                             materiales.Total = i.Cantidad * i.Precio;
 
                             db.SaveChanges();
-
+                          
 
                         }
 
@@ -771,7 +771,10 @@ namespace JM.Presupuesto.Ediciones
                             materialesd.Total = i.Cantidad * i.Precio;
 
                             db.SaveChanges();
+                          
                         }
+                      
+                       
                     }
                     else if (materialRadioButton1.Checked && comboBox1.SelectedItem.Equals("Afectar solo total general"))
                     {
@@ -779,6 +782,7 @@ namespace JM.Presupuesto.Ediciones
                         pa.TotalGeneral = pa.TotalGeneral - cantidad;
 
                         db.SaveChanges();
+                       
 
                     }
                     else if (materialRadioButton2.Checked && comboBox1.SelectedItem.Equals("Afectar solo total general"))
@@ -787,6 +791,7 @@ namespace JM.Presupuesto.Ediciones
                         pa.TotalGeneral = pa.TotalGeneral + cantidad;
 
                         db.SaveChanges();
+                      
                     }
                     else if (materialRadioButton4.Checked && comboBox2.SelectedItem.Equals("Afectar solo total general"))
                     {
@@ -795,6 +800,7 @@ namespace JM.Presupuesto.Ediciones
                         pa.TotalGeneral = pa.TotalGeneral - cantidad;
 
                         db.SaveChanges();
+                       
                     }
                     else if (materialRadioButton3.Checked && comboBox2.SelectedItem.Equals("Afectar solo total general"))
                     {
@@ -803,6 +809,7 @@ namespace JM.Presupuesto.Ediciones
                         pa.TotalGeneral = pa.TotalGeneral + cantidad;
 
                         db.SaveChanges();
+                        
                     }
                     else
                     {
@@ -824,6 +831,7 @@ namespace JM.Presupuesto.Ediciones
 
                         }
 
+                       
 
                         foreach (var i in listaMateriales)
                         {
@@ -842,14 +850,16 @@ namespace JM.Presupuesto.Ediciones
 
                             db.SaveChanges();
                         }
+                       
 
                         pa = (from x in db.Presupuestos
                               where x.IdPresupuestos == ID_Que_Paso
                               select x).First();
-                        pa.TotalGeneral = cantidadtotal;
-                        db.SaveChanges();
+                   
 
                     }
+                    MessageBox.Show("Presupuesto ajustado con exito");
+                    this.Close();
 
 
                 }
@@ -925,6 +935,11 @@ namespace JM.Presupuesto.Ediciones
                 //do something else
             }
   
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

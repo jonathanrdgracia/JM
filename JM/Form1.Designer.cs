@@ -39,9 +39,6 @@
             this.borradosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarParametrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cambiarContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cambiarNombreDeSuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listarClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,9 +74,6 @@
             this.listarProyectosActivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -118,8 +112,7 @@
             this.proyectosToolStripMenuItem1,
             this.clientesToolStripMenuItem2,
             this.empleadosToolStripMenuItem,
-            this.empresaToolStripMenuItem,
-            this.usuarioToolStripMenuItem});
+            this.empresaToolStripMenuItem});
             this.opcionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("opcionesToolStripMenuItem.Image")));
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
             this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
@@ -147,13 +140,13 @@
             this.eliminadosToolStripMenuItem});
             this.clientesToolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("clientesToolStripMenuItem2.Image")));
             this.clientesToolStripMenuItem2.Name = "clientesToolStripMenuItem2";
-            this.clientesToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.clientesToolStripMenuItem2.Size = new System.Drawing.Size(132, 22);
             this.clientesToolStripMenuItem2.Text = "Clientes";
             // 
             // eliminadosToolStripMenuItem
             // 
             this.eliminadosToolStripMenuItem.Name = "eliminadosToolStripMenuItem";
-            this.eliminadosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.eliminadosToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.eliminadosToolStripMenuItem.Text = "Eliminados";
             this.eliminadosToolStripMenuItem.Click += new System.EventHandler(this.eliminadosToolStripMenuItem_Click);
             // 
@@ -163,13 +156,13 @@
             this.borradosToolStripMenuItem});
             this.empleadosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("empleadosToolStripMenuItem.Image")));
             this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
-            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.empleadosToolStripMenuItem.Text = "Empleados";
             // 
             // borradosToolStripMenuItem
             // 
             this.borradosToolStripMenuItem.Name = "borradosToolStripMenuItem";
-            this.borradosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.borradosToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.borradosToolStripMenuItem.Text = "Borrados";
             this.borradosToolStripMenuItem.Click += new System.EventHandler(this.borradosToolStripMenuItem_Click);
             // 
@@ -179,7 +172,7 @@
             this.modificarParametrosToolStripMenuItem});
             this.empresaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("empresaToolStripMenuItem.Image")));
             this.empresaToolStripMenuItem.Name = "empresaToolStripMenuItem";
-            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.empresaToolStripMenuItem.Text = "Empresa";
             // 
             // modificarParametrosToolStripMenuItem
@@ -188,29 +181,6 @@
             this.modificarParametrosToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.modificarParametrosToolStripMenuItem.Text = "Modificar parametros";
             this.modificarParametrosToolStripMenuItem.Click += new System.EventHandler(this.modificarParametrosToolStripMenuItem_Click);
-            // 
-            // usuarioToolStripMenuItem
-            // 
-            this.usuarioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cambiarContraseñaToolStripMenuItem,
-            this.cambiarNombreDeSuarioToolStripMenuItem});
-            this.usuarioToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("usuarioToolStripMenuItem.Image")));
-            this.usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
-            this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.usuarioToolStripMenuItem.Text = "Usuario";
-            // 
-            // cambiarContraseñaToolStripMenuItem
-            // 
-            this.cambiarContraseñaToolStripMenuItem.Name = "cambiarContraseñaToolStripMenuItem";
-            this.cambiarContraseñaToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.cambiarContraseñaToolStripMenuItem.Text = "Cambiar contraseña";
-            this.cambiarContraseñaToolStripMenuItem.Click += new System.EventHandler(this.cambiarContraseñaToolStripMenuItem_Click);
-            // 
-            // cambiarNombreDeSuarioToolStripMenuItem
-            // 
-            this.cambiarNombreDeSuarioToolStripMenuItem.Name = "cambiarNombreDeSuarioToolStripMenuItem";
-            this.cambiarNombreDeSuarioToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.cambiarNombreDeSuarioToolStripMenuItem.Text = "Cambiar Nombre de suario";
             // 
             // clientesToolStripMenuItem
             // 
@@ -508,9 +478,6 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.DimGray;
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button9);
-            this.panel1.Controls.Add(this.button8);
-            this.panel1.Controls.Add(this.button7);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
@@ -530,7 +497,7 @@
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(483, 3);
+            this.button1.Location = new System.Drawing.Point(12, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 57);
             this.button1.TabIndex = 19;
@@ -538,66 +505,6 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.Transparent;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatAppearance.CheckedBackColor = System.Drawing.Color.Silver;
-            this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button9.Location = new System.Drawing.Point(297, 3);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(180, 57);
-            this.button9.TabIndex = 18;
-            this.button9.Text = "Materiales Y Mano De Obra";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button9.UseVisualStyleBackColor = false;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.Transparent;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatAppearance.CheckedBackColor = System.Drawing.Color.Silver;
-            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button8.Location = new System.Drawing.Point(191, 3);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(100, 57);
-            this.button8.TabIndex = 17;
-            this.button8.Text = "Mano De Obra";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button8.UseVisualStyleBackColor = false;
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.Transparent;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.CheckedBackColor = System.Drawing.Color.Silver;
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button7.Location = new System.Drawing.Point(12, 3);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(173, 56);
-            this.button7.TabIndex = 16;
-            this.button7.Text = "Presupuesto de materiales";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button7.UseVisualStyleBackColor = false;
             // 
             // tableLayoutPanel1
             // 
@@ -751,9 +658,6 @@
         private System.Windows.Forms.ToolStripMenuItem ambosToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.ToolStripMenuItem proyectosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem agregarNuevoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listarProyectosActivosToolStripMenuItem;
@@ -795,9 +699,6 @@
         private System.Windows.Forms.ToolStripMenuItem crearFolderDePagoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearFolderDePagoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem verTodosLosPagosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem usuarioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cambiarContraseñaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cambiarNombreDeSuarioToolStripMenuItem;
     }
 }
 

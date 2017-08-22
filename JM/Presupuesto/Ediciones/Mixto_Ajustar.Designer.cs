@@ -624,6 +624,7 @@
             this.groupBox4.Size = new System.Drawing.Size(1258, 44);
             this.groupBox4.TabIndex = 56;
             this.groupBox4.TabStop = false;
+            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
             // label9
             // 

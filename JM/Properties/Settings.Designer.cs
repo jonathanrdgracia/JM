@@ -23,16 +23,6 @@ namespace JM.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=JONA\\SQLEXPRESS;Initial Catalog=Presupuesto;Integrated Security=True")]
-        public string PresupuestoConnectionString {
-            get {
-                return ((string)(this["PresupuestoConnectionString"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
@@ -66,6 +56,17 @@ namespace JM.Properties {
             }
             set {
                 this["Reeme"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=COMPUTER\\SQLEXPRESS;Initial Catalog=Presupuesto;Integrated Security=T" +
+            "rue")]
+        public string PresupuestoConnectionString {
+            get {
+                return ((string)(this["PresupuestoConnectionString"]));
             }
         }
     }

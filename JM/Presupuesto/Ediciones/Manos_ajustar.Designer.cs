@@ -78,9 +78,9 @@
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label23.Location = new System.Drawing.Point(613, 26);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(104, 16);
+            this.label23.Size = new System.Drawing.Size(105, 16);
             this.label23.TabIndex = 46;
-            this.label23.Text = "Total genetal:";
+            this.label23.Text = "Total general:";
             // 
             // button3
             // 

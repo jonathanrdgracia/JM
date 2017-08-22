@@ -282,7 +282,7 @@ namespace JM.Presupuesto.Ediciones
                     if (textBox3.Text != Rebajado.ToString())
                     {
 
-                        MessageBox.Show("El total se reducirá " + Rebajado.ToString("C", nfi));
+                        MessageBox.Show("El valor se actualizará a " + Rebajado.ToString("C", nfi));
                         textBox3.Text = (TotalGeneral - TotalGenetalEstatico).ToString();
                     }
 
@@ -415,7 +415,7 @@ namespace JM.Presupuesto.Ediciones
                     if (textBox3.Text != Rebajado.ToString())
                     {
 
-                        MessageBox.Show("El total se reducirá " + Rebajado.ToString("C", nfi));
+                        MessageBox.Show("El valor se actualizará a " + Rebajado.ToString("C", nfi));
                         textBox3.Text = (TotalGenetalEstatico - TotalGeneral).ToString();
                     }
 

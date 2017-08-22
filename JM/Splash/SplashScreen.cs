@@ -46,7 +46,7 @@ namespace JM.Splash
             if (rectangleShape2.Width>=424)
             {
                 timer1.Stop();
-                Form1 a = new Form1();
+                Login a = new Login();
                 this.Hide();
                 a.ShowDialog();
                

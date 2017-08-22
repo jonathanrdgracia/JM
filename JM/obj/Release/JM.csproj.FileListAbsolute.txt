@@ -119,3 +119,4 @@ C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\obj\Release\JM.Pag
 C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\obj\Release\JM.Opciones.Proyecto.resources
 C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\obj\Release\JM.Opciones.Empleados.resources
 C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\obj\Release\JM.Opciones.Clientes.resources
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\obj\Release\JM.csprojResolveAssemblyReference.cache

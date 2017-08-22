@@ -30,27 +30,32 @@ namespace JM.Presupuesto
         
         private void Mixto_Detalle_Load(object sender, EventArgs e)
         {
-             nfi.CurrencyDecimalDigits = 2;
+            Llenar();
+        }
 
-             using (var db = new PresupuestoEntities5())
-             {
-                    //var query =db.Materiales_detalle.Where(c=>c.IdPresupuesto==idpre)
+        public void Llenar()
+        {
+            nfi.CurrencyDecimalDigits = 2;
+            this.dataGridView1.Rows.Clear();
+            using (var db = new PresupuestoEntities5())
+            {
+                //var query =db.Materiales_detalle.Where(c=>c.IdPresupuesto==idpre)
 
-                 foreach (var item in db.SP_ListadoPresupuestoDeManoDeObra(Tipo).OrderByDescending(c => c.IdPresupuestos))
-                 {
-                     dataGridView1.Rows.Add(
+                foreach (var item in db.SP_ListadoPresupuestoDeManoDeObra(Tipo).OrderByDescending(c => c.IdPresupuestos))
+                {
+                    dataGridView1.Rows.Add(
 
-                 item.IdPresupuestos,
-                 item.Descripcion,
-                 item.Nombre,
-                 item.TipoCliente,
-                 item.Telefono,
-                 item.FechaCreacion,
-                 Convert.ToInt32(item.Total).ToString("C", nfi)
-                 );
+                item.IdPresupuestos,
+                item.Descripcion,
+                item.Nombre,
+                item.TipoCliente,
+                item.Telefono,
+                item.FechaCreacion,
+                "RD"+Convert.ToInt32(item.Total).ToString("C", nfi)
+                );
 
-                 }
-             }
+                }
+            }
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -108,7 +113,7 @@ namespace JM.Presupuesto
 
         private void textBox6_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+            this.dataGridView1.Rows.Clear();
             var query = "%" + textBox6.Text + "%";
             using (var db = new PresupuestoEntities5())
             {
@@ -137,7 +142,7 @@ namespace JM.Presupuesto
 
         private void textBox6_KeyUp(object sender, KeyEventArgs e)
         {
-          
+            this.dataGridView1.Rows.Clear();
             var query = "%" + textBox6.Text + "%";
             using (var db = new PresupuestoEntities5())
             {
@@ -153,13 +158,50 @@ namespace JM.Presupuesto
                     item.TipoCliente,
                     item.Telefono,
                     item.FechaCreacion,
-                    Convert.ToInt32(item.Total).ToString("C", nfi)
+                    "RD"+Convert.ToInt32(item.Total).ToString("C", nfi)
                     );
 
 
                 }
 
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var x0 = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells[0].Value.ToString());
+            try
+            {
+                PresupuestoEntities5 db = new PresupuestoEntities5();
+                DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas eliminar este presupuesto?", "Presupuesto", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+
+
+
+                    var c = (from x in db.Presupuestos
+                             where x.IdPresupuestos == x0
+                             select x).First();
+                    c.Estado = 0;
+                    db.SaveChanges();
+                    Llenar();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+
+                }
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
