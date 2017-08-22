@@ -99,15 +99,24 @@ namespace JM.Presupuesto
 
         private void button8_Click(object sender, EventArgs e)
         {
-            Manos_ajustar m = new Manos_ajustar();
-            var x0 = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            var x1 = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            var x2 = this.dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            var id = Convert.ToInt32(x0);
-            m.ID_Que_Paso=id;
-            m.textBox1.Text = x1;
-            m.textBox2.Text = x2;
-            m.ShowDialog();
+            try
+            {
+                Manos_ajustar m = new Manos_ajustar();
+                var x0 = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                var x1 = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                var x2 = this.dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                var id = Convert.ToInt32(x0);
+                m.ID_Que_Paso = id;
+                m.textBox1.Text = x1;
+                m.textBox2.Text = x2;
+                m.ShowDialog();
+
+            }
+            catch (Exception)
+            {
+                
+           
+            }
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -184,9 +193,10 @@ namespace JM.Presupuesto
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            var x0 = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells[0].Value.ToString());
+           
             try
             {
+                var x0 = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells[0].Value.ToString());
                 PresupuestoEntities5 db = new PresupuestoEntities5();
                 DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas eliminar este presupuesto?", "Presupuesto", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)

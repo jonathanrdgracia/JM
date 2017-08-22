@@ -169,9 +169,10 @@ namespace JM.Presupuesto
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var x0 = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells[0].Value.ToString());
+           
             try
             {
+                var x0 = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells[0].Value.ToString());
                 PresupuestoEntities5 db = new PresupuestoEntities5();
                 DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas eliminar este presupuesto?", "Presupuesto", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)

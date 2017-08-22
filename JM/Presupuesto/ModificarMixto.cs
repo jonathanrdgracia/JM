@@ -451,33 +451,42 @@ namespace JM.Presupuesto
 
         private void button11_Click(object sender, EventArgs e)
         {
-            contador2 = 0;
-            var listauno = dataGridView2.CurrentRow.Cells[0].Value.ToString();
-            var listauno1 = dataGridView2.CurrentRow.Cells[1].Value.ToString();
-            var listauno2 = Convert.ToInt32(dataGridView2.CurrentRow.Cells[2].Value.ToString());
-            var listauno3 = Convert.ToInt32(dataGridView2.CurrentRow.Cells[3].Value.ToString());
-         
-
-
-
-            listaObras.RemoveAll(c => c.Descripcion == listauno && c.Unidad == listauno1 );
-           listaObrasNuevos.RemoveAll(c => c.Descripcion == listauno && c.Unidad == listauno1);
-
-
-            this.dataGridView2.Rows.Clear();
-
-            foreach (var i in listaObras)
+            try
             {
-                dataGridView2.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
-                contador2 += Convert.ToInt32(i.Total);
+                contador2 = 0;
+                var listauno = dataGridView2.CurrentRow.Cells[0].Value.ToString();
+                var listauno1 = dataGridView2.CurrentRow.Cells[1].Value.ToString();
+                var listauno2 = Convert.ToInt32(dataGridView2.CurrentRow.Cells[2].Value.ToString());
+                var listauno3 = Convert.ToInt32(dataGridView2.CurrentRow.Cells[3].Value.ToString());
+
+
+
+
+                listaObras.RemoveAll(c => c.Descripcion == listauno && c.Unidad == listauno1);
+                listaObrasNuevos.RemoveAll(c => c.Descripcion == listauno && c.Unidad == listauno1);
+
+
+                this.dataGridView2.Rows.Clear();
+
+                foreach (var i in listaObras)
+                {
+                    dataGridView2.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
+                    contador2 += Convert.ToInt32(i.Total);
+                }
+                foreach (var i in listaObrasNuevos)
+                {
+                    dataGridView2.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
+                    contador2 += Convert.ToInt32(i.Total);
+                }
+                label25.Text = "Subtotal: RD" + contador2.ToString("C", nfi);
+                label40.Text = "Total general: RD" + (contador1 + contador2).ToString("C", nfi);
+
             }
-            foreach (var i in listaObrasNuevos)
+            catch (Exception)
             {
-                dataGridView2.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
-                contador2 += Convert.ToInt32(i.Total);
+                
+             
             }
-            label25.Text = "Subtotal: RD" + contador2.ToString("C", nfi);
-            label40.Text = "Total general: RD" + (contador1 + contador2).ToString("C", nfi);
         }
 
         private void imprimirToolStripMenuItem_Click(object sender, EventArgs e)
