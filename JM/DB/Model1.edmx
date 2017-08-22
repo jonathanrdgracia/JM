@@ -244,8 +244,9 @@
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
-            <PropertyRef Name="Usuario" />
+            <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Pass" Type="nvarchar" MaxLength="50" />
           <Property Name="Pass2" Type="nvarchar" MaxLength="50" />
@@ -2163,7 +2164,6 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
             <Parameter Name="usuario" Mode="In" Type="String" />
             <Parameter Name="pass" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="Usuarios" EntityType="PresupuestoModel.Usuario" />
           <FunctionImport Name="holamundo" ReturnType="Collection(PresupuestoModel.holamundo_Result)">
             <Parameter Name="tipo" Mode="In" Type="Int32" />
             <Parameter Name="Query" Mode="In" Type="String" />
@@ -2188,8 +2188,9 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ListadoPagosPorProyectoDetalles" ReturnType="Collection(PresupuestoModel.ListadoPagosPorProyectoDetalles_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="Usuarios" EntityType="PresupuestoModel.Usuario" />
           </EntityContainer>
         <ComplexType Name="CompaniaDato_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -2604,14 +2605,6 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <Property Type="String" Name="Pass" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Pass2" Nullable="true" MaxLength="50" />
         </ComplexType>
-        <EntityType Name="Usuario">
-          <Key>
-            <PropertyRef Name="Usuario1" />
-          </Key>
-          <Property Name="Usuario1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Pass2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <ComplexType Name="holamundo_Result">
           <Property Type="Int32" Name="IdPresupuestos" Nullable="false" />
           <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
@@ -2675,6 +2668,15 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="Int32" Name="Valor" Nullable="true" />
         </ComplexType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Usuario1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pass2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3607,15 +3609,6 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="PresupuestoModel.Usuario">
-              <MappingFragment StoreEntitySet="Usuario">
-                <ScalarProperty Name="Pass2" ColumnName="Pass2" />
-                <ScalarProperty Name="Pass" ColumnName="Pass" />
-                <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="holamundo" FunctionName="PresupuestoModel.Store.holamundo">
             <ResultMapping>
               <ComplexTypeMapping TypeName="PresupuestoModel.holamundo_Result">
@@ -3707,6 +3700,16 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="PresupuestoModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Pass2" ColumnName="Pass2" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

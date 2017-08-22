@@ -408,5 +408,11 @@ namespace JM
             Opciones.Clientes op = new Opciones.Clientes();
             op.ShowDialog();
         }
+
+        private void modificarUsuarioYContraseñaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            usuario.User a = new usuario.User();
+            a.ShowDialog();
+        }
     }
 }

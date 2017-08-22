@@ -239,8 +239,9 @@
   </EntityType>
   <EntityType Name="Usuario">
     <Key>
-      <PropertyRef Name="Usuario" />
+      <PropertyRef Name="Id" />
     </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Pass" Type="nvarchar" MaxLength="50" />
     <Property Name="Pass2" Type="nvarchar" MaxLength="50" />

@@ -961,7 +961,6 @@
       <Parameter Name="usuario" Mode="In" Type="String" />
       <Parameter Name="pass" Mode="In" Type="String" />
     </FunctionImport>
-    <EntitySet Name="Usuarios" EntityType="PresupuestoModel.Usuario" />
     <FunctionImport Name="holamundo" ReturnType="Collection(PresupuestoModel.holamundo_Result)">
       <Parameter Name="tipo" Mode="In" Type="Int32" />
       <Parameter Name="Query" Mode="In" Type="String" />
@@ -988,6 +987,7 @@
     <FunctionImport Name="ListadoPagosPorProyectoDetalles" ReturnType="Collection(PresupuestoModel.ListadoPagosPorProyectoDetalles_Result)">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="Usuarios" EntityType="PresupuestoModel.Usuario" />
   </EntityContainer>
   <ComplexType Name="CompaniaDato_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
@@ -1402,14 +1402,6 @@
     <Property Type="String" Name="Pass" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Pass2" Nullable="true" MaxLength="50" />
   </ComplexType>
-  <EntityType Name="Usuario">
-    <Key>
-      <PropertyRef Name="Usuario1" />
-    </Key>
-    <Property Name="Usuario1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Pass2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
   <ComplexType Name="holamundo_Result">
     <Property Type="Int32" Name="IdPresupuestos" Nullable="false" />
     <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
@@ -1473,4 +1465,13 @@
     <Property Type="Int32" Name="Id" Nullable="false" />
     <Property Type="Int32" Name="Valor" Nullable="true" />
   </ComplexType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Usuario1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Pass2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Id" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>

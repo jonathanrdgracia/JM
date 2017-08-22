@@ -17,5 +17,6 @@ namespace JM.DB
         public string Usuario1 { get; set; }
         public string Pass { get; set; }
         public string Pass2 { get; set; }
+        public int Id { get; set; }
     }
 }

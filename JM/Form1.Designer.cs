@@ -82,6 +82,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.usarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarUsuarioYContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -112,7 +114,8 @@
             this.proyectosToolStripMenuItem1,
             this.clientesToolStripMenuItem2,
             this.empleadosToolStripMenuItem,
-            this.empresaToolStripMenuItem});
+            this.empresaToolStripMenuItem,
+            this.usarioToolStripMenuItem});
             this.opcionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("opcionesToolStripMenuItem.Image")));
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
             this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
@@ -130,8 +133,8 @@
             // proyectosInactivosToolStripMenuItem
             // 
             this.proyectosInactivosToolStripMenuItem.Name = "proyectosInactivosToolStripMenuItem";
-            this.proyectosInactivosToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.proyectosInactivosToolStripMenuItem.Text = "Proyectos inactivos";
+            this.proyectosInactivosToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.proyectosInactivosToolStripMenuItem.Text = "Proyectos eliminados";
             this.proyectosInactivosToolStripMenuItem.Click += new System.EventHandler(this.proyectosInactivosToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem2
@@ -140,14 +143,14 @@
             this.eliminadosToolStripMenuItem});
             this.clientesToolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("clientesToolStripMenuItem2.Image")));
             this.clientesToolStripMenuItem2.Name = "clientesToolStripMenuItem2";
-            this.clientesToolStripMenuItem2.Size = new System.Drawing.Size(132, 22);
+            this.clientesToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.clientesToolStripMenuItem2.Text = "Clientes";
             // 
             // eliminadosToolStripMenuItem
             // 
             this.eliminadosToolStripMenuItem.Name = "eliminadosToolStripMenuItem";
-            this.eliminadosToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.eliminadosToolStripMenuItem.Text = "Eliminados";
+            this.eliminadosToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.eliminadosToolStripMenuItem.Text = "Clientes eliminados";
             this.eliminadosToolStripMenuItem.Click += new System.EventHandler(this.eliminadosToolStripMenuItem_Click);
             // 
             // empleadosToolStripMenuItem
@@ -156,14 +159,14 @@
             this.borradosToolStripMenuItem});
             this.empleadosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("empleadosToolStripMenuItem.Image")));
             this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
-            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.empleadosToolStripMenuItem.Text = "Empleados";
             // 
             // borradosToolStripMenuItem
             // 
             this.borradosToolStripMenuItem.Name = "borradosToolStripMenuItem";
-            this.borradosToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.borradosToolStripMenuItem.Text = "Borrados";
+            this.borradosToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.borradosToolStripMenuItem.Text = "Empleados eliminados";
             this.borradosToolStripMenuItem.Click += new System.EventHandler(this.borradosToolStripMenuItem_Click);
             // 
             // empresaToolStripMenuItem
@@ -172,7 +175,7 @@
             this.modificarParametrosToolStripMenuItem});
             this.empresaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("empresaToolStripMenuItem.Image")));
             this.empresaToolStripMenuItem.Name = "empresaToolStripMenuItem";
-            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.empresaToolStripMenuItem.Text = "Empresa";
             // 
             // modificarParametrosToolStripMenuItem
@@ -610,6 +613,21 @@
             this.pictureBox2.TabIndex = 18;
             this.pictureBox2.TabStop = false;
             // 
+            // usarioToolStripMenuItem
+            // 
+            this.usarioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modificarUsuarioYContraseñaToolStripMenuItem});
+            this.usarioToolStripMenuItem.Name = "usarioToolStripMenuItem";
+            this.usarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.usarioToolStripMenuItem.Text = "Usario";
+            // 
+            // modificarUsuarioYContraseñaToolStripMenuItem
+            // 
+            this.modificarUsuarioYContraseñaToolStripMenuItem.Name = "modificarUsuarioYContraseñaToolStripMenuItem";
+            this.modificarUsuarioYContraseñaToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.modificarUsuarioYContraseñaToolStripMenuItem.Text = "Modificar usuario y contraseña";
+            this.modificarUsuarioYContraseñaToolStripMenuItem.Click += new System.EventHandler(this.modificarUsuarioYContraseñaToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -699,6 +717,8 @@
         private System.Windows.Forms.ToolStripMenuItem crearFolderDePagoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearFolderDePagoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem verTodosLosPagosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modificarUsuarioYContraseñaToolStripMenuItem;
     }
 }
 
