@@ -345,49 +345,58 @@ namespace JM.Presupuesto
 
         private void button10_Click(object sender, EventArgs e)
         {
-            contador1 = 0;
-            var jj = 0;
-            var listauno=dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            var listauno1 = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            var listauno2=Convert.ToInt32(dataGridView1.CurrentRow.Cells[3].Value.ToString());
-            var listauno3=Convert.ToInt32( dataGridView1.CurrentRow.Cells[4].Value.ToString());
-
-            var q = listaMaterialesNuevos.Where(c => c.Descripcion == listauno);
-            var q2 = listaMateriales.Where(c => c.Descripcion == listauno);
-            foreach (var i in q)
+            try
             {
-                jj =jj+ Convert.ToInt32(i.Total);
+                contador1 = 0;
+                var jj = 0;
+                var listauno = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                var listauno1 = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                var listauno2 = Convert.ToInt32(dataGridView1.CurrentRow.Cells[3].Value.ToString());
+                var listauno3 = Convert.ToInt32(dataGridView1.CurrentRow.Cells[4].Value.ToString());
+
+                var q = listaMaterialesNuevos.Where(c => c.Descripcion == listauno);
+                var q2 = listaMateriales.Where(c => c.Descripcion == listauno);
+                foreach (var i in q)
+                {
+                    jj = jj + Convert.ToInt32(i.Total);
+                }
+                foreach (var i in q2)
+                {
+                    jj = jj + Convert.ToInt32(i.Total);
+                }
+
+                Rebaja = Rebaja + jj;
+
+                MessageBox.Show(jj.ToString());
+
+
+                listaMateriales.RemoveAll(c => c.Descripcion == listauno && c.Unidad == listauno1);
+                listaMaterialesNuevos.RemoveAll(c => c.Descripcion == listauno && c.Unidad == listauno1);
+
+
+
+
+                this.dataGridView1.Rows.Clear();
+
+                foreach (var i in listaMateriales)
+                {
+                    dataGridView1.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
+                    contador1 = contador1 + Convert.ToInt32(i.Total);
+                }
+                foreach (var i in listaMaterialesNuevos)
+                {
+                    dataGridView1.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
+                    contador1 = contador1 + Convert.ToInt32(i.Total);
+                }
+                label22.Text = "Subtotal: RD" + contador1.ToString("C", nfi);
+                label40.Text = "Total general: RD" + (contador1 + contador2).ToString("C", nfi);
+
             }
-            foreach (var i in q2)
+            catch (Exception)
             {
-                jj =jj+ Convert.ToInt32(i.Total);
-            }
-
-            Rebaja =Rebaja +jj;
-         
-            MessageBox.Show(jj.ToString());
-           
-
-               listaMateriales.RemoveAll(c => c.Descripcion == listauno && c.Unidad==listauno1);
-               listaMaterialesNuevos.RemoveAll(c => c.Descripcion == listauno && c.Unidad==listauno1);
-
-
-
+                
                
-            this.dataGridView1.Rows.Clear();
-
-            foreach (var i in listaMateriales)
-            {
-                dataGridView1.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
-                contador1 = contador1+ Convert.ToInt32(i.Total);
             }
-            foreach (var i in listaMaterialesNuevos)
-            {
-                dataGridView1.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
-                contador1 = contador1 + Convert.ToInt32(i.Total);
-            }
-            label22.Text = "Subtotal: RD" + contador1.ToString("C", nfi);
-            label40.Text = "Total general: RD" + (contador1 + contador2).ToString("C", nfi);
         }
 
         private void button5_Click(object sender, EventArgs e)
