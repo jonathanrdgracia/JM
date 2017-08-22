@@ -938,7 +938,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>1in</Height>
+      <Height>1.08333in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1286,6 +1286,12 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
+  <EmbeddedImages>
+    <EmbeddedImage Name="web">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAVlJREFUOI2d07FLVmEUBvCfon1Gm/9DU5oObi01CA1B/4bgJmIUNrc4lPkpLm4RFJEuLhJNgkI0Fi7Rqg6FLgp2r8P7XLvqN3ng8J5z3udczvuc53LdxrCCPZzG97CM+z3wFzaEVVT4hxpH8Tq1Cl10ejV/DfAd5hPPYDbxs9zV+JKeC1vNxYvk33EQ0G0cYid3c8F222+usIsJPA7gU/IJrKc2mXwnPaNCWH1DX+pTGK6xkIme4GlG/ZNaB0vYxOfUphseTrHW4uNVPjjosh3jTSt/jZN+1+0sZ1+r1o+B+CUbwG88wFRq93LO4G/i4Yx7t4V7hF8Uhd2UxLcUeVbYxriyqhofko9jI7WHyXcVZY40T+kGMJf8G/YV9u8o22iE1Kh0sc1FR5Fnjfd46b+Unyeex8fEW7h1ldChTFLFa2V1x4mbn2yxV3PbRhXR/MRJ/EcIG7kKPgewvn9DxkXQuwAAAABJRU5ErkJggg==</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>7a19f966-d1a6-470b-a4d7-bee934dccd67</rd:ReportID>
 </Report>

@@ -291,6 +291,10 @@ namespace JM.Dataset {
             
             private global::System.Data.DataColumn columnRNC;
             
+            private global::System.Data.DataColumn columnWeb;
+            
+            private global::System.Data.DataColumn columnCorreo;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public CompaniaDatoDataTable() {
@@ -374,6 +378,22 @@ namespace JM.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn WebColumn {
+                get {
+                    return this.columnWeb;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CorreoColumn {
+                get {
+                    return this.columnCorreo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -409,7 +429,7 @@ namespace JM.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CompaniaDatoRow AddCompaniaDatoRow(string Nombre, byte[] Logo, string Direccion, string Telefono, string RNC) {
+            public CompaniaDatoRow AddCompaniaDatoRow(string Nombre, byte[] Logo, string Direccion, string Telefono, string RNC, string Web, string Correo) {
                 CompaniaDatoRow rowCompaniaDatoRow = ((CompaniaDatoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -417,7 +437,9 @@ namespace JM.Dataset {
                         Logo,
                         Direccion,
                         Telefono,
-                        RNC};
+                        RNC,
+                        Web,
+                        Correo};
                 rowCompaniaDatoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCompaniaDatoRow);
                 return rowCompaniaDatoRow;
@@ -453,6 +475,8 @@ namespace JM.Dataset {
                 this.columnDireccion = base.Columns["Direccion"];
                 this.columnTelefono = base.Columns["Telefono"];
                 this.columnRNC = base.Columns["RNC"];
+                this.columnWeb = base.Columns["Web"];
+                this.columnCorreo = base.Columns["Correo"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -470,6 +494,10 @@ namespace JM.Dataset {
                 base.Columns.Add(this.columnTelefono);
                 this.columnRNC = new global::System.Data.DataColumn("RNC", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRNC);
+                this.columnWeb = new global::System.Data.DataColumn("Web", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnWeb);
+                this.columnCorreo = new global::System.Data.DataColumn("Correo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCorreo);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -480,6 +508,8 @@ namespace JM.Dataset {
                 this.columnDireccion.MaxLength = 50;
                 this.columnTelefono.MaxLength = 20;
                 this.columnRNC.MaxLength = 20;
+                this.columnWeb.MaxLength = 50;
+                this.columnCorreo.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -713,6 +743,38 @@ namespace JM.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Web {
+                get {
+                    try {
+                        return ((string)(this[this.tableCompaniaDato.WebColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Web\' in table \'CompaniaDato\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCompaniaDato.WebColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Correo {
+                get {
+                    try {
+                        return ((string)(this[this.tableCompaniaDato.CorreoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Correo\' in table \'CompaniaDato\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCompaniaDato.CorreoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNombreNull() {
                 return this.IsNull(this.tableCompaniaDato.NombreColumn);
             }
@@ -769,6 +831,30 @@ namespace JM.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetRNCNull() {
                 this[this.tableCompaniaDato.RNCColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsWebNull() {
+                return this.IsNull(this.tableCompaniaDato.WebColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetWebNull() {
+                this[this.tableCompaniaDato.WebColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCorreoNull() {
+                return this.IsNull(this.tableCompaniaDato.CorreoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCorreoNull() {
+                this[this.tableCompaniaDato.CorreoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -937,6 +1023,8 @@ namespace JM.Dataset.CompaniaTableAdapters {
             tableMapping.ColumnMappings.Add("Direccion", "Direccion");
             tableMapping.ColumnMappings.Add("Telefono", "Telefono");
             tableMapping.ColumnMappings.Add("RNC", "RNC");
+            tableMapping.ColumnMappings.Add("Web", "Web");
+            tableMapping.ColumnMappings.Add("Correo", "Correo");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

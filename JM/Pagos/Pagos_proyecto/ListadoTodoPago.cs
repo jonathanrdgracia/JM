@@ -39,13 +39,13 @@ namespace JM.Pagos.Pagos_proyecto
             using (var db = new PresupuestoEntities5())
             {
                 this.label4.Text = "Pagos relacionados al proyecto: " + Descripcion;
-                var query = db.ListadoPagosPorProyecto(Idproyecto).OrderByDescending(c=>c.Fecha);
+                var query = db.ListadoPagosPorProyectos(Idproyecto).OrderByDescending(c=>c.Fecha);
 
                 foreach (var i in query.OrderByDescending(c=>c.Fecha))
                 {
                     this.dataGridView1.Rows.Add
                         (
-                            i.Id,
+                            i.IdPago,
                              i.TipoEmpleado,
                             i.Nombre+" "+i.Apellidos,
                             i.Fecha,
@@ -84,6 +84,21 @@ namespace JM.Pagos.Pagos_proyecto
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void modificarPagoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var x4 = this.dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            var IdPago =Convert.ToInt32(this.dataGridView1.CurrentRow.Cells[0].Value.ToString());
+            ModificarPago a = new ModificarPago();
+            a.IdPago = IdPago;
+            a.Pago = x4;
+            a.ShowDialog();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

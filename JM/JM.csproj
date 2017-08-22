@@ -25,7 +25,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <PublisherName>DominRod</PublisherName>
-    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationRevision>9</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -396,6 +396,9 @@
     <Compile Include="DB\ListadoPagosPorProyectoDetalle_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\ListadoPagosPorProyectos_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\ListadoPagosPorProyecto_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -705,6 +708,12 @@
     </Compile>
     <Compile Include="Pagos\Pagos_proyecto\ListadoTodoPagoProyecto.Designer.cs">
       <DependentUpon>ListadoTodoPagoProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pagos\Pagos_proyecto\ModificarPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pagos\Pagos_proyecto\ModificarPago.Designer.cs">
+      <DependentUpon>ModificarPago.cs</DependentUpon>
     </Compile>
     <Compile Include="Pagos\Pagos_proyecto\Nuevo_pago_proyecto.cs">
       <SubType>Form</SubType>
@@ -1041,6 +1050,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pagos\Pagos_proyecto\ListadoTodoPagoProyecto.resx">
       <DependentUpon>ListadoTodoPagoProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pagos\Pagos_proyecto\ModificarPago.resx">
+      <DependentUpon>ModificarPago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pagos\Pagos_proyecto\Nuevo_pago_proyecto.resx">
       <DependentUpon>Nuevo_pago_proyecto.cs</DependentUpon>

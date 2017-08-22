@@ -219,6 +219,7 @@ namespace JM.Modificar
                     textBox5.Text=string.Empty;
                     comboBox1.SelectedItem = string.Empty;
                     MessageBox.Show("Empleado agregado con exito");
+                    this.Close();
                 }
             }
             catch (Exception)

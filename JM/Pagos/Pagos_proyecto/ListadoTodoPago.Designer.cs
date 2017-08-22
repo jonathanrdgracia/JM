@@ -42,6 +42,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.modificarPagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -69,6 +70,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(592, 349);
             this.dataGridView1.TabIndex = 60;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // Column1
             // 
@@ -117,13 +119,16 @@
             // opcionesToolStripMenuItem
             // 
             this.opcionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verPagosDetalladosToolStripMenuItem});
+            this.verPagosDetalladosToolStripMenuItem,
+            this.modificarPagoToolStripMenuItem});
+            this.opcionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("opcionesToolStripMenuItem.Image")));
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
-            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
             this.opcionesToolStripMenuItem.Text = "Opciones";
             // 
             // verPagosDetalladosToolStripMenuItem
             // 
+            this.verPagosDetalladosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("verPagosDetalladosToolStripMenuItem.Image")));
             this.verPagosDetalladosToolStripMenuItem.Name = "verPagosDetalladosToolStripMenuItem";
             this.verPagosDetalladosToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.verPagosDetalladosToolStripMenuItem.Text = "Ver pagos totales";
@@ -159,6 +164,14 @@
             this.label4.Size = new System.Drawing.Size(174, 16);
             this.label4.TabIndex = 66;
             this.label4.Text = "Presupuesto de trabajo:";
+            // 
+            // modificarPagoToolStripMenuItem
+            // 
+            this.modificarPagoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("modificarPagoToolStripMenuItem.Image")));
+            this.modificarPagoToolStripMenuItem.Name = "modificarPagoToolStripMenuItem";
+            this.modificarPagoToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.modificarPagoToolStripMenuItem.Text = "Modificar pago";
+            this.modificarPagoToolStripMenuItem.Click += new System.EventHandler(this.modificarPagoToolStripMenuItem_Click);
             // 
             // button1
             // 
@@ -220,5 +233,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem modificarPagoToolStripMenuItem;
     }
 }

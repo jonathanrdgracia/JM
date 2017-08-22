@@ -74,6 +74,12 @@
             this.agregarNuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listarProyectosActivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.empleadosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.categoriasDeEmpleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarNuevaCategoriaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -84,14 +90,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.empleadosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.registrarEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.eliminarEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoriasDeEmpleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.agregarNuevaCategoriaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.presupuestosEliminadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -123,7 +121,6 @@
             this.proyectosToolStripMenuItem1,
             this.clientesToolStripMenuItem2,
             this.empleadosToolStripMenuItem,
-            this.toolStripMenuItem1,
             this.empresaToolStripMenuItem,
             this.usarioToolStripMenuItem});
             this.opcionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("opcionesToolStripMenuItem.Image")));
@@ -137,7 +134,7 @@
             this.proyectosInactivosToolStripMenuItem});
             this.proyectosToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("proyectosToolStripMenuItem1.Image")));
             this.proyectosToolStripMenuItem1.Name = "proyectosToolStripMenuItem1";
-            this.proyectosToolStripMenuItem1.Size = new System.Drawing.Size(196, 22);
+            this.proyectosToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.proyectosToolStripMenuItem1.Text = "Proyectos";
             // 
             // proyectosInactivosToolStripMenuItem
@@ -154,7 +151,7 @@
             this.eliminadosToolStripMenuItem});
             this.clientesToolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("clientesToolStripMenuItem2.Image")));
             this.clientesToolStripMenuItem2.Name = "clientesToolStripMenuItem2";
-            this.clientesToolStripMenuItem2.Size = new System.Drawing.Size(196, 22);
+            this.clientesToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.clientesToolStripMenuItem2.Text = "Clientes";
             // 
             // eliminadosToolStripMenuItem
@@ -171,7 +168,7 @@
             this.borradosToolStripMenuItem});
             this.empleadosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("empleadosToolStripMenuItem.Image")));
             this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
-            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.empleadosToolStripMenuItem.Text = "Empleados";
             // 
             // borradosToolStripMenuItem
@@ -188,7 +185,7 @@
             this.modificarParametrosToolStripMenuItem});
             this.empresaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("empresaToolStripMenuItem.Image")));
             this.empresaToolStripMenuItem.Name = "empresaToolStripMenuItem";
-            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.empresaToolStripMenuItem.Text = "Empresa";
             // 
             // modificarParametrosToolStripMenuItem
@@ -205,7 +202,7 @@
             this.modificarUsuarioYContraseñaToolStripMenuItem});
             this.usarioToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("usarioToolStripMenuItem.Image")));
             this.usarioToolStripMenuItem.Name = "usarioToolStripMenuItem";
-            this.usarioToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.usarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.usarioToolStripMenuItem.Text = "Usario";
             // 
             // modificarUsuarioYContraseñaToolStripMenuItem
@@ -388,7 +385,7 @@
             this.crearFolderDePagoToolStripMenuItem});
             this.pagosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pagosToolStripMenuItem.Image")));
             this.pagosToolStripMenuItem.Name = "pagosToolStripMenuItem";
-            this.pagosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pagosToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.pagosToolStripMenuItem.Text = "Pagos";
             // 
             // porProyectoToolStripMenuItem
@@ -433,7 +430,7 @@
             this.categoriasToolStripMenuItem});
             this.abonadoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("abonadoToolStripMenuItem.Image")));
             this.abonadoToolStripMenuItem.Name = "abonadoToolStripMenuItem";
-            this.abonadoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.abonadoToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.abonadoToolStripMenuItem.Text = "Empleados";
             // 
             // nuevoAbonadoToolStripMenuItem
@@ -507,6 +504,59 @@
             this.listarProyectosActivosToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.listarProyectosActivosToolStripMenuItem.Text = "Listar proyectos activos";
             this.listarProyectosActivosToolStripMenuItem.Click += new System.EventHandler(this.listarProyectosActivosToolStripMenuItem_Click);
+            // 
+            // empleadosToolStripMenuItem1
+            // 
+            this.empleadosToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.registrarEmpleadoToolStripMenuItem,
+            this.modificarToolStripMenuItem1,
+            this.eliminarEmpleadoToolStripMenuItem,
+            this.categoriasDeEmpleadosToolStripMenuItem});
+            this.empleadosToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("empleadosToolStripMenuItem1.Image")));
+            this.empleadosToolStripMenuItem1.Name = "empleadosToolStripMenuItem1";
+            this.empleadosToolStripMenuItem1.Size = new System.Drawing.Size(93, 20);
+            this.empleadosToolStripMenuItem1.Text = "Empleados";
+            // 
+            // registrarEmpleadoToolStripMenuItem
+            // 
+            this.registrarEmpleadoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("registrarEmpleadoToolStripMenuItem.Image")));
+            this.registrarEmpleadoToolStripMenuItem.Name = "registrarEmpleadoToolStripMenuItem";
+            this.registrarEmpleadoToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.registrarEmpleadoToolStripMenuItem.Text = "Registrar empleado";
+            this.registrarEmpleadoToolStripMenuItem.Click += new System.EventHandler(this.registrarEmpleadoToolStripMenuItem_Click);
+            // 
+            // modificarToolStripMenuItem1
+            // 
+            this.modificarToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("modificarToolStripMenuItem1.Image")));
+            this.modificarToolStripMenuItem1.Name = "modificarToolStripMenuItem1";
+            this.modificarToolStripMenuItem1.Size = new System.Drawing.Size(207, 22);
+            this.modificarToolStripMenuItem1.Text = "Modificar empleado";
+            this.modificarToolStripMenuItem1.Click += new System.EventHandler(this.modificarToolStripMenuItem1_Click);
+            // 
+            // eliminarEmpleadoToolStripMenuItem
+            // 
+            this.eliminarEmpleadoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("eliminarEmpleadoToolStripMenuItem.Image")));
+            this.eliminarEmpleadoToolStripMenuItem.Name = "eliminarEmpleadoToolStripMenuItem";
+            this.eliminarEmpleadoToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.eliminarEmpleadoToolStripMenuItem.Text = "Eliminar empleado";
+            this.eliminarEmpleadoToolStripMenuItem.Click += new System.EventHandler(this.eliminarEmpleadoToolStripMenuItem_Click);
+            // 
+            // categoriasDeEmpleadosToolStripMenuItem
+            // 
+            this.categoriasDeEmpleadosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.agregarNuevaCategoriaToolStripMenuItem1});
+            this.categoriasDeEmpleadosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("categoriasDeEmpleadosToolStripMenuItem.Image")));
+            this.categoriasDeEmpleadosToolStripMenuItem.Name = "categoriasDeEmpleadosToolStripMenuItem";
+            this.categoriasDeEmpleadosToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.categoriasDeEmpleadosToolStripMenuItem.Text = "Categorias de empleados";
+            // 
+            // agregarNuevaCategoriaToolStripMenuItem1
+            // 
+            this.agregarNuevaCategoriaToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("agregarNuevaCategoriaToolStripMenuItem1.Image")));
+            this.agregarNuevaCategoriaToolStripMenuItem1.Name = "agregarNuevaCategoriaToolStripMenuItem1";
+            this.agregarNuevaCategoriaToolStripMenuItem1.Size = new System.Drawing.Size(203, 22);
+            this.agregarNuevaCategoriaToolStripMenuItem1.Text = "Agregar nueva categoria";
+            this.agregarNuevaCategoriaToolStripMenuItem1.Click += new System.EventHandler(this.agregarNuevaCategoriaToolStripMenuItem1_Click);
             // 
             // panel1
             // 
@@ -644,74 +694,6 @@
             this.pictureBox2.TabIndex = 18;
             this.pictureBox2.TabStop = false;
             // 
-            // empleadosToolStripMenuItem1
-            // 
-            this.empleadosToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.registrarEmpleadoToolStripMenuItem,
-            this.modificarToolStripMenuItem1,
-            this.eliminarEmpleadoToolStripMenuItem,
-            this.categoriasDeEmpleadosToolStripMenuItem});
-            this.empleadosToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("empleadosToolStripMenuItem1.Image")));
-            this.empleadosToolStripMenuItem1.Name = "empleadosToolStripMenuItem1";
-            this.empleadosToolStripMenuItem1.Size = new System.Drawing.Size(93, 20);
-            this.empleadosToolStripMenuItem1.Text = "Empleados";
-            // 
-            // registrarEmpleadoToolStripMenuItem
-            // 
-            this.registrarEmpleadoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("registrarEmpleadoToolStripMenuItem.Image")));
-            this.registrarEmpleadoToolStripMenuItem.Name = "registrarEmpleadoToolStripMenuItem";
-            this.registrarEmpleadoToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.registrarEmpleadoToolStripMenuItem.Text = "Registrar empleado";
-            this.registrarEmpleadoToolStripMenuItem.Click += new System.EventHandler(this.registrarEmpleadoToolStripMenuItem_Click);
-            // 
-            // modificarToolStripMenuItem1
-            // 
-            this.modificarToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("modificarToolStripMenuItem1.Image")));
-            this.modificarToolStripMenuItem1.Name = "modificarToolStripMenuItem1";
-            this.modificarToolStripMenuItem1.Size = new System.Drawing.Size(207, 22);
-            this.modificarToolStripMenuItem1.Text = "Modificar empleado";
-            this.modificarToolStripMenuItem1.Click += new System.EventHandler(this.modificarToolStripMenuItem1_Click);
-            // 
-            // eliminarEmpleadoToolStripMenuItem
-            // 
-            this.eliminarEmpleadoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("eliminarEmpleadoToolStripMenuItem.Image")));
-            this.eliminarEmpleadoToolStripMenuItem.Name = "eliminarEmpleadoToolStripMenuItem";
-            this.eliminarEmpleadoToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.eliminarEmpleadoToolStripMenuItem.Text = "Eliminar empleado";
-            this.eliminarEmpleadoToolStripMenuItem.Click += new System.EventHandler(this.eliminarEmpleadoToolStripMenuItem_Click);
-            // 
-            // categoriasDeEmpleadosToolStripMenuItem
-            // 
-            this.categoriasDeEmpleadosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.agregarNuevaCategoriaToolStripMenuItem1});
-            this.categoriasDeEmpleadosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("categoriasDeEmpleadosToolStripMenuItem.Image")));
-            this.categoriasDeEmpleadosToolStripMenuItem.Name = "categoriasDeEmpleadosToolStripMenuItem";
-            this.categoriasDeEmpleadosToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.categoriasDeEmpleadosToolStripMenuItem.Text = "Categorias de empleados";
-            // 
-            // agregarNuevaCategoriaToolStripMenuItem1
-            // 
-            this.agregarNuevaCategoriaToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("agregarNuevaCategoriaToolStripMenuItem1.Image")));
-            this.agregarNuevaCategoriaToolStripMenuItem1.Name = "agregarNuevaCategoriaToolStripMenuItem1";
-            this.agregarNuevaCategoriaToolStripMenuItem1.Size = new System.Drawing.Size(203, 22);
-            this.agregarNuevaCategoriaToolStripMenuItem1.Text = "Agregar nueva categoria";
-            this.agregarNuevaCategoriaToolStripMenuItem1.Click += new System.EventHandler(this.agregarNuevaCategoriaToolStripMenuItem1_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.presupuestosEliminadosToolStripMenuItem});
-            this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItem1.Text = "Presupuesto";
-            // 
-            // presupuestosEliminadosToolStripMenuItem
-            // 
-            this.presupuestosEliminadosToolStripMenuItem.Name = "presupuestosEliminadosToolStripMenuItem";
-            this.presupuestosEliminadosToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.presupuestosEliminadosToolStripMenuItem.Text = "Presupuestos eliminados";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -809,8 +791,6 @@
         private System.Windows.Forms.ToolStripMenuItem eliminarEmpleadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoriasDeEmpleadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem agregarNuevaCategoriaToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem presupuestosEliminadosToolStripMenuItem;
     }
 }
 

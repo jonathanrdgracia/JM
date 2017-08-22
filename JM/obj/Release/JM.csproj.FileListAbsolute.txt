@@ -120,3 +120,4 @@ C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\obj\Release\JM.Opc
 C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\obj\Release\JM.Opciones.Empleados.resources
 C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\obj\Release\JM.Opciones.Clientes.resources
 C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\obj\Release\JM.csprojResolveAssemblyReference.cache
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\obj\Release\JM.Pagos.Pagos_proyecto.ModificarPago.resources
