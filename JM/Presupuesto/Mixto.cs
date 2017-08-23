@@ -15,6 +15,9 @@ namespace JM.Presupuesto
 {
     public partial class Mixto : Form
     {
+        private Materiales_detalle _materialEditado;
+        private Materiales_detalle _manoDeObraEditado;
+
         List<Materiales_detalle> materiales = new List<Materiales_detalle>();
         List<Materiales_detalle> ManosDeObra = new List<Materiales_detalle>();
         public List<empleadosC> Jefes = new List<empleadosC>();
@@ -32,31 +35,7 @@ namespace JM.Presupuesto
         private void button1_Click(object sender, EventArgs e)
         {
           
-            try
-            {
-                    var x0 = Convert.ToInt32(this.dataGridView4.CurrentRow.Cells[0].Value.ToString());
-                    Jefes.RemoveAll(c => c.ID == x0);
-                    this.dataGridView4.Rows.Clear();
-                    foreach (var i in Jefes)
-                    {
-                        dataGridView4.Rows.Add(
-
-                            i.ID,
-                            i.Nombre,
-                            i.Telefono,
-                            i.Ocupacion
-                        );
-                    }
-            }
-            catch (NullReferenceException es)
-            {
-
-                MessageBox.Show("Debes seleccionar una fila");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Intentelo de nuevo");
-            }
+      
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -68,23 +47,7 @@ namespace JM.Presupuesto
         private void ejecutar(int id, string nombre, string telefono, string ocupacion)
         {
            
-            Jefes.Add(new empleadosC { 
-            ID=id,
-            Nombre=nombre,
-            Telefono=telefono,
-            Ocupacion=ocupacion
-            });
-            this.dataGridView4.Rows.Clear();
-            foreach (var i in Jefes)
-            {
-                dataGridView4.Rows.Add
-                    (
-                        i.ID,
-                        i.Nombre,
-                        i.Telefono,
-                        i.Ocupacion
-                    );
-            }
+        
             
         }
 
@@ -136,8 +99,8 @@ namespace JM.Presupuesto
                             (
                                item.Descripcion,
                                 item.Unidad,
-                                "RD" + Convert.ToInt32(item.Precio).ToString("C", nfi),
                                 item.Cantidad,
+                                "RD" + Convert.ToInt32(item.Precio).ToString("C", nfi),
                                 "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
                             );
                     }
@@ -219,9 +182,9 @@ namespace JM.Presupuesto
                         (
                             item.Descripcion,
                             item.Unidad,
-                            item.Precio,
                             item.Cantidad,
-                            item.Total
+                            Convert.ToInt32(item.Precio.ToString()).ToString("C",nfi),
+                            Convert.ToInt32(item.Total.ToString()).ToString("C",nfi)
                         );
                 }
                 CalcularTotalGenetal1();
@@ -277,8 +240,8 @@ namespace JM.Presupuesto
                             (
                                 item.Descripcion,
                                 item.Unidad,
-                                "RD" + Convert.ToInt32(item.Precio).ToString("C", nfi),
                                 item.Cantidad,
+                                "RD" + Convert.ToInt32(item.Precio).ToString("C", nfi),
                                 "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
                             );
                     }
@@ -330,8 +293,8 @@ namespace JM.Presupuesto
                         (
                             item.Descripcion,
                             item.Unidad,
-                            "RD"+Convert.ToInt32(item.Precio).ToString("C",nfi),
                             item.Cantidad,
+                            "RD" + Convert.ToInt32(item.Precio).ToString("C", nfi),
                             "RD"+Convert.ToInt32(item.Total).ToString("C",nfi)
                         );
                 }
@@ -399,11 +362,6 @@ namespace JM.Presupuesto
             else if (textBox7.Text == string.Empty)
             {
                 MessageBox.Show("Debes seleccionar un cliente.", "Presupuesto",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (this.dataGridView4.RowCount == 0)
-            {
-                MessageBox.Show("Debes selecionar al menos un maestro, arquitecto(a) o ingeniero.", "Presupuesto",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -514,7 +472,12 @@ namespace JM.Presupuesto
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+            var x0 = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
+
+            textBox22.Text = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            comboBox1.SelectedItem = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            textBox20.Text = this.dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            textBox21.Text = materiales.First(c => c.Descripcion == x0).Precio.ToString();
         }
 
         private void agregarClienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -534,5 +497,133 @@ namespace JM.Presupuesto
             JM.Abonado.Tipo.AgregarNuevo a = new JM.Abonado.Tipo.AgregarNuevo();
             a.ShowDialog();
         }
-    }
-}
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+                   try
+            {
+                _materialEditado = new Materiales_detalle();
+                int precio = Convert.ToInt32(textBox21.Text);
+                int cantidad = Convert.ToInt32(textBox20.Text);
+
+                int currentIndex = this.dataGridView1.CurrentCell.RowIndex;
+
+
+                _materialEditado.Cantidad = cantidad;
+                _materialEditado.Descripcion = textBox22.Text;
+                _materialEditado.Precio = precio;
+                _materialEditado.Cantidad = cantidad;
+                _materialEditado.Unidad = comboBox1.SelectedItem.ToString();
+                _materialEditado.Total = (precio * cantidad);
+
+                materiales.RemoveAt(currentIndex);
+                materiales.Insert(currentIndex, _materialEditado);
+
+
+
+                this.dataGridView1.Rows.Clear();
+                foreach (var item in materiales)
+                {
+                    this.dataGridView1.Rows.Add
+                        (
+                            item.Descripcion,
+                            item.Unidad,
+                           item.Cantidad,
+                            item.Precio,
+                            "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
+                        );
+                }
+                CalcularTotalGenetal1();
+                textBox22.Text = string.Empty;
+                textBox21.Text = string.Empty;
+                textBox20.Text = string.Empty;
+
+            }
+            catch (FormatException ex)
+            {
+
+                MessageBox.Show("Seleccione una fila para editarla", "Presupuesto",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception es)
+            {
+
+                MessageBox.Show("Mensaje de error: "+es.Message, "Presupuesto",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            try { 
+               _manoDeObraEditado = new Materiales_detalle(); 
+                int precio = Convert.ToInt32(textBox14.Text);
+                int cantidad = Convert.ToInt32(textBox13.Text);
+
+                int currentIndex = this.dataGridView2.CurrentCell.RowIndex;
+
+
+                _manoDeObraEditado.Cantidad = cantidad;
+                _manoDeObraEditado.Descripcion = textBox15.Text;
+                _manoDeObraEditado.Precio = precio;
+                _manoDeObraEditado.Unidad = comboBox2.SelectedItem.ToString();
+                _manoDeObraEditado.Total = (precio*cantidad);
+
+                ManosDeObra.RemoveAt(currentIndex);
+                ManosDeObra.Insert(currentIndex, _manoDeObraEditado);
+
+
+
+                this.dataGridView2.Rows.Clear();
+                foreach (var item in ManosDeObra)
+                {
+                    this.dataGridView2.Rows.Add
+                        (
+                            item.Descripcion,
+                            item.Unidad,
+                           item.Cantidad,
+                            item.Precio,
+                            "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
+                        );
+                }
+                CalcularTotalGenetal2();
+                textBox13.Text = string.Empty;
+                textBox14.Text = string.Empty;
+                textBox15.Text = string.Empty;
+
+            }
+            catch (FormatException ex)
+            {
+
+                MessageBox.Show("Seleccione una fila para editarla", "Presupuesto",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception es)
+            {
+
+                MessageBox.Show("Mensaje de error: " + es.Message, "Presupuesto",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+          
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var x0 = this.dataGridView2.CurrentRow.Cells[0].Value.ToString();
+
+            textBox15.Text = this.dataGridView2.CurrentRow.Cells[0].Value.ToString();
+            comboBox2.SelectedItem = this.dataGridView2.CurrentRow.Cells[1].Value.ToString();
+            textBox13.Text = this.dataGridView2.CurrentRow.Cells[2].Value.ToString();
+            textBox14.Text = ManosDeObra.First(c => c.Descripcion == x0).Precio.ToString();
+        }
+        }
+        }
+        
+    
+

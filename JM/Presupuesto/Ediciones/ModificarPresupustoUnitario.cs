@@ -17,7 +17,8 @@ namespace JM.Presupuesto.Ediciones
 
         List<Materiales_detalle> listaMateriales = new List<Materiales_detalle>();
         List<Materiales_detalle> listaMaterialesNuevos = new List<Materiales_detalle>();
-       
+       // readonly List<Materiales_detalle> _materiales = new List<Materiales_detalle>();
+        private IEnumerable<Materiales_detalle> _materiales;
         public int contador1 { get; set; }
         public int IDs { get; set; }
         public int cambio { get; set; }
@@ -57,8 +58,8 @@ namespace JM.Presupuesto.Ediciones
                     {
                         Descripcion = i.Descripcion,
                         Unidad = i.Unidad,
-                        Precio = i.Precio,
                         Cantidad = i.Cantidad,
+                        Precio = i.Precio,
                         Total = i.Total
                     });
                   
@@ -70,9 +71,9 @@ namespace JM.Presupuesto.Ediciones
                     this.dataGridView3.Rows.Add(
                         i.Descripcion,
                         i.Unidad,
-                        Convert.ToInt32(i.Precio).ToString("C",nfi),
                         i.Cantidad,
-                       Convert.ToInt32(i.Total).ToString("C",nfi)
+                        Convert.ToInt32(i.Precio).ToString("C",nfi),
+                        Convert.ToInt32(i.Total).ToString("C",nfi)
 
                         );
                 }
@@ -255,13 +256,19 @@ namespace JM.Presupuesto.Ediciones
 
                         foreach (var i in listaMateriales)
                         {
-                            dataGridView3.Rows.Add(i.Descripcion, i.Unidad, Convert.ToInt32(i.Precio).ToString("C",nfi), i.Cantidad, Convert.ToInt32(i.Total).ToString("C"),nfi);
+                            dataGridView3.Rows.Add(
+                                i.Descripcion, i.Unidad,
+                                i.Cantidad, 
+                                Convert.ToInt32(i.Precio).ToString("C",nfi), 
+                                Convert.ToInt32(i.Total).ToString("C"),nfi
+                            );
+                           
                             contador1 = contador1 + Convert.ToInt32(i.Total);
                         }
 
                         foreach (var i in listaMaterialesNuevos)
                         {
-                            dataGridView3.Rows.Add(i.Descripcion, i.Unidad, Convert.ToInt32(i.Precio).ToString("C", nfi), i.Cantidad, Convert.ToInt32(i.Total).ToString("C",nfi));
+                            dataGridView3.Rows.Add(i.Descripcion, i.Unidad, i.Cantidad, Convert.ToInt32(i.Precio).ToString("C", nfi), Convert.ToInt32(i.Total).ToString("C", nfi));
                             contador1 = contador1 + Convert.ToInt32(i.Total);
                         }
                         label27.Text = "Total: RD" + contador1.ToString("C", nfi);
@@ -312,11 +319,11 @@ namespace JM.Presupuesto.Ediciones
         {
 
             //delete borro todo de la db materiales
-            db.BorrarTodoMateriales_detalle(IDs);
+           // db.BorrarTodoMateriales_detalle(IDs);
             
 
             //inserto los materiales
-            foreach (var i in listaMateriales)
+            foreach (var i in _materiales)
             {
                 db.guardar_materiales_listado(IDs, i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total, 1);
             }
@@ -324,18 +331,20 @@ namespace JM.Presupuesto.Ediciones
            
           
             //inserto los materiales nuevos
-            foreach (var i in listaMaterialesNuevos)
-            {
-                db.guardar_materiales_listado(IDs, i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total, 1);
-            }
+            //foreach (var i in listaMaterialesNuevos)
+            //{
+            //    db.guardar_materiales_listado(IDs, i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total, 1);
+            //}
             int a = 0;
             int b = 0;
             int d = 0;
             // listaMateriales.AddRange(listaMaterialesNuevos);
-            foreach (var i in listaMaterialesNuevos)
-            {
-                b = b + Convert.ToInt32(i.Total) * 1;
-            }
+
+
+            //foreach (var i in listaMaterialesNuevos)
+            //{
+            //    b = b + Convert.ToInt32(i.Total) * 1;
+            //}
           
             a = b + d;
             foreach (var item in db.Presupuestos.Where(c => c.IdPresupuestos == IDs))
@@ -418,12 +427,12 @@ namespace JM.Presupuesto.Ediciones
 
         foreach (var i in listaMateriales)
         {
-            dataGridView3.Rows.Add(i.Descripcion, i.Unidad, Convert.ToInt32(i.Precio).ToString("C",nfi), i.Cantidad,Convert.ToInt32(i.Total).ToString("C",nfi));
+            dataGridView3.Rows.Add(i.Descripcion, i.Unidad, i.Cantidad, Convert.ToInt32(i.Precio).ToString("C", nfi), Convert.ToInt32(i.Total).ToString("C", nfi));
             contador1 = contador1 + Convert.ToInt32(i.Total);
         }
         foreach (var i in listaMaterialesNuevos)
         {
-            dataGridView3.Rows.Add(i.Descripcion, i.Unidad, Convert.ToInt32(i.Precio).ToString("C",nfi), i.Cantidad, Convert.ToInt32(i.Total).ToString("C",nfi));
+            dataGridView3.Rows.Add(i.Descripcion, i.Unidad, i.Cantidad, Convert.ToInt32(i.Precio).ToString("C", nfi), Convert.ToInt32(i.Total).ToString("C", nfi));
             contador1 = contador1 + Convert.ToInt32(i.Total);
         }
        
@@ -511,8 +520,25 @@ namespace JM.Presupuesto.Ediciones
 
     private void button2_Click_1(object sender, EventArgs e)
     {
-        listaMaterialesNuevos.AddRange(listaMateriales);
-        var listaConjunto = listaMaterialesNuevos.Concat(listaMateriales);
+        this.dataGridView3.Rows.Clear();
+       
+       
+
+       _materiales = listaMaterialesNuevos.Concat(listaMateriales);
+
+       foreach (var item in _materiales)
+       {
+           dataGridView3.Rows.Add
+            (
+                item.Descripcion,
+                item.Unidad,
+                item.Cantidad,
+                item.Precio,
+                item.Total
+
+            );
+       }
+
     }
 
     }
