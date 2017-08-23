@@ -180,8 +180,8 @@ namespace JM.Presupuesto
                         (
                             item.Descripcion,
                             item.Unidad,
-                             Convert.ToInt32(item.Precio).ToString("C", nfi),
                             item.Cantidad,
+                             Convert.ToInt32(item.Precio).ToString("C", nfi),
                            "RD"+ Convert.ToInt32(item.Total).ToString("C", nfi)
                         );
                 }
@@ -467,6 +467,63 @@ namespace JM.Presupuesto
         {
             JM.Abonado.Tipo.AgregarNuevo a = new JM.Abonado.Tipo.AgregarNuevo();
             a.ShowDialog();
+        }
+
+        private void dataGridView3_Enter(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                  var x0 = this.dataGridView3.CurrentRow.Cells[0].Value.ToString();
+                
+                textBox22.Text = this.dataGridView3.CurrentRow.Cells[0].Value.ToString();
+                comboBox3.SelectedItem = this.dataGridView3.CurrentRow.Cells[1].Value.ToString();
+                textBox20.Text = this.dataGridView3.CurrentRow.Cells[2].Value.ToString();
+                textBox21.Text = materiales.First(c => c.Descripcion == x0).Precio.ToString();
+            }
+            catch (Exception)
+            {
+                
+               
+            }
+        }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            //FormatException
+            var x0 = this.dataGridView3.CurrentRow.Cells[0].Value.ToString();
+            int precio = Convert.ToInt32(textBox21.Text);
+            int cantidad = Convert.ToInt32(textBox20.Text);
+
+           
+            materiales.First(c => c.Descripcion == x0).Descripcion = textBox22.Text;
+            materiales.First(c => c.Descripcion == x0).Precio = precio;
+            materiales.First(c => c.Descripcion == x0).Cantidad = cantidad;
+            materiales.First(c => c.Descripcion == x0).Total = (cantidad*precio);
+
+
+            //materiales.Where(c => c.Descripcion == x0).First().Descripcion = "ok";
+            this.dataGridView3.Rows.Clear();
+            foreach (var item in materiales)
+            {
+                this.dataGridView3.Rows.Add
+                    (
+                        item.Descripcion,
+                        item.Unidad,
+                       item.Cantidad,
+                        item.Precio,
+                        "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
+                    );
+            }
+            CalcularTotalGenetal();
+            textBox22.Text = string.Empty;
+            textBox21.Text = string.Empty;
+            textBox20.Text = string.Empty;
+
         }
     }
 

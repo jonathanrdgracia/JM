@@ -29,6 +29,7 @@ namespace JM.Presupuesto
         private double TotalGenetalEstatico { get; set; }
         private double Rebajado { get; set; }
 
+       
         public void MetodoMateriales(List<Materiales_detalle> ListaMateriales, DataGridView DataGridView, TextBox textbox1, RadioButton materialRadioButton1, RadioButton materialRadioButton2, Label label, ComboBox comboBox1)
         {
 
@@ -305,6 +306,8 @@ namespace JM.Presupuesto
             throw new NotImplementedException();
         }
     }
+
+
 
 
 }
