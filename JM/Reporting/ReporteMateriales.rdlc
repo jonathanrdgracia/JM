@@ -398,44 +398,109 @@
           </Border>
         </Style>
       </Tablix>
-      <Textbox Name="Textbox21">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Encargado(s):</Value>
-                <Style>
-                  <FontSize>12pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>0.20708in</Top>
-        <Left>0.16917in</Left>
+      <Tablix Name="Tablix2">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>2.11692in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="FechaCreacion">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>="Fecha: "+Fields!FechaCreacion.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>FechaCreacion</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="Details1" />
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>Cabeza</DataSetName>
+        <Top>0.26679in</Top>
+        <Left>5.30158in</Left>
         <Height>0.25in</Height>
-        <Width>1.34375in</Width>
+        <Width>2.11692in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
-      </Textbox>
-      <Tablix Name="Tablix2">
+      </Tablix>
+      <Line Name="Line1">
+        <Top>0.69735in</Top>
+        <Left>0.08458in</Left>
+        <Height>0in</Height>
+        <Width>7.33392in</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Color>CornflowerBlue</Color>
+            <Style>Solid</Style>
+            <Width>2pt</Width>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line2">
+        <Top>0.18346in</Top>
+        <Left>0.09432in</Left>
+        <Height>0in</Height>
+        <Width>7.33392in</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Color>CornflowerBlue</Color>
+            <Style>Solid</Style>
+            <Width>2pt</Width>
+          </Border>
+        </Style>
+      </Line>
+      <Tablix Name="Tablix3">
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.08333in</Width>
+              <Width>4.05099in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -451,7 +516,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Tipo.Value+" "+Fields!Nombre.Value &amp;" "&amp; Fields!Apellidos.Value</Value>
+                              <Value>=Fields!Nombre.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -483,51 +548,23 @@
         <TablixRowHierarchy>
           <TablixMembers>
             <TablixMember>
-              <Group Name="Details1" />
+              <Group Name="Details2" />
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>EmpleadosElites</DataSetName>
-        <Top>0.52653in</Top>
-        <Left>0.16917in</Left>
+        <DataSetName>ClienteElite</DataSetName>
+        <Top>0.26679in</Top>
+        <Left>0.68114in</Left>
         <Height>0.25in</Height>
-        <Width>3.08333in</Width>
-        <ZIndex>2</ZIndex>
+        <Width>4.05099in</Width>
+        <ZIndex>4</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Tablix>
-      <Line Name="Line1">
-        <Top>0.82235in</Top>
-        <Left>0.09432in</Left>
-        <Height>0in</Height>
-        <Width>7.33392in</Width>
-        <ZIndex>3</ZIndex>
-        <Style>
-          <Border>
-            <Color>CornflowerBlue</Color>
-            <Style>Solid</Style>
-            <Width>2pt</Width>
-          </Border>
-        </Style>
-      </Line>
-      <Line Name="Line2">
-        <Top>0.18346in</Top>
-        <Left>0.09432in</Left>
-        <Height>0in</Height>
-        <Width>7.33392in</Width>
-        <ZIndex>4</ZIndex>
-        <Style>
-          <Border>
-            <Color>CornflowerBlue</Color>
-            <Style>Solid</Style>
-            <Width>2pt</Width>
-          </Border>
-        </Style>
-      </Line>
-      <Textbox Name="Textbox22">
+      <Textbox Name="Textbox39">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
@@ -536,54 +573,20 @@
               <TextRun>
                 <Value>Cliente:</Value>
                 <Style>
-                  <FontSize>12pt</FontSize>
+                  <FontSize>9pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
+            <Style />
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>0.19319in</Top>
-        <Left>5.77088in</Left>
+        <rd:DefaultName>Textbox33</rd:DefaultName>
+        <Top>0.26679in</Top>
+        <Left>0.09972in</Left>
         <Height>0.25in</Height>
-        <Width>1.47702in</Width>
+        <Width>0.65927in</Width>
         <ZIndex>5</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox41">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First(Fields!Nombre.Value, "ClienteElite")+" "+First(Fields!Apellido.Value, "ClienteElite")</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox41</rd:DefaultName>
-        <Top>0.47097in</Top>
-        <Left>4.13663in</Left>
-        <Height>0.25in</Height>
-        <Width>3.11127in</Width>
-        <ZIndex>6</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>

@@ -222,11 +222,7 @@ namespace JM.Presupuesto
                 MessageBox.Show("Debes registrar la descripcion del presupuesto", "Presupuesto",
                       MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (dataGridView4.RowCount == 0)
-            {
-                MessageBox.Show("Debes registrar al menos un maestro, ingeniero o arquitecto(a)", "Cliente",
-                      MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+          
             else if (dataGridView3.Rows.Count == 0)
             {
                 MessageBox.Show("Debes registrar los datos", "Cliente",
@@ -290,30 +286,6 @@ namespace JM.Presupuesto
 
                             }
 
-
-                            if (dataGridView4.Rows.Count >= 0)
-                            {
-
-
-                                foreach (var i in Jefes)
-                                {
-                                    DB.EmpleadoPresupuesto emp = new DB.EmpleadoPresupuesto
-                                    {
-                                        IdPresupuesto = this.IdPresupuesto,
-                                        IdEmpleado = i.ID
-                                    };
-                                    db.EmpleadoPresupuestoes.Add(emp);
-                                    db.SaveChanges();
-                                }
-                                MessageBox.Show("Datos registrados correctamente", "Exito",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                this.Close();
-                            }
-                            else
-                            {
-
-
-                            }
 
                         }
                     }
@@ -389,30 +361,7 @@ namespace JM.Presupuesto
                             }
 
 
-                            if (dataGridView4.Rows.Count >= 0)
-                            {
-
-
-                                foreach (var i in Jefes)
-                                {
-                                    DB.EmpleadoPresupuesto emp = new DB.EmpleadoPresupuesto
-                                    {
-                                        IdPresupuesto = this.IdPresupuesto,
-                                        IdEmpleado = i.ID
-                                    };
-                                    db.EmpleadoPresupuestoes.Add(emp);
-                                    db.SaveChanges();
-                                    
-                                }
-                                MessageBox.Show("Datos registrados correctamente", "Exito",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                this.Close();
-                            }
-                            else
-                            {
-
-
-                            }
+                       
 
                         }
                     }
@@ -459,44 +408,12 @@ namespace JM.Presupuesto
 
             });
 
-            this.dataGridView4.Rows.Clear();
-            foreach (var item in Jefes)
-            {
-                dataGridView4.Rows.Add(
-                    item.ID,
-                    item.Nombre,
-                    item.Telefono,
-                    item.Ocupacion
-
-                    );
-            }
+        
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var x0 = Convert.ToInt32(this.dataGridView4.CurrentRow.Cells[0].Value.ToString());
-                Jefes.RemoveAll(c => c.ID == x0);
-
-                this.dataGridView4.Rows.Clear();
-                foreach (var item in Jefes)
-                {
-                    this.dataGridView4.Rows.Add
-                        (
-                            item.ID,
-                            item.Nombre,
-                            item.Telefono,
-                            item.Ocupacion
-                        );
-                }
-
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Debes seleccionar una fila para eliminar");
-            }
+           
         }
 
         private void textBox21_KeyPress(object sender, KeyPressEventArgs e)

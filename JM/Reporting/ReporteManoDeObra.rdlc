@@ -9,19 +9,21 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Encargado(s):</Value>
+                <Value>Fecha:</Value>
                 <Style>
                   <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
         <Top>0.20939in</Top>
-        <Left>0.22759in</Left>
+        <Left>5.53076in</Left>
         <Height>0.25in</Height>
         <Width>1.34375in</Width>
         <Style>
@@ -63,13 +65,13 @@
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Right</TextAlign>
+              <TextAlign>Left</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>0.25521in</Top>
-        <Left>5.41263in</Left>
+        <Top>0.26494in</Top>
+        <Left>0.22759in</Left>
         <Height>0.25in</Height>
         <Width>1.47702in</Width>
         <ZIndex>2</ZIndex>
@@ -95,13 +97,13 @@
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Right</TextAlign>
+              <TextAlign>Left</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox41</rd:DefaultName>
-        <Top>0.53299in</Top>
-        <Left>5.41263in</Left>
+        <Top>0.52883in</Top>
+        <Left>0.22759in</Left>
         <Height>0.25in</Height>
         <Width>1.47702in</Width>
         <ZIndex>3</ZIndex>
@@ -119,7 +121,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.41667in</Width>
+              <Width>1.34375in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -139,7 +141,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Tipo</rd:DefaultName>
@@ -172,10 +176,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>Empleados</DataSetName>
-        <Top>0.47328in</Top>
-        <Left>0.22759in</Left>
+        <Top>0.45939in</Top>
+        <Left>5.56104in</Left>
         <Height>0.25in</Height>
-        <Width>3.41667in</Width>
+        <Width>1.34375in</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -633,7 +637,7 @@
           <Top>0.30888in</Top>
           <Left>1.46245in</Left>
           <Height>0.34978in</Height>
-          <Width>4.06376in</Width>
+          <Width>5.41206in</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -853,7 +857,7 @@
           <Top>0.63898in</Top>
           <Left>2.06616in</Left>
           <Height>0.25in</Height>
-          <Width>3.33505in</Width>
+          <Width>4.80835in</Width>
           <ZIndex>7</ZIndex>
           <Style>
             <Border>
