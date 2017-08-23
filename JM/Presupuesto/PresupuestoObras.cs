@@ -51,5 +51,10 @@ namespace JM.Presupuesto
 
         }
 
+        private void button12_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

@@ -17,6 +17,7 @@ namespace JM.Presupuesto.Ediciones
 
         List<Materiales_detalle> listaMateriales = new List<Materiales_detalle>();
         List<Materiales_detalle> listaMaterialesNuevos = new List<Materiales_detalle>();
+       
         public int contador1 { get; set; }
         public int IDs { get; set; }
         public int cambio { get; set; }
@@ -115,7 +116,7 @@ namespace JM.Presupuesto.Ediciones
                 textBox1.Text = Descripcion;
                 textBox3.Text = Direccion;
                 LLenarCombobox(comboBox1);
-                Clientes(this.dataGridView1, _iD);
+               
                 LLenarDetalle(dataGridView3);
                
             }
@@ -205,31 +206,31 @@ namespace JM.Presupuesto.Ediciones
         private void button2_Click(object sender, EventArgs e)
         {
             intMateriales c = new intMateriales();
-            c.enviado += new intMateriales.enviar(ejecutar);
+          
             c.ShowDialog();
         }
-                private void ejecutar(int id, string nombre, string telefono, string ocupacion)
-        {
+        //        private void ejecutar(int id, string nombre, string telefono, string ocupacion)
+        //{
            
-            Jefes.Add(new empleadosC { 
-            ID=id,
-            Nombre=nombre,
-            Telefono=telefono,
-            Ocupacion=ocupacion
-            });
-            this.dataGridView1.Rows.Clear();
-            foreach (var i in Jefes)
-            {
-                dataGridView1.Rows.Add
-                    (
-                        i.ID,
-                        i.Nombre,
-                        i.Telefono,
-                        i.Ocupacion
-                    );
-            }
+        //    Jefes.Add(new empleadosC { 
+        //    ID=id,
+        //    Nombre=nombre,
+        //    Telefono=telefono,
+        //    Ocupacion=ocupacion
+        //    });
+        //    this.dataGridView1.Rows.Clear();
+        //    foreach (var i in Jefes)
+        //    {
+        //        dataGridView1.Rows.Add
+        //            (
+        //                i.ID,
+        //                i.Nombre,
+        //                i.Telefono,
+        //                i.Ocupacion
+        //            );
+        //    }
             
-        }
+        //}
 
                 private void button13_Click(object sender, EventArgs e)
                 {
@@ -469,19 +470,19 @@ namespace JM.Presupuesto.Ediciones
     {
         try
         {
-            var listauno = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            //var listauno = dataGridView1.CurrentRow.Cells[0].Value.ToString();
 
 
-            Jefes.RemoveAll(c => c.ID == Convert.ToInt32(listauno));
+            //Jefes.RemoveAll(c => c.ID == Convert.ToInt32(listauno));
 
 
-            this.dataGridView1.Rows.Clear();
+            //this.dataGridView1.Rows.Clear();
 
-            foreach (var i in Jefes)
-            {
-                dataGridView1.Rows.Add(i.ID, i.Nombre, i.Ocupacion, i.Telefono);
+            //foreach (var i in Jefes)
+            //{
+            //    dataGridView1.Rows.Add(i.ID, i.Nombre, i.Ocupacion, i.Telefono);
 
-            }
+            //}
 
         }
         catch (NullReferenceException es)
@@ -501,6 +502,17 @@ namespace JM.Presupuesto.Ediciones
             MessageBox.Show("Algo ha salido mal " + ex.Message, "Presupuesto",
             MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+    }
+
+    private void groupBox2_Enter(object sender, EventArgs e)
+    {
+
+    }
+
+    private void button2_Click_1(object sender, EventArgs e)
+    {
+        listaMaterialesNuevos.AddRange(listaMateriales);
+        var listaConjunto = listaMaterialesNuevos.Concat(listaMateriales);
     }
 
     }

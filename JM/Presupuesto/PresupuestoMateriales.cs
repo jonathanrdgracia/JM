@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using JM.Cliente;
 using JM.Unidad;
 using System.Globalization;
+using JM.Dataset;
 
 namespace JM.Presupuesto
 {
@@ -28,14 +29,16 @@ namespace JM.Presupuesto
         public Double TotalGenetal { get; set; }
         public int IdPresupuesto { get; set; }
         NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
-        List<Materiales_detalle> materiales = new List<Materiales_detalle>();
-        LlenarUnidad uni = new LlenarUnidad();
+        readonly List<Materiales_detalle> _materiales = new List<Materiales_detalle>();
+        private Materiales_detalle _materialEditado;
         public int IdCliente { get; set; }
         public PresupuestoMateriales()
         {
            
             InitializeComponent();
         }
+
+ 
 
         private void PresupuestoMateriales_Load(object sender, EventArgs e)
         {
@@ -109,10 +112,10 @@ namespace JM.Presupuesto
             try
             {
                 var x0 = this.dataGridView3.CurrentRow.Cells[0].Value.ToString();
-                materiales.RemoveAll(c => c.Descripcion == x0);
+                _materiales.RemoveAll(c => c.Descripcion == x0);
 
                 this.dataGridView3.Rows.Clear();
-                foreach (var item in materiales)
+                foreach (var item in _materiales)
                 {
                     this.dataGridView3.Rows.Add
                         (
@@ -144,7 +147,7 @@ namespace JM.Presupuesto
         {
             TotalGenetal = 0;
             //double total_general = 0;
-            foreach (var item in materiales)
+            foreach (var item in _materiales)
             {
                 TotalGenetal = TotalGenetal + Convert.ToDouble(item.Total);
             }
@@ -163,7 +166,7 @@ namespace JM.Presupuesto
                 var unidad = comboBox3.SelectedItem.ToString();
                 var total = Convert.ToInt32(prec) * Convert.ToInt32(cantidad);
 
-                materiales.Add(new Materiales_detalle
+                _materiales.Add(new Materiales_detalle
                 {
                     Descripcion = descrip,
                     Precio = prec,
@@ -174,7 +177,7 @@ namespace JM.Presupuesto
 
 
                 this.dataGridView3.Rows.Clear();
-                foreach (var item in materiales)
+                foreach (var item in _materiales)
                 {
                     this.dataGridView3.Rows.Add
                         (
@@ -185,7 +188,7 @@ namespace JM.Presupuesto
                            "RD"+ Convert.ToInt32(item.Total).ToString("C", nfi)
                         );
                 }
-                comboBox3.ResetText();
+                
                 CalcularTotalGenetal();
                 textBox22.Text = string.Empty;
                 textBox21.Text = string.Empty;
@@ -264,8 +267,8 @@ namespace JM.Presupuesto
                                 IdPresupuesto = Convert.ToInt32(item.IdPresupuestos.ToString());
                             }
 
-                            foreach (var item in materiales)
-                            {
+                            foreach (var item in _materiales)
+                            { 
                                 Materiales_detalle md = new Materiales_detalle
                                 {
                                     Cantidad = item.Cantidad,
@@ -276,7 +279,7 @@ namespace JM.Presupuesto
                                     Unidad = item.Unidad,
                                     Total = Convert.ToInt32(item.Total)
                                    
-
+                                    
 
 
 
@@ -338,7 +341,7 @@ namespace JM.Presupuesto
                          
 
 
-                            foreach (var item in materiales)
+                            foreach (var item in _materiales)
                             {
                                 Obra_detalle md = new Obra_detalle
                                 {
@@ -483,7 +486,7 @@ namespace JM.Presupuesto
                 textBox22.Text = this.dataGridView3.CurrentRow.Cells[0].Value.ToString();
                 comboBox3.SelectedItem = this.dataGridView3.CurrentRow.Cells[1].Value.ToString();
                 textBox20.Text = this.dataGridView3.CurrentRow.Cells[2].Value.ToString();
-                textBox21.Text = materiales.First(c => c.Descripcion == x0).Precio.ToString();
+                textBox21.Text = _materiales.First(c => c.Descripcion == x0).Precio.ToString();
             }
             catch (Exception)
             {
@@ -494,35 +497,57 @@ namespace JM.Presupuesto
 
         private void button2_Click_2(object sender, EventArgs e)
         {
-            //FormatException
-            var x0 = this.dataGridView3.CurrentRow.Cells[0].Value.ToString();
-            int precio = Convert.ToInt32(textBox21.Text);
-            int cantidad = Convert.ToInt32(textBox20.Text);
-
-           
-            materiales.First(c => c.Descripcion == x0).Descripcion = textBox22.Text;
-            materiales.First(c => c.Descripcion == x0).Precio = precio;
-            materiales.First(c => c.Descripcion == x0).Cantidad = cantidad;
-            materiales.First(c => c.Descripcion == x0).Total = (cantidad*precio);
-
-
-            //materiales.Where(c => c.Descripcion == x0).First().Descripcion = "ok";
-            this.dataGridView3.Rows.Clear();
-            foreach (var item in materiales)
+            try
             {
-                this.dataGridView3.Rows.Add
-                    (
-                        item.Descripcion,
-                        item.Unidad,
-                       item.Cantidad,
-                        item.Precio,
-                        "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
-                    );
+                _materialEditado = new Materiales_detalle();
+                int precio = Convert.ToInt32(textBox21.Text);
+                int cantidad = Convert.ToInt32(textBox20.Text);
+
+                int currentIndex = this.dataGridView3.CurrentCell.RowIndex;
+
+
+                _materialEditado.Cantidad = cantidad;
+                _materialEditado.Descripcion = textBox22.Text;
+                _materialEditado.Precio = precio;
+                _materialEditado.Cantidad = cantidad;
+                _materialEditado.Unidad = comboBox3.SelectedItem.ToString();
+                _materialEditado.Total = (precio * cantidad);
+
+                _materiales.RemoveAt(currentIndex);
+                _materiales.Insert(currentIndex, _materialEditado);
+
+
+
+                this.dataGridView3.Rows.Clear();
+                foreach (var item in _materiales)
+                {
+                    this.dataGridView3.Rows.Add
+                        (
+                            item.Descripcion,
+                            item.Unidad,
+                           item.Cantidad,
+                            item.Precio,
+                            "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
+                        );
+                }
+                CalcularTotalGenetal();
+                textBox22.Text = string.Empty;
+                textBox21.Text = string.Empty;
+                textBox20.Text = string.Empty;
+
             }
-            CalcularTotalGenetal();
-            textBox22.Text = string.Empty;
-            textBox21.Text = string.Empty;
-            textBox20.Text = string.Empty;
+            catch (FormatException ex)
+            {
+
+                MessageBox.Show("Seleccione una fila para editarla", "Presupuesto",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception es)
+            {
+
+                MessageBox.Show("Mensaje de error: "+es.Message, "Presupuesto",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
     }
