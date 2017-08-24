@@ -18,5 +18,6 @@ namespace JM.DB
         public string Pass { get; set; }
         public string Pass2 { get; set; }
         public int Id { get; set; }
+        public byte[] Logo { get; set; }
     }
 }

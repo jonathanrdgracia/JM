@@ -250,6 +250,7 @@
           <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Pass" Type="nvarchar" MaxLength="50" />
           <Property Name="Pass2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Logo" Type="image" />
         </EntityType>
         <EntityType Name="Vendedores">
           <Key>
@@ -2195,7 +2196,7 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           </FunctionImport>
           <EntitySet Name="Usuarios" EntityType="PresupuestoModel.Usuario" />
           <FunctionImport Name="ListadoPagosPorProyectos" ReturnType="Collection(PresupuestoModel.ListadoPagosPorProyectos_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="CompaniaDato_Result">
@@ -2682,6 +2683,7 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <Property Name="Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Pass2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <ComplexType Name="ListadoPagosPorProyectos_Result">
           <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
@@ -3718,6 +3720,7 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="PresupuestoModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Pass2" ColumnName="Pass2" />
                 <ScalarProperty Name="Pass" ColumnName="Pass" />

@@ -1476,6 +1476,7 @@
     <Property Name="Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Pass2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <ComplexType Name="ListadoPagosPorProyectos_Result">
     <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />

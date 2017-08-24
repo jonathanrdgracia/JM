@@ -526,7 +526,7 @@ namespace JM.Presupuesto
                             item.Descripcion,
                             item.Unidad,
                            item.Cantidad,
-                            item.Precio,
+                           "RD" + Convert.ToInt32(item.Precio).ToString("C", nfi),
                             "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
                         );
                 }
