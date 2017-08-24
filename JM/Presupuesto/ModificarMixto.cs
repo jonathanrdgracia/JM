@@ -19,6 +19,7 @@ namespace JM.Presupuesto
         {
             InitializeComponent();
         }
+
         public int Viejodato { get; set; }
         public int TotalGeneralDB { get; set; }
         private int Idpropuesta;
@@ -29,21 +30,26 @@ namespace JM.Presupuesto
             get { return Idpropuesta; }
             set { Idpropuesta = value; }
         }
-       
-        List<Materiales_detalle> listaMateriales = new List<Materiales_detalle>();
-        List<Materiales_detalle> listaMaterialesNuevos = new List<Materiales_detalle>();
-        List<Obra_detalle> listaObrasNuevos = new List<Obra_detalle>();
-        List<Obra_detalle> listaObras = new List<Obra_detalle>();
-        List<empleadosCA> Jefes = new List<empleadosCA>();
-        NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+
+        private Materiales_detalle _materialEditado;
+        private Obra_detalle _manodeobraEditado;
+        private List<Materiales_detalle> ListaCompleta = new List<Materiales_detalle>();
+        private List<Obra_detalle> ListaCompleta2 = new List<Obra_detalle>();
+        private List<Materiales_detalle> listaMateriales = new List<Materiales_detalle>();
+        private List<Materiales_detalle> listaMaterialesNuevos = new List<Materiales_detalle>();
+        private List<Obra_detalle> listaObrasNuevos = new List<Obra_detalle>();
+        private List<Obra_detalle> listaObras = new List<Obra_detalle>();
+        private List<empleadosCA> Jefes = new List<empleadosCA>();
+        private NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
         public int TotalGranMaster { get; set; }
         public int contador1 { get; set; }
         public int contador2 { get; set; }
         public int cambio { get; set; }
         public int _db { get; set; }
+
         private void ModificarMixto_Load(object sender, EventArgs e)
         {
-     
+
             PresupuestoMateriales p = new PresupuestoMateriales();
             comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -51,99 +57,107 @@ namespace JM.Presupuesto
             p.LLenarCombobox(comboBox2, "mano");
             using (var db = new PresupuestoEntities5())
             {
-                _db = Convert.ToInt32(db.Presupuestos.Where(c => c.IdPresupuestos == Idpropuesta).Select(x => x.TotalGeneral).FirstOrDefault());
+                _db =
+                    Convert.ToInt32(
+                        db.Presupuestos.Where(c => c.IdPresupuestos == Idpropuesta)
+                            .Select(x => x.TotalGeneral)
+                            .FirstOrDefault());
                 var consulta = from t1 in db.Presupuestos
-                               join t2 in db.Clientes on t1.IdCliente equals t2.id
-                               where t1.IdPresupuestos==Idpropuesta
-                               select new { t2.id, t2.Nombre,t2.Telefono,t1.Descripcion,t1.Direccion };
+                    join t2 in db.Clientes on t1.IdCliente equals t2.id
+                    where t1.IdPresupuestos == Idpropuesta
+                    select new {t2.id, t2.Nombre, t2.Telefono, t1.Descripcion, t1.Direccion};
 
 
                 foreach (var item in consulta)
                 {
-                    textBox7.Text=item.id.ToString();
-                    textBox8.Text=item.Nombre;
+                    textBox7.Text = item.id.ToString();
+                    textBox8.Text = item.Nombre;
                     textBox9.Text = item.Telefono;
                     textBox3.Text = item.Descripcion;
                     textBox4.Text = item.Direccion;
                 }
-                var consultaEmpleado = from t1 in db.Abonadoes
-                               join t2 in db.EmpleadoPresupuestoes on t1.Id equals t2.IdEmpleado
-                               where t2.IdPresupuesto==Idpropuesta
-                               select new {t1.Id,t1.Nombre,t1.Apellidos,t1.TipoEmpleado,t1.Telefono};
+                //var consultaEmpleado = from t1 in db.Abonadoes
+                //               join t2 in db.EmpleadoPresupuestoes on t1.Id equals t2.IdEmpleado
+                //               where t2.IdPresupuesto==Idpropuesta
+                //               select new {t1.Id,t1.Nombre,t1.Apellidos,t1.TipoEmpleado,t1.Telefono};
 
-                foreach (var i in consultaEmpleado)
-                {
-                    Jefes.Add(new empleadosCA 
-                    {
-                        IDs=i.Id,
-                        Nombres=i.Nombre+" "+i.Apellidos,
-                        Ocupacions=i.TipoEmpleado,
-                        Telefonos=i.Telefono
-                        
-                    });
-                   
-                }
-                foreach (var r in Jefes)
-                {
-                    this.dataGridView4.Rows.Add
-                        (
-                            r.IDs,
-                            r.Nombres,
-                            r.Ocupacions,
-                            r.Telefonos
-                        );
-                }
+                //foreach (var i in consultaEmpleado)
+                //{
+                //    Jefes.Add(new empleadosCA 
+                //    {
+                //        IDs=i.Id,
+                //        Nombres=i.Nombre+" "+i.Apellidos,
+                //        Ocupacions=i.TipoEmpleado,
+                //        Telefonos=i.Telefono
 
-                TotalGeneralDB = Convert.ToInt32(db.Presupuestos.Where(c => c.IdPresupuestos == Idpropuesta).Select(x => x.TotalGeneral).FirstOrDefault());
-                var query= (from c in db.Materiales_detalle where c.IdPresupuesto==IdPropuesta select c);
+                //    });
+
+                //}
+
+
+                TotalGeneralDB =
+                    Convert.ToInt32(
+                        db.Presupuestos.Where(c => c.IdPresupuestos == Idpropuesta)
+                            .Select(x => x.TotalGeneral)
+                            .FirstOrDefault());
+                var query = (from c in db.Materiales_detalle where c.IdPresupuesto == IdPropuesta select c);
                 var query2 = (from c in db.Obra_detalle where c.IdPresupuesto == IdPropuesta select c);
                 foreach (var i in query)
                 {
-                    listaMateriales.Add(new Materiales_detalle
+                    ListaCompleta.Add(new Materiales_detalle
                     {
-                        Descripcion=i.Descripcion,
-                        Unidad=i.Unidad,
-                        Precio=i.Precio,
-                        Cantidad=i.Cantidad,
-                        Total=i.Total
+                        Descripcion = i.Descripcion,
+                        Unidad = i.Unidad,
+                        Precio = i.Precio,
+                        Cantidad = i.Cantidad,
+                        Total = i.Total
                     });
-                    contador1+=Convert.ToInt32(i.Total);
+                    contador1 += Convert.ToInt32(i.Total);
                 }
-                foreach (var i in listaMateriales)
+                foreach (var i in ListaCompleta)
                 {
                     this.dataGridView1.Rows.Add
                         (
-                            i.Descripcion,i.Unidad,i.Precio,i.Cantidad,i.Total
+                            i.Descripcion,
+                            i.Unidad,
+                            i.Cantidad,
+                            "RD"+Convert.ToInt32(i.Precio.ToString()).ToString("C", nfi),
+                            "RD"+Convert.ToInt32(i.Total.ToString()).ToString("C", nfi)
 
-                        );
-                   
-                  
+                        )
+                        ;
+
+
                 }
 
                 /**/
                 foreach (var b in query2)
                 {
-                    listaObras.Add(new Obra_detalle
+                    ListaCompleta2.Add(new Obra_detalle
                     {
                         Descripcion = b.Descripcion,
                         Unidad = b.Unidad,
-                        Precio = b.Precio,
                         Cantidad = b.Cantidad,
+                        Precio = b.Precio,
                         Total = b.Total
                     });
                     contador2 += Convert.ToInt32(b.Total);
                 }
-                foreach (var v in listaObras)
+                foreach (var v in ListaCompleta2)
                 {
                     this.dataGridView2.Rows.Add
                         (
-                            v.Descripcion, v.Unidad, v.Precio, v.Cantidad, v.Total
+                            v.Descripcion,
+                            v.Unidad,
+                            v.Cantidad,
+                            "RD" + Convert.ToInt32(v.Precio.ToString()).ToString("C", nfi),
+                            "RD" + Convert.ToInt32(v.Total.ToString()).ToString("C", nfi)
                         );
                 }
 
 
             }
-            label22.Text = "Subtotal: RD" + contador1.ToString("C",nfi);
+            label22.Text = "Subtotal: RD" + contador1.ToString("C", nfi);
             label25.Text = "Subtotal: RD" + contador2.ToString("C", nfi);
             label40.Text = "Total general: RD" + (contador1 + contador2).ToString("C", nfi);
         }
@@ -157,70 +171,87 @@ namespace JM.Presupuesto
         {
             try
             {
-            nfi.CurrencyDecimalDigits = 2;
-            var descrip = textBox22.Text;
-            var prec = Convert.ToInt32(textBox21.Text);
-            var cantidad = Convert.ToInt32(textBox20.Text);
-            var unidad = comboBox1.SelectedItem.ToString();
-            var total = Convert.ToInt32(prec) * Convert.ToInt32(cantidad);
-            this.dataGridView1.Rows.Clear();
-            contador1 = 0;
-            listaMaterialesNuevos.Add(new Materiales_detalle
-            {
-                Descripcion = descrip,
-                Precio = prec,
-                Cantidad = cantidad,
-                Unidad = unidad,
-                Total = total,
-            });
+                nfi.CurrencyDecimalDigits = 2;
+                var descrip = textBox22.Text;
+                var prec = Convert.ToInt32(textBox21.Text);
+                var cantidad = Convert.ToInt32(textBox20.Text);
+                var unidad = comboBox1.SelectedItem.ToString();
+                var total = Convert.ToInt32(prec)*Convert.ToInt32(cantidad);
+                this.dataGridView1.Rows.Clear();
+                contador1 = 0;
+                ListaCompleta.Add(new Materiales_detalle
+                {
+                    Descripcion = descrip,
+                    Precio = prec,
+                    Cantidad = cantidad,
+                    Unidad = unidad,
+                    Total = total,
+                });
 
-            foreach (var i in listaMateriales)
-            {
-                dataGridView1.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
-                contador1 = contador1 + Convert.ToInt32(i.Total);
-            }
-            
-            foreach (var i in listaMaterialesNuevos)
-            {
-                dataGridView1.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
-                contador1 = contador1 + Convert.ToInt32(i.Total);
-            }
-            label22.Text = "Subtotal: RD" + contador1.ToString("C", nfi);
-            label40.Text = "Total general: RD" + (contador1 + contador2).ToString("C", nfi);
-            textBox22.Text = string.Empty;
-            textBox21.Text = string.Empty;
-            textBox20.Text = string.Empty;
+                foreach (var i in ListaCompleta)
+                {
+                    dataGridView1.Rows.Add(
+                        i.Descripcion,
+                        i.Unidad, 
+                        i.Cantidad,
+                        "RD" + Convert.ToInt32(i.Precio).ToString("C", nfi),
+                        "RD" + Convert.ToInt32(i.Total).ToString("C", nfi)
+                        );
+                    contador1 = contador1 + Convert.ToInt32(i.Total);
+                }
+
+             
+                label22.Text = "Subtotal: RD" + contador1.ToString("C", nfi);
+                label40.Text = "Total general: RD" + (contador1 + contador2).ToString("C", nfi);
+                textBox22.Text = string.Empty;
+                textBox21.Text = string.Empty;
+                textBox20.Text = string.Empty;
             }
             catch (NullReferenceException es)
             {
 
                 MessageBox.Show("Todos los campos son requeridos", "Presupuesto",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-             catch(FormatException este)
+            catch (FormatException este)
             {
                 MessageBox.Show("Verifique que todos los datos sean correctos ", "Presupuesto",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-             
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Algo ha salido mal " + ex.Message, "Presupuesto",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }      
-    
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+            try
+            {
+                var x0 = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
+
+                textBox22.Text = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                comboBox1.SelectedItem = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                textBox20.Text = this.dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                textBox21.Text = ListaCompleta.First(c => c.Descripcion == x0).Precio.ToString();
+            }
+            catch (Exception)
+            {
+
+
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (dataGridView4.Rows.Count !=0  || dataGridView2.Rows.Count != 0 || dataGridView1.Rows.Count != 0 || textBox4.Text != string.Empty || textBox3.Text != string.Empty)
+            if (dataGridView2.Rows.Count != 0 || dataGridView1.Rows.Count != 0 ||
+                textBox4.Text != string.Empty || textBox3.Text != string.Empty)
             {
-                DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas actualizar este presupuesto?", "Actualizar presupuesto", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas actualizar este presupuesto?",
+                    "Actualizar presupuesto", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     try
@@ -233,46 +264,42 @@ namespace JM.Presupuesto
                             db.BorrarTodoObra_detalle(Idpropuesta);
 
                             //inserto los materiales
-                            foreach (var i in listaMateriales)
+                            foreach (var i in ListaCompleta)
                             {
-                                db.guardar_materiales_listado(Idpropuesta, i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total, 2);
+                                db.guardar_materiales_listado(Idpropuesta, i.Descripcion, i.Unidad, i.Precio, i.Cantidad,
+                                    i.Total, 2);
                             }
-                            //inserto los materiales
-                            foreach (var pv in listaObras)
+                            
+                          
+                            foreach (var rp in ListaCompleta2)
                             {
-                                db.guardar_obras_listado(Idpropuesta, pv.Descripcion, pv.Unidad, pv.Precio, pv.Cantidad, pv.Total, 2);
-                            }
-                            foreach (var rp in listaObrasNuevos)
-                            {
-                                db.guardar_obras_listado(Idpropuesta, rp.Descripcion, rp.Unidad, rp.Precio, rp.Cantidad, rp.Total, 2);
+                                db.guardar_obras_listado(Idpropuesta, rp.Descripcion, rp.Unidad, rp.Precio, rp.Cantidad,
+                                    rp.Total, 2);
                             }
 
-                            //inserto los materiales nuevos
-                            foreach (var i in listaMaterialesNuevos)
-                            {
-                                db.guardar_materiales_listado(Idpropuesta, i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total, 2);
-                            }
+                           
+                         
                             int a = 0;
                             int b = 0;
                             int d = 0;
                             // listaMateriales.AddRange(listaMaterialesNuevos);
                             foreach (var i in listaMaterialesNuevos)
                             {
-                                b = b + Convert.ToInt32(i.Total) * 1;
+                                b = b + Convert.ToInt32(i.Total)*1;
                             }
                             foreach (var i in listaObrasNuevos)
                             {
-                                d = d + Convert.ToInt32(i.Total) * 1;
+                                d = d + Convert.ToInt32(i.Total)*1;
                             }
                             a = b + d;
                             foreach (var item in db.Presupuestos.Where(c => c.IdPresupuestos == Idpropuesta))
                             {
                                 TotalGeneralDB = +Convert.ToInt32(item.TotalGeneral);
                             }
-                           
+
                             //Actualizar presupuesto cabecera
                             int nuevo = (a - TotalGeneralDB);
-                           
+
                             // var tot = TotalGeneralDB - a;
                             var tot = (Math.Abs(TotalGeneralDB + a)) - (Rebaja);
 
@@ -297,7 +324,7 @@ namespace JM.Presupuesto
                             }
                             else
                             {
-                                zz.TotalGeneral = tot;
+                                zz.TotalGeneral = (contador1+ contador2);
                             }
                             db.SaveChanges();
 
@@ -309,24 +336,24 @@ namespace JM.Presupuesto
                             this.Close();
 
                         }
-                       
+
                     }
                     catch (NullReferenceException es)
                     {
 
                         MessageBox.Show("Todos los campos son requeridos", "Presupuesto",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (FormatException este)
                     {
                         MessageBox.Show("Verifique que todos los datos sean correctos ", "Presupuesto",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Algo ha salido mal " + ex.Message, "Presupuesto",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
@@ -341,7 +368,7 @@ namespace JM.Presupuesto
                 MessageBox.Show("Todos los campos son requeridos", "Campos vacios",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-    }
+        }
 
         private void button10_Click(object sender, EventArgs e)
         {
@@ -350,52 +377,49 @@ namespace JM.Presupuesto
                 contador1 = 0;
                 var jj = 0;
                 var listauno = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                var listauno1 = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                var listauno2 = Convert.ToInt32(dataGridView1.CurrentRow.Cells[3].Value.ToString());
-                var listauno3 = Convert.ToInt32(dataGridView1.CurrentRow.Cells[4].Value.ToString());
 
-                var q = listaMaterialesNuevos.Where(c => c.Descripcion == listauno);
-                var q2 = listaMateriales.Where(c => c.Descripcion == listauno);
+
+                var q = ListaCompleta.Where(c => c.Descripcion == listauno);
+                //  var q2 = listaMateriales.Where(c => c.Descripcion == listauno);
                 foreach (var i in q)
                 {
                     jj = jj + Convert.ToInt32(i.Total);
                 }
-                foreach (var i in q2)
-                {
-                    jj = jj + Convert.ToInt32(i.Total);
-                }
+                //foreach (var i in q2)
+                //{
+                //    jj = jj + Convert.ToInt32(i.Total);
+                //}
 
-                Rebaja = Rebaja + jj;
-
-                MessageBox.Show(jj.ToString());
+                Rebaja = Rebaja;
 
 
-                listaMateriales.RemoveAll(c => c.Descripcion == listauno && c.Unidad == listauno1);
-                listaMaterialesNuevos.RemoveAll(c => c.Descripcion == listauno && c.Unidad == listauno1);
+
+
+
+                ListaCompleta.RemoveAll(c => c.Descripcion == listauno);
 
 
 
 
                 this.dataGridView1.Rows.Clear();
 
-                foreach (var i in listaMateriales)
+
+                foreach (var i in ListaCompleta)
                 {
-                    dataGridView1.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
+                    dataGridView1.Rows.Add(i.Descripcion, i.Unidad, i.Cantidad, Convert.ToInt32(i.Precio).ToString("C", nfi), Convert.ToInt32(i.Total).ToString("C", nfi));
                     contador1 = contador1 + Convert.ToInt32(i.Total);
                 }
-                foreach (var i in listaMaterialesNuevos)
-                {
-                    dataGridView1.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
-                    contador1 = contador1 + Convert.ToInt32(i.Total);
-                }
-                label22.Text = "Subtotal: RD" + contador1.ToString("C", nfi);
-                label40.Text = "Total general: RD" + (contador1 + contador2).ToString("C", nfi);
+                    label22.Text = "Subtotal: RD" + contador1.ToString("C", nfi);
+                     label40.Text = "Total general: RD" + (contador1 + contador2).ToString("C", nfi);
+                     textBox22.Text = string.Empty;
+                     textBox21.Text = string.Empty;
+                     textBox20.Text = string.Empty;
 
             }
             catch (Exception)
             {
-                
-               
+
+
             }
         }
 
@@ -403,58 +427,58 @@ namespace JM.Presupuesto
         {
             try
             {
-                   
-            nfi.CurrencyDecimalDigits = 2;
-            var descrip = textBox15.Text;
-            var prec = Convert.ToInt32(textBox14.Text);
-            var cantidad = Convert.ToInt32(textBox13.Text);
-            var unidad = comboBox2.SelectedItem.ToString();
-            var total = Convert.ToInt32(prec) * Convert.ToInt32(cantidad);
-            this.dataGridView2.Rows.Clear();
-            contador2 = 0;
-            listaObrasNuevos.Add(new Obra_detalle
-            {
-                Descripcion = descrip,
-                Precio = prec,
-                Cantidad = cantidad,
-                Unidad = unidad,
-                Total = total,
-            });
 
-            foreach (var i in listaObras)
-            {
-                dataGridView2.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
-                contador2 = contador2 + Convert.ToInt32(i.Total);
-            }
-           
-               
-            foreach (var i in listaObrasNuevos)
-            {
-                dataGridView2.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
-                contador2 = contador2 + Convert.ToInt32(i.Total);
-            }
-            label25.Text = "Subtotal: RD" + contador2.ToString("C", nfi);
-            label40.Text = "Total general: RD" + (contador1 + contador2).ToString("C", nfi);
-            textBox13.Text = string.Empty;
-            textBox14.Text = string.Empty;
-            textBox15.Text = string.Empty;
+                nfi.CurrencyDecimalDigits = 2;
+                var descrip = textBox15.Text;
+                var prec = Convert.ToInt32(textBox14.Text);
+                var cantidad = Convert.ToInt32(textBox13.Text);
+                var unidad = comboBox2.SelectedItem.ToString();
+                var total = Convert.ToInt32(prec)*Convert.ToInt32(cantidad);
+                this.dataGridView2.Rows.Clear();
+                contador2 = 0;
+                listaObrasNuevos.Add(new Obra_detalle
+                {
+                    Descripcion = descrip,
+                    Precio = prec,
+                    Cantidad = cantidad,
+                    Unidad = unidad,
+                    Total = total,
+                });
+
+                foreach (var i in listaObras)
+                {
+                    dataGridView2.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
+                    contador2 = contador2 + Convert.ToInt32(i.Total);
+                }
+
+
+                foreach (var i in listaObrasNuevos)
+                {
+                    dataGridView2.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
+                    contador2 = contador2 + Convert.ToInt32(i.Total);
+                }
+                label25.Text = "Subtotal: RD" + contador2.ToString("C", nfi);
+                label40.Text = "Total general: RD" + (contador1 + contador2).ToString("C", nfi);
+                textBox13.Text = string.Empty;
+                textBox14.Text = string.Empty;
+                textBox15.Text = string.Empty;
             }
             catch (FormatException este)
             {
                 MessageBox.Show("Verifique que todos los datos sean correctos ", "Presupuesto",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (NullReferenceException es)
             {
 
                 MessageBox.Show("Todos los campos son requeridos", "Presupuesto",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Algo ha salido mal "+ex.Message, "Presupuesto",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Algo ha salido mal " + ex.Message, "Presupuesto",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -463,38 +487,51 @@ namespace JM.Presupuesto
             try
             {
                 contador2 = 0;
+                var jj = 0;
                 var listauno = dataGridView2.CurrentRow.Cells[0].Value.ToString();
-                var listauno1 = dataGridView2.CurrentRow.Cells[1].Value.ToString();
-                var listauno2 = Convert.ToInt32(dataGridView2.CurrentRow.Cells[2].Value.ToString());
-                var listauno3 = Convert.ToInt32(dataGridView2.CurrentRow.Cells[3].Value.ToString());
+
+
+                var q = ListaCompleta2.Where(c => c.Descripcion == listauno);
+                //  var q2 = listaMateriales.Where(c => c.Descripcion == listauno);
+                foreach (var i in q)
+                {
+                    jj = jj + Convert.ToInt32(i.Total);
+                }
+                //foreach (var i in q2)
+                //{
+                //    jj = jj + Convert.ToInt32(i.Total);
+                //}
+
+                Rebaja = Rebaja;
 
 
 
 
-                listaObras.RemoveAll(c => c.Descripcion == listauno && c.Unidad == listauno1);
-                listaObrasNuevos.RemoveAll(c => c.Descripcion == listauno && c.Unidad == listauno1);
+
+                ListaCompleta2.RemoveAll(c => c.Descripcion == listauno);
+
+
 
 
                 this.dataGridView2.Rows.Clear();
 
-                foreach (var i in listaObras)
+
+                foreach (var i in ListaCompleta2)
                 {
-                    dataGridView2.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
-                    contador2 += Convert.ToInt32(i.Total);
-                }
-                foreach (var i in listaObrasNuevos)
-                {
-                    dataGridView2.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
-                    contador2 += Convert.ToInt32(i.Total);
+                    dataGridView2.Rows.Add(i.Descripcion, i.Unidad, i.Cantidad, Convert.ToInt32(i.Precio).ToString("C", nfi), Convert.ToInt32(i.Total).ToString("C", nfi));
+                    contador2 = contador2 + Convert.ToInt32(i.Total);
                 }
                 label25.Text = "Subtotal: RD" + contador2.ToString("C", nfi);
                 label40.Text = "Total general: RD" + (contador1 + contador2).ToString("C", nfi);
+                textBox13.Text = string.Empty;
+                textBox14.Text = string.Empty;
+                textBox15.Text = string.Empty;
 
             }
             catch (Exception)
             {
-                
-             
+
+
             }
         }
 
@@ -504,6 +541,7 @@ namespace JM.Presupuesto
             a.ID = IdPropuesta;
             a.ShowDialog();
         }
+
         private void ejecutar(int id, string nombre, string telefono, string ocupacion)
         {
 
@@ -516,19 +554,9 @@ namespace JM.Presupuesto
 
             });
 
-            this.dataGridView4.Rows.Clear();
-            foreach (var r in Jefes)
-            {
-                this.dataGridView4.Rows.Add
-                    (
-                    r.IDs,
-                    r.Nombres,
-                    r.Ocupacions,
-                    r.Telefonos
-                    
-                    );
-            }
+
         }
+
         private void button6_Click(object sender, EventArgs e)
         {
             ingMixto c = new ingMixto();
@@ -539,7 +567,7 @@ namespace JM.Presupuesto
         private void textBox21_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-    (e.KeyChar != '.'))
+                (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
@@ -554,7 +582,7 @@ namespace JM.Presupuesto
         private void textBox20_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-    (e.KeyChar != '.'))
+                (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
@@ -569,7 +597,7 @@ namespace JM.Presupuesto
         private void textBox14_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-    (e.KeyChar != '.'))
+                (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
@@ -584,7 +612,7 @@ namespace JM.Presupuesto
         private void textBox13_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-    (e.KeyChar != '.'))
+                (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
@@ -603,97 +631,65 @@ namespace JM.Presupuesto
 
         private void reducirDetalleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-              DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas eliminar los detalles?", "Eliminar", MessageBoxButtons.YesNo);
-              if (dialogResult == DialogResult.Yes)
-                  cambio = 1;
+            DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas eliminar los detalles?", "Eliminar",
+                MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+                cambio = 1;
             {
-            this.dataGridView1.Rows.Clear();
-            this.dataGridView2.Rows.Clear();
-            foreach (var i in listaMateriales)
-            {
-                dataGridView1.Rows.Add
-                    (
-                        i.Descripcion,
-                        i.Unidad,
-                        i.Precio = 0,
-                        i.Cantidad = 0,
-                        i.Total = 0
-                    );
-            }
-            foreach (var i in listaMaterialesNuevos)
-            {
-                dataGridView1.Rows.Add
-                    (
-                        i.Descripcion,
-                        i.Unidad,
-                        i.Precio = 0,
-                        i.Cantidad = 0,
-                        i.Total = 0
-                    );
-            }
-            foreach (var i in listaObras)
-            {
-                dataGridView2.Rows.Add
-                    (
-                        i.Descripcion,
-                        i.Unidad,
-                        i.Precio = 0,
-                        i.Cantidad = 0,
-                        i.Total = 0
-                    );
-            }
-            foreach (var i in listaObrasNuevos)
-            {
-                dataGridView2.Rows.Add
-                    (
-                        i.Descripcion,
-                        i.Unidad,
-                        i.Precio = 0,
-                        i.Cantidad = 0,
-                        i.Total = 0
-                    );
-            }
-            label40.Text = "Total general: RD$" + _db.ToString();
+                this.dataGridView1.Rows.Clear();
+                this.dataGridView2.Rows.Clear();
+                foreach (var i in listaMateriales)
+                {
+                    dataGridView1.Rows.Add
+                        (
+                            i.Descripcion,
+                            i.Unidad,
+                            i.Precio = 0,
+                            i.Cantidad = 0,
+                            i.Total = 0
+                        );
+                }
+                foreach (var i in listaMaterialesNuevos)
+                {
+                    dataGridView1.Rows.Add
+                        (
+                            i.Descripcion,
+                            i.Unidad,
+                            i.Precio = 0,
+                            i.Cantidad = 0,
+                            i.Total = 0
+                        );
+                }
+                foreach (var i in listaObras)
+                {
+                    dataGridView2.Rows.Add
+                        (
+                            i.Descripcion,
+                            i.Unidad,
+                            i.Precio = 0,
+                            i.Cantidad = 0,
+                            i.Total = 0
+                        );
+                }
+                foreach (var i in listaObrasNuevos)
+                {
+                    dataGridView2.Rows.Add
+                        (
+                            i.Descripcion,
+                            i.Unidad,
+                            i.Precio = 0,
+                            i.Cantidad = 0,
+                            i.Total = 0
+                        );
+                }
+                label40.Text = "Total general: RD$" + _db.ToString();
 
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var listauno = dataGridView4.CurrentRow.Cells[0].Value.ToString();
 
-
-                Jefes.RemoveAll(c => c.IDs == Convert.ToInt32(listauno));
-
-
-                this.dataGridView4.Rows.Clear();
-
-                foreach (var i in Jefes)
-                {
-                    dataGridView4.Rows.Add(i.IDs, i.Nombres, i.Ocupacions, i.Telefonos);
-
-                }
-
-            }
-            catch (NullReferenceException es)
-  {
-
-                   MessageBox.Show("Algo ha salido mal " + es.Message, "Presupuesto",
-                  MessageBoxButtons.OK, MessageBoxIcon.Information);
-                  }
-                  catch(FormatException este)
-                  {
-                      MessageBox.Show("Algo ha salido mal " + este.Message, "Presupuesto",
-                  MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                  }
-                  catch (Exception ex)
-                  {
-                  MessageBox.Show("Algo ha salido mal " + ex.Message, "Presupuesto",
-                  MessageBoxButtons.OK, MessageBoxIcon.Information);
-                  }
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -705,12 +701,134 @@ namespace JM.Presupuesto
         {
 
         }
-    }
-    public class empleadosCA
-    {
-        public int IDs { get; set; }
-        public string Nombres { get; set; }
-        public string Telefonos { get; set; }
-        public string Ocupacions { get; set; }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+               
+                _materialEditado = new Materiales_detalle();
+                int precio = Convert.ToInt32(textBox21.Text);
+                int cantidad = Convert.ToInt32(textBox20.Text);
+
+                int currentIndex = this.dataGridView1.CurrentCell.RowIndex;
+                contador1 = 0;
+                _materialEditado.Cantidad = cantidad;
+                _materialEditado.Descripcion = textBox22.Text;
+                _materialEditado.Precio = precio;
+                _materialEditado.Cantidad = cantidad;
+                _materialEditado.Unidad = comboBox1.SelectedItem.ToString();
+                _materialEditado.Total = (precio*cantidad);
+
+                ListaCompleta.RemoveAt(currentIndex);
+                ListaCompleta.Insert(currentIndex, _materialEditado);
+
+                
+
+                this.dataGridView1.Rows.Clear();
+                foreach (var item in ListaCompleta)
+                {
+                    this.dataGridView1.Rows.Add
+                        (
+                            item.Descripcion,
+                            item.Unidad,
+                            item.Cantidad,
+                            "RD" + Convert.ToInt32(item.Precio).ToString("C", nfi),
+                            "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
+                        );
+                    contador1 = Convert.ToInt32(item.Total + contador1);
+                }
+                label22.Text = "Subtotal: RD" + contador1.ToString("C", nfi);
+                label40.Text = "Total general: RD" + (contador1 + contador2).ToString("C", nfi);
+                textBox21.Text = string.Empty;
+                textBox20.Text = string.Empty;
+                textBox22.Text = string.Empty;
+            }
+            catch (Exception de)
+            {
+
+            }
+
+
+        }
+
+        public class empleadosCA
+        {
+            public int IDs { get; set; }
+            public string Nombres { get; set; }
+            public string Telefonos { get; set; }
+            public string Ocupacions { get; set; }
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                var x0 = this.dataGridView2.CurrentRow.Cells[0].Value.ToString();
+
+                textBox15.Text = this.dataGridView2.CurrentRow.Cells[0].Value.ToString();
+                comboBox2.SelectedItem = this.dataGridView2.CurrentRow.Cells[1].Value.ToString();
+                textBox13.Text = this.dataGridView2.CurrentRow.Cells[2].Value.ToString();
+                textBox14.Text = ListaCompleta2.First(c => c.Descripcion == x0).Precio.ToString();
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+
+                _manodeobraEditado = new Obra_detalle();
+                int precio = Convert.ToInt32(textBox14.Text);
+                int cantidad = Convert.ToInt32(textBox13.Text);
+
+                int currentIndex = this.dataGridView2.CurrentCell.RowIndex;
+                contador2 = 0;
+                _manodeobraEditado.Cantidad = cantidad;
+                _manodeobraEditado.Descripcion = textBox15.Text;
+                _manodeobraEditado.Precio = precio;
+                _manodeobraEditado.Cantidad = cantidad;
+                _manodeobraEditado.Unidad = comboBox2.SelectedItem.ToString();
+                _manodeobraEditado.Total = (precio * cantidad);
+
+                ListaCompleta2.RemoveAt(currentIndex);
+                ListaCompleta2.Insert(currentIndex, _manodeobraEditado);
+
+
+
+                this.dataGridView2.Rows.Clear();
+                foreach (var item in ListaCompleta2)
+                {
+                    this.dataGridView2.Rows.Add
+                        (
+                            item.Descripcion,
+                            item.Unidad,
+                            item.Cantidad,
+                            "RD" + Convert.ToInt32(item.Precio).ToString("C", nfi),
+                            "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
+                        );
+                    contador2 = Convert.ToInt32(item.Total + contador2);
+                }
+                label25.Text = "Subtotal: RD" + contador2.ToString("C", nfi);
+                label40.Text = "Total general: RD" + (contador1 + contador2).ToString("C", nfi);
+                textBox13.Text = string.Empty;
+                textBox14.Text = string.Empty;
+                textBox15.Text = string.Empty;
+            }
+            catch (Exception de)
+            {
+
+            }
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

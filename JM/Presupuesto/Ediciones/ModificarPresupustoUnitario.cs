@@ -128,14 +128,14 @@ namespace JM.Presupuesto.Ediciones
                     var ff = from tb1 in db.Presupuestos
                                 join tb2 in db.Clientes on tb1.IdCliente equals tb2.id
                                 where tb1.Estado == 1 && tb1.IdPresupuestos == _iD
-                                select new { tb1.IdCliente, tb2.TipoCliente, tb1.Descripcion, tb2.Nombre, tb2.Apellido, tb2.Telefono ,tb1.Direccion };
+                                select new { tb1.IdCliente, tb2.id, tb1.Descripcion, tb2.Nombre, tb2.Apellido, tb2.Telefono ,tb1.Direccion };
 
 
                     foreach (var i in ff)
                     {
                         NombreCliente = i.Nombre;
                         Telefono = i.Telefono;
-                        Tipo = i.TipoCliente;
+                        Tipo = i.IdCliente.ToString();
                         Descripcion = i.Descripcion;
                         Direccion = i.Direccion;
                     }
@@ -660,6 +660,19 @@ namespace JM.Presupuesto.Ediciones
     private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
     {
 
+    }
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+        ArIng2 c = new ArIng2();
+        c.enviado += new ArIng2.enviar(ejecutar);
+        c.ShowDialog();
+    }
+    private void ejecutar(int dato1, string dato2, string dato3)
+    {
+        textBox2.Text = dato1.ToString();
+        textBox6.Text = dato2;
+         textBox5.Text = dato3;
     }
 
     }

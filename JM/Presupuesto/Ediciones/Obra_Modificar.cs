@@ -313,7 +313,7 @@ namespace JM.Presupuesto.Ediciones
             c.enviado += new ingObra.enviar(ejecutar);
             c.ShowDialog();
         }
-        private void ejecutar(int id, string nombre, string telefono, string ocupacion)
+        private void ejecutar(int id, string nombre, string telefono)
         {
 
             Jefes.Add(new empleadosC
@@ -321,7 +321,7 @@ namespace JM.Presupuesto.Ediciones
                 ID = id,
                 Nombre = nombre,
                 Telefono = telefono,
-                Ocupacion = ocupacion
+                
 
             });
 

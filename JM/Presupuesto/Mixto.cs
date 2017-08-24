@@ -40,9 +40,9 @@ namespace JM.Presupuesto
 
         private void button6_Click(object sender, EventArgs e)
         {
-            ArIng2 c = new ArIng2();
-            c.enviado += new ArIng2.enviar(ejecutar);
-            c.ShowDialog();
+            //ArIng2 c = new ArIng2();
+            //c.enviado += new ArIng2.enviar(ejecutar);
+            //c.ShowDialog();
         }
         private void ejecutar(int id, string nombre, string telefono, string ocupacion)
         {
