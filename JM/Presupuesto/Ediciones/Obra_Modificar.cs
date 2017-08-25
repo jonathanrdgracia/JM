@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JM.Clientes;
 
 namespace JM.Presupuesto.Ediciones
 {
@@ -29,8 +30,11 @@ namespace JM.Presupuesto.Ediciones
         public int TotalGeneralDB { get; set; }
         public string MyProperty { get; set; }
         public string Descripcion { get; set; }
+        private Obra_detalle _materialEditado;
         public string Direccion { get; set; }
+        public int IdCliente { get; set; }
         private string NombreCliente { get; set; }
+        List<Obra_detalle> ListaCompleta = new List<Obra_detalle>(); 
         public string Telefono { get; set; }
         List<empleadosC> Jefes = new List<empleadosC>();
         List<DB.Obra_detalle> obras = new List<DB.Obra_detalle>();
@@ -55,7 +59,7 @@ namespace JM.Presupuesto.Ediciones
 
                 foreach (var i in query)
                 {
-                    listaMateriales.Add(new Obra_detalle
+                    ListaCompleta.Add(new Obra_detalle
                     {
                         Descripcion = i.Descripcion,
                         Unidad = i.Unidad,
@@ -67,14 +71,14 @@ namespace JM.Presupuesto.Ediciones
                     contador1 = contador1 + Convert.ToInt32(i.Total);
 
                 }
-                foreach (var i in listaMateriales)
+                foreach (var i in ListaCompleta)
                 {
                     this.dataGridView3.Rows.Add(
                         i.Descripcion,
                         i.Unidad,
-                        Convert.ToInt32(i.Precio).ToString("C", nfi),
                         i.Cantidad,
-                       Convert.ToInt32(i.Total).ToString("C", nfi)
+                        "RD" + Convert.ToInt32(i.Precio).ToString("C", nfi),
+                        "RD" + Convert.ToInt32(i.Total).ToString("C", nfi)
 
                         );
                 }
@@ -104,7 +108,7 @@ namespace JM.Presupuesto.Ediciones
                 {
                     NombreCliente = i.Nombre;
                     Telefono = i.Telefono;
-                    Tipo = i.TipoCliente;
+                    IdCliente = (int) i.IdCliente;
                     Descripcion = i.Descripcion;
                     Direccion = i.Direccion;
                 }
@@ -112,13 +116,13 @@ namespace JM.Presupuesto.Ediciones
             }
             //
 
-            textBox6.Text = NombreCliente;
-            textBox2.Text = Tipo;
+            textBox6.Text = IdCliente.ToString();
+            textBox2.Text = NombreCliente;
             textBox5.Text = Telefono;
             Descripciontxxt.Text = Descripcion;
            textBoxdire.Text = Direccion;
             LLenarCombobox(comboBox3);
-            Clientes(this.dataGridView4, _id);
+          
             LLenarDetalle(dataGridView3);
 
         }
@@ -216,28 +220,39 @@ namespace JM.Presupuesto.Ediciones
                 var total = Convert.ToInt32(prec) * Convert.ToInt32(cantidad);
                 this.dataGridView3.Rows.Clear();
                 contador1 = 0;
-                listaMaterialesNuevos.Add(new Obra_detalle
+                ListaCompleta.Add(new Obra_detalle
                 {
                     Descripcion = descrip,
                     Precio = prec,
                     Cantidad = cantidad,
                     Unidad = unidad,
                     Total = total,
+
                 });
 
-                foreach (var i in listaMateriales)
+                //foreach (var i in listaMateriales)
+                //{
+                //    dataGridView3.Rows.Add(
+                //        i.Descripcion, i.Unidad,
+                //        i.Cantidad, 
+                //        Convert.ToInt32(i.Precio).ToString("C",nfi), 
+                //        Convert.ToInt32(i.Total).ToString("C"),nfi
+                //    );
+
+                //    contador1 = contador1 + Convert.ToInt32(i.Total);
+                //}
+
+                foreach (var i in ListaCompleta)
                 {
-                    dataGridView3.Rows.Add(i.Descripcion, i.Unidad, Convert.ToInt32(i.Precio).ToString("C", nfi), i.Cantidad, Convert.ToInt32(i.Total).ToString("C"), nfi);
+                    dataGridView3.Rows.Add(i.Descripcion,
+                        i.Unidad,
+                        i.Cantidad,
+                        "RD" + Convert.ToInt32(i.Precio).ToString("C", nfi),
+                        "RD" + Convert.ToInt32(i.Total).ToString("C", nfi));
                     contador1 = contador1 + Convert.ToInt32(i.Total);
                 }
 
-                foreach (var i in listaMaterialesNuevos)
-                {
-                    dataGridView3.Rows.Add(i.Descripcion, i.Unidad, Convert.ToInt32(i.Precio).ToString("C", nfi), i.Cantidad, Convert.ToInt32(i.Total).ToString("C", nfi));
-                    contador1 = contador1 + Convert.ToInt32(i.Total);
-                }
                 label27.Text = "Total: RD" + contador1.ToString("C", nfi);
-
                 textBox22.Text = string.Empty;
                 textBox21.Text = string.Empty;
                 textBox20.Text = string.Empty;
@@ -264,43 +279,42 @@ namespace JM.Presupuesto.Ediciones
 
         private void button12_Click(object sender, EventArgs e)
         {
+
+
             contador1 = 0;
-            var jj = 0;
-            var listauno = dataGridView3.CurrentRow.Cells[0].Value.ToString();
+          int currentIndex = this.dataGridView3.CurrentCell.RowIndex;
+                  
 
+           
+            //  var q2 = listaMateriales.Where(c => c.Descripcion == listauno);
+         
+            //foreach (var i in q2)
+            //{
+            //    jj = jj + Convert.ToInt32(i.Total);
+            //}
 
-            var q = listaMaterialesNuevos.Where(c => c.Descripcion == listauno);
-            var q2 = listaMateriales.Where(c => c.Descripcion == listauno);
-            foreach (var i in q)
-            {
-                jj = jj + Convert.ToInt32(i.Total);
-            }
-            foreach (var i in q2)
-            {
-                jj = jj + Convert.ToInt32(i.Total);
-            }
-
-            Rebaja = Rebaja + jj;
+          
 
 
 
 
-            listaMateriales.RemoveAll(c => c.Descripcion == listauno);
-            listaMaterialesNuevos.RemoveAll(c => c.Descripcion == listauno);
+
+            ListaCompleta.RemoveAt(currentIndex);
 
 
 
 
             this.dataGridView3.Rows.Clear();
 
-            foreach (var i in listaMateriales)
+
+            foreach (var i in ListaCompleta)
             {
-                dataGridView3.Rows.Add(i.Descripcion, i.Unidad, Convert.ToInt32(i.Precio).ToString("C", nfi), i.Cantidad, Convert.ToInt32(i.Total).ToString("C", nfi));
-                contador1 = contador1 + Convert.ToInt32(i.Total);
-            }
-            foreach (var i in listaMaterialesNuevos)
-            {
-                dataGridView3.Rows.Add(i.Descripcion, i.Unidad, Convert.ToInt32(i.Precio).ToString("C", nfi), i.Cantidad, Convert.ToInt32(i.Total).ToString("C", nfi));
+                dataGridView3.Rows.Add(
+                    i.Descripcion, 
+                    i.Unidad, i.Cantidad, 
+                    "RD"+Convert.ToInt32(i.Precio).ToString("C", nfi),
+                    "RD"+Convert.ToInt32(i.Total).ToString("C", nfi)
+                );
                 contador1 = contador1 + Convert.ToInt32(i.Total);
             }
 
@@ -309,38 +323,16 @@ namespace JM.Presupuesto.Ediciones
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ingObra c = new ingObra();
-            c.enviado += new ingObra.enviar(ejecutar);
-            c.ShowDialog();
+           
         }
-        private void ejecutar(int id, string nombre, string telefono)
-        {
-
-            Jefes.Add(new empleadosC
-            {
-                ID = id,
-                Nombre = nombre,
-                Telefono = telefono,
-                
-
-            });
-
-            this.dataGridView4.Rows.Clear();
-            foreach (var r in Jefes)
-            {
-                this.dataGridView4.Rows.Add
-                    (
-                    r.ID,
-                    r.Nombre,
-                    r.Ocupacion,
-                    r.Telefono
-
-                    );
-            }
-        }
+        
 
         private void button7_Click(object sender, EventArgs e)
         {
+            try
+            {
+
+          
             using (var db = new PresupuestoEntities5())
             {
 
@@ -349,7 +341,7 @@ namespace JM.Presupuesto.Ediciones
 
 
                 //inserto los materiales
-                foreach (var i in listaMateriales)
+                foreach (var i in ListaCompleta)
                 {
                     db.guardar_obras_listado(MyId, i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total, 1);
                 }
@@ -357,40 +349,41 @@ namespace JM.Presupuesto.Ediciones
 
 
                 //inserto los materiales nuevos
-                foreach (var i in listaMaterialesNuevos)
-                {
-                    db.guardar_obras_listado(MyId, i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total, 1);
-                }
-                int a = 0;
-                int b = 0;
-                int d = 0;
+                //foreach (var i in listaMaterialesNuevos)
+                //{
+                //    db.guardar_materiales_listado(IDs, i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total, 1);
+                //}
+                Total = 0;
                 // listaMateriales.AddRange(listaMaterialesNuevos);
-                foreach (var i in listaMateriales)
+
+
+                foreach (var i in ListaCompleta)
                 {
-                    b = b + Convert.ToInt32(i.Total) * 1;
+                    Total = Convert.ToInt32(i.Total) + Total;
                 }
 
-                a = b + d;
+              
                 foreach (var item in db.Presupuestos.Where(c => c.IdPresupuestos == MyId))
                 {
                     TotalGeneralDB = +Convert.ToInt32(item.TotalGeneral);
                 }
 
                 //Actualizar presupuesto cabecera
-                int nuevo = (a - TotalGeneralDB);
+               
 
                 // var tot = TotalGeneralDB - a;
-                var tot = (Math.Abs(TotalGeneralDB + a)) - (Rebaja);
 
-                foreach (var i in Jefes)
-                {
-                    db.SP_Borrrado_deEmpleados(MyId);
-                }
 
-                foreach (var i in Jefes)
-                {
-                    db.SP_insertado_deEmpleados(MyId, i.ID);
-                }
+
+                //foreach (var i in Jefes)
+                //{
+                //    db.SP_Borrrado_deEmpleados(IDs);
+                //}
+
+                //foreach (var i in Jefes)
+                //{
+                //    db.SP_insertado_deEmpleados(IDs, i.ID);
+                //}
 
                 DB.Presupuesto zz;
                 zz = (from c in db.Presupuestos where c.IdPresupuestos == MyId select c).First();
@@ -398,13 +391,14 @@ namespace JM.Presupuesto.Ediciones
                 zz.Descripcion = Descripciontxxt.Text;
                 zz.Direccion = textBoxdire.Text;
                 zz.Estado = 1;
+                zz.IdCliente = Convert.ToInt32(textBox6.Text);
                 if (cambio == 1)
                 {
                     zz.TotalGeneral = TotalGeneralDB;
                 }
                 else
                 {
-                    zz.TotalGeneral = tot;
+                    zz.TotalGeneral = Total;
                 }
                 db.SaveChanges();
 
@@ -416,7 +410,15 @@ namespace JM.Presupuesto.Ediciones
                 this.Close();
 
             }
+            }
+            catch (Exception w)
+            {
+
+                MessageBox.Show(w.Message);
+            }
         }
+
+        public int Total { get; set; }
 
         private void reduccirToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -425,41 +427,135 @@ namespace JM.Presupuesto.Ediciones
 
         private void button3_Click(object sender, EventArgs e)
         {
+            
+           
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ListarClientes3 c = new ListarClientes3();
+            c.enviado += new ListarClientes3.enviar(ejecutar);
+            c.ShowDialog();
+        }
+        private void ejecutar(string dato1, string dato2, string dato3)
+        {
+            textBox2.Text = dato2;
+            textBox6.Text = dato1;
+            textBox5.Text = dato3;
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
             try
             {
-                var listauno = dataGridView4.CurrentRow.Cells[0].Value.ToString();
+                _materialEditado = new Obra_detalle();
+                int precio = Convert.ToInt32(textBox21.Text);
+                int cantidad = Convert.ToInt32(textBox20.Text);
+
+                int currentIndex = this.dataGridView3.CurrentCell.RowIndex;
+
+                int contador = 0;
+                _materialEditado.Cantidad = cantidad;
+                _materialEditado.Descripcion = textBox22.Text;
+                _materialEditado.Precio = precio;
+                _materialEditado.Cantidad = cantidad;
+                _materialEditado.Unidad = comboBox3.SelectedItem.ToString();
+                _materialEditado.Total = (precio * cantidad);
+
+                ListaCompleta.RemoveAt(currentIndex);
+                ListaCompleta.Insert(currentIndex, _materialEditado);
 
 
-                Jefes.RemoveAll(c => c.ID == Convert.ToInt32(listauno));
 
-
-                this.dataGridView4.Rows.Clear();
-
-                foreach (var i in Jefes)
+                this.dataGridView3.Rows.Clear();
+                foreach (var item in ListaCompleta)
                 {
-                    dataGridView4.Rows.Add(i.ID, i.Nombre, i.Ocupacion, i.Telefono);
-
+                    this.dataGridView3.Rows.Add
+                        (
+                            item.Descripcion,
+                            item.Unidad,
+                           item.Cantidad,
+                           "RD" + Convert.ToInt32(item.Precio).ToString("C", nfi),
+                            "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
+                        );
+                    contador = Convert.ToInt32(item.Total + contador);
                 }
 
+                // _materialEditado = new Materiales_detalle();
+                //this.dataGridView3.Rows.Clear();
+
+                // int precio = Convert.ToInt32(textBox21.Text);
+                // int cantidad = Convert.ToInt32(textBox20.Text);
+
+                // int currentIndex = this.dataGridView3.CurrentCell.RowIndex;
+
+                // _materialEditado.Cantidad = cantidad;
+                // _materialEditado.Descripcion = textBox22.Text;
+                // _materialEditado.Precio = precio;
+                // _materialEditado.Cantidad = cantidad;
+                // _materialEditado.Unidad = comboBox1.SelectedItem.ToString();
+                // _materialEditado.Total = (precio * cantidad);
+
+                //ListaCompleta.RemoveAt(currentIndex);
+                //ListaCompleta.Insert(currentIndex, _materialEditado);
+
+                //this.dataGridView3.Rows.Clear();
+                //foreach (var item in ListaCompleta)
+                // {
+                //  dataGridView3.Rows.Add
+                //  (
+                //        item.Descripcion,
+                //        item.Unidad,
+                //        item.Cantidad,
+                //        item.Precio,
+                //        item.Total
+
+                //    );
+                //}
+                label27.Text = "Total: RD" + contador.ToString("C", nfi);
+                textBox22.Text = string.Empty;
+                textBox21.Text = string.Empty;
+                textBox20.Text = string.Empty;
+            }
+            catch (FormatException ex)
+            {
+
+                MessageBox.Show("Seleccione una fila para editarla", "Presupuesto",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (NullReferenceException es)
             {
 
-                MessageBox.Show("Algo ha salido mal " + es.Message, "Presupuesto",
-               MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("NullReferenceException : " + es.Message, "Presupuesto",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (FormatException este)
+            catch (Exception es)
             {
-                MessageBox.Show("Algo ha salido mal " + este.Message, "Presupuesto",
-            MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo ha salido mal " + ex.Message, "Presupuesto",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("General: " + es.Message, "Presupuesto",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                var x0 = this.dataGridView3.CurrentRow.Cells[0].Value.ToString();
+
+                textBox22.Text = this.dataGridView3.CurrentRow.Cells[0].Value.ToString();
+                comboBox3.SelectedItem = this.dataGridView3.CurrentRow.Cells[1].Value.ToString();
+                textBox20.Text = this.dataGridView3.CurrentRow.Cells[2].Value.ToString();
+                textBox21.Text = ListaCompleta.First(c => c.Descripcion == x0).Precio.ToString();
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+
+
     }
     public class ClientesC
     {

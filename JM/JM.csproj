@@ -253,6 +253,18 @@
     <Compile Include="Clientes\ListarClientes.Designer.cs">
       <DependentUpon>ListarClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clientes\ListarClientes1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\ListarClientes1.Designer.cs">
+      <DependentUpon>ListarClientes1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\ListarClientes3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\ListarClientes3.Designer.cs">
+      <DependentUpon>ListarClientes3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clientes\login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -978,6 +990,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Clientes\ListarClientes.resx">
       <DependentUpon>ListarClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\ListarClientes1.resx">
+      <DependentUpon>ListarClientes1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\ListarClientes3.resx">
+      <DependentUpon>ListarClientes3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Clientes\login.resx">
       <DependentUpon>login.cs</DependentUpon>

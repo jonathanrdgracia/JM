@@ -583,7 +583,7 @@ namespace JM.Presupuesto
                             item.Descripcion,
                             item.Unidad,
                            item.Cantidad,
-                            item.Precio,
+                            "RD" + Convert.ToInt32(item.Precio).ToString("C", nfi),
                             "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
                         );
                 }
@@ -615,12 +615,21 @@ namespace JM.Presupuesto
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var x0 = this.dataGridView2.CurrentRow.Cells[0].Value.ToString();
+            try
+            {
+                var x0 = this.dataGridView2.CurrentRow.Cells[0].Value.ToString();
 
-            textBox15.Text = this.dataGridView2.CurrentRow.Cells[0].Value.ToString();
-            comboBox2.SelectedItem = this.dataGridView2.CurrentRow.Cells[1].Value.ToString();
-            textBox13.Text = this.dataGridView2.CurrentRow.Cells[2].Value.ToString();
-            textBox14.Text = ManosDeObra.First(c => c.Descripcion == x0).Precio.ToString();
+                textBox15.Text = this.dataGridView2.CurrentRow.Cells[0].Value.ToString();
+                comboBox2.SelectedItem = this.dataGridView2.CurrentRow.Cells[1].Value.ToString();
+                textBox13.Text = this.dataGridView2.CurrentRow.Cells[2].Value.ToString();
+                textBox14.Text = ManosDeObra.First(c => c.Descripcion == x0).Precio.ToString();
+
+            }
+            catch (Exception)
+            {
+                
+             
+            }
         }
         }
         }

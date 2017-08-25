@@ -24,7 +24,7 @@ namespace JM.Presupuesto.Ediciones
         public int contador1 { get; set; }
         public int IDs { get; set; }
         public int cambio { get; set; }
-        public int Rebaja { get; set; }
+       // public int Rebaja { get; set; }
         NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
         public string Tipo { get; set; }
         public int TotalGeneal { get; set; }
@@ -103,8 +103,8 @@ namespace JM.Presupuesto.Ediciones
                         i.Descripcion,
                         i.Unidad,
                         i.Cantidad,
-                        Convert.ToInt32(i.Precio).ToString("C", nfi),
-                        Convert.ToInt32(i.Total).ToString("C", nfi)
+                        "RD"+Convert.ToInt32(i.Precio).ToString("C", nfi),
+                        "RD"+Convert.ToInt32(i.Total).ToString("C", nfi)
 
 
                      );
@@ -304,8 +304,8 @@ namespace JM.Presupuesto.Ediciones
                             dataGridView3.Rows.Add(i.Descripcion,
                                 i.Unidad, 
                                 i.Cantidad,
-                                Convert.ToInt32(i.Precio).ToString("C", nfi),
-                                Convert.ToInt32(i.Total).ToString("C", nfi));
+                                "RD"+Convert.ToInt32(i.Precio).ToString("C", nfi),
+                                "RD"+Convert.ToInt32(i.Total).ToString("C", nfi));
                                 contador1 = contador1 + Convert.ToInt32(i.Total);
                         }
 
@@ -394,7 +394,7 @@ namespace JM.Presupuesto.Ediciones
 
             // var tot = TotalGeneralDB - a;
 
-            var tot = (Math.Abs(TotalGeneralDB + a)) - (Rebaja);
+           
 
             //foreach (var i in Jefes)
             //{
@@ -412,6 +412,7 @@ namespace JM.Presupuesto.Ediciones
             zz.Descripcion = textBox1.Text;
             zz.Direccion = textBox3.Text;
             zz.Estado = 1;
+            zz.IdCliente = Convert.ToInt32(textBox2.Text);
             if (cambio == 1)
             {
                 zz.TotalGeneral = TotalGeneralDB;
@@ -435,28 +436,30 @@ namespace JM.Presupuesto.Ediciones
     private void button12_Click(object sender, EventArgs e)
     {
         contador1 = 0;
-        var jj = 0;
+       
         var listauno = dataGridView3.CurrentRow.Cells[0].Value.ToString();
-        
+        var listau4 = dataGridView3.CurrentRow.Cells[4].Value.ToString();
+        int currentIndex = this.dataGridView3.CurrentCell.RowIndex;
+           /*  ListaCompleta.RemoveAt(currentIndex);*/
 
-        var q = ListaCompleta.Where(c => c.Descripcion == listauno);
+       
       //  var q2 = listaMateriales.Where(c => c.Descripcion == listauno);
-        foreach (var i in q)
-        {
-            jj = jj + Convert.ToInt32(i.Total);
-        }
+        //foreach (var i in q)
+        //{
+        //    jj = jj + Convert.ToInt32(i.Total);
+        //}
         //foreach (var i in q2)
         //{
         //    jj = jj + Convert.ToInt32(i.Total);
         //}
 
-        Rebaja = Rebaja;
+      
 
 
 
 
 
-        ListaCompleta.RemoveAll(c => c.Descripcion == listauno);
+        ListaCompleta.RemoveAt(currentIndex);
 
 
 
@@ -466,7 +469,13 @@ namespace JM.Presupuesto.Ediciones
       
         foreach (var i in ListaCompleta)
         {
-            dataGridView3.Rows.Add(i.Descripcion, i.Unidad, i.Cantidad, Convert.ToInt32(i.Precio).ToString("C", nfi), Convert.ToInt32(i.Total).ToString("C", nfi));
+            dataGridView3.Rows.Add(
+                i.Descripcion, 
+                i.Unidad, 
+                i.Cantidad, 
+                Convert.ToInt32(i.Precio).ToString("C", nfi), 
+                Convert.ToInt32(i.Total).ToString("C", nfi));
+
             contador1 = contador1 + Convert.ToInt32(i.Total);
         }
        
@@ -674,6 +683,7 @@ namespace JM.Presupuesto.Ediciones
         textBox6.Text = dato2;
          textBox5.Text = dato3;
     }
+
 
     }
 

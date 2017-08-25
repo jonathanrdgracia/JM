@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JM.Clientes;
 
 namespace JM.Presupuesto
 {
@@ -318,6 +319,7 @@ namespace JM.Presupuesto
                             zz.Descripcion = textBox3.Text;
                             zz.Direccion = textBox4.Text;
                             zz.Estado = 1;
+                            zz.IdCliente = Convert.ToInt32(textBox7.Text);
                             if (cambio == 1)
                             {
                                 zz.TotalGeneral = _db;
@@ -418,68 +420,84 @@ namespace JM.Presupuesto
             }
             catch (Exception)
             {
-
+                MessageBox.Show("Debes seleccionar una fila", "Fila",
+                  MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            try
+            if (textBox13.Text == string.Empty)
             {
-
-                nfi.CurrencyDecimalDigits = 2;
-                var descrip = textBox15.Text;
-                var prec = Convert.ToInt32(textBox14.Text);
-                var cantidad = Convert.ToInt32(textBox13.Text);
-                var unidad = comboBox2.SelectedItem.ToString();
-                var total = Convert.ToInt32(prec)*Convert.ToInt32(cantidad);
-                this.dataGridView2.Rows.Clear();
-                contador2 = 0;
-                listaObrasNuevos.Add(new Obra_detalle
-                {
-                    Descripcion = descrip,
-                    Precio = prec,
-                    Cantidad = cantidad,
-                    Unidad = unidad,
-                    Total = total,
-                });
-
-                foreach (var i in listaObras)
-                {
-                    dataGridView2.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
-                    contador2 = contador2 + Convert.ToInt32(i.Total);
-                }
-
-
-                foreach (var i in listaObrasNuevos)
-                {
-                    dataGridView2.Rows.Add(i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total);
-                    contador2 = contador2 + Convert.ToInt32(i.Total);
-                }
-                label25.Text = "Subtotal: RD" + contador2.ToString("C", nfi);
-                label40.Text = "Total general: RD" + (contador1 + contador2).ToString("C", nfi);
-                textBox13.Text = string.Empty;
-                textBox14.Text = string.Empty;
-                textBox15.Text = string.Empty;
-            }
-            catch (FormatException este)
-            {
-                MessageBox.Show("Verifique que todos los datos sean correctos ", "Presupuesto",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            }
-            catch (NullReferenceException es)
-            {
-
                 MessageBox.Show("Todos los campos son requeridos", "Presupuesto",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Algo ha salido mal " + ex.Message, "Presupuesto",
+                try
+                {
+
+                    nfi.CurrencyDecimalDigits = 2;
+                    var descrip = textBox15.Text;
+                    contador2 = 0;
+                    var prec = Convert.ToInt32(textBox14.Text);
+                    var cantidad = Convert.ToInt32(textBox13.Text);
+                    var unidad = comboBox2.SelectedItem.ToString();
+                    var total = Convert.ToInt32(prec) * Convert.ToInt32(cantidad);
+                    this.dataGridView2.Rows.Clear();
+                    ListaCompleta2.Add(new Obra_detalle
+                    {
+                        Descripcion = descrip,
+                        Precio = prec,
+                        Cantidad = cantidad,
+                        Unidad = unidad,
+                        Total = total,
+                    });
+
+
+
+                    foreach (var item in ListaCompleta2)
+                    {
+                        this.dataGridView2.Rows.Add
+                            (
+                                item.Descripcion,
+                                item.Unidad,
+                                item.Cantidad,
+                                "RD" + Convert.ToInt32(item.Precio).ToString("C", nfi),
+                                "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
+                            );
+                        contador2 = contador2 + Convert.ToInt32(item.Total);
+                    }
+                    comboBox2.ResetText();
+                    label25.Text = "Subtotal: RD" + contador2.ToString("C", nfi);
+                    label40.Text = "Total general: RD" + (contador1 + contador2).ToString("C", nfi);
+
+                    textBox13.Text = string.Empty;
+                    textBox15.Text = string.Empty;
+                    textBox14.Text = string.Empty;
+                }
+                catch (NullReferenceException es)
+                {
+
+                    MessageBox.Show("Todos los campos son requeridos", "Presupuesto",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (FormatException este)
+                {
+                    MessageBox.Show("Verifique que todos los datos sean correctos ", "Presupuesto",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo ha salido mal " + ex.Message, "Presupuesto",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+
             }
+           
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -530,7 +548,8 @@ namespace JM.Presupuesto
             }
             catch (Exception)
             {
-
+                MessageBox.Show("Debes seleccionar una fila", "Fila",
+                  MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
         }
@@ -687,11 +706,6 @@ namespace JM.Presupuesto
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
@@ -746,6 +760,8 @@ namespace JM.Presupuesto
             }
             catch (Exception de)
             {
+                MessageBox.Show("Debes seleccionar una fila", "Fila",
+                  MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
 
@@ -822,6 +838,8 @@ namespace JM.Presupuesto
             }
             catch (Exception de)
             {
+                MessageBox.Show("Debes seleccionar una fila", "Fila",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
         }
@@ -829,6 +847,19 @@ namespace JM.Presupuesto
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            ListarClientes1 c = new ListarClientes1();
+            c.enviado += new ListarClientes1.enviar(ejecutar);
+            c.ShowDialog();
+        }
+        private void ejecutar(string id, string dato, string dato2, string dato3)
+        {
+            textBox7.Text = id;
+            textBox8.Text = dato;
+            textBox9.Text = dato2;
         }
     }
 }
