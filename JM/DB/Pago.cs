@@ -19,6 +19,8 @@ namespace JM.DB
         public string Fecha { get; set; }
         public Nullable<int> IdProyecto { get; set; }
         public Nullable<int> IdEmpleado { get; set; }
+        public Nullable<int> PagoPorDia { get; set; }
+        public Nullable<int> DiasTrabajados { get; set; }
     
         public virtual Abonado Abonado { get; set; }
         public virtual ProyectoConPresupuesto ProyectoConPresupuesto { get; set; }

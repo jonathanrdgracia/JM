@@ -843,6 +843,8 @@
     <EntitySetMapping Name="Pagoes">
       <EntityTypeMapping TypeName="PresupuestoModel.Pago">
         <MappingFragment StoreEntitySet="Pago">
+          <ScalarProperty Name="DiasTrabajados" ColumnName="DiasTrabajados" />
+          <ScalarProperty Name="PagoPorDia" ColumnName="PagoPorDia" />
           <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
           <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />

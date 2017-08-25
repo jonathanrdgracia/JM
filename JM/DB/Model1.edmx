@@ -128,6 +128,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PagoPorDia" Type="int" />
+          <Property Name="DiasTrabajados" Type="int" />
           <Property Name="Valor" Type="nvarchar" MaxLength="50" />
           <Property Name="Fecha" Type="nvarchar" MaxLength="15" />
           <Property Name="IdProyecto" Type="int" />
@@ -2509,6 +2511,8 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <Property Name="IdEmpleado" Type="Int32" />
           <NavigationProperty Name="Abonado" Relationship="PresupuestoModel.FK_Pago_Abonado" FromRole="Pago" ToRole="Abonado" />
           <NavigationProperty Name="ProyectoConPresupuesto" Relationship="PresupuestoModel.FK_Pago_ProyectoConPresupuesto" FromRole="Pago" ToRole="ProyectoConPresupuesto" />
+          <Property Name="PagoPorDia" Type="Int32" />
+          <Property Name="DiasTrabajados" Type="Int32" />
         </EntityType>
         <Association Name="FK_Pago_Abonado">
           <End Type="PresupuestoModel.Abonado" Role="Abonado" Multiplicity="0..1" />
@@ -3542,6 +3546,8 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <EntitySetMapping Name="Pagoes">
             <EntityTypeMapping TypeName="PresupuestoModel.Pago">
               <MappingFragment StoreEntitySet="Pago">
+                <ScalarProperty Name="DiasTrabajados" ColumnName="DiasTrabajados" />
+                <ScalarProperty Name="PagoPorDia" ColumnName="PagoPorDia" />
                 <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
                 <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />

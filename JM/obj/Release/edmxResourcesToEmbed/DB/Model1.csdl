@@ -1302,6 +1302,8 @@
     <Property Name="IdEmpleado" Type="Int32" />
     <NavigationProperty Name="Abonado" Relationship="PresupuestoModel.FK_Pago_Abonado" FromRole="Pago" ToRole="Abonado" />
     <NavigationProperty Name="ProyectoConPresupuesto" Relationship="PresupuestoModel.FK_Pago_ProyectoConPresupuesto" FromRole="Pago" ToRole="ProyectoConPresupuesto" />
+    <Property Name="PagoPorDia" Type="Int32" />
+    <Property Name="DiasTrabajados" Type="Int32" />
   </EntityType>
   <Association Name="FK_Pago_Abonado">
     <End Type="PresupuestoModel.Abonado" Role="Abonado" Multiplicity="0..1" />

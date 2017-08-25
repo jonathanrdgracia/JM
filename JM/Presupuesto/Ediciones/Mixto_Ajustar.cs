@@ -33,8 +33,8 @@ namespace JM.Presupuesto.Ediciones
         public double Variable { get; set; }// esta variable sera el total minimo y el total maximo sera total
         public double TotalGenetalEstatico { get; set; }
         public double Rebajado { get; set; }
-        
-
+        public int recorrido1 { get; set; }
+        public int recorrido2 { get; set; }      
 
 
         int g1=0;
@@ -102,7 +102,7 @@ namespace JM.Presupuesto.Ediciones
                         Total = item.Total
 
                     });
-
+                    recorrido1 = recorrido1 + Convert.ToInt32(item.Total);
                     TotalGeneral += Convert.ToInt32(item.Total);
                 }
                 nfi.CurrencyDecimalDigits = 2;
@@ -110,7 +110,7 @@ namespace JM.Presupuesto.Ediciones
                 label9.Text = TotalGeneral.ToString();
                 g1 = TotalGeneral;
                 label22.Text = TotalGeneral.ToString("C", nfi);
-               
+              
                 foreach (var item in listaMateriales)
                 {
                     dataGridView3.Rows.Add
@@ -118,9 +118,9 @@ namespace JM.Presupuesto.Ediciones
                         item.Id,
                         item.Descripcion,
                         item.Unidad,
-                       Convert.ToInt32(item.Precio).ToString("C", nfi),
                         item.Cantidad,
-                        Convert.ToInt32(item.Total).ToString("C", nfi)
+                       "RD"+Convert.ToInt32(item.Precio).ToString("C", nfi),
+                       "RD"+Convert.ToInt32(item.Total).ToString("C", nfi)
                         );
                 }
 
@@ -141,10 +141,11 @@ namespace JM.Presupuesto.Ediciones
 
                     });
                     TotalGeneral1 = TotalGeneral1 + Convert.ToInt32(item.Total);
-
+                    recorrido2 = recorrido2 + Convert.ToInt32(item.Total);
                 }
                 nfi.CurrencyDecimalDigits = 2;
                 totalGeneralDB1 = TotalGeneral1;
+                label11.Text ="Total general: RD"+(TotalGeneral1+TotalGeneral).ToString("C", nfi);
                 label8.Text = TotalGeneral1.ToString();
                 g2 = TotalGeneral1;
                 label6.Text = TotalGeneral1.ToString("C", nfi);
@@ -156,10 +157,11 @@ namespace JM.Presupuesto.Ediciones
                         item.id,
                         item.Descripcion,
                         item.Unidad,
-                       Convert.ToInt32(item.Precio).ToString("C", nfi),
                         item.Cantidad,
-                        Convert.ToInt32(item.Total).ToString("C", nfi)
+                        "RD"+Convert.ToInt32(item.Precio).ToString("C", nfi),
+                        "RD"+Convert.ToInt32(item.Total).ToString("C", nfi)
                         );
+
                 }
 
             }
@@ -169,8 +171,10 @@ namespace JM.Presupuesto.Ediciones
 
         private void button4_Click(object sender, EventArgs e)
         {
+            recorrido1 = 0;
             try
             {
+              
                  Ingreso = Convert.ToInt32(textBox3.Text);
 
 
@@ -249,8 +253,10 @@ namespace JM.Presupuesto.Ediciones
                     MessageBox.Show("El valor introducido se actualizará " + Rebajado.ToString("C", nfi));
                     textBox3.Text = (TotalGeneral - TotalGenetalEstatico).ToString();
                 }
+
                 label9.Text = TotalGeneral.ToString();
                 g1 = TotalGeneral;
+              
                 label22.Text = TotalGeneral.ToString("C", nfi);
                 totalGeneralDB = TotalGeneral;
 
@@ -263,9 +269,9 @@ namespace JM.Presupuesto.Ediciones
                         item.Id.ToString(),
                         item.Descripcion,
                         item.Unidad,
-                        Convert.ToInt32(item.Precio).ToString("C", nfi),
                         item.Cantidad,
-                        Convert.ToInt32(item.Total).ToString("C", nfi)
+                        "RD"+Convert.ToInt32(item.Precio).ToString("C", nfi),
+                        "RD"+Convert.ToInt32(item.Total).ToString("C", nfi)
                     );
 
                 }
@@ -373,7 +379,7 @@ namespace JM.Presupuesto.Ediciones
                 g1 = TotalGeneral;
                 label22.Text = TotalGeneral.ToString("C", nfi);
                 totalGeneralDB = TotalGeneral;
-
+               
 
 
                 dataGridView3.Rows.Clear();
@@ -384,15 +390,15 @@ namespace JM.Presupuesto.Ediciones
                         item.Id.ToString(),
                         item.Descripcion,
                         item.Unidad,
-                        Convert.ToInt32(item.Precio).ToString("C", nfi),
-                        item.Cantidad,
-                        Convert.ToInt32(item.Total).ToString("C", nfi)
+                         item.Cantidad,
+                        "RD" + Convert.ToInt32(item.Precio).ToString("C", nfi),
+                        "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
                     );
-
+               
                 }
 
 
-
+                
 
 
 
@@ -411,6 +417,12 @@ namespace JM.Presupuesto.Ediciones
                 MessageBox.Show("Debes seleccionar un modo");
 
             }
+            foreach (var i in listaMateriales)
+            {
+                recorrido1 = recorrido1 + Convert.ToInt32(i.Total);
+            }
+               
+            label11.Text = "Total general: RD" + (recorrido1 + recorrido2).ToString("C", nfi);
 
             }
             catch (NullReferenceException es)
@@ -435,8 +447,10 @@ namespace JM.Presupuesto.Ediciones
 
         private void button2_Click(object sender, EventArgs e)
         {
+            recorrido2 = 0;
             try
             {
+               
                 Ingreso1 = Convert.ToInt32(textBox4.Text);
 
 
@@ -526,9 +540,11 @@ namespace JM.Presupuesto.Ediciones
                         MessageBox.Show("El total se actualizará " + Rebajado1.ToString("C", nfi));
                         textBox4.Text = (TotalGeneral1 - TotalGenetalEstatico1).ToString();
                     }
-
+                   
                     label8.Text = TotalGeneral1.ToString();
                     g2 = TotalGeneral1;
+
+                   
                     label6.Text = TotalGeneral1.ToString("C", nfi);
                     totalGeneralDB1 = TotalGeneral1;
 
@@ -542,9 +558,9 @@ namespace JM.Presupuesto.Ediciones
                             item.id.ToString(),
                             item.Descripcion,
                             item.Unidad,
-                            Convert.ToInt32(item.Precio).ToString("C", nfi),
                             item.Cantidad,
-                            Convert.ToInt32(item.Total).ToString("C", nfi)
+                            "RD" + Convert.ToInt32(item.Precio).ToString("C", nfi),
+                            "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
                         );
 
                     }
@@ -669,7 +685,7 @@ namespace JM.Presupuesto.Ediciones
                     g2 = TotalGeneral1;
                     label6.Text = TotalGeneral1.ToString("C", nfi);
                     label8.Text = TotalGeneral1.ToString();
-
+                  
                     totalGeneralDB1 = TotalGeneral1;
 
                     // MessageBoxOptions.DefaultDesktopOnly();
@@ -682,22 +698,29 @@ namespace JM.Presupuesto.Ediciones
                             item.id.ToString(),
                             item.Descripcion,
                             item.Unidad,
-                            Convert.ToInt32(item.Precio).ToString("C", nfi),
                             item.Cantidad,
-                            Convert.ToInt32(item.Total).ToString("C", nfi)
+                            "RD" + Convert.ToInt32(item.Precio).ToString("C", nfi),
+                            "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
                         );
-
+                       
                     }
                     Ingreso1 = 0;
                     Patron1 = 0;
                     TotalGeneral1 = 0;
-
+                 
                 }
                 else if (comboBox2.SelectedItem.Equals(""))
                 {
                     MessageBox.Show("Debes seleccionar un modo");
 
                 }
+
+                foreach (var i in listaObra)
+                {
+                    recorrido2 = recorrido2 + Convert.ToInt32(i.Total);
+                }
+
+                label11.Text = "Total general: RD" + (recorrido1 + recorrido2).ToString("C", nfi);
 
             }
             catch (NullReferenceException es)
@@ -938,6 +961,11 @@ namespace JM.Presupuesto.Ediciones
         }
 
         private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
         {
 
         }

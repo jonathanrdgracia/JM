@@ -376,29 +376,26 @@ namespace JM.Presupuesto
         {
             try
             {
+                int currentIndex = this.dataGridView1.CurrentCell.RowIndex;
+
                 contador1 = 0;
                 var jj = 0;
-                var listauno = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+              
 
 
-                var q = ListaCompleta.Where(c => c.Descripcion == listauno);
-                //  var q2 = listaMateriales.Where(c => c.Descripcion == listauno);
-                foreach (var i in q)
-                {
-                    jj = jj + Convert.ToInt32(i.Total);
-                }
+              
                 //foreach (var i in q2)
                 //{
                 //    jj = jj + Convert.ToInt32(i.Total);
                 //}
 
-                Rebaja = Rebaja;
+             
 
 
 
 
 
-                ListaCompleta.RemoveAll(c => c.Descripcion == listauno);
+                ListaCompleta.RemoveAt(currentIndex);
 
 
 
@@ -408,8 +405,13 @@ namespace JM.Presupuesto
 
                 foreach (var i in ListaCompleta)
                 {
-                    dataGridView1.Rows.Add(i.Descripcion, i.Unidad, i.Cantidad, Convert.ToInt32(i.Precio).ToString("C", nfi), Convert.ToInt32(i.Total).ToString("C", nfi));
-                    contador1 = contador1 + Convert.ToInt32(i.Total);
+                    dataGridView1.Rows.Add(
+                        i.Descripcion, 
+                        i.Unidad, 
+                        i.Cantidad,
+                        "RD"+Convert.ToInt32(i.Precio).ToString("C", nfi),
+                        "RD"+Convert.ToInt32(i.Total).ToString("C", nfi));
+                        contador1 = contador1 + Convert.ToInt32(i.Total);
                 }
                     label22.Text = "Subtotal: RD" + contador1.ToString("C", nfi);
                      label40.Text = "Total general: RD" + (contador1 + contador2).ToString("C", nfi);
@@ -504,29 +506,11 @@ namespace JM.Presupuesto
         {
             try
             {
+                int currentIndex = this.dataGridView1.CurrentCell.RowIndex;
                 contador2 = 0;
                 var jj = 0;
-                var listauno = dataGridView2.CurrentRow.Cells[0].Value.ToString();
-
-
-                var q = ListaCompleta2.Where(c => c.Descripcion == listauno);
-                //  var q2 = listaMateriales.Where(c => c.Descripcion == listauno);
-                foreach (var i in q)
-                {
-                    jj = jj + Convert.ToInt32(i.Total);
-                }
-                //foreach (var i in q2)
-                //{
-                //    jj = jj + Convert.ToInt32(i.Total);
-                //}
-
-                Rebaja = Rebaja;
-
-
-
-
-
-                ListaCompleta2.RemoveAll(c => c.Descripcion == listauno);
+               
+                ListaCompleta2.RemoveAt(currentIndex);
 
 
 

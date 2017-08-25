@@ -46,23 +46,7 @@ namespace JM.Pagos
 
         private void PagosEmpleados_Load(object sender, EventArgs e)
         {
-            using (var db = new PresupuestoEntities5()) 
-            {
-                dateTimePicker1.Format = DateTimePickerFormat.Custom;
-                dateTimePicker1.CustomFormat = "dd-MM- yyyy";
-                dateTimePicker1.Value = DateTime.Now;
-                foreach (var i in db.SP_ModificarProyecto(idProyecto))
-                {
-                    dataGridView1.Rows.Add
-                        (
-                            i.IdEmpleado,
-                            i.Nombre+" "+i.Apellidos,
-                            i.Telefono,
-                            i.TipoEmpleado
-                        );
-                }
-            
-            }
+           
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)
@@ -72,13 +56,13 @@ namespace JM.Pagos
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var x0 = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            var x1 = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            var x3 = this.dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            //var x0 = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            //var x1 = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            //var x3 = this.dataGridView1.CurrentRow.Cells[3].Value.ToString();
            
-            textBox3.Text=x0;
-            textBox14.Text = x1;
-            textBox5.Text = x3;
+            //textBox3.Text=x0;
+            //textBox14.Text = x1;
+            //textBox5.Text = x3;
             
         }
 
@@ -95,6 +79,7 @@ namespace JM.Pagos
                             Valor=item.Pago.ToString(),
                             Fecha=item.Fecha,
                             IdEmpleado=item.Id
+                            
                         };
                          db.Pagoes.Add(pagos);
                          db.SaveChanges();
@@ -220,44 +205,44 @@ namespace JM.Pagos
 
             private void textBox1_KeyUp(object sender, KeyEventArgs e)
             {
-                var query = "%" + textBox1.Text + "%";
-                this.dataGridView1.Rows.Clear();
-                using (var db = new PresupuestoEntities5())
-                {
-                    foreach (var i in db.SP_ModificarProyectoFiltro(idProyecto, query))
-                    {
-                        this.dataGridView1.Rows.Add
-                            (
-                            i.IdEmpleado,
-                            i.Nombre+" "+i.Apellidos,
-                            i.Telefono,
-                            i.TipoEmpleado
+                //var query = "%" + textBox1.Text + "%";
+                //this.dataGridView1.Rows.Clear();
+                //using (var db = new PresupuestoEntities5())
+                //{
+                //    foreach (var i in db.SP_ModificarProyectoFiltro(idProyecto, query))
+                //    {
+                //        this.dataGridView1.Rows.Add
+                //            (
+                //            i.IdEmpleado,
+                //            i.Nombre+" "+i.Apellidos,
+                //            i.Telefono,
+                //            i.TipoEmpleado
 
-                            );
+                //            );
 
-                    }
-                }
+                //    }
+                //}
             }
 
             private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
             {
-                var query = "%" + textBox1.Text + "%";
-                this.dataGridView1.Rows.Clear();
-                using (var db = new PresupuestoEntities5())
-                {
-                    foreach (var i in db.SP_ModificarProyectoFiltro(idProyecto, query))
-                    {
-                        this.dataGridView1.Rows.Add
-                            (
-                            i.IdEmpleado,
-                            i.Nombre,
-                            i.Telefono,
-                            i.TipoEmpleado
+                //var query = "%" + textBox1.Text + "%";
+                //this.dataGridView1.Rows.Clear();
+                //using (var db = new PresupuestoEntities5())
+                //{
+                //    foreach (var i in db.SP_ModificarProyectoFiltro(idProyecto, query))
+                //    {
+                //        this.dataGridView1.Rows.Add
+                //            (
+                //            i.IdEmpleado,
+                //            i.Nombre,
+                //            i.Telefono,
+                //            i.TipoEmpleado
 
-                            );
+                //            );
 
-                    }
-                }
+                //    }
+                //}
 
             }
 

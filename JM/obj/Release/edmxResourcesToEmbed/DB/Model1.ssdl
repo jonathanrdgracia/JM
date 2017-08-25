@@ -123,6 +123,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PagoPorDia" Type="int" />
+    <Property Name="DiasTrabajados" Type="int" />
     <Property Name="Valor" Type="nvarchar" MaxLength="50" />
     <Property Name="Fecha" Type="nvarchar" MaxLength="15" />
     <Property Name="IdProyecto" Type="int" />
