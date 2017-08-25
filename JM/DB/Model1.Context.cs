@@ -1018,5 +1018,14 @@ namespace JM.DB
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListadoPagosPorProyectos_Result>("ListadoPagosPorProyectos", idParameter);
         }
+    
+        public virtual ObjectResult<Listado_PagosPorProyectos_Result> Listado_PagosPorProyectos(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Listado_PagosPorProyectos_Result>("Listado_PagosPorProyectos", idParameter);
+        }
     }
 }

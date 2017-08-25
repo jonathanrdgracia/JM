@@ -10,16 +10,15 @@
 namespace JM.DB
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Pago
+    public partial class Listado_PagosPorProyectos_Result
     {
-        public int Id { get; set; }
-        public Nullable<int> PagoPorDia { get; set; }
-        public Nullable<int> DiasTrabajados { get; set; }
+        public string Nombre { get; set; }
+        public string Apellidos { get; set; }
         public Nullable<int> Valor { get; set; }
         public string Fecha { get; set; }
-        public Nullable<int> IdProyecto { get; set; }
-        public Nullable<int> IdEmpleado { get; set; }
+        public string TipoEmpleado { get; set; }
+        public int Id { get; set; }
+        public int IdPago { get; set; }
     }
 }

@@ -981,6 +981,9 @@
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
     <EntitySet Name="Pagoes" EntityType="PresupuestoModel.Pago" />
+    <FunctionImport Name="Listado_PagosPorProyectos" ReturnType="Collection(PresupuestoModel.Listado_PagosPorProyectos_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="CompaniaDato_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
@@ -1453,4 +1456,13 @@
     <Property Name="IdProyecto" Type="Int32" />
     <Property Name="IdEmpleado" Type="Int32" />
   </EntityType>
+  <ComplexType Name="Listado_PagosPorProyectos_Result">
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Valor" Nullable="true" />
+    <Property Type="String" Name="Fecha" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="IdPago" Nullable="false" />
+  </ComplexType>
 </Schema>

@@ -39,7 +39,7 @@ namespace JM.Pagos.Pagos_proyecto
             using (var db = new PresupuestoEntities5())
             {
                 this.label4.Text = "Pagos relacionados al proyecto: " + Descripcion;
-                var query = db.ListadoPagosPorProyectos(Idproyecto).OrderByDescending(c=>c.Fecha);
+                var query = db.Listado_PagosPorProyectos(Idproyecto).OrderByDescending(c=>c.Fecha);
 
                 foreach (var i in query.OrderByDescending(c=>c.Fecha))
                 {
@@ -49,7 +49,7 @@ namespace JM.Pagos.Pagos_proyecto
                              i.TipoEmpleado,
                             i.Nombre+" "+i.Apellidos,
                             i.Fecha,
-                            Convert.ToInt32(i.Valor).ToString("C",nfi)
+                            Convert.ToInt32(i.Valor.ToString()).ToString("C", nfi)
                         );
                 }
             }

@@ -764,6 +764,9 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <Parameter Name="total" Type="int" Mode="In" />
           <Parameter Name="totalgeneral" Type="int" Mode="In" />
         </Function>
+        <Function Name="Listado_PagosPorProyectos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
         <Function Name="ListadoPagosPorProyecto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
@@ -2158,6 +2161,9 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="Pagoes" EntityType="PresupuestoModel.Pago" />
+          <FunctionImport Name="Listado_PagosPorProyectos" ReturnType="Collection(PresupuestoModel.Listado_PagosPorProyectos_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="CompaniaDato_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -2630,6 +2636,15 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <Property Name="IdProyecto" Type="Int32" />
           <Property Name="IdEmpleado" Type="Int32" />
         </EntityType>
+        <ComplexType Name="Listado_PagosPorProyectos_Result">
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Valor" Nullable="true" />
+          <Property Type="String" Name="Fecha" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="TipoEmpleado" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="IdPago" Nullable="false" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3679,6 +3694,19 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Listado_PagosPorProyectos" FunctionName="PresupuestoModel.Store.Listado_PagosPorProyectos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PresupuestoModel.Listado_PagosPorProyectos_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdPago" ColumnName="IdPago" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
