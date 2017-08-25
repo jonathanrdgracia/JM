@@ -18,7 +18,6 @@
     <NavigationProperty Name="Pago_Informal" Relationship="Self.FK_Pago_Informal_Abonado" FromRole="Abonado" ToRole="Pago_Informal" />
     <NavigationProperty Name="Proyecto_detalle" Relationship="Self.FK_Proyecto_detalle_Abonado" FromRole="Abonado" ToRole="Proyecto_detalle" />
     <NavigationProperty Name="ProyectoDetalleSinPresupuestoes" Relationship="Self.FK_ProyectoDetalleSinPresupuesto_Abonado" FromRole="Abonado" ToRole="ProyectoDetalleSinPresupuesto" />
-    <NavigationProperty Name="Pagoes" Relationship="PresupuestoModel.FK_Pago_Abonado" FromRole="Abonado" ToRole="Pago" />
   </EntityType>
   <EntityType Name="Cliente">
     <Key>
@@ -183,7 +182,6 @@
     <NavigationProperty Name="PagoMaestroes" Relationship="Self.FK_PagoMaestro_ProyectoConPresupuesto" FromRole="ProyectoConPresupuesto" ToRole="PagoMaestro" />
     <NavigationProperty Name="Presupuesto" Relationship="Self.FK_ProyectoConPresupuesto_Presupuestos" FromRole="ProyectoConPresupuesto" ToRole="Presupuestos" />
     <NavigationProperty Name="Proyecto_detalle" Relationship="Self.FK_Proyecto_detalle_ProyectoConPresupuesto" FromRole="ProyectoConPresupuesto" ToRole="Proyecto_detalle" />
-    <NavigationProperty Name="Pagoes" Relationship="PresupuestoModel.FK_Pago_ProyectoConPresupuesto" FromRole="ProyectoConPresupuesto" ToRole="Pago" />
   </EntityType>
   <EntityType Name="ProyectoDetalleSinPresupuesto">
     <Key>
@@ -873,15 +871,6 @@
     <FunctionImport Name="ReporteMateriales5" ReturnType="Collection(PresupuestoModel.ReporteMateriales5_Result)">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <EntitySet Name="Pagoes" EntityType="PresupuestoModel.Pago" />
-    <AssociationSet Name="FK_Pago_Abonado" Association="PresupuestoModel.FK_Pago_Abonado">
-      <End Role="Abonado" EntitySet="Abonadoes" />
-      <End Role="Pago" EntitySet="Pagoes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Pago_ProyectoConPresupuesto" Association="PresupuestoModel.FK_Pago_ProyectoConPresupuesto">
-      <End Role="ProyectoConPresupuesto" EntitySet="ProyectoConPresupuestoes" />
-      <End Role="Pago" EntitySet="Pagoes" />
-    </AssociationSet>
     <FunctionImport Name="update_Materiales">
       <Parameter Name="idPresupuesto" Mode="In" Type="Int32" />
       <Parameter Name="descrip" Mode="In" Type="String" />
@@ -991,6 +980,7 @@
     <FunctionImport Name="ListadoPagosPorProyectos" ReturnType="Collection(PresupuestoModel.ListadoPagosPorProyectos_Result)">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="Pagoes" EntityType="PresupuestoModel.Pago" />
   </EntityContainer>
   <ComplexType Name="CompaniaDato_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
@@ -1291,44 +1281,6 @@
     <Property Type="Int32" Name="Tipo" Nullable="true" />
     <Property Type="Int32" Name="TotalGenetal" Nullable="true" />
   </ComplexType>
-  <EntityType Name="Pago">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Valor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Fecha" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-    <Property Name="IdProyecto" Type="Int32" />
-    <Property Name="IdEmpleado" Type="Int32" />
-    <NavigationProperty Name="Abonado" Relationship="PresupuestoModel.FK_Pago_Abonado" FromRole="Pago" ToRole="Abonado" />
-    <NavigationProperty Name="ProyectoConPresupuesto" Relationship="PresupuestoModel.FK_Pago_ProyectoConPresupuesto" FromRole="Pago" ToRole="ProyectoConPresupuesto" />
-    <Property Name="PagoPorDia" Type="Int32" />
-    <Property Name="DiasTrabajados" Type="Int32" />
-  </EntityType>
-  <Association Name="FK_Pago_Abonado">
-    <End Type="PresupuestoModel.Abonado" Role="Abonado" Multiplicity="0..1" />
-    <End Type="PresupuestoModel.Pago" Role="Pago" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Abonado">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Pago">
-        <PropertyRef Name="IdEmpleado" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Pago_ProyectoConPresupuesto">
-    <End Type="PresupuestoModel.ProyectoConPresupuesto" Role="ProyectoConPresupuesto" Multiplicity="0..1" />
-    <End Type="PresupuestoModel.Pago" Role="Pago" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ProyectoConPresupuesto">
-        <PropertyRef Name="IdProyecto" />
-      </Principal>
-      <Dependent Role="Pago">
-        <PropertyRef Name="IdProyecto" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="Materiales_detalle">
     <Key>
       <PropertyRef Name="Id" />
@@ -1489,4 +1441,16 @@
     <Property Type="Int32" Name="Id" Nullable="false" />
     <Property Type="Int32" Name="IdPago" Nullable="false" />
   </ComplexType>
+  <EntityType Name="Pago">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PagoPorDia" Type="Int32" />
+    <Property Name="DiasTrabajados" Type="Int32" />
+    <Property Name="Valor" Type="Int32" />
+    <Property Name="Fecha" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="IdProyecto" Type="Int32" />
+    <Property Name="IdEmpleado" Type="Int32" />
+  </EntityType>
 </Schema>

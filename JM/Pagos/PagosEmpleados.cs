@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JM.Clientes;
 
 namespace JM.Pagos
 {
@@ -46,7 +47,9 @@ namespace JM.Pagos
 
         private void PagosEmpleados_Load(object sender, EventArgs e)
         {
-           
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "dd-MM- yyyy";
+            dateTimePicker1.Value = DateTime.Now;
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)
@@ -56,9 +59,7 @@ namespace JM.Pagos
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //var x0 = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            //var x1 = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            //var x3 = this.dataGridView1.CurrentRow.Cells[3].Value.ToString();
+           
            
             //textBox3.Text=x0;
             //textBox14.Text = x1;
@@ -76,9 +77,12 @@ namespace JM.Pagos
                          DB.Pago pagos = new DB.Pago
                         {
                             IdProyecto=idProyecto,
-                            Valor=item.Pago.ToString(),
+                            Valor=item.Total,
                             Fecha=item.Fecha,
-                            IdEmpleado=item.Id
+                            IdEmpleado=item.Id,
+                            DiasTrabajados = item.DiasTrabajados,
+                            PagoPorDia = item.Pago
+
                             
                         };
                          db.Pagoes.Add(pagos);
@@ -96,7 +100,9 @@ namespace JM.Pagos
                 public string Nombre { get; set; }
                 public string Ocupacion { get; set; }
                 public string Fecha { get; set; }
-                public int Pago { get; set; }
+                public int? Pago { get; set; }
+                public int DiasTrabajados { get; set; }
+                public int Total { get; set; }
             }
 
             private void button1_Click(object sender, EventArgs e)
@@ -138,13 +144,17 @@ namespace JM.Pagos
             {
                
                 
-                EmpleadoLista.Add(new EmpleadoPago {
-                    Id=Convert.ToInt32(textBox3.Text),
-                    Nombre=textBox14.Text,
-                    Ocupacion=textBox5.Text,
-                    Pago=Convert.ToInt32(textBox2.Text),
-                    Fecha=dateTimePicker1.Text
-                });
+                    EmpleadoLista.Add(new EmpleadoPago {
+
+                        Id=Convert.ToInt32(textBox3.Text),
+                        Nombre=textBox14.Text,
+                        Ocupacion=textBox5.Text,
+                        Pago=Convert.ToInt32(textBox2.Text),
+                        Fecha=dateTimePicker1.Text,
+                        Total = Convert.ToInt32(textBox2.Text) * Convert.ToInt32(textBox4.Text),
+                        DiasTrabajados = Convert.ToInt32(textBox4.Text)
+
+                    });
 
 
                 this.dataGridView2.Rows.Clear();
@@ -155,14 +165,17 @@ namespace JM.Pagos
                             i.Id,
                             i.Nombre,
                             i.Ocupacion,
-                            Convert.ToInt32(i.Pago).ToString("C",nfi),
+                            i.DiasTrabajados,
+                            "RD"+Convert.ToInt32(i.Pago).ToString("C",nfi),
+                            "RD" + Convert.ToInt32(i.Total).ToString("C", nfi),
                             i.Fecha
                         );
                 }
-                textBox14.Text=string.Empty;
-                textBox5.Text=string.Empty;
-                textBox2.Text=string.Empty;
-                textBox3.Text = string.Empty;
+            textBox14.Text=string.Empty;
+            textBox5.Text=string.Empty;
+            textBox2.Text=string.Empty;
+            textBox3.Text = string.Empty;
+            textBox4.Text = string.Empty;
                     
 
             }
@@ -205,50 +218,61 @@ namespace JM.Pagos
 
             private void textBox1_KeyUp(object sender, KeyEventArgs e)
             {
-                //var query = "%" + textBox1.Text + "%";
-                //this.dataGridView1.Rows.Clear();
-                //using (var db = new PresupuestoEntities5())
-                //{
-                //    foreach (var i in db.SP_ModificarProyectoFiltro(idProyecto, query))
-                //    {
-                //        this.dataGridView1.Rows.Add
-                //            (
-                //            i.IdEmpleado,
-                //            i.Nombre+" "+i.Apellidos,
-                //            i.Telefono,
-                //            i.TipoEmpleado
-
-                //            );
-
-                //    }
-                //}
+              
             }
 
             private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
             {
-                //var query = "%" + textBox1.Text + "%";
-                //this.dataGridView1.Rows.Clear();
-                //using (var db = new PresupuestoEntities5())
-                //{
-                //    foreach (var i in db.SP_ModificarProyectoFiltro(idProyecto, query))
-                //    {
-                //        this.dataGridView1.Rows.Add
-                //            (
-                //            i.IdEmpleado,
-                //            i.Nombre,
-                //            i.Telefono,
-                //            i.TipoEmpleado
-
-                //            );
-
-                //    }
-                //}
+              
 
             }
 
             private void button17_Click(object sender, EventArgs e)
             {
                 this.Close();
+            }
+
+            private void button4_Click(object sender, EventArgs e)
+            {
+               
+                ListaClienteParaPagos c = new ListaClienteParaPagos();
+                c.IdProyecto = IdProyecto;
+                c.enviado += new ListaClienteParaPagos.enviar(ejecutar);
+                c.ShowDialog();
+            }
+            private void ejecutar(string dato,string dato2,string dato3)
+            {
+                textBox3.Text = dato;
+                textBox14.Text = dato2;
+                textBox5.Text = dato3;
+            }
+
+            private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+            (e.KeyChar != '.'))
+                {
+                    e.Handled = true;
+                }
+
+                // only allow one decimal point
+                if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+                {
+                    e.Handled = true;
+                }
+            }
+
+            private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+            {
+                int currentIndex = this.dataGridView2.CurrentCell.RowIndex;
+                var x0 =dataGridView2.CurrentRow.Cells[3].Value.ToString();
+                var dataGridViewRow = this.dataGridView2.CurrentRow;
+                if (dataGridViewRow != null)
+                {
+                    var id =Convert.ToInt32(dataGridViewRow.Cells[0].Value.ToString());
+                    textBox2.Text = EmpleadoLista.ElementAt(currentIndex).Pago.ToString();
+                    textBox4.Text = x0;
+                }
             }
     }
 }

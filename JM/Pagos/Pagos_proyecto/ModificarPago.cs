@@ -51,7 +51,7 @@ namespace JM.Pagos.Pagos_proyecto
                              where x.Id == _idPago
                              select x).First();
 
-                    c.Valor = f;
+                    c.Valor = Convert.ToInt32(f);
                     db.SaveChanges();
                     MessageBox.Show("Pago actualizado con exito");
                 }

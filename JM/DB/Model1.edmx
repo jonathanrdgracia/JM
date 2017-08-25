@@ -130,7 +130,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PagoPorDia" Type="int" />
           <Property Name="DiasTrabajados" Type="int" />
-          <Property Name="Valor" Type="nvarchar" MaxLength="50" />
+          <Property Name="Valor" Type="int" />
           <Property Name="Fecha" Type="nvarchar" MaxLength="15" />
           <Property Name="IdProyecto" Type="int" />
           <Property Name="IdEmpleado" Type="int" />
@@ -506,18 +506,6 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Pago_Abonado">
-          <End Role="Abonado" Type="Self.Abonado" Multiplicity="0..1" />
-          <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Abonado">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Pago">
-              <PropertyRef Name="IdEmpleado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Pago_Informal_Abonado">
           <End Role="Abonado" Type="Self.Abonado" Multiplicity="0..1" />
           <End Role="Pago_Informal" Type="Self.Pago_Informal" Multiplicity="*" />
@@ -527,18 +515,6 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
             </Principal>
             <Dependent Role="Pago_Informal">
               <PropertyRef Name="IdAbonado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Pago_ProyectoConPresupuesto">
-          <End Role="ProyectoConPresupuesto" Type="Self.ProyectoConPresupuesto" Multiplicity="0..1" />
-          <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProyectoConPresupuesto">
-              <PropertyRef Name="IdProyecto" />
-            </Principal>
-            <Dependent Role="Pago">
-              <PropertyRef Name="IdProyecto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1148,17 +1124,9 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
             <End Role="Presupuestos" EntitySet="Presupuestos" />
             <End Role="Obra_detalle" EntitySet="Obra_detalle" />
           </AssociationSet>
-          <AssociationSet Name="FK_Pago_Abonado" Association="Self.FK_Pago_Abonado">
-            <End Role="Abonado" EntitySet="Abonado" />
-            <End Role="Pago" EntitySet="Pago" />
-          </AssociationSet>
           <AssociationSet Name="FK_Pago_Informal_Abonado" Association="Self.FK_Pago_Informal_Abonado">
             <End Role="Abonado" EntitySet="Abonado" />
             <End Role="Pago_Informal" EntitySet="Pago_Informal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Pago_ProyectoConPresupuesto" Association="Self.FK_Pago_ProyectoConPresupuesto">
-            <End Role="ProyectoConPresupuesto" EntitySet="ProyectoConPresupuesto" />
-            <End Role="Pago" EntitySet="Pago" />
           </AssociationSet>
           <AssociationSet Name="FK_PagoDetalle_PagoMaestro" Association="Self.FK_PagoDetalle_PagoMaestro">
             <End Role="PagoMaestro" EntitySet="PagoMaestro" />
@@ -1227,7 +1195,6 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <NavigationProperty Name="Pago_Informal" Relationship="Self.FK_Pago_Informal_Abonado" FromRole="Abonado" ToRole="Pago_Informal" />
           <NavigationProperty Name="Proyecto_detalle" Relationship="Self.FK_Proyecto_detalle_Abonado" FromRole="Abonado" ToRole="Proyecto_detalle" />
           <NavigationProperty Name="ProyectoDetalleSinPresupuestoes" Relationship="Self.FK_ProyectoDetalleSinPresupuesto_Abonado" FromRole="Abonado" ToRole="ProyectoDetalleSinPresupuesto" />
-          <NavigationProperty Name="Pagoes" Relationship="PresupuestoModel.FK_Pago_Abonado" FromRole="Abonado" ToRole="Pago" />
         </EntityType>
         <EntityType Name="Cliente">
           <Key>
@@ -1392,7 +1359,6 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <NavigationProperty Name="PagoMaestroes" Relationship="Self.FK_PagoMaestro_ProyectoConPresupuesto" FromRole="ProyectoConPresupuesto" ToRole="PagoMaestro" />
           <NavigationProperty Name="Presupuesto" Relationship="Self.FK_ProyectoConPresupuesto_Presupuestos" FromRole="ProyectoConPresupuesto" ToRole="Presupuestos" />
           <NavigationProperty Name="Proyecto_detalle" Relationship="Self.FK_Proyecto_detalle_ProyectoConPresupuesto" FromRole="ProyectoConPresupuesto" ToRole="Proyecto_detalle" />
-          <NavigationProperty Name="Pagoes" Relationship="PresupuestoModel.FK_Pago_ProyectoConPresupuesto" FromRole="ProyectoConPresupuesto" ToRole="Pago" />
         </EntityType>
         <EntityType Name="ProyectoDetalleSinPresupuesto">
           <Key>
@@ -2082,15 +2048,6 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <FunctionImport Name="ReporteMateriales5" ReturnType="Collection(PresupuestoModel.ReporteMateriales5_Result)">
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="Pagoes" EntityType="PresupuestoModel.Pago" />
-          <AssociationSet Name="FK_Pago_Abonado" Association="PresupuestoModel.FK_Pago_Abonado">
-            <End Role="Abonado" EntitySet="Abonadoes" />
-            <End Role="Pago" EntitySet="Pagoes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Pago_ProyectoConPresupuesto" Association="PresupuestoModel.FK_Pago_ProyectoConPresupuesto">
-            <End Role="ProyectoConPresupuesto" EntitySet="ProyectoConPresupuestoes" />
-            <End Role="Pago" EntitySet="Pagoes" />
-          </AssociationSet>
           <FunctionImport Name="update_Materiales">
             <Parameter Name="idPresupuesto" Mode="In" Type="Int32" />
             <Parameter Name="descrip" Mode="In" Type="String" />
@@ -2200,6 +2157,7 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <FunctionImport Name="ListadoPagosPorProyectos" ReturnType="Collection(PresupuestoModel.ListadoPagosPorProyectos_Result)">
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="Pagoes" EntityType="PresupuestoModel.Pago" />
           </EntityContainer>
         <ComplexType Name="CompaniaDato_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -2500,44 +2458,6 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <Property Type="Int32" Name="Tipo" Nullable="true" />
           <Property Type="Int32" Name="TotalGenetal" Nullable="true" />
         </ComplexType>
-        <EntityType Name="Pago">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Valor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Fecha" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="IdProyecto" Type="Int32" />
-          <Property Name="IdEmpleado" Type="Int32" />
-          <NavigationProperty Name="Abonado" Relationship="PresupuestoModel.FK_Pago_Abonado" FromRole="Pago" ToRole="Abonado" />
-          <NavigationProperty Name="ProyectoConPresupuesto" Relationship="PresupuestoModel.FK_Pago_ProyectoConPresupuesto" FromRole="Pago" ToRole="ProyectoConPresupuesto" />
-          <Property Name="PagoPorDia" Type="Int32" />
-          <Property Name="DiasTrabajados" Type="Int32" />
-        </EntityType>
-        <Association Name="FK_Pago_Abonado">
-          <End Type="PresupuestoModel.Abonado" Role="Abonado" Multiplicity="0..1" />
-          <End Type="PresupuestoModel.Pago" Role="Pago" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Abonado">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Pago">
-              <PropertyRef Name="IdEmpleado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Pago_ProyectoConPresupuesto">
-          <End Type="PresupuestoModel.ProyectoConPresupuesto" Role="ProyectoConPresupuesto" Multiplicity="0..1" />
-          <End Type="PresupuestoModel.Pago" Role="Pago" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProyectoConPresupuesto">
-              <PropertyRef Name="IdProyecto" />
-            </Principal>
-            <Dependent Role="Pago">
-              <PropertyRef Name="IdProyecto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Materiales_detalle">
           <Key>
             <PropertyRef Name="Id" />
@@ -2698,6 +2618,18 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="Int32" Name="IdPago" Nullable="false" />
         </ComplexType>
+        <EntityType Name="Pago">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PagoPorDia" Type="Int32" />
+          <Property Name="DiasTrabajados" Type="Int32" />
+          <Property Name="Valor" Type="Int32" />
+          <Property Name="Fecha" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="IdProyecto" Type="Int32" />
+          <Property Name="IdEmpleado" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3543,19 +3475,6 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="Pagoes">
-            <EntityTypeMapping TypeName="PresupuestoModel.Pago">
-              <MappingFragment StoreEntitySet="Pago">
-                <ScalarProperty Name="DiasTrabajados" ColumnName="DiasTrabajados" />
-                <ScalarProperty Name="PagoPorDia" ColumnName="PagoPorDia" />
-                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
-                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Valor" ColumnName="Valor" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="update_Materiales" FunctionName="PresupuestoModel.Store.update_Materiales" />
           <FunctionImportMapping FunctionImportName="update_Obra" FunctionName="PresupuestoModel.Store.update_Obra" />
           <FunctionImportMapping FunctionImportName="insert_Materiales" FunctionName="PresupuestoModel.Store.insert_Materiales" />
@@ -3747,6 +3666,19 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Pagoes">
+            <EntityTypeMapping TypeName="PresupuestoModel.Pago">
+              <MappingFragment StoreEntitySet="Pago">
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="DiasTrabajados" ColumnName="DiasTrabajados" />
+                <ScalarProperty Name="PagoPorDia" ColumnName="PagoPorDia" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

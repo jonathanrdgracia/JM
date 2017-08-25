@@ -123,3 +123,4 @@ C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\obj\Release\JM.csp
 C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\obj\Release\JM.Pagos.Pagos_proyecto.ModificarPago.resources
 C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\obj\Release\JM.Clientes.ListarClientes1.resources
 C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\obj\Release\JM.Clientes.ListarClientes3.resources
+C:\Users\Jonathan\Documents\Visual Studio 2013\Projects\JM\JM\obj\Release\JM.Pagos.ListaClienteParaPagos.resources

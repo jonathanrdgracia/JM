@@ -21,7 +21,6 @@ namespace JM.DB
             this.Pago_Informal = new HashSet<Pago_Informal>();
             this.Proyecto_detalle = new HashSet<Proyecto_detalle>();
             this.ProyectoDetalleSinPresupuestoes = new HashSet<ProyectoDetalleSinPresupuesto>();
-            this.Pagoes = new HashSet<Pago>();
         }
     
         public int Id { get; set; }
@@ -43,7 +42,5 @@ namespace JM.DB
         public virtual ICollection<Proyecto_detalle> Proyecto_detalle { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProyectoDetalleSinPresupuesto> ProyectoDetalleSinPresupuestoes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pago> Pagoes { get; set; }
     }
 }

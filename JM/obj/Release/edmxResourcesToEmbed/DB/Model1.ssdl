@@ -125,7 +125,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PagoPorDia" Type="int" />
     <Property Name="DiasTrabajados" Type="int" />
-    <Property Name="Valor" Type="nvarchar" MaxLength="50" />
+    <Property Name="Valor" Type="int" />
     <Property Name="Fecha" Type="nvarchar" MaxLength="15" />
     <Property Name="IdProyecto" Type="int" />
     <Property Name="IdEmpleado" Type="int" />
@@ -501,18 +501,6 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Pago_Abonado">
-    <End Role="Abonado" Type="Self.Abonado" Multiplicity="0..1" />
-    <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Abonado">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Pago">
-        <PropertyRef Name="IdEmpleado" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Pago_Informal_Abonado">
     <End Role="Abonado" Type="Self.Abonado" Multiplicity="0..1" />
     <End Role="Pago_Informal" Type="Self.Pago_Informal" Multiplicity="*" />
@@ -522,18 +510,6 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
       </Principal>
       <Dependent Role="Pago_Informal">
         <PropertyRef Name="IdAbonado" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Pago_ProyectoConPresupuesto">
-    <End Role="ProyectoConPresupuesto" Type="Self.ProyectoConPresupuesto" Multiplicity="0..1" />
-    <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ProyectoConPresupuesto">
-        <PropertyRef Name="IdProyecto" />
-      </Principal>
-      <Dependent Role="Pago">
-        <PropertyRef Name="IdProyecto" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1143,17 +1119,9 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
       <End Role="Presupuestos" EntitySet="Presupuestos" />
       <End Role="Obra_detalle" EntitySet="Obra_detalle" />
     </AssociationSet>
-    <AssociationSet Name="FK_Pago_Abonado" Association="Self.FK_Pago_Abonado">
-      <End Role="Abonado" EntitySet="Abonado" />
-      <End Role="Pago" EntitySet="Pago" />
-    </AssociationSet>
     <AssociationSet Name="FK_Pago_Informal_Abonado" Association="Self.FK_Pago_Informal_Abonado">
       <End Role="Abonado" EntitySet="Abonado" />
       <End Role="Pago_Informal" EntitySet="Pago_Informal" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Pago_ProyectoConPresupuesto" Association="Self.FK_Pago_ProyectoConPresupuesto">
-      <End Role="ProyectoConPresupuesto" EntitySet="ProyectoConPresupuesto" />
-      <End Role="Pago" EntitySet="Pago" />
     </AssociationSet>
     <AssociationSet Name="FK_PagoDetalle_PagoMaestro" Association="Self.FK_PagoDetalle_PagoMaestro">
       <End Role="PagoMaestro" EntitySet="PagoMaestro" />

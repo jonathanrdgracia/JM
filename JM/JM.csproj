@@ -654,6 +654,12 @@
     <Compile Include="Pagos\CrearFolderPago.Designer.cs">
       <DependentUpon>CrearFolderPago.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pagos\ListaClienteParaPagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pagos\ListaClienteParaPagos.Designer.cs">
+      <DependentUpon>ListaClienteParaPagos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pagos\ListadoFolder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1035,6 +1041,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pagos\CrearFolderPago.resx">
       <DependentUpon>CrearFolderPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pagos\ListaClienteParaPagos.resx">
+      <DependentUpon>ListaClienteParaPagos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pagos\ListadoFolder.resx">
       <DependentUpon>ListadoFolder.cs</DependentUpon>

@@ -59,10 +59,10 @@ namespace JM.DB
         public virtual DbSet<Vista_ListaDeMateriales> Vista_ListaDeMateriales { get; set; }
         public virtual DbSet<Vista_ListadoPresupuestoMateriales> Vista_ListadoPresupuestoMateriales { get; set; }
         public virtual DbSet<Vista_ListadoPresupuestoObra> Vista_ListadoPresupuestoObra { get; set; }
-        public virtual DbSet<Pago> Pagoes { get; set; }
         public virtual DbSet<Materiales_detalle> Materiales_detalle { get; set; }
         public virtual DbSet<Obra_detalle> Obra_detalle { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<Pago> Pagoes { get; set; }
     
         public virtual ObjectResult<CompaniaDato_Result> CompaniaDato()
         {

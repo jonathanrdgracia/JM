@@ -53,14 +53,12 @@
         <AssociationConnector Association="PresupuestoModel.FK_ProyectoConPresupuesto_Presupuestos" ManuallyRouted="false" />
         <AssociationConnector Association="PresupuestoModel.FK_Proyecto_detalle_ProyectoConPresupuesto" ManuallyRouted="false" />
         <AssociationConnector Association="PresupuestoModel.FK_ProyectoDetalleSinPresupuesto_ProyectoSinPresupuesto" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="PresupuestoModel.Pago" Width="1.5" PointX="5.25" PointY="4" />
-        <AssociationConnector Association="PresupuestoModel.FK_Pago_Abonado" />
-        <AssociationConnector Association="PresupuestoModel.FK_Pago_ProyectoConPresupuesto" />
         <EntityTypeShape EntityType="PresupuestoModel.Materiales_detalle" Width="1.5" PointX="3" PointY="24.25" />
         <EntityTypeShape EntityType="PresupuestoModel.Obra_detalle" Width="1.5" PointX="3" PointY="20.5" />
         <AssociationConnector Association="PresupuestoModel.FK_Presupuestos_listado_Presupuestos" />
         <AssociationConnector Association="PresupuestoModel.FK_Obra_detalle_Presupuestos" />
         <EntityTypeShape EntityType="PresupuestoModel.Usuario" Width="1.5" PointX="5.375" PointY="16.75" />
+        <EntityTypeShape EntityType="PresupuestoModel.Pago" Width="1.5" PointX="17.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
