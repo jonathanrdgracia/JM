@@ -353,8 +353,7 @@ namespace JM
 
         private void verTodosLosPagosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ListadoTodoPagoProyecto l = new ListadoTodoPagoProyecto();
-            l.ShowDialog();
+          
         }
 
         private void presupuestoDeManoDeObraToolStripMenuItem_Click(object sender, EventArgs e)
@@ -437,6 +436,12 @@ namespace JM
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void verPagosPorProyectosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListadoTodoPagoProyecto l = new ListadoTodoPagoProyecto();
+            l.ShowDialog();
         }
     }
 }

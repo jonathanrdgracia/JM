@@ -90,6 +90,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.verTodosLosPagosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.verPagosPorProyectosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -134,7 +136,7 @@
             this.proyectosInactivosToolStripMenuItem});
             this.proyectosToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("proyectosToolStripMenuItem1.Image")));
             this.proyectosToolStripMenuItem1.Name = "proyectosToolStripMenuItem1";
-            this.proyectosToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.proyectosToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
             this.proyectosToolStripMenuItem1.Text = "Proyectos";
             // 
             // proyectosInactivosToolStripMenuItem
@@ -151,7 +153,7 @@
             this.eliminadosToolStripMenuItem});
             this.clientesToolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("clientesToolStripMenuItem2.Image")));
             this.clientesToolStripMenuItem2.Name = "clientesToolStripMenuItem2";
-            this.clientesToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.clientesToolStripMenuItem2.Size = new System.Drawing.Size(132, 22);
             this.clientesToolStripMenuItem2.Text = "Clientes";
             // 
             // eliminadosToolStripMenuItem
@@ -168,7 +170,7 @@
             this.borradosToolStripMenuItem});
             this.empleadosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("empleadosToolStripMenuItem.Image")));
             this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
-            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.empleadosToolStripMenuItem.Text = "Empleados";
             // 
             // borradosToolStripMenuItem
@@ -185,7 +187,7 @@
             this.modificarParametrosToolStripMenuItem});
             this.empresaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("empresaToolStripMenuItem.Image")));
             this.empresaToolStripMenuItem.Name = "empresaToolStripMenuItem";
-            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.empresaToolStripMenuItem.Text = "Empresa";
             // 
             // modificarParametrosToolStripMenuItem
@@ -202,7 +204,7 @@
             this.modificarUsuarioYContraseñaToolStripMenuItem});
             this.usarioToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("usarioToolStripMenuItem.Image")));
             this.usarioToolStripMenuItem.Name = "usarioToolStripMenuItem";
-            this.usarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.usarioToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.usarioToolStripMenuItem.Text = "Usario";
             // 
             // modificarUsuarioYContraseñaToolStripMenuItem
@@ -385,7 +387,7 @@
             this.crearFolderDePagoToolStripMenuItem});
             this.pagosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pagosToolStripMenuItem.Image")));
             this.pagosToolStripMenuItem.Name = "pagosToolStripMenuItem";
-            this.pagosToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.pagosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pagosToolStripMenuItem.Text = "Pagos";
             // 
             // porProyectoToolStripMenuItem
@@ -398,10 +400,13 @@
             // 
             // verTodosLosPagosToolStripMenuItem
             // 
+            this.verTodosLosPagosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verTodosLosPagosToolStripMenuItem1,
+            this.verPagosPorProyectosToolStripMenuItem});
             this.verTodosLosPagosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("verTodosLosPagosToolStripMenuItem.Image")));
             this.verTodosLosPagosToolStripMenuItem.Name = "verTodosLosPagosToolStripMenuItem";
             this.verTodosLosPagosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.verTodosLosPagosToolStripMenuItem.Text = "Ver todos los pagos";
+            this.verTodosLosPagosToolStripMenuItem.Text = "Ver pagos";
             this.verTodosLosPagosToolStripMenuItem.Click += new System.EventHandler(this.verTodosLosPagosToolStripMenuItem_Click);
             // 
             // crearFolderDePagoToolStripMenuItem
@@ -430,7 +435,7 @@
             this.categoriasToolStripMenuItem});
             this.abonadoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("abonadoToolStripMenuItem.Image")));
             this.abonadoToolStripMenuItem.Name = "abonadoToolStripMenuItem";
-            this.abonadoToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.abonadoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.abonadoToolStripMenuItem.Text = "Empleados";
             // 
             // nuevoAbonadoToolStripMenuItem
@@ -694,6 +699,19 @@
             this.pictureBox2.TabIndex = 18;
             this.pictureBox2.TabStop = false;
             // 
+            // verTodosLosPagosToolStripMenuItem1
+            // 
+            this.verTodosLosPagosToolStripMenuItem1.Name = "verTodosLosPagosToolStripMenuItem1";
+            this.verTodosLosPagosToolStripMenuItem1.Size = new System.Drawing.Size(201, 22);
+            this.verTodosLosPagosToolStripMenuItem1.Text = "Ver todos los pagos";
+            // 
+            // verPagosPorProyectosToolStripMenuItem
+            // 
+            this.verPagosPorProyectosToolStripMenuItem.Name = "verPagosPorProyectosToolStripMenuItem";
+            this.verPagosPorProyectosToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.verPagosPorProyectosToolStripMenuItem.Text = "Ver pagos por proyectos";
+            this.verPagosPorProyectosToolStripMenuItem.Click += new System.EventHandler(this.verPagosPorProyectosToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -791,6 +809,8 @@
         private System.Windows.Forms.ToolStripMenuItem eliminarEmpleadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoriasDeEmpleadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem agregarNuevaCategoriaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem verTodosLosPagosToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem verPagosPorProyectosToolStripMenuItem;
     }
 }
 

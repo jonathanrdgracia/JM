@@ -20,8 +20,8 @@ namespace JM.Pagos
             InitializeComponent();
         }
         NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
-           
 
+        private EmpleadoPago _Empleado;
         List<EmpleadoPago> EmpleadoLista = new List<EmpleadoPago>();
         private int idProyecto;
         public int IdProyecto
@@ -265,13 +265,60 @@ namespace JM.Pagos
             private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
             {
                 int currentIndex = this.dataGridView2.CurrentCell.RowIndex;
+              
+                string nombre = dataGridView2.CurrentRow.Cells[1].Value.ToString();
                 var x0 =dataGridView2.CurrentRow.Cells[3].Value.ToString();
+                string ocupacion = dataGridView2.CurrentRow.Cells[2].Value.ToString();
                 var dataGridViewRow = this.dataGridView2.CurrentRow;
+                
                 if (dataGridViewRow != null)
                 {
                     var id =Convert.ToInt32(dataGridViewRow.Cells[0].Value.ToString());
                     textBox2.Text = EmpleadoLista.ElementAt(currentIndex).Pago.ToString();
                     textBox4.Text = x0;
+                    textBox5.Text = ocupacion;
+                    textBox3.Text = id.ToString();
+                    textBox14.Text = nombre;
+                }
+            }
+
+            private void button5_Click(object sender, EventArgs e)
+            {
+                if (dataGridView2.RowCount!=0)
+                {
+                    _Empleado = new EmpleadoPago();
+                    int currentIndex = this.dataGridView2.CurrentCell.RowIndex;
+                    _Empleado.Id = Convert.ToInt32(textBox3.Text);
+                    _Empleado.Fecha = dateTimePicker1.Text;
+                    _Empleado.DiasTrabajados = Convert.ToInt32(textBox4.Text);
+                    _Empleado.Pago = Convert.ToInt32(textBox2.Text);
+                    _Empleado.Nombre = textBox14.Text;
+                    _Empleado.Ocupacion = textBox5.Text;
+                    _Empleado.Total = (Convert.ToInt32(textBox2.Text) * Convert.ToInt32(textBox4.Text));
+
+                    EmpleadoLista.RemoveAt(currentIndex);
+                    EmpleadoLista.Insert(currentIndex, _Empleado);
+                    this.dataGridView2.Rows.Clear();
+                    foreach (var i in EmpleadoLista)
+                    {
+                        dataGridView2.Rows.Add
+                            (
+                                i.Id,
+                                i.Nombre,
+                                i.Ocupacion,
+                                i.DiasTrabajados,
+                                "RD" + Convert.ToInt32(i.Pago).ToString("C", nfi),
+                                "RD" + Convert.ToInt32(i.Total).ToString("C", nfi),
+                                i.Fecha
+                            );
+                    }
+                    
+                    textBox4.Text = string.Empty;
+                    textBox2.Text= string.Empty;
+                    textBox3.Text= string.Empty;
+                    textBox14.Text= string.Empty;
+                    textBox5.Text= string.Empty;
+
                 }
             }
     }
