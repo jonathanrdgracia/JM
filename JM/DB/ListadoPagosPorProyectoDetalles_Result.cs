@@ -18,5 +18,8 @@ namespace JM.DB
         public string TipoEmpleado { get; set; }
         public int Id { get; set; }
         public Nullable<int> Valor { get; set; }
+        public Nullable<int> DiasTrabajados { get; set; }
+        public Nullable<int> PagoPorDia { get; set; }
+        public Nullable<int> CantidadPagos { get; set; }
     }
 }

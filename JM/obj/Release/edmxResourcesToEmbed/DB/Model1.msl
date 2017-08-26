@@ -1,391 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="PresupuestoModelStoreContainer" CdmEntityContainer="PresupuestoEntities5">
-    <EntitySetMapping Name="Abonadoes">
-      <EntityTypeMapping TypeName="PresupuestoModel.Abonado">
-        <MappingFragment StoreEntitySet="Abonado">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
-          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
-          <ScalarProperty Name="Fecha_inscripcion" ColumnName="Fecha_inscripcion" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-          <ScalarProperty Name="Lugar" ColumnName="Lugar" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-          <ScalarProperty Name="IdTipoEmpleado" ColumnName="IdTipoEmpleado" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Clientes">
-      <EntityTypeMapping TypeName="PresupuestoModel.Cliente">
-        <MappingFragment StoreEntitySet="Clientes">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-          <ScalarProperty Name="TipoCliente" ColumnName="TipoCliente" />
-          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Companias">
-      <EntityTypeMapping TypeName="PresupuestoModel.Compania">
-        <MappingFragment StoreEntitySet="Compania">
-          <ScalarProperty Name="Correo" ColumnName="Correo" />
-          <ScalarProperty Name="Web" ColumnName="Web" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Logo" ColumnName="Logo" />
-          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-          <ScalarProperty Name="RNC" ColumnName="RNC" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Comprobante_Pago">
-      <EntityTypeMapping TypeName="PresupuestoModel.Comprobante_Pago">
-        <MappingFragment StoreEntitySet="Comprobante_Pago">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Fecha_Pago" ColumnName="Fecha_Pago" />
-          <ScalarProperty Name="Periodo_Pago" ColumnName="Periodo_Pago" />
-          <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
-          <ScalarProperty Name="Concepto" ColumnName="Concepto" />
-          <ScalarProperty Name="Valor" ColumnName="Valor" />
-          <ScalarProperty Name="IdAbonado" ColumnName="IdAbonado" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Comprobante_pago_informal">
-      <EntityTypeMapping TypeName="PresupuestoModel.Comprobante_pago_informal">
-        <MappingFragment StoreEntitySet="Comprobante_pago_informal">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Razon" ColumnName="Razon" />
-          <ScalarProperty Name="CajaChica" ColumnName="CajaChica" />
-          <ScalarProperty Name="Fecha_Pago" ColumnName="Fecha_Pago" />
-          <ScalarProperty Name="Periodo_pago" ColumnName="Periodo_pago" />
-          <ScalarProperty Name="IdPagoInformal" ColumnName="IdPagoInformal" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ComprobantePagoSinPresupuestoes">
-      <EntityTypeMapping TypeName="PresupuestoModel.ComprobantePagoSinPresupuesto">
-        <MappingFragment StoreEntitySet="ComprobantePagoSinPresupuesto">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Periodo_Pago" ColumnName="Periodo_Pago" />
-          <ScalarProperty Name="IdProyectoDetalle" ColumnName="IdProyectoDetalle" />
-          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
-          <ScalarProperty Name="Concepto" ColumnName="Concepto" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="EmpleadoPresupuestoes">
-      <EntityTypeMapping TypeName="PresupuestoModel.EmpleadoPresupuesto">
-        <MappingFragment StoreEntitySet="EmpleadoPresupuesto">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="IdPresupuesto" ColumnName="IdPresupuesto" />
-          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Materiales">
-      <EntityTypeMapping TypeName="PresupuestoModel.Materiale">
-        <MappingFragment StoreEntitySet="Materiales">
-          <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="PrecioUnidad" ColumnName="PrecioUnidad" />
-          <ScalarProperty Name="IdVendedor" ColumnName="IdVendedor" />
-          <ScalarProperty Name="FechaEntrada" ColumnName="FechaEntrada" />
-          <ScalarProperty Name="FechaActualizada" ColumnName="FechaActualizada" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Pago_Concepto">
-      <EntityTypeMapping TypeName="PresupuestoModel.Pago_Concepto">
-        <MappingFragment StoreEntitySet="Pago_Concepto">
-          <ScalarProperty Name="idConceptoPago" ColumnName="idConceptoPago" />
-          <ScalarProperty Name="Concepto" ColumnName="Concepto" />
-          <ScalarProperty Name="valor" ColumnName="valor" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Pago_Informal">
-      <EntityTypeMapping TypeName="PresupuestoModel.Pago_Informal">
-        <MappingFragment StoreEntitySet="Pago_Informal">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Concepto" ColumnName="Concepto" />
-          <ScalarProperty Name="Valor" ColumnName="Valor" />
-          <ScalarProperty Name="IdAbonado" ColumnName="IdAbonado" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PagoDetalles">
-      <EntityTypeMapping TypeName="PresupuestoModel.PagoDetalle">
-        <MappingFragment StoreEntitySet="PagoDetalle">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
-          <ScalarProperty Name="IdPagoMaestro" ColumnName="IdPagoMaestro" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PagoMaestroes">
-      <EntityTypeMapping TypeName="PresupuestoModel.PagoMaestro">
-        <MappingFragment StoreEntitySet="PagoMaestro">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="Idproyecto" ColumnName="Idproyecto" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Presupuestos">
-      <EntityTypeMapping TypeName="PresupuestoModel.Presupuesto">
-        <MappingFragment StoreEntitySet="Presupuestos">
-          <ScalarProperty Name="TotalGeneral" ColumnName="TotalGeneral" />
-          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-          <ScalarProperty Name="IdPresupuestos" ColumnName="IdPresupuestos" />
-          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Proyecto_detalle">
-      <EntityTypeMapping TypeName="PresupuestoModel.Proyecto_detalle">
-        <MappingFragment StoreEntitySet="Proyecto_detalle">
-          <ScalarProperty Name="IdProyectoDetalle" ColumnName="IdProyectoDetalle" />
-          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
-          <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ProyectoConPresupuestoes">
-      <EntityTypeMapping TypeName="PresupuestoModel.ProyectoConPresupuesto">
-        <MappingFragment StoreEntitySet="ProyectoConPresupuesto">
-          <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-          <ScalarProperty Name="IdPresupuesto" ColumnName="IdPresupuesto" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-          <ScalarProperty Name="CantidadPresupuestada" ColumnName="CantidadPresupuestada" />
-          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ProyectoDetalleSinPresupuestoes">
-      <EntityTypeMapping TypeName="PresupuestoModel.ProyectoDetalleSinPresupuesto">
-        <MappingFragment StoreEntitySet="ProyectoDetalleSinPresupuesto">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
-          <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ProyectoSinPresupuestoes">
-      <EntityTypeMapping TypeName="PresupuestoModel.ProyectoSinPresupuesto">
-        <MappingFragment StoreEntitySet="ProyectoSinPresupuesto">
-          <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-          <ScalarProperty Name="CantidadPresupuestada" ColumnName="CantidadPresupuestada" />
-          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
-          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="PresupuestoModel.sysdiagram">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TipoEmpleadoes">
-      <EntityTypeMapping TypeName="PresupuestoModel.TipoEmpleado">
-        <MappingFragment StoreEntitySet="TipoEmpleado">
-          <ScalarProperty Name="IdTipoEmpleado" ColumnName="IdTipoEmpleado" />
-          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Unidads">
-      <EntityTypeMapping TypeName="PresupuestoModel.Unidad">
-        <MappingFragment StoreEntitySet="Unidad">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Unidad1" ColumnName="Unidad" />
-          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Vendedores">
-      <EntityTypeMapping TypeName="PresupuestoModel.Vendedore">
-        <MappingFragment StoreEntitySet="Vendedores">
-          <ScalarProperty Name="IdVendedor" ColumnName="IdVendedor" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="g">
-      <EntityTypeMapping TypeName="PresupuestoModel.g">
-        <MappingFragment StoreEntitySet="g">
-          <ScalarProperty Name="IdPresupuestos" ColumnName="IdPresupuestos" />
-          <ScalarProperty Name="Total" ColumnName="Total" />
-          <ScalarProperty Name="TipoCliente" ColumnName="TipoCliente" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="holas">
-      <EntityTypeMapping TypeName="PresupuestoModel.hola">
-        <MappingFragment StoreEntitySet="hola">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="DescripcionPresupuesto" ColumnName="DescripcionPresupuesto" />
-          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="View_CabeceraAmbos">
-      <EntityTypeMapping TypeName="PresupuestoModel.View_CabeceraAmbos">
-        <MappingFragment StoreEntitySet="View_CabeceraAmbos">
-          <ScalarProperty Name="IdPresupuestos" ColumnName="IdPresupuestos" />
-          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
-          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-          <ScalarProperty Name="TotalMateriales" ColumnName="TotalMateriales" />
-          <ScalarProperty Name="TotalObra" ColumnName="TotalObra" />
-          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="Unidad" ColumnName="Unidad" />
-          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-          <ScalarProperty Name="IdListadoPresupuesto" ColumnName="IdListadoPresupuesto" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="View_Guardar_Materiales_Detalle">
-      <EntityTypeMapping TypeName="PresupuestoModel.View_Guardar_Materiales_Detalle">
-        <MappingFragment StoreEntitySet="View_Guardar_Materiales_Detalle">
-          <ScalarProperty Name="IdPresupuestos" ColumnName="IdPresupuestos" />
-          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
-          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-          <ScalarProperty Name="Precio" ColumnName="Precio" />
-          <ScalarProperty Name="Total" ColumnName="Total" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="View_Guardar_Obra_Detalle">
-      <EntityTypeMapping TypeName="PresupuestoModel.View_Guardar_Obra_Detalle">
-        <MappingFragment StoreEntitySet="View_Guardar_Obra_Detalle">
-          <ScalarProperty Name="IdPresupuestos" ColumnName="IdPresupuestos" />
-          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
-          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-          <ScalarProperty Name="Precio" ColumnName="Precio" />
-          <ScalarProperty Name="Total" ColumnName="Total" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="View_Listar_Obra_2">
-      <EntityTypeMapping TypeName="PresupuestoModel.View_Listar_Obra_2">
-        <MappingFragment StoreEntitySet="View_Listar_Obra_2">
-          <ScalarProperty Name="IdPresupuestos" ColumnName="IdPresupuestos" />
-          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
-          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-          <ScalarProperty Name="Total" ColumnName="Total" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="View_materiales_detalle">
-      <EntityTypeMapping TypeName="PresupuestoModel.View_materiales_detalle">
-        <MappingFragment StoreEntitySet="View_materiales_detalle">
-          <ScalarProperty Name="IdPresupuestos" ColumnName="IdPresupuestos" />
-          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
-          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-          <ScalarProperty Name="Precio" ColumnName="Precio" />
-          <ScalarProperty Name="Total" ColumnName="Total" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="View_PresupuestoListarProyectoSinPresupuestoActivos">
-      <EntityTypeMapping TypeName="PresupuestoModel.View_PresupuestoListarProyectoSinPresupuestoActivos">
-        <MappingFragment StoreEntitySet="View_PresupuestoListarProyectoSinPresupuestoActivos">
-          <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-          <ScalarProperty Name="CantidadPresupuestada" ColumnName="CantidadPresupuestada" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Vista_ListaDeMateriales">
-      <EntityTypeMapping TypeName="PresupuestoModel.Vista_ListaDeMateriales">
-        <MappingFragment StoreEntitySet="Vista_ListaDeMateriales">
-          <ScalarProperty Name="IdPresupuestos" ColumnName="IdPresupuestos" />
-          <ScalarProperty Name="Total" ColumnName="Total" />
-          <ScalarProperty Name="TipoCliente" ColumnName="TipoCliente" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Vista_ListadoPresupuestoMateriales">
-      <EntityTypeMapping TypeName="PresupuestoModel.Vista_ListadoPresupuestoMateriales">
-        <MappingFragment StoreEntitySet="Vista_ListadoPresupuestoMateriales">
-          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="Total" ColumnName="Total" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="TipoCliente" ColumnName="TipoCliente" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-          <ScalarProperty Name="IdPresupuestos" ColumnName="IdPresupuestos" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Vista_ListadoPresupuestoObra">
-      <EntityTypeMapping TypeName="PresupuestoModel.Vista_ListadoPresupuestoObra">
-        <MappingFragment StoreEntitySet="Vista_ListadoPresupuestoObra">
-          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="Total" ColumnName="Total" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="TipoCliente" ColumnName="TipoCliente" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-          <ScalarProperty Name="IdPresupuestos" ColumnName="IdPresupuestos" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="CompaniaDato" FunctionName="PresupuestoModel.Store.CompaniaDato">
       <ResultMapping>
         <ComplexTypeMapping TypeName="PresupuestoModel.CompaniaDato_Result">
@@ -843,35 +458,6 @@
     <FunctionImportMapping FunctionImportName="update_Materiales" FunctionName="PresupuestoModel.Store.update_Materiales" />
     <FunctionImportMapping FunctionImportName="update_Obra" FunctionName="PresupuestoModel.Store.update_Obra" />
     <FunctionImportMapping FunctionImportName="insert_Materiales" FunctionName="PresupuestoModel.Store.insert_Materiales" />
-    <EntitySetMapping Name="Materiales_detalle">
-      <EntityTypeMapping TypeName="PresupuestoModel.Materiales_detalle">
-        <MappingFragment StoreEntitySet="Materiales_detalle">
-          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-          <ScalarProperty Name="Total" ColumnName="Total" />
-          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-          <ScalarProperty Name="Precio" ColumnName="Precio" />
-          <ScalarProperty Name="Unidad" ColumnName="Unidad" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="IdPresupuesto" ColumnName="IdPresupuesto" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Obra_detalle">
-      <EntityTypeMapping TypeName="PresupuestoModel.Obra_detalle">
-        <MappingFragment StoreEntitySet="Obra_detalle">
-          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-          <ScalarProperty Name="Total" ColumnName="Total" />
-          <ScalarProperty Name="Precio" ColumnName="Precio" />
-          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-          <ScalarProperty Name="Unidad" ColumnName="Unidad" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="IdPresupuesto" ColumnName="IdPresupuesto" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="BorrarTodoMateriales_detalle" FunctionName="PresupuestoModel.Store.BorrarTodoMateriales_detalle" />
     <FunctionImportMapping FunctionImportName="BorrarTodoObra_detalle" FunctionName="PresupuestoModel.Store.BorrarTodoObra_detalle" />
     <FunctionImportMapping FunctionImportName="guardar_materiales_listado" FunctionName="PresupuestoModel.Store.guardar_materiales_listado" />
@@ -1004,20 +590,12 @@
           <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="DiasTrabajados" ColumnName="DiasTrabajados" />
+          <ScalarProperty Name="PagoPorDia" ColumnName="PagoPorDia" />
+          <ScalarProperty Name="CantidadPagos" ColumnName="CantidadPagos" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <EntitySetMapping Name="Usuarios">
-      <EntityTypeMapping TypeName="PresupuestoModel.Usuario">
-        <MappingFragment StoreEntitySet="Usuario">
-          <ScalarProperty Name="Logo" ColumnName="Logo" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Pass2" ColumnName="Pass2" />
-          <ScalarProperty Name="Pass" ColumnName="Pass" />
-          <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="ListadoPagosPorProyectos" FunctionName="PresupuestoModel.Store.ListadoPagosPorProyectos">
       <ResultMapping>
         <ComplexTypeMapping TypeName="PresupuestoModel.ListadoPagosPorProyectos_Result">
@@ -1031,6 +609,149 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Listado_PagosPorProyectos" FunctionName="PresupuestoModel.Store.Listado_PagosPorProyectos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PresupuestoModel.Listado_PagosPorProyectos_Result">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdPago" ColumnName="IdPago" />
+          <ScalarProperty Name="DiasTrabajados" ColumnName="DiasTrabajados" />
+          <ScalarProperty Name="PagoPorDia" ColumnName="PagoPorDia" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Abonadoes">
+      <EntityTypeMapping TypeName="PresupuestoModel.Abonado">
+        <MappingFragment StoreEntitySet="Abonado">
+          <ScalarProperty Name="IdTipoEmpleado" ColumnName="IdTipoEmpleado" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Lugar" ColumnName="Lugar" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Fecha_inscripcion" ColumnName="Fecha_inscripcion" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="PresupuestoModel.Cliente">
+        <MappingFragment StoreEntitySet="Clientes">
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="TipoCliente" ColumnName="TipoCliente" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companias">
+      <EntityTypeMapping TypeName="PresupuestoModel.Compania">
+        <MappingFragment StoreEntitySet="Compania">
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Web" ColumnName="Web" />
+          <ScalarProperty Name="RNC" ColumnName="RNC" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comprobante_Pago">
+      <EntityTypeMapping TypeName="PresupuestoModel.Comprobante_Pago">
+        <MappingFragment StoreEntitySet="Comprobante_Pago">
+          <ScalarProperty Name="IdAbonado" ColumnName="IdAbonado" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+          <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+          <ScalarProperty Name="Periodo_Pago" ColumnName="Periodo_Pago" />
+          <ScalarProperty Name="Fecha_Pago" ColumnName="Fecha_Pago" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comprobante_pago_informal">
+      <EntityTypeMapping TypeName="PresupuestoModel.Comprobante_pago_informal">
+        <MappingFragment StoreEntitySet="Comprobante_pago_informal">
+          <ScalarProperty Name="IdPagoInformal" ColumnName="IdPagoInformal" />
+          <ScalarProperty Name="Periodo_pago" ColumnName="Periodo_pago" />
+          <ScalarProperty Name="Fecha_Pago" ColumnName="Fecha_Pago" />
+          <ScalarProperty Name="CajaChica" ColumnName="CajaChica" />
+          <ScalarProperty Name="Razon" ColumnName="Razon" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComprobantePagoSinPresupuestoes">
+      <EntityTypeMapping TypeName="PresupuestoModel.ComprobantePagoSinPresupuesto">
+        <MappingFragment StoreEntitySet="ComprobantePagoSinPresupuesto">
+          <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+          <ScalarProperty Name="IdProyectoDetalle" ColumnName="IdProyectoDetalle" />
+          <ScalarProperty Name="Periodo_Pago" ColumnName="Periodo_Pago" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmpleadoPresupuestoes">
+      <EntityTypeMapping TypeName="PresupuestoModel.EmpleadoPresupuesto">
+        <MappingFragment StoreEntitySet="EmpleadoPresupuesto">
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+          <ScalarProperty Name="IdPresupuesto" ColumnName="IdPresupuesto" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Materiales">
+      <EntityTypeMapping TypeName="PresupuestoModel.Materiale">
+        <MappingFragment StoreEntitySet="Materiales">
+          <ScalarProperty Name="FechaActualizada" ColumnName="FechaActualizada" />
+          <ScalarProperty Name="FechaEntrada" ColumnName="FechaEntrada" />
+          <ScalarProperty Name="IdVendedor" ColumnName="IdVendedor" />
+          <ScalarProperty Name="PrecioUnidad" ColumnName="PrecioUnidad" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Materiales_detalle">
+      <EntityTypeMapping TypeName="PresupuestoModel.Materiales_detalle">
+        <MappingFragment StoreEntitySet="Materiales_detalle">
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdPresupuesto" ColumnName="IdPresupuesto" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Obra_detalle">
+      <EntityTypeMapping TypeName="PresupuestoModel.Obra_detalle">
+        <MappingFragment StoreEntitySet="Obra_detalle">
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdPresupuesto" ColumnName="IdPresupuesto" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Pagoes">
       <EntityTypeMapping TypeName="PresupuestoModel.Pago">
         <MappingFragment StoreEntitySet="Pago">
@@ -1044,16 +765,326 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="Listado_PagosPorProyectos" FunctionName="PresupuestoModel.Store.Listado_PagosPorProyectos">
+    <EntitySetMapping Name="Pago_Concepto">
+      <EntityTypeMapping TypeName="PresupuestoModel.Pago_Concepto">
+        <MappingFragment StoreEntitySet="Pago_Concepto">
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+          <ScalarProperty Name="idConceptoPago" ColumnName="idConceptoPago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pago_Informal">
+      <EntityTypeMapping TypeName="PresupuestoModel.Pago_Informal">
+        <MappingFragment StoreEntitySet="Pago_Informal">
+          <ScalarProperty Name="IdAbonado" ColumnName="IdAbonado" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PagoDetalles">
+      <EntityTypeMapping TypeName="PresupuestoModel.PagoDetalle">
+        <MappingFragment StoreEntitySet="PagoDetalle">
+          <ScalarProperty Name="IdPagoMaestro" ColumnName="IdPagoMaestro" />
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PagoMaestroes">
+      <EntityTypeMapping TypeName="PresupuestoModel.PagoMaestro">
+        <MappingFragment StoreEntitySet="PagoMaestro">
+          <ScalarProperty Name="Idproyecto" ColumnName="Idproyecto" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Presupuestos">
+      <EntityTypeMapping TypeName="PresupuestoModel.Presupuesto">
+        <MappingFragment StoreEntitySet="Presupuestos">
+          <ScalarProperty Name="TotalGeneral" ColumnName="TotalGeneral" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IdPresupuestos" ColumnName="IdPresupuestos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proyecto_detalle">
+      <EntityTypeMapping TypeName="PresupuestoModel.Proyecto_detalle">
+        <MappingFragment StoreEntitySet="Proyecto_detalle">
+          <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+          <ScalarProperty Name="IdProyectoDetalle" ColumnName="IdProyectoDetalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProyectoConPresupuestoes">
+      <EntityTypeMapping TypeName="PresupuestoModel.ProyectoConPresupuesto">
+        <MappingFragment StoreEntitySet="ProyectoConPresupuesto">
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="CantidadPresupuestada" ColumnName="CantidadPresupuestada" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="IdPresupuesto" ColumnName="IdPresupuesto" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProyectoDetalleSinPresupuestoes">
+      <EntityTypeMapping TypeName="PresupuestoModel.ProyectoDetalleSinPresupuesto">
+        <MappingFragment StoreEntitySet="ProyectoDetalleSinPresupuesto">
+          <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProyectoSinPresupuestoes">
+      <EntityTypeMapping TypeName="PresupuestoModel.ProyectoSinPresupuesto">
+        <MappingFragment StoreEntitySet="ProyectoSinPresupuesto">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="CantidadPresupuestada" ColumnName="CantidadPresupuestada" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="PresupuestoModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoEmpleadoes">
+      <EntityTypeMapping TypeName="PresupuestoModel.TipoEmpleado">
+        <MappingFragment StoreEntitySet="TipoEmpleado">
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="IdTipoEmpleado" ColumnName="IdTipoEmpleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Unidads">
+      <EntityTypeMapping TypeName="PresupuestoModel.Unidad">
+        <MappingFragment StoreEntitySet="Unidad">
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Unidad1" ColumnName="Unidad" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="PresupuestoModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Pass2" ColumnName="Pass2" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+          <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendedores">
+      <EntityTypeMapping TypeName="PresupuestoModel.Vendedore">
+        <MappingFragment StoreEntitySet="Vendedores">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdVendedor" ColumnName="IdVendedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="g">
+      <EntityTypeMapping TypeName="PresupuestoModel.g">
+        <MappingFragment StoreEntitySet="g">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="TipoCliente" ColumnName="TipoCliente" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="IdPresupuestos" ColumnName="IdPresupuestos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="holas">
+      <EntityTypeMapping TypeName="PresupuestoModel.hola">
+        <MappingFragment StoreEntitySet="hola">
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="DescripcionPresupuesto" ColumnName="DescripcionPresupuesto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_CabeceraAmbos">
+      <EntityTypeMapping TypeName="PresupuestoModel.View_CabeceraAmbos">
+        <MappingFragment StoreEntitySet="View_CabeceraAmbos">
+          <ScalarProperty Name="IdListadoPresupuesto" ColumnName="IdListadoPresupuesto" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="TotalObra" ColumnName="TotalObra" />
+          <ScalarProperty Name="TotalMateriales" ColumnName="TotalMateriales" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="IdPresupuestos" ColumnName="IdPresupuestos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_Guardar_Materiales_Detalle">
+      <EntityTypeMapping TypeName="PresupuestoModel.View_Guardar_Materiales_Detalle">
+        <MappingFragment StoreEntitySet="View_Guardar_Materiales_Detalle">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="IdPresupuestos" ColumnName="IdPresupuestos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_Guardar_Obra_Detalle">
+      <EntityTypeMapping TypeName="PresupuestoModel.View_Guardar_Obra_Detalle">
+        <MappingFragment StoreEntitySet="View_Guardar_Obra_Detalle">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="IdPresupuestos" ColumnName="IdPresupuestos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_Listar_Obra_2">
+      <EntityTypeMapping TypeName="PresupuestoModel.View_Listar_Obra_2">
+        <MappingFragment StoreEntitySet="View_Listar_Obra_2">
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="IdPresupuestos" ColumnName="IdPresupuestos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_materiales_detalle">
+      <EntityTypeMapping TypeName="PresupuestoModel.View_materiales_detalle">
+        <MappingFragment StoreEntitySet="View_materiales_detalle">
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="IdPresupuestos" ColumnName="IdPresupuestos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_PresupuestoListarProyectoSinPresupuestoActivos">
+      <EntityTypeMapping TypeName="PresupuestoModel.View_PresupuestoListarProyectoSinPresupuestoActivos">
+        <MappingFragment StoreEntitySet="View_PresupuestoListarProyectoSinPresupuestoActivos">
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="CantidadPresupuestada" ColumnName="CantidadPresupuestada" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vista_ListaDeMateriales">
+      <EntityTypeMapping TypeName="PresupuestoModel.Vista_ListaDeMateriales">
+        <MappingFragment StoreEntitySet="Vista_ListaDeMateriales">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="TipoCliente" ColumnName="TipoCliente" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="IdPresupuestos" ColumnName="IdPresupuestos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vista_ListadoPresupuestoMateriales">
+      <EntityTypeMapping TypeName="PresupuestoModel.Vista_ListadoPresupuestoMateriales">
+        <MappingFragment StoreEntitySet="Vista_ListadoPresupuestoMateriales">
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="IdPresupuestos" ColumnName="IdPresupuestos" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="TipoCliente" ColumnName="TipoCliente" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vista_ListadoPresupuestoObra">
+      <EntityTypeMapping TypeName="PresupuestoModel.Vista_ListadoPresupuestoObra">
+        <MappingFragment StoreEntitySet="Vista_ListadoPresupuestoObra">
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="IdPresupuestos" ColumnName="IdPresupuestos" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="TipoCliente" ColumnName="TipoCliente" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="FiltroPagosPorProyecto" FunctionName="PresupuestoModel.Store.FiltroPagosPorProyecto">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="PresupuestoModel.Listado_PagosPorProyectos_Result">
+        <ComplexTypeMapping TypeName="PresupuestoModel.FiltroPagosPorProyecto_Result">
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
-          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="TotalValor" ColumnName="TotalValor" />
+          <ScalarProperty Name="TotalDiasTrabajados" ColumnName="TotalDiasTrabajados" />
+          <ScalarProperty Name="TotalPagoPorDia" ColumnName="TotalPagoPorDia" />
+          <ScalarProperty Name="TotalCantidadPagos" ColumnName="TotalCantidadPagos" />
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="IdPago" ColumnName="IdPago" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="FiltroNombrePagosPorProyecto" FunctionName="PresupuestoModel.Store.FiltroNombrePagosPorProyecto">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PresupuestoModel.FiltroNombrePagosPorProyecto_Result">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="TotalValor" ColumnName="TotalValor" />
+          <ScalarProperty Name="TotalDiasTrabajados" ColumnName="TotalDiasTrabajados" />
+          <ScalarProperty Name="TotalPagoPorDia" ColumnName="TotalPagoPorDia" />
+          <ScalarProperty Name="TotalCantidadPagos" ColumnName="TotalCantidadPagos" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

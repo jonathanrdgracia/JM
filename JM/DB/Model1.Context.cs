@@ -35,6 +35,9 @@ namespace JM.DB
         public virtual DbSet<ComprobantePagoSinPresupuesto> ComprobantePagoSinPresupuestoes { get; set; }
         public virtual DbSet<EmpleadoPresupuesto> EmpleadoPresupuestoes { get; set; }
         public virtual DbSet<Materiale> Materiales { get; set; }
+        public virtual DbSet<Materiales_detalle> Materiales_detalle { get; set; }
+        public virtual DbSet<Obra_detalle> Obra_detalle { get; set; }
+        public virtual DbSet<Pago> Pagoes { get; set; }
         public virtual DbSet<Pago_Concepto> Pago_Concepto { get; set; }
         public virtual DbSet<Pago_Informal> Pago_Informal { get; set; }
         public virtual DbSet<PagoDetalle> PagoDetalles { get; set; }
@@ -47,6 +50,7 @@ namespace JM.DB
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TipoEmpleado> TipoEmpleadoes { get; set; }
         public virtual DbSet<Unidad> Unidads { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<Vendedore> Vendedores { get; set; }
         public virtual DbSet<g> g { get; set; }
         public virtual DbSet<hola> holas { get; set; }
@@ -59,10 +63,6 @@ namespace JM.DB
         public virtual DbSet<Vista_ListaDeMateriales> Vista_ListaDeMateriales { get; set; }
         public virtual DbSet<Vista_ListadoPresupuestoMateriales> Vista_ListadoPresupuestoMateriales { get; set; }
         public virtual DbSet<Vista_ListadoPresupuestoObra> Vista_ListadoPresupuestoObra { get; set; }
-        public virtual DbSet<Materiales_detalle> Materiales_detalle { get; set; }
-        public virtual DbSet<Obra_detalle> Obra_detalle { get; set; }
-        public virtual DbSet<Usuario> Usuarios { get; set; }
-        public virtual DbSet<Pago> Pagoes { get; set; }
     
         public virtual ObjectResult<CompaniaDato_Result> CompaniaDato()
         {
@@ -1026,6 +1026,36 @@ namespace JM.DB
                 new ObjectParameter("id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Listado_PagosPorProyectos_Result>("Listado_PagosPorProyectos", idParameter);
+        }
+    
+        public virtual ObjectResult<FiltroPagosPorProyecto_Result> FiltroPagosPorProyecto(Nullable<int> id, string fechaUno, string fechaDos)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var fechaUnoParameter = fechaUno != null ?
+                new ObjectParameter("fechaUno", fechaUno) :
+                new ObjectParameter("fechaUno", typeof(string));
+    
+            var fechaDosParameter = fechaDos != null ?
+                new ObjectParameter("fechaDos", fechaDos) :
+                new ObjectParameter("fechaDos", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltroPagosPorProyecto_Result>("FiltroPagosPorProyecto", idParameter, fechaUnoParameter, fechaDosParameter);
+        }
+    
+        public virtual ObjectResult<FiltroNombrePagosPorProyecto_Result> FiltroNombrePagosPorProyecto(Nullable<int> id, string nombre)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltroNombrePagosPorProyecto_Result>("FiltroNombrePagosPorProyecto", idParameter, nombreParameter);
         }
     }
 }

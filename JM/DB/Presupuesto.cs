@@ -18,9 +18,9 @@ namespace JM.DB
         public Presupuesto()
         {
             this.EmpleadoPresupuestoes = new HashSet<EmpleadoPresupuesto>();
-            this.ProyectoConPresupuestoes = new HashSet<ProyectoConPresupuesto>();
             this.Materiales_detalle = new HashSet<Materiales_detalle>();
             this.Obra_detalle = new HashSet<Obra_detalle>();
+            this.ProyectoConPresupuestoes = new HashSet<ProyectoConPresupuesto>();
         }
     
         public int IdPresupuestos { get; set; }
@@ -35,10 +35,10 @@ namespace JM.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmpleadoPresupuesto> EmpleadoPresupuestoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProyectoConPresupuesto> ProyectoConPresupuestoes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Materiales_detalle> Materiales_detalle { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Obra_detalle> Obra_detalle { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProyectoConPresupuesto> ProyectoConPresupuestoes { get; set; }
     }
 }

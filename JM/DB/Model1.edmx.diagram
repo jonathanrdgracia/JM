@@ -4,61 +4,61 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="aa8964634c724683beed4b2205f8d360" Name="Diagram1" ZoomLevel="100">
-        <EntityTypeShape EntityType="PresupuestoModel.Abonado" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.Cliente" Width="1.5" PointX="1.5" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.Compania" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.Comprobante_Pago" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.Comprobante_pago_informal" Width="1.5" PointX="7.5" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.ComprobantePagoSinPresupuesto" Width="1.5" PointX="9.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.EmpleadoPresupuesto" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.Materiale" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.Pago_Concepto" Width="1.5" PointX="11.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.Pago_Informal" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.PagoDetalle" Width="1.5" PointX="10.5" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.PagoMaestro" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.Presupuesto" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.Proyecto_detalle" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.ProyectoConPresupuesto" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.ProyectoDetalleSinPresupuesto" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.ProyectoSinPresupuesto" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.sysdiagram" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.TipoEmpleado" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.Unidad" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.Vendedore" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.g" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.hola" Width="1.5" PointX="13.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.View_CabeceraAmbos" Width="1.5" PointX="9.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.View_Guardar_Materiales_Detalle" Width="1.5" PointX="11.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.View_Guardar_Obra_Detalle" Width="1.5" PointX="13.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.View_Listar_Obra_2" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.View_materiales_detalle" Width="1.5" PointX="14.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.View_PresupuestoListarProyectoSinPresupuestoActivos" Width="1.5" PointX="15.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.Vista_ListaDeMateriales" Width="1.5" PointX="15.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.Vista_ListadoPresupuestoMateriales" Width="1.5" PointX="15.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresupuestoModel.Vista_ListadoPresupuestoObra" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="PresupuestoModel.FK_Abonado_TipoEmpleado" ManuallyRouted="false" />
-        <AssociationConnector Association="PresupuestoModel.FK_EmpleadoPresupuesto_Abonado" ManuallyRouted="false" />
-        <AssociationConnector Association="PresupuestoModel.FK_Pago_Informal_Abonado" ManuallyRouted="false" />
-        <AssociationConnector Association="PresupuestoModel.FK_Proyecto_detalle_Abonado" ManuallyRouted="false" />
-        <AssociationConnector Association="PresupuestoModel.FK_ProyectoDetalleSinPresupuesto_Abonado" ManuallyRouted="false" />
-        <AssociationConnector Association="PresupuestoModel.FK_Presupuestos_Clientes" ManuallyRouted="false" />
-        <AssociationConnector Association="PresupuestoModel.FK_ProyectoSinPresupuesto_Clientes" ManuallyRouted="false" />
-        <AssociationConnector Association="PresupuestoModel.FK_Comprobante_pago_informal_Pago_Informal" ManuallyRouted="false" />
-        <AssociationConnector Association="PresupuestoModel.FK_EmpleadoPresupuesto_Presupuestos" ManuallyRouted="false" />
-        <AssociationConnector Association="PresupuestoModel.FK_Materiales_Vendedores" ManuallyRouted="false" />
-        <AssociationConnector Association="PresupuestoModel.FK_PagoDetalle_PagoMaestro" ManuallyRouted="false" />
-        <AssociationConnector Association="PresupuestoModel.FK_PagoDetalle_Proyecto_detalle" ManuallyRouted="false" />
-        <AssociationConnector Association="PresupuestoModel.FK_PagoMaestro_ProyectoConPresupuesto" ManuallyRouted="false" />
-        <AssociationConnector Association="PresupuestoModel.FK_ProyectoConPresupuesto_Presupuestos" ManuallyRouted="false" />
-        <AssociationConnector Association="PresupuestoModel.FK_Proyecto_detalle_ProyectoConPresupuesto" ManuallyRouted="false" />
-        <AssociationConnector Association="PresupuestoModel.FK_ProyectoDetalleSinPresupuesto_ProyectoSinPresupuesto" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="PresupuestoModel.Materiales_detalle" Width="1.5" PointX="3" PointY="24.25" />
-        <EntityTypeShape EntityType="PresupuestoModel.Obra_detalle" Width="1.5" PointX="3" PointY="20.5" />
+      <Diagram DiagramId="aa8964634c724683beed4b2205f8d360" Name="Diagram1" ZoomLevel="15">
+        <EntityTypeShape EntityType="PresupuestoModel.Abonado" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="PresupuestoModel.Cliente" Width="1.5" PointX="0.75" PointY="10.625" />
+        <EntityTypeShape EntityType="PresupuestoModel.Compania" Width="1.5" PointX="9.75" PointY="5.875" />
+        <EntityTypeShape EntityType="PresupuestoModel.Comprobante_Pago" Width="1.5" PointX="11.75" PointY="5.875" />
+        <EntityTypeShape EntityType="PresupuestoModel.Comprobante_pago_informal" Width="1.5" PointX="7.5" PointY="5.875" />
+        <EntityTypeShape EntityType="PresupuestoModel.ComprobantePagoSinPresupuesto" Width="1.5" PointX="11.75" PointY="9.875" />
+        <EntityTypeShape EntityType="PresupuestoModel.EmpleadoPresupuesto" Width="1.5" PointX="8.25" PointY="14.75" />
+        <EntityTypeShape EntityType="PresupuestoModel.Materiale" Width="1.5" PointX="10" PointY="2.125" />
+        <EntityTypeShape EntityType="PresupuestoModel.Materiales_detalle" Width="1.5" PointX="5.25" PointY="15.125" />
+        <EntityTypeShape EntityType="PresupuestoModel.Obra_detalle" Width="1.5" PointX="5.25" PointY="18.625" />
+        <EntityTypeShape EntityType="PresupuestoModel.Pago" Width="1.5" PointX="11.75" PointY="12.875" />
+        <EntityTypeShape EntityType="PresupuestoModel.Pago_Concepto" Width="1.5" PointX="12.75" PointY="1.875" />
+        <EntityTypeShape EntityType="PresupuestoModel.Pago_Informal" Width="1.5" PointX="5.25" PointY="1.625" />
+        <EntityTypeShape EntityType="PresupuestoModel.PagoDetalle" Width="1.5" PointX="9.75" PointY="10.625" />
+        <EntityTypeShape EntityType="PresupuestoModel.PagoMaestro" Width="1.5" PointX="7.5" PointY="12.25" />
+        <EntityTypeShape EntityType="PresupuestoModel.Presupuesto" Width="1.5" PointX="3" PointY="12.125" />
+        <EntityTypeShape EntityType="PresupuestoModel.Proyecto_detalle" Width="1.5" PointX="7.5" PointY="9.125" />
+        <EntityTypeShape EntityType="PresupuestoModel.ProyectoConPresupuesto" Width="1.5" PointX="5.25" PointY="8.75" />
+        <EntityTypeShape EntityType="PresupuestoModel.ProyectoDetalleSinPresupuesto" Width="1.5" PointX="5.25" PointY="5.625" />
+        <EntityTypeShape EntityType="PresupuestoModel.ProyectoSinPresupuesto" Width="1.5" PointX="3" PointY="5.25" />
+        <EntityTypeShape EntityType="PresupuestoModel.sysdiagram" Width="1.5" PointX="13.75" PointY="4.875" />
+        <EntityTypeShape EntityType="PresupuestoModel.TipoEmpleado" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="PresupuestoModel.Unidad" Width="1.5" PointX="13.75" PointY="7.875" />
+        <EntityTypeShape EntityType="PresupuestoModel.Usuario" Width="1.5" PointX="13.75" PointY="10.875" />
+        <EntityTypeShape EntityType="PresupuestoModel.Vendedore" Width="1.5" PointX="7.75" PointY="2.5" />
+        <EntityTypeShape EntityType="PresupuestoModel.g" Width="1.5" PointX="13.75" PointY="13.875" />
+        <EntityTypeShape EntityType="PresupuestoModel.hola" Width="1.5" PointX="14.75" PointY="1.875" />
+        <EntityTypeShape EntityType="PresupuestoModel.View_CabeceraAmbos" Width="1.5" PointX="0.75" PointY="16.875" />
+        <EntityTypeShape EntityType="PresupuestoModel.View_Guardar_Materiales_Detalle" Width="1.5" PointX="15.75" PointY="4.875" />
+        <EntityTypeShape EntityType="PresupuestoModel.View_Guardar_Obra_Detalle" Width="1.5" PointX="15.75" PointY="8.875" />
+        <EntityTypeShape EntityType="PresupuestoModel.View_Listar_Obra_2" Width="1.5" PointX="10.75" PointY="16.875" />
+        <EntityTypeShape EntityType="PresupuestoModel.View_materiales_detalle" Width="1.5" PointX="15.75" PointY="12.875" />
+        <EntityTypeShape EntityType="PresupuestoModel.View_PresupuestoListarProyectoSinPresupuestoActivos" Width="1.5" PointX="12.75" PointY="16.875" />
+        <EntityTypeShape EntityType="PresupuestoModel.Vista_ListaDeMateriales" Width="1.5" PointX="14.75" PointY="16.875" />
+        <EntityTypeShape EntityType="PresupuestoModel.Vista_ListadoPresupuestoMateriales" Width="1.5" PointX="7.75" PointY="17.875" />
+        <EntityTypeShape EntityType="PresupuestoModel.Vista_ListadoPresupuestoObra" Width="1.5" PointX="16.75" PointY="16.875" />
+        <AssociationConnector Association="PresupuestoModel.FK_Abonado_TipoEmpleado" />
+        <AssociationConnector Association="PresupuestoModel.FK_EmpleadoPresupuesto_Abonado" />
+        <AssociationConnector Association="PresupuestoModel.FK_Pago_Informal_Abonado" />
+        <AssociationConnector Association="PresupuestoModel.FK_Proyecto_detalle_Abonado" />
+        <AssociationConnector Association="PresupuestoModel.FK_ProyectoDetalleSinPresupuesto_Abonado" />
+        <AssociationConnector Association="PresupuestoModel.FK_Presupuestos_Clientes" />
+        <AssociationConnector Association="PresupuestoModel.FK_ProyectoSinPresupuesto_Clientes" />
+        <AssociationConnector Association="PresupuestoModel.FK_Comprobante_pago_informal_Pago_Informal" />
+        <AssociationConnector Association="PresupuestoModel.FK_EmpleadoPresupuesto_Presupuestos" />
+        <AssociationConnector Association="PresupuestoModel.FK_Materiales_Vendedores" />
         <AssociationConnector Association="PresupuestoModel.FK_Presupuestos_listado_Presupuestos" />
         <AssociationConnector Association="PresupuestoModel.FK_Obra_detalle_Presupuestos" />
-        <EntityTypeShape EntityType="PresupuestoModel.Usuario" Width="1.5" PointX="5.375" PointY="16.75" />
-        <EntityTypeShape EntityType="PresupuestoModel.Pago" Width="1.5" PointX="17.375" PointY="4.75" />
+        <AssociationConnector Association="PresupuestoModel.FK_PagoDetalle_PagoMaestro" />
+        <AssociationConnector Association="PresupuestoModel.FK_PagoDetalle_Proyecto_detalle" />
+        <AssociationConnector Association="PresupuestoModel.FK_PagoMaestro_ProyectoConPresupuesto" />
+        <AssociationConnector Association="PresupuestoModel.FK_ProyectoConPresupuesto_Presupuestos" />
+        <AssociationConnector Association="PresupuestoModel.FK_Proyecto_detalle_ProyectoConPresupuesto" />
+        <AssociationConnector Association="PresupuestoModel.FK_ProyectoDetalleSinPresupuesto_ProyectoSinPresupuesto" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
