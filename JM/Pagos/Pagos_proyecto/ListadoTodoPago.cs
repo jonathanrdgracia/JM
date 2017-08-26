@@ -39,17 +39,17 @@ namespace JM.Pagos.Pagos_proyecto
             using (var db = new PresupuestoEntities5())
             {
                 dateTimePicker1.Format = DateTimePickerFormat.Custom;
-                dateTimePicker1.CustomFormat = "dd-MM- yyyy";
+                dateTimePicker1.CustomFormat = "dd-MM-yyyy";
                 dateTimePicker1.Value = DateTime.Now;
 
                 dateTimePicker2.Format = DateTimePickerFormat.Custom;
-                dateTimePicker2.CustomFormat = "dd-MM- yyyy";
+                dateTimePicker2.CustomFormat = "dd-MM-yyyy";
                 dateTimePicker2.Value = DateTime.Now;
 
                 this.label4.Text = "Pagos relacionados al proyecto: " + Descripcion;
                 var query2 = db.ListadoPagosPorProyectoDetalles(Idproyecto);
                 var query = db.Listado_PagosPorProyectos(Idproyecto).OrderByDescending(c=>c.Fecha);
-                var query3 = db.FiltroPagosPorProyecto(Idproyecto, "25-01- 2010", "26-09- 2033").OrderByDescending(c => c.Fecha);
+                var query3 = db.FiltroPagosPorProyecto(Idproyecto, "25-01-2010", "26-09-2033").OrderByDescending(c => c.Fecha);
                 
                 foreach (var i in query.OrderByDescending(c=>c.Fecha))
                 {
