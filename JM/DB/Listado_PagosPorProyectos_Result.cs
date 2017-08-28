@@ -16,7 +16,7 @@ namespace JM.DB
         public string Nombre { get; set; }
         public string Apellidos { get; set; }
         public Nullable<int> Valor { get; set; }
-        public string Fecha { get; set; }
+        public Nullable<System.DateTime> Fecha { get; set; }
         public string TipoEmpleado { get; set; }
         public int Id { get; set; }
         public int IdPago { get; set; }

@@ -19,6 +19,6 @@ namespace JM.DB
         public Nullable<int> TotalDiasTrabajados { get; set; }
         public Nullable<int> TotalPagoPorDia { get; set; }
         public Nullable<int> TotalCantidadPagos { get; set; }
-        public string Fecha { get; set; }
+        public Nullable<System.DateTime> Fecha { get; set; }
     }
 }

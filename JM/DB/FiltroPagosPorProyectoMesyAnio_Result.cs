@@ -15,10 +15,10 @@ namespace JM.DB
     {
         public string Nombre { get; set; }
         public string Apellidos { get; set; }
-        public Nullable<int> TotalValor { get; set; }
         public Nullable<int> TotalDiasTrabajados { get; set; }
-        public Nullable<int> TotalPagoPorDia { get; set; }
         public Nullable<int> TotalCantidadPagos { get; set; }
         public string Fecha { get; set; }
+        public Nullable<int> Valor { get; set; }
+        public Nullable<int> PagoPorDia { get; set; }
     }
 }

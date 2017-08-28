@@ -131,7 +131,7 @@
           <Property Name="PagoPorDia" Type="int" />
           <Property Name="DiasTrabajados" Type="int" />
           <Property Name="Valor" Type="int" />
-          <Property Name="Fecha" Type="nvarchar" MaxLength="15" />
+          <Property Name="Fecha" Type="date" />
           <Property Name="IdProyecto" Type="int" />
           <Property Name="IdEmpleado" Type="int" />
         </EntityType>
@@ -1495,7 +1495,6 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <EntitySet Name="Materiales" EntityType="PresupuestoModel.Materiale" />
           <EntitySet Name="Materiales_detalle" EntityType="PresupuestoModel.Materiales_detalle" />
           <EntitySet Name="Obra_detalle" EntityType="PresupuestoModel.Obra_detalle" />
-          <EntitySet Name="Pagoes" EntityType="PresupuestoModel.Pago" />
           <EntitySet Name="Pago_Concepto" EntityType="PresupuestoModel.Pago_Concepto" />
           <EntitySet Name="Pago_Informal" EntityType="PresupuestoModel.Pago_Informal" />
           <EntitySet Name="PagoDetalles" EntityType="PresupuestoModel.PagoDetalle" />
@@ -1606,6 +1605,7 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
             <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="fechaid" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="Pagoes" EntityType="PresupuestoModel.Pago" />
           </EntityContainer>
         <ComplexType Name="CompaniaDato_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -2010,7 +2010,7 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="Valor" Nullable="true" />
-          <Property Type="String" Name="Fecha" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="Fecha" Nullable="true" />
           <Property Type="String" Name="TipoEmpleado" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="Int32" Name="IdPago" Nullable="false" />
@@ -2147,18 +2147,6 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <Property Name="Tipo" Type="Int32" />
           <Property Name="Direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Presupuesto" Relationship="PresupuestoModel.FK_Obra_detalle_Presupuestos" FromRole="Obra_detalle" ToRole="Presupuesto" />
-        </EntityType>
-        <EntityType Name="Pago">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PagoPorDia" Type="Int32" />
-          <Property Name="DiasTrabajados" Type="Int32" />
-          <Property Name="Valor" Type="Int32" />
-          <Property Name="Fecha" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="IdProyecto" Type="Int32" />
-          <Property Name="IdEmpleado" Type="Int32" />
         </EntityType>
         <EntityType Name="Pago_Concepto">
           <Key>
@@ -2683,7 +2671,7 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <Property Type="Int32" Name="TotalDiasTrabajados" Nullable="true" />
           <Property Type="Int32" Name="TotalPagoPorDia" Nullable="true" />
           <Property Type="Int32" Name="TotalCantidadPagos" Nullable="true" />
-          <Property Type="String" Name="Fecha" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="Fecha" Nullable="true" />
         </ComplexType>
         <ComplexType Name="FiltroNombrePagosPorProyecto_Result">
           <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
@@ -2697,12 +2685,24 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
         <ComplexType Name="FiltroPagosPorProyectoMesyAnio_Result">
           <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="TotalValor" Nullable="true" />
           <Property Type="Int32" Name="TotalDiasTrabajados" Nullable="true" />
-          <Property Type="Int32" Name="TotalPagoPorDia" Nullable="true" />
           <Property Type="Int32" Name="TotalCantidadPagos" Nullable="true" />
           <Property Type="String" Name="Fecha" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="Valor" Nullable="true" />
+          <Property Type="Int32" Name="PagoPorDia" Nullable="true" />
         </ComplexType>
+        <EntityType Name="Pago">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PagoPorDia" Type="Int32" />
+          <Property Name="DiasTrabajados" Type="Int32" />
+          <Property Name="Valor" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="IdProyecto" Type="Int32" />
+          <Property Name="IdEmpleado" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3460,19 +3460,6 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Pagoes">
-            <EntityTypeMapping TypeName="PresupuestoModel.Pago">
-              <MappingFragment StoreEntitySet="Pago">
-                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
-                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Valor" ColumnName="Valor" />
-                <ScalarProperty Name="DiasTrabajados" ColumnName="DiasTrabajados" />
-                <ScalarProperty Name="PagoPorDia" ColumnName="PagoPorDia" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Pago_Concepto">
             <EntityTypeMapping TypeName="PresupuestoModel.Pago_Concepto">
               <MappingFragment StoreEntitySet="Pago_Concepto">
@@ -3801,14 +3788,27 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
               <ComplexTypeMapping TypeName="PresupuestoModel.FiltroPagosPorProyectoMesyAnio_Result">
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
-                <ScalarProperty Name="TotalValor" ColumnName="TotalValor" />
                 <ScalarProperty Name="TotalDiasTrabajados" ColumnName="TotalDiasTrabajados" />
-                <ScalarProperty Name="TotalPagoPorDia" ColumnName="TotalPagoPorDia" />
                 <ScalarProperty Name="TotalCantidadPagos" ColumnName="TotalCantidadPagos" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="PagoPorDia" ColumnName="PagoPorDia" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Pagoes">
+            <EntityTypeMapping TypeName="PresupuestoModel.Pago">
+              <MappingFragment StoreEntitySet="Pago">
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="DiasTrabajados" ColumnName="DiasTrabajados" />
+                <ScalarProperty Name="PagoPorDia" ColumnName="PagoPorDia" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

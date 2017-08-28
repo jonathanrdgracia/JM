@@ -43,19 +43,20 @@ namespace JM.Pagos.Pagos_proyecto
                 dateTimePicker1.Value = DateTime.Now;
 
                 dateTimePicker3.Format = DateTimePickerFormat.Custom;
-                dateTimePicker3.CustomFormat = "dd-MM-yyyy";
+                dateTimePicker3.CustomFormat = "MMMMM-yyyy";
                 dateTimePicker3.Value = DateTime.Now;
 
                 dateTimePicker2.Format = DateTimePickerFormat.Custom;
                 dateTimePicker2.CustomFormat = "dd-MM-yyyy";
                 dateTimePicker2.Value = DateTime.Now;
-
+                var s = dateTimePicker1.Value;
+                
                 this.label4.Text = "Pagos relacionados al proyecto: " + Descripcion;
                 var query2 = db.ListadoPagosPorProyectoDetalles(Idproyecto);
-                var query = db.Listado_PagosPorProyectos(Idproyecto).OrderByDescending(c=>c.Fecha);
-                var query3 = db.FiltroPagosPorProyecto(Idproyecto, "25-01-2010", "26-09-2033").OrderByDescending(c => c.Fecha);
+                var query = db.Listado_PagosPorProyectos(Idproyecto);
+                var query3 = db.FiltroPagosPorProyecto(Idproyecto, "2010-05-05", "2010-05-05");
                 
-                foreach (var i in query.OrderByDescending(c=>c.Fecha))
+                foreach (var i in query)
                 {
                     this.dataGridView1.Rows.Add
                         (
@@ -63,7 +64,7 @@ namespace JM.Pagos.Pagos_proyecto
                             i.DiasTrabajados.ToString(),
                             Convert.ToInt32(i.PagoPorDia.ToString()).ToString("C", nfi),
                             Convert.ToInt32(i.Valor.ToString()).ToString("C", nfi),
-                            i.Fecha
+                            i.Fecha.Value.Day.ToString()+"-"+i.Fecha.Value.Month.ToString()+"-"+i.Fecha.Value.Year.ToString()
                             
                         );
                 }
@@ -76,7 +77,7 @@ namespace JM.Pagos.Pagos_proyecto
                             Convert.ToInt32(i.TotalPagoPorDia.ToString()).ToString("C", nfi),
                             Convert.ToInt32(i.TotalValor.ToString()).ToString("C", nfi),
                             i.TotalCantidadPagos.ToString(),
-                            i.Fecha
+                           i.Fecha.Value.Day.ToString() + "-" + i.Fecha.Value.Month.ToString() + "-" + i.Fecha.Value.Year.ToString()
 
                         );
                 }
@@ -88,7 +89,7 @@ namespace JM.Pagos.Pagos_proyecto
                        
                         i.Nombre + " " + i.Apellidos,
                         i.DiasTrabajados,
-                        "RD" + Convert.ToInt32(i.PagoPorDia.ToString()).ToString("C", nfi),
+                      
                         "RD" + Convert.ToInt32(i.Valor.ToString()).ToString("C", nfi), // Convert.ToInt32(i.Valor.ToString()).ToString("C", nfi)
                         i.CantidadPagos
                     );
@@ -158,9 +159,10 @@ namespace JM.Pagos.Pagos_proyecto
         {
             using (var db = new PresupuestoEntities5())
             {
+
                 Total =0;
                 dataGridView3.Rows.Clear();
-                var query3 = db.FiltroPagosPorProyecto(Idproyecto, dateTimePicker1.Text, dateTimePicker2.Text).OrderByDescending(c => c.Fecha);
+                var query3 = db.FiltroPagosPorProyecto(Idproyecto, dateTimePicker1.Value, dateTimePicker2.Value);
                 foreach (var i in query3.OrderByDescending(c => c.Fecha))
                 {
                     this.dataGridView3.Rows.Add
@@ -187,7 +189,7 @@ namespace JM.Pagos.Pagos_proyecto
 
             using (var db = new PresupuestoEntities5())
             {
-                var query3 = db.FiltroNombrePagosPorProyecto(Idproyecto,x).OrderByDescending(c => c.Fecha);
+                var query3 = db.FiltroNombrePagosPorProyecto(Idproyecto, x);
                 foreach (var i in query3.OrderByDescending(c => c.Fecha))
                 {
                     this.dataGridView3.Rows.Add
@@ -215,7 +217,7 @@ namespace JM.Pagos.Pagos_proyecto
 
             using (var db = new PresupuestoEntities5())
             {
-                var query3 = db.FiltroNombrePagosPorProyecto(Idproyecto, x).OrderByDescending(c => c.Fecha);
+                var query3 = db.FiltroNombrePagosPorProyecto(Idproyecto, x);
                 foreach (var i in query3.OrderByDescending(c => c.Fecha))
                 {
                     this.dataGridView3.Rows.Add
@@ -244,7 +246,7 @@ namespace JM.Pagos.Pagos_proyecto
             using (var db = new PresupuestoEntities5())
             {
                 var query3 = db.FiltroNombrePagosPorProyecto(Idproyecto, x).OrderByDescending(c => c.Fecha);
-                foreach (var i in query3.OrderByDescending(c => c.Fecha))
+                foreach (var i in query3)
                 {
                     this.dataGridView3.Rows.Add
                         (
@@ -270,22 +272,23 @@ namespace JM.Pagos.Pagos_proyecto
             {
                 using (var db = new PresupuestoEntities5())
                 {
+                    var fecha = "01-" + dateTimePicker3.Value;
                     Total = 0;
                     dataGridView3.Rows.Clear();
-                    var query3 = db.FiltroPagosPorProyectoMesyAnio(Idproyecto, dateTimePicker3.Text).OrderByDescending(c => c.Fecha);
+                    var query3 = db.FiltroPagosPorProyectoMesyAnio(Idproyecto, fecha).OrderByDescending(c => c.Fecha);
                     foreach (var i in query3.OrderByDescending(c => c.Fecha))
                     {
                         this.dataGridView3.Rows.Add
                             (
                                 i.Nombre + " " + i.Apellidos,
                                 i.TotalDiasTrabajados.ToString(),
-                                Convert.ToInt32(i.TotalPagoPorDia.ToString()).ToString("C", nfi),
-                                Convert.ToInt32(i.TotalValor.ToString()).ToString("C", nfi),
+                                Convert.ToInt32(i.PagoPorDia.ToString()).ToString("C", nfi),
+                                Convert.ToInt32(i.Valor.ToString()).ToString("C", nfi),
                                 i.TotalCantidadPagos.ToString(),
                                 i.Fecha
 
                             );
-                        Total = Total + Convert.ToInt32(i.TotalValor);
+                        Total = Total + Convert.ToInt32(i.Valor);
                     }
                     label1.Text = "Pago suma total: RD" + Total.ToString("C", nfi);
                     Total = 0;

@@ -99,7 +99,7 @@ namespace JM.Pagos
                 public int Id { get; set; }
                 public string Nombre { get; set; }
                 public string Ocupacion { get; set; }
-                public string Fecha { get; set; }
+                public DateTime Fecha { get; set; }
                 public int? Pago { get; set; }
                 public int DiasTrabajados { get; set; }
                 public int Total { get; set; }
@@ -150,7 +150,7 @@ namespace JM.Pagos
                     Nombre=textBox14.Text,
                     Ocupacion=textBox5.Text,
                     Pago=Convert.ToInt32(textBox2.Text),
-                    Fecha=dateTimePicker1.Text,
+                    Fecha=dateTimePicker1.Value,
                     Total = Convert.ToInt32(textBox2.Text) * Convert.ToInt32(textBox4.Text),
                     DiasTrabajados = Convert.ToInt32(textBox4.Text)
                        
@@ -302,7 +302,7 @@ namespace JM.Pagos
                         _Empleado = new EmpleadoPago();
                         int currentIndex = this.dataGridView2.CurrentCell.RowIndex;
                         _Empleado.Id = Convert.ToInt32(textBox3.Text);
-                        _Empleado.Fecha = dateTimePicker1.Text;
+                        _Empleado.Fecha = dateTimePicker1.Value;
                         _Empleado.DiasTrabajados = Convert.ToInt32(textBox4.Text);
                         _Empleado.Pago = Convert.ToInt32(textBox2.Text);
                         _Empleado.Nombre = textBox14.Text;
