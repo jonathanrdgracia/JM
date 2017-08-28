@@ -127,31 +127,6 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="modificarPagoToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EwAACxMBAJqcGAAAAflJREFUWEftlU0oBGEYx9dXDhIXRS4OlCi7M7Mr9rLliDhIklKSpBxwRK2Do4vP
-        d2Z3UctBLk4+LkI52Jl3l5uSUi4bceHguP7v9uTG2Nf6qvnVNu/7PDP7fLzP/Mfl4ODwPwmmcj0sUacx
-        q1UN8XYlHG8IBI/yyft9aAYvUXU+qxg8qTDzWjOsfZXxPawvYXvAdc6zmiij27MLKm1CkFsEXUMitWR+
-        w83Oq5DcokjOa5gBMn8NUTH+uBKtbtSYea/qVhu53kUE15ZjE7j6ySQPqh1WDR7B9QZJdJLZFsyH26ub
-        kyJ5MsmBtg/hXM803TzQdGszk/NFB7rUFd5CWzlQ9aDC+IsYMHRhtHt7O49ctojq1XCC0VYOXyjmQeAp
-        f+S0mEwZge7Fq+evCmn782CIC2gpj6LHm2n5C0Dx8OpFXalUDlk+jVBHHMHOlzUBM7AlZJe2toh5wTMb
-        GN5HRedPGOR+csmBQawXEktbW9JyHeJj7mXLUpl1jCMcIJcc4iODisZRSS+ZbIFmTOOZE+jAAhLoIbM8
-        7vXzUq/Og5iHkY/mQegEAs+gY9e4t4LM2QFzUANBSuDrd4zB6miIXhSRK50g2t6H4BdQzUPfUqycXNkl
-        fRwYKpEEKWRSM8w7/J6x3hWJybwxUgiRScstWp2JRDs4OPwxXK5Xp4vuotIrE94AAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="opcionesToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EwAACxMBAJqcGAAAATpJREFUWEftlztOxDAURY0QHRWJh4JNIBqQWAJCiIIt0NFQIpzsgWr2Qcci2Aa/
-        FdiWML7RjZRxEfwrIJojPfn5zbNz5JmRYrHlT7NS9rp51B+ysy4+zB2Xl4OHHypzyumvQKDp9Hur7AVL
-        ZWBDplGgv+31yXASvT5mOZ8cAYz+q7vyp/d28PB9NHyQS64AaJW59/NX2bt9ltIpERDC7Uhl11LpZ3Hj
-        dllMI1XAH/vXxo/21u21nX5plH1iJY1UgeFv2+lPrAuDLWlkLwxYhgDyMViKpprAdATI54Jt9QTCjWOp
-        IlDCMgSQj8FSNNUEpiNAPhdsqycQbhxLFYESliGAfAyWoqkmMB0B8rlgWz2BcONYqgiU8H8FcC9Y9eaM
-        0yykMue4K3CaBl+vE29Gm4GH+3fCS265JUCIH3nigzCskCsbAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL

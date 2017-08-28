@@ -52,7 +52,7 @@
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Location = new System.Drawing.Point(12, 68);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(571, 264);
+            this.groupBox2.Size = new System.Drawing.Size(571, 368);
             this.groupBox2.TabIndex = 54;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Listado de proyectos";
@@ -91,7 +91,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(554, 239);
+            this.dataGridView1.Size = new System.Drawing.Size(554, 343);
             this.dataGridView1.TabIndex = 58;
             // 
             // Column1
@@ -164,11 +164,11 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(496, 338);
+            this.button1.Location = new System.Drawing.Point(483, 442);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(76, 34);
+            this.button1.Size = new System.Drawing.Size(100, 34);
             this.button1.TabIndex = 63;
-            this.button1.Text = "Salir";
+            this.button1.Text = "Entendido";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -183,7 +183,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(12, 338);
+            this.button2.Location = new System.Drawing.Point(12, 442);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(103, 34);
             this.button2.TabIndex = 59;
@@ -197,7 +197,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(595, 384);
+            this.ClientSize = new System.Drawing.Size(595, 488);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
