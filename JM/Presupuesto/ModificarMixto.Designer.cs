@@ -141,7 +141,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(274, 398);
+            this.button3.Location = new System.Drawing.Point(281, 398);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(101, 34);
             this.button3.TabIndex = 70;
@@ -160,7 +160,7 @@
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
             this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button11.Location = new System.Drawing.Point(547, 398);
+            this.button11.Location = new System.Drawing.Point(453, 398);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(99, 34);
             this.button11.TabIndex = 45;
@@ -198,7 +198,7 @@
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(10, 398);
+            this.button5.Location = new System.Drawing.Point(118, 398);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(92, 34);
             this.button5.TabIndex = 40;
@@ -426,7 +426,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(264, 398);
+            this.button1.Location = new System.Drawing.Point(261, 398);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(101, 34);
             this.button1.TabIndex = 69;
@@ -445,7 +445,7 @@
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Image = ((System.Drawing.Image)(resources.GetObject("button10.Image")));
             this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button10.Location = new System.Drawing.Point(531, 398);
+            this.button10.Location = new System.Drawing.Point(412, 398);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(99, 34);
             this.button10.TabIndex = 44;
@@ -475,7 +475,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(6, 398);
+            this.button4.Location = new System.Drawing.Point(119, 398);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(92, 34);
             this.button4.TabIndex = 40;

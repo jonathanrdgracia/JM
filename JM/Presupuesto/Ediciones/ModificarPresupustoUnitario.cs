@@ -355,80 +355,89 @@ namespace JM.Presupuesto.Ediciones
         using (var db = new PresupuestoEntities5())
         {
 
-            //delete borro todo de la db materiales
-            db.BorrarTodoMateriales_detalle(IDs);
+            try
+            {
+                //delete borro todo de la db materiales
+                db.BorrarTodoMateriales_detalle(IDs);
+
+
+                //inserto los materiales
+                foreach (var i in ListaCompleta)
+                {
+                    db.guardar_materiales_listado(IDs, i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total, 1);
+                }
+
+
+
+                //inserto los materiales nuevos
+                //foreach (var i in listaMaterialesNuevos)
+                //{
+                //    db.guardar_materiales_listado(IDs, i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total, 1);
+                //}
+                int a = 0;
+                int b = 0;
+                int d = 0;
+                // listaMateriales.AddRange(listaMaterialesNuevos);
+
+
+                foreach (var i in ListaCompleta)
+                {
+                    Total = Convert.ToInt32(i.Total) + Total;
+                }
+
+                a = b + d;
+                foreach (var item in db.Presupuestos.Where(c => c.IdPresupuestos == IDs))
+                {
+                    TotalGeneralDB = +Convert.ToInt32(item.TotalGeneral);
+                }
+
+                //Actualizar presupuesto cabecera
+                int nuevo = (a - TotalGeneralDB);
+
+                // var tot = TotalGeneralDB - a;
+
+
+
+                //foreach (var i in Jefes)
+                //{
+                //    db.SP_Borrrado_deEmpleados(IDs);
+                //}
+
+                //foreach (var i in Jefes)
+                //{
+                //    db.SP_insertado_deEmpleados(IDs, i.ID);
+                //}
+
+                DB.Presupuesto zz;
+                zz = (from c in db.Presupuestos where c.IdPresupuestos == IDs select c).First();
+
+                zz.Descripcion = textBox1.Text;
+                zz.Direccion = textBox3.Text;
+                zz.Estado = 1;
+                zz.IdCliente = Convert.ToInt32(textBox2.Text);
+                if (cambio == 1)
+                {
+                    zz.TotalGeneral = TotalGeneralDB;
+                }
+                else
+                {
+                    zz.TotalGeneral = Total;
+                }
+                db.SaveChanges();
+
+
+
+
+                //////////
+                MessageBox.Show("Presupuesto actualizado con exito");
+                this.Close();
+
+            }
+            catch (Exception)
+            {
+                
             
-
-            //inserto los materiales
-            foreach (var i in ListaCompleta)
-            {
-                db.guardar_materiales_listado(IDs, i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total, 1);
             }
-           
-           
-          
-            //inserto los materiales nuevos
-            //foreach (var i in listaMaterialesNuevos)
-            //{
-            //    db.guardar_materiales_listado(IDs, i.Descripcion, i.Unidad, i.Precio, i.Cantidad, i.Total, 1);
-            //}
-            int a = 0;
-            int b = 0;
-            int d = 0;
-            // listaMateriales.AddRange(listaMaterialesNuevos);
-
-
-            foreach (var i in ListaCompleta)
-            {
-                Total = Convert.ToInt32(i.Total) + Total;
-            }
-          
-            a = b + d;
-            foreach (var item in db.Presupuestos.Where(c => c.IdPresupuestos == IDs))
-            {
-                TotalGeneralDB = +Convert.ToInt32(item.TotalGeneral);
-            }
-
-            //Actualizar presupuesto cabecera
-            int nuevo = (a - TotalGeneralDB);
-
-            // var tot = TotalGeneralDB - a;
-
-           
-
-            //foreach (var i in Jefes)
-            //{
-            //    db.SP_Borrrado_deEmpleados(IDs);
-            //}
-
-            //foreach (var i in Jefes)
-            //{
-            //    db.SP_insertado_deEmpleados(IDs, i.ID);
-            //}
-
-            DB.Presupuesto zz;
-            zz = (from c in db.Presupuestos where c.IdPresupuestos == IDs select c).First();
-           
-            zz.Descripcion = textBox1.Text;
-            zz.Direccion = textBox3.Text;
-            zz.Estado = 1;
-            zz.IdCliente = Convert.ToInt32(textBox2.Text);
-            if (cambio == 1)
-            {
-                zz.TotalGeneral = TotalGeneralDB;
-            }
-            else
-            {
-                zz.TotalGeneral = Total;
-            }
-            db.SaveChanges();
-
-
-
-
-            //////////
-            MessageBox.Show("Presupuesto actualizado con exito");
-            this.Close();
 
         }
     }

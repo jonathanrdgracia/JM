@@ -6,16 +6,16 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.77377in</Width>
+              <Width>2.40919in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.26314in</Width>
+              <Width>1.16026in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.16495in</Width>
+              <Width>1.0595in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.84618in</Width>
+              <Width>1.40936in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.29022in</Width>
@@ -34,7 +34,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Descripcion Propuesta</Value>
+                              <Value>Descripcion de mano de obra</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -104,7 +104,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Precio</Value>
+                              <Value>Cantidad</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -140,7 +140,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Cantidad</Value>
+                              <Value>Precio</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -277,12 +277,12 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=IIF(Fields!Precio.Value=0,"","RD" &amp; Format(Fields!Precio.Value, "C") )</Value>
+                              <Value>=IIF(Fields!Precio.Value=0,"",Fields!Precio.Value)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Left</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -309,7 +309,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=IIF(Fields!Cantidad.Value=0,"",Fields!Cantidad.Value)</Value>
+                              <Value>=IIF(Fields!Cantidad.Value=0,"","RD" &amp; Format(Fields!Cantidad.Value, "C") )</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -391,7 +391,7 @@
         <Top>1.14041in</Top>
         <Left>0.09972in</Left>
         <Height>0.5in</Height>
-        <Width>7.33826in</Width>
+        <Width>7.32852in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -405,7 +405,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Encargado(s):</Value>
+                <Value>Cliente:</Value>
                 <Style>
                   <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
@@ -451,7 +451,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Tipo.Value +" "+Fields!Nombre.Value+" "+Fields!Apellidos.Value</Value>
+                              <Value>=Fields!Nombre.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -487,7 +487,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>Empleado</DataSetName>
+        <DataSetName>ClienteElite</DataSetName>
         <Top>0.52653in</Top>
         <Left>0.16917in</Left>
         <Height>0.25in</Height>
@@ -534,7 +534,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Cliente:</Value>
+                <Value>Fecha:</Value>
                 <Style>
                   <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
@@ -548,7 +548,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
         <Top>0.19319in</Top>
-        <Left>5.77088in</Left>
+        <Left>5.95122in</Left>
         <Height>0.25in</Height>
         <Width>1.47702in</Width>
         <ZIndex>5</ZIndex>
@@ -562,38 +562,76 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="Textbox41">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First(Fields!Nombre.Value, "C")</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox41</rd:DefaultName>
-        <Top>0.47097in</Top>
-        <Left>4.13663in</Left>
+      <Tablix Name="Tablix3">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>3.09375in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Nombre2">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!FechaCreacion.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Nombre</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="Details2" />
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>Descript</DataSetName>
+        <Top>0.54457in</Top>
+        <Left>4.33449in</Left>
         <Height>0.25in</Height>
-        <Width>3.11127in</Width>
+        <Width>3.09375in</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
-      </Textbox>
+      </Tablix>
     </ReportItems>
     <Height>2.20483in</Height>
     <Style>

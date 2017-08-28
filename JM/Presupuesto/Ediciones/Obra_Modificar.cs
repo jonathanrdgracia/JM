@@ -422,7 +422,27 @@ namespace JM.Presupuesto.Ediciones
 
         private void reduccirToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas eliminar los detalles?", "Eliminar", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                cambio = 1;
+                this.dataGridView3.Rows.Clear();
 
+                foreach (var i in ListaCompleta)
+                {
+                    dataGridView3.Rows.Add
+                        (
+                            i.Descripcion,
+                            i.Unidad,
+                            i.Precio = 0,
+                            i.Cantidad = 0,
+                            i.Total = 0
+                        );
+                }
+
+                label27.Text = "Total: RD" + TotalGeneralDB.ToString("C", nfi);
+
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)

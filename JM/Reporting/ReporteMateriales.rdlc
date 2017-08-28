@@ -6,16 +6,16 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.77377in</Width>
+              <Width>2.89957in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.26314in</Width>
+              <Width>1.26313in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.16495in</Width>
+              <Width>0.76832in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.84618in</Width>
+              <Width>1.09754in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.29022in</Width>
@@ -34,7 +34,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Descripcion Propuesta</Value>
+                              <Value>Descripcion de materiales</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -104,7 +104,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Precio</Value>
+                              <Value>Cantidad</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -140,7 +140,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Cantidad</Value>
+                              <Value>Precio</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
@@ -277,7 +277,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=IIF(Fields!Precio.Value=0,"","RD" &amp; Format(Fields!Precio.Value, "C") )</Value>
+                              <Value>=IIF(Fields!Cantidad.Value=0,"",Fields!Cantidad.Value)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -309,12 +309,12 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=IIF(Fields!Cantidad.Value=0,"",Fields!Cantidad.Value)</Value>
+                              <Value>=IIF(Fields!Precio.Value=0,"","RD" &amp; Format(Fields!Precio.Value, "C") )</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -346,7 +346,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -391,7 +391,7 @@
         <Top>1.14041in</Top>
         <Left>0.09972in</Left>
         <Height>0.5in</Height>
-        <Width>7.33826in</Width>
+        <Width>7.31878in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -418,7 +418,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>="Fecha: "+Fields!FechaCreacion.Value</Value>
+                              <Value>=Fields!FechaCreacion.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -457,7 +457,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>Cabeza</DataSetName>
-        <Top>0.26679in</Top>
+        <Top>0.51679in</Top>
         <Left>5.30158in</Left>
         <Height>0.25in</Height>
         <Width>2.11692in</Width>
@@ -469,7 +469,7 @@
         </Style>
       </Tablix>
       <Line Name="Line1">
-        <Top>0.69735in</Top>
+        <Top>0.82235in</Top>
         <Left>0.08458in</Left>
         <Height>0in</Height>
         <Width>7.33392in</Width>
@@ -553,8 +553,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>ClienteElite</DataSetName>
-        <Top>0.26679in</Top>
-        <Left>0.68114in</Left>
+        <Top>0.51679in</Top>
+        <Left>0.09972in</Left>
         <Height>0.25in</Height>
         <Width>4.05099in</Width>
         <ZIndex>4</ZIndex>
@@ -564,7 +564,7 @@
           </Border>
         </Style>
       </Tablix>
-      <Textbox Name="Textbox39">
+      <Textbox Name="Textbox22">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
@@ -573,20 +573,57 @@
               <TextRun>
                 <Value>Cliente:</Value>
                 <Style>
-                  <FontSize>9pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>Textbox33</rd:DefaultName>
-        <Top>0.26679in</Top>
+        <rd:DefaultName>Textbox21</rd:DefaultName>
+        <Top>0.21231in</Top>
         <Left>0.09972in</Left>
         <Height>0.25in</Height>
-        <Width>0.65927in</Width>
+        <Width>1.47702in</Width>
         <ZIndex>5</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox21">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Fecha:</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox21</rd:DefaultName>
+        <Top>0.21124in</Top>
+        <Left>6.07475in</Left>
+        <Height>0.25in</Height>
+        <Width>1.34375in</Width>
+        <ZIndex>6</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -605,7 +642,7 @@
       </Border>
     </Style>
   </Body>
-  <Width>7.47274in</Width>
+  <Width>7.68877in</Width>
   <Page>
     <PageHeader>
       <Height>1.92259in</Height>
@@ -918,7 +955,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox36</rd:DefaultName>
-          <Top>1.13566in</Top>
+          <Top>1.12177in</Top>
           <Left>2.21732in</Left>
           <Height>0.25in</Height>
           <Width>3.33505in</Width>

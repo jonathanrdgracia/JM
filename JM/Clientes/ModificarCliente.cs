@@ -65,23 +65,33 @@ namespace JM.Clientes
             }
             else
             {
-                
-                using (var db = new PresupuestoEntities5())
+
+                try
                 {
-                    //  var i =Convert.ToInt32(IdCliente.ToString().Substring(2, IdCliente.ToString().Length));
-                    //  MessageBox.Show(IdCliente.ToString());
-                    var c = (from x in db.Clientes
-                             where x.id == IdCliente
-                             select x).First();
+                    using (var db = new PresupuestoEntities5())
+                    {
+                        //  var i =Convert.ToInt32(IdCliente.ToString().Substring(2, IdCliente.ToString().Length));
+                        //  MessageBox.Show(IdCliente.ToString());
+                        var c = (from x in db.Clientes
+                                 where x.id == IdCliente
+                                 select x).First();
 
 
-                    c.Nombre = textBox2.Text;
-                    c.Telefono = textBox3.Text;
-                    c.TipoCliente = comboBox1.SelectedItem.ToString();
-                    db.SaveChanges();
-                    this.dataGridView1.Rows.Clear();
-                    cc.LlenarGridClientesActivos(dataGridView1);
-                    textBox6.Text = "";
+                        c.Nombre = textBox2.Text;
+                        c.Telefono = textBox3.Text;
+                        c.TipoCliente = comboBox1.SelectedItem.ToString();
+                        db.SaveChanges();
+                        this.dataGridView1.Rows.Clear();
+                        cc.LlenarGridClientesActivos(dataGridView1);
+                        textBox6.Text = "";
+                        MessageBox.Show("Datos actualizados correctamente");
+                        this.Close();
+                    }
+                }
+                catch (Exception)
+                {
+
+                  
 
                 }
 

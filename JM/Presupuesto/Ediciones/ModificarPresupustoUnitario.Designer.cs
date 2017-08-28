@@ -106,7 +106,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(318, 338);
+            this.button2.Location = new System.Drawing.Point(313, 338);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(92, 34);
             this.button2.TabIndex = 46;
@@ -125,7 +125,7 @@
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
             this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button12.Location = new System.Drawing.Point(630, 338);
+            this.button12.Location = new System.Drawing.Point(467, 338);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(99, 34);
             this.button12.TabIndex = 44;
@@ -144,7 +144,7 @@
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
             this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button13.Location = new System.Drawing.Point(6, 338);
+            this.button13.Location = new System.Drawing.Point(159, 338);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(92, 34);
             this.button13.TabIndex = 40;
@@ -526,7 +526,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ModificarPresupustoUnitario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ModificarPresupustoUnitario";
+            this.Text = "Modificar Presupusto";
             this.Load += new System.EventHandler(this.ModificarPresupustoUnitario_Load);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
