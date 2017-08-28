@@ -110,7 +110,7 @@ namespace JM.Presupuesto.Ediciones
                 while (true)
                 {
                     vuelta++;
-                    foreach (var item in lista.OrderByDescending(c => c.Precio))
+                    foreach (var item in lista.OrderBy(c => c.Precio))
                     {
 
 

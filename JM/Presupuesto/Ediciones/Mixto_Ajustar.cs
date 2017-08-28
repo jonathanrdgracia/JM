@@ -192,7 +192,7 @@ namespace JM.Presupuesto.Ediciones
                 while (true)
                 {
                     vuelta++;
-                    foreach (var item in listaMateriales.OrderByDescending(c => c.Precio))
+                    foreach (var item in listaMateriales.OrderBy(c => c.Precio))
                     {
 
 
@@ -468,7 +468,7 @@ namespace JM.Presupuesto.Ediciones
                     while (true)
                     {
                         vuelta++;
-                        foreach (var item in listaObra.OrderByDescending(c => c.Precio))
+                        foreach (var item in listaObra.OrderBy(c => c.Precio))
                         {
 
 

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using JM.DB;
 using System.Windows.Forms;
 using System.Globalization;
+using JM.Clientes;
 
 namespace JM.Proyecto
 {
@@ -83,38 +84,49 @@ namespace JM.Proyecto
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Proyecto.SubForms.ListarEmpleados c = new Proyecto.SubForms.ListarEmpleados();
+           
 
-            c.enviado2 += new Proyecto.SubForms.ListarEmpleados.enviar2(ejecutar);
+            ListadoCliente4 c = new ListadoCliente4();
+
+            c.enviado += new ListadoCliente4.enviar(ejecutar);
             c.ShowDialog();
         }
-        private void ejecutar(List<DB.Abonado> lista)
+        private void ejecutar(string id, string dato, string dato2, string dato3,string dato4)
         {
-
-            foreach (var i in lista)
+            int a = Convert.ToInt32(id);
+            dataGridView1.Rows.Clear();
+            ListadoEmpleado2.Add(new DB.Abonado
             {
-                this.ListadoEmpleado2.Add
-                    (new DB.Abonado{
-                    Id= i.Id,
-                    Nombre=i.Nombre,
-                    Telefono= i.Telefono,
-                    TipoEmpleado= i.TipoEmpleado,
-                    Lugar= i.Lugar
-                    });    
-            }
-            this.dataGridView1.Rows.Clear();
-            overCargar(ListadoEmpleado);
+                Id = a,
+                Nombre =dato,
+                Telefono =dato3,
+                TipoEmpleado = dato2,
+                Lugar = dato4
+            });
+
             foreach (var i in ListadoEmpleado2)
             {
-                 this.dataGridView1.Rows.Add
-                    (
+                dataGridView1.Rows.Add(
                     i.Id,
                     i.Nombre,
                     i.Telefono,
                     i.TipoEmpleado,
                     i.Lugar
-                    );    
+                    );
             }
+            foreach (var i in ListadoEmpleado)
+            {
+
+                this.dataGridView1.Rows.Add
+                    (
+                        i.Id,
+                        i.Nombre,
+                        i.Telefono,
+                        i.TipoEmpleado,
+                        i.Lugar
+                    );
+            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -159,10 +171,10 @@ namespace JM.Proyecto
                  }
 
             }
-            catch (Exception)
+            catch (Exception es)
             {
-                
-               
+
+                MessageBox.Show(es.Message);
             }
             
            
@@ -187,11 +199,26 @@ namespace JM.Proyecto
                             de.Estado = 0;
                             db.SaveChanges();
                         }
-                        
+                        MessageBox.Show("Empleado eliminado con exito");
+                        this.Close();
                     }
                     catch (Exception)
                     {
-
+                        foreach (var i in ListadoEmpleado2)
+                        {
+                            ListadoEmpleado2.RemoveAll(c => c.Id == x0);
+                            this.dataGridView1.Rows.Add
+                               (
+                               i.Id,
+                               i.Nombre,
+                               i.Telefono,
+                               i.TipoEmpleado,
+                               i.Lugar
+                               );
+                        }
+                        dataGridView1.Rows.Clear();
+                        MessageBox.Show("Empleado eliminado con exito");
+                        this.Close();
                        
                     }
                   

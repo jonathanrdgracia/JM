@@ -143,13 +143,14 @@ namespace JM.Modificar
                     MessageBox.Show("Empleado modificado con exito");
                     this.dataGridView1.Rows.Clear();
                     a.llenarAbonado(dataGridView1);
+                    this.Close();
                 }
 
             }
             catch (Exception)
             {
 
-                MessageBox.Show("Vuelva a intentarlo");
+                MessageBox.Show("Verifique que todos los campos esten llenos");
             }
 
            
