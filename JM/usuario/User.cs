@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,14 @@ namespace JM.usuario
         public string _usuario { get; set; }
         public string _nuevapass2 { get; set; }
         public string _nuevapass1 { get; set; }
+        private int logica;
+
+        public int Logica
+        {
+            get { return logica; }
+            set { logica = value; }
+        }
+        string fillName;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -47,7 +56,7 @@ namespace JM.usuario
                     }
                     else
                     {
-
+                        Imagen = pictureBox1.Image;
                         var x = (from c in db.Usuarios
                           
                             select c).First();
@@ -55,6 +64,10 @@ namespace JM.usuario
                         x.Pass2 = _nuevapass1;
                         x.Usuario1 = _usuario;
                         db.SaveChanges();
+                        if (logica==1)
+                        {
+                            SaveImage(Imagen);
+                        }
                         MessageBox.Show("Usuario actualizado correctamente");
                         this.Close();
                     }
@@ -116,6 +129,44 @@ namespace JM.usuario
             //}
         }
 
+        public Image Imagen { get; set; }
+
+        private async void SaveImage(Image i)
+        {
+            using (PresupuestoEntities5 compa = new PresupuestoEntities5())
+            {
+                Usuario pic;
+                pic = (from c in compa.Usuarios
+                       select c).FirstOrDefault();
+
+               
+                if (logica == 1)
+                {
+                    pic.Logo = ConvertImageToBinary(i);
+                }
+               
+                await compa.SaveChangesAsync();
+
+            }
+        }
+        public Image ConvertBinaryToImage(byte[] data)
+        {
+            using (MemoryStream ms = new MemoryStream(data))
+            {
+
+                return Image.FromStream(ms);
+            }
+        }
+
+        public byte[] ConvertImageToBinary(Image img)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                return ms.ToArray();
+            }
+        }
+
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -128,13 +179,31 @@ namespace JM.usuario
 
         private void button17_Click(object sender, EventArgs e)
         {
-            this.Close();
+           
         }
 
         private void User_Load(object sender, EventArgs e)
         {
-         
-            
+            var db = new PresupuestoEntities5();
+
+            var query = (from c in db.Usuarios
+                select new {c.Logo}).FirstOrDefault();
+            if (query != null) pictureBox1.Image = ConvertBinaryToImage(query.Logo);
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "JPEG|*.jpg; *.png", ValidateNames = true, Multiselect = false })
+            {
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    logica = 1;
+                    fillName = ofd.FileName;
+                    pictureBox1.Image = Image.FromFile(fillName);
+                    logica = 1;
+                }
+
+            }
         }
     }
 }

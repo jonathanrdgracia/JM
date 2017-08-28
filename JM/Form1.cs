@@ -208,9 +208,16 @@ namespace JM
                 label3.Text = "Telefono: " + query.Telefono;
                 label2.Text = "RNC: " + query.RNC;
                 label4.Text = "Direccion: " + query.Direccion;
+
                 pictureBox1.Image = para.ConvertBinaryToImage(query.Logo);
+               
+
+                var query2 = (from c in db.Usuarios
+                             select new { c.Logo }).FirstOrDefault();
+                if (query2 != null) pictureBox2.Image = para.ConvertBinaryToImage(query2.Logo);
 
             }
+
 
            
         }

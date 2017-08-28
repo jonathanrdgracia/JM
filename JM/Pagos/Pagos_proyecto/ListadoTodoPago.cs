@@ -49,8 +49,16 @@ namespace JM.Pagos.Pagos_proyecto
                 dateTimePicker2.Format = DateTimePickerFormat.Custom;
                 dateTimePicker2.CustomFormat = "dd-MM-yyyy";
                 dateTimePicker2.Value = DateTime.Now;
-                var s = dateTimePicker1.Value;
-                
+
+                var dateTime = (from c in db.Pagoes where c.IdProyecto == Idproyecto orderby c.Fecha  select c.Fecha).First();
+                if (dateTime != null)
+                {
+                    dateTimePicker1.Value = (DateTime) dateTime;
+                }
+                else
+                {
+                    dateTimePicker1.Value = DateTime.Now;
+                }
                 this.label4.Text = "Pagos relacionados al proyecto: " + Descripcion;
                 var query2 = db.ListadoPagosPorProyectoDetalles(Idproyecto);
                 var query = db.Listado_PagosPorProyectos(Idproyecto).OrderByDescending(c=>c.Fecha);
@@ -91,7 +99,7 @@ namespace JM.Pagos.Pagos_proyecto
                         i.DiasTrabajados,
                       
                         "RD" + Convert.ToInt32(i.Valor.ToString()).ToString("C", nfi), // Convert.ToInt32(i.Valor.ToString()).ToString("C", nfi)
-                        "RD" + Convert.ToInt32(i.CantidadPagos.ToString()).ToString("C", nfi)
+                        i.CantidadPagos.ToString()
                     );
                     Total += Convert.ToInt32(i.Valor);
                 }

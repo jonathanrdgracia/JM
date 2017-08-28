@@ -40,7 +40,6 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verPagosDetalladosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarPagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label22 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -159,26 +158,17 @@
             // opcionesToolStripMenuItem
             // 
             this.opcionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verPagosDetalladosToolStripMenuItem,
             this.modificarPagoToolStripMenuItem});
             this.opcionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("opcionesToolStripMenuItem.Image")));
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
             this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
             this.opcionesToolStripMenuItem.Text = "Opciones";
             // 
-            // verPagosDetalladosToolStripMenuItem
-            // 
-            this.verPagosDetalladosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("verPagosDetalladosToolStripMenuItem.Image")));
-            this.verPagosDetalladosToolStripMenuItem.Name = "verPagosDetalladosToolStripMenuItem";
-            this.verPagosDetalladosToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.verPagosDetalladosToolStripMenuItem.Text = "Ver pagos totales";
-            this.verPagosDetalladosToolStripMenuItem.Click += new System.EventHandler(this.verPagosDetalladosToolStripMenuItem_Click);
-            // 
             // modificarPagoToolStripMenuItem
             // 
             this.modificarPagoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("modificarPagoToolStripMenuItem.Image")));
             this.modificarPagoToolStripMenuItem.Name = "modificarPagoToolStripMenuItem";
-            this.modificarPagoToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.modificarPagoToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.modificarPagoToolStripMenuItem.Text = "Modificar pago";
             this.modificarPagoToolStripMenuItem.Click += new System.EventHandler(this.modificarPagoToolStripMenuItem_Click);
             // 
@@ -611,7 +601,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem verPagosDetalladosToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolStripMenuItem modificarPagoToolStripMenuItem;

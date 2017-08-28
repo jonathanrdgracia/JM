@@ -286,7 +286,8 @@ namespace JM.Presupuesto
                                 };
                                 db.Materiales_detalle.Add(md);
                                 db.SaveChanges();
-
+                                MessageBox.Show("Presupuesto agregado con exito");
+                                this.Close();
                             }
 
 

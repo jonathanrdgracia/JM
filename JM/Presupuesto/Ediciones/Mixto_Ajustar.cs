@@ -109,7 +109,7 @@ namespace JM.Presupuesto.Ediciones
                 totalGeneralDB = TotalGeneral;
                 label9.Text = TotalGeneral.ToString();
                 g1 = TotalGeneral;
-                label22.Text = TotalGeneral.ToString("C", nfi);
+                label22.Text = "RD"+TotalGeneral.ToString("C", nfi);
               
                 foreach (var item in listaMateriales)
                 {
@@ -148,7 +148,7 @@ namespace JM.Presupuesto.Ediciones
                 label11.Text ="Total general: RD"+(TotalGeneral1+TotalGeneral).ToString("C", nfi);
                 label8.Text = TotalGeneral1.ToString();
                 g2 = TotalGeneral1;
-                label6.Text = TotalGeneral1.ToString("C", nfi);
+                label6.Text = "RD"+TotalGeneral1.ToString("C", nfi);
                
                 foreach (var item in listaObra)
                 {
@@ -257,7 +257,7 @@ namespace JM.Presupuesto.Ediciones
                 label9.Text = TotalGeneral.ToString();
                 g1 = TotalGeneral;
               
-                label22.Text = TotalGeneral.ToString("C", nfi);
+                label22.Text = "RD"+TotalGeneral.ToString("C", nfi);
                 totalGeneralDB = TotalGeneral;
 
 
@@ -377,7 +377,7 @@ namespace JM.Presupuesto.Ediciones
                 }
                 label9.Text = TotalGeneral.ToString();
                 g1 = TotalGeneral;
-                label22.Text = TotalGeneral.ToString("C", nfi);
+                label22.Text = "RD"+TotalGeneral.ToString("C", nfi);
                 totalGeneralDB = TotalGeneral;
                
 
@@ -545,7 +545,7 @@ namespace JM.Presupuesto.Ediciones
                     g2 = TotalGeneral1;
 
                    
-                    label6.Text = TotalGeneral1.ToString("C", nfi);
+                    label6.Text = "RD"+TotalGeneral1.ToString("C", nfi);
                     totalGeneralDB1 = TotalGeneral1;
 
                     // MessageBoxOptions.DefaultDesktopOnly();
@@ -683,7 +683,7 @@ namespace JM.Presupuesto.Ediciones
                         textBox4.Text = (TotalGenetalEstatico1 - TotalGeneral1).ToString();
                     }
                     g2 = TotalGeneral1;
-                    label6.Text = TotalGeneral1.ToString("C", nfi);
+                    label6.Text = "RD"+TotalGeneral1.ToString("C", nfi);
                     label8.Text = TotalGeneral1.ToString();
                   
                     totalGeneralDB1 = TotalGeneral1;

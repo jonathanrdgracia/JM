@@ -29,12 +29,12 @@ namespace JM.Empresa
             get { return logica; }
             set { logica = value; }
         }
-        
+        string fillName;
         public EditarParametro()
         {
             InitializeComponent();
         }
-        string fillName;
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
