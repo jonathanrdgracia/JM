@@ -121,8 +121,8 @@ namespace JM.Presupuesto
                         (
                             item.Descripcion,
                             item.Unidad,
-                            item.Precio,
                             item.Cantidad,
+                            "RD"+Convert.ToInt32(item.Precio).ToString("C",nfi),
                             "RD"+Convert.ToInt32(item.Total).ToString("C",nfi)
                         );
                 }
@@ -184,7 +184,7 @@ namespace JM.Presupuesto
                             item.Descripcion,
                             item.Unidad,
                             item.Cantidad,
-                             Convert.ToInt32(item.Precio).ToString("C", nfi),
+                            "RD"+Convert.ToInt32(item.Precio).ToString("C", nfi),
                            "RD"+ Convert.ToInt32(item.Total).ToString("C", nfi)
                         );
                 }
@@ -360,7 +360,8 @@ namespace JM.Presupuesto
                                 };
                                 db.Obra_detalle.Add(md);
                                 db.SaveChanges();
-
+                                MessageBox.Show("Presupuesto guardado con exito");
+                                this.Close();
                             }
 
 

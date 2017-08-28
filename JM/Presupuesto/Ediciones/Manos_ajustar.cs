@@ -62,8 +62,8 @@ namespace JM.Presupuesto.Ediciones
                         id = item.id,
                         Descripcion = item.Descripcion,
                         Unidad = item.Unidad,
-                        Precio = item.Precio,
                         Cantidad = item.Cantidad,
+                        Precio = item.Precio,
                         Total = item.Total
 
                     });
@@ -81,9 +81,9 @@ namespace JM.Presupuesto.Ediciones
                         item.id,
                         item.Descripcion,
                         item.Unidad,
-                       Convert.ToInt32(item.Precio).ToString("C", nfi),
                         item.Cantidad,
-                        Convert.ToInt32(item.Total).ToString("C", nfi)
+                        "RD" + Convert.ToInt32(item.Precio).ToString("C", nfi),
+                        "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
                         );
                 }
 
@@ -195,9 +195,9 @@ namespace JM.Presupuesto.Ediciones
                         item.id.ToString(),
                         item.Descripcion,
                         item.Unidad,
-                        Convert.ToInt32(item.Precio).ToString("C", nfi),
                         item.Cantidad,
-                        Convert.ToInt32(item.Total).ToString("C", nfi)
+                        "RD"+Convert.ToInt32(item.Precio).ToString("C", nfi),
+                        "RD"+Convert.ToInt32(item.Total).ToString("C", nfi)
                     );
 
                 }

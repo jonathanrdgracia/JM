@@ -181,6 +181,7 @@
     <Property Name="IdProyectoDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdEmpleado" Type="int" />
     <Property Name="IdProyecto" Type="int" />
+    <Property Name="Estado" Type="int" />
   </EntityType>
   <EntityType Name="ProyectoConPresupuesto">
     <Key>

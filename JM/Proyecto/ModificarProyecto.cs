@@ -142,7 +142,8 @@ namespace JM.Proyecto
                              DB.Proyecto_detalle PD = new Proyecto_detalle
                              {
                                  IdEmpleado = i.Id,
-                                 IdProyecto = idProyecto
+                                 IdProyecto = idProyecto,
+                                 Estado = 1
                              };
                              db.Proyecto_detalle.Add(PD);
                              db.SaveChanges();
@@ -168,5 +169,38 @@ namespace JM.Proyecto
             
          }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                   DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas eliminar este empleado del proyecto?", "Proyecto", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    var x0 = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                    try
+                    {
+                        using (var db = new PresupuestoEntities5())
+                        {
+                            var de = (from c in db.Proyecto_detalle
+                                      where c.IdEmpleado == x0
+                                      select c).First();
+                            de.Estado = 0;
+                            db.SaveChanges();
+                        }
+                        
+                    }
+                    catch (Exception)
+                    {
+
+                       
+                    }
+                  
+                }
+                else
+                {
+
+                }
+            }
+        }
     }
 }

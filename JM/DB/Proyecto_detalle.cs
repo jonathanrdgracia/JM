@@ -23,6 +23,7 @@ namespace JM.DB
         public int IdProyectoDetalle { get; set; }
         public Nullable<int> IdEmpleado { get; set; }
         public Nullable<int> IdProyecto { get; set; }
+        public Nullable<int> Estado { get; set; }
     
         public virtual Abonado Abonado { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

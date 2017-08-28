@@ -67,8 +67,8 @@ namespace JM.Presupuesto
 
             if (textBox22.Text==string.Empty)
             {
-                                MessageBox.Show("Todos los campos son requeridos", "Campos vacios",
-                             MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Todos los campos son requeridos", "Campos vacios",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -199,7 +199,7 @@ namespace JM.Presupuesto
             catch (Exception ex)
             {
                 MessageBox.Show("Algo ha salido mal, intentlo de nuevo", "Presupuesto",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -209,7 +209,7 @@ namespace JM.Presupuesto
             if (textBox13.Text==string.Empty)
             {
                 MessageBox.Show("Todos los campos son requeridos", "Presupuesto",
-                  MessageBoxButtons.OK, MessageBoxIcon.Error);
+                  MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -528,8 +528,8 @@ namespace JM.Presupuesto
                         (
                             item.Descripcion,
                             item.Unidad,
-                           item.Cantidad,
-                            item.Precio,
+                            item.Cantidad,
+                            "RD" + Convert.ToInt32(item.Precio).ToString("C", nfi),
                             "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
                         );
                 }

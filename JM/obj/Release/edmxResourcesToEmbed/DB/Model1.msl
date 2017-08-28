@@ -804,6 +804,7 @@
     <EntitySetMapping Name="Proyecto_detalle">
       <EntityTypeMapping TypeName="PresupuestoModel.Proyecto_detalle">
         <MappingFragment StoreEntitySet="Proyecto_detalle">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
           <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
           <ScalarProperty Name="IdProyectoDetalle" ColumnName="IdProyectoDetalle" />

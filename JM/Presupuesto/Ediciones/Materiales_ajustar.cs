@@ -54,7 +54,7 @@ namespace JM.Presupuesto.Ediciones
             {
                 q =Convert.ToInt32(db.Presupuestos.Where(c => c.IdPresupuestos == ID_Que_Paso).Select(x => x.TotalGeneral).FirstOrDefault());
                
-                foreach (var item in db.SP_ListarObraMateriales(ID_Que_Paso,Tipo).Where(c => c.Tipo == 1).OrderByDescending(c => c.IdPresupuesto))
+                foreach (var item in db.SP_ListarObraMateriales(ID_Que_Paso,Tipo).Where(c => c.Tipo == 1))
                 {
                     lista.Add(new Obra_detalle
                    {
@@ -80,9 +80,9 @@ namespace JM.Presupuesto.Ediciones
                         item.id,
                         item.Descripcion,
                         item.Unidad,
-                       Convert.ToInt32(item.Precio).ToString("C", nfi),
-                        item.Cantidad,
-                        Convert.ToInt32(item.Total).ToString("C", nfi)
+                         item.Cantidad,
+                        "RD" + Convert.ToInt32(item.Precio).ToString("C", nfi),
+                        "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
                         );
                 }
 
@@ -213,7 +213,7 @@ namespace JM.Presupuesto.Ediciones
                     while (true)
                     {
                         vuelta++;
-                        foreach (var item in lista.OrderByDescending(c => c.Precio))
+                        foreach (var item in lista.OrderBy(c => c.Precio))
                         {
 
 
@@ -274,7 +274,7 @@ namespace JM.Presupuesto.Ediciones
                         }
                         if (vuelta >= 1000)
                         {
-                            goto Foo;
+                          //  goto Foo;
                         }
                     }
                 Foo:
@@ -298,9 +298,9 @@ namespace JM.Presupuesto.Ediciones
                             item.id.ToString(),
                             item.Descripcion,
                             item.Unidad,
-                            Convert.ToInt32(item.Precio).ToString("C", nfi),
-                            item.Cantidad,
-                            Convert.ToInt32(item.Total).ToString("C", nfi)
+                             item.Cantidad,
+                        "RD" + Convert.ToInt32(item.Precio).ToString("C", nfi),
+                        "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
                         );
 
                     }
@@ -432,9 +432,9 @@ namespace JM.Presupuesto.Ediciones
                             item.id.ToString(),
                             item.Descripcion,
                             item.Unidad,
-                            Convert.ToInt32(item.Precio).ToString("C", nfi),
-                            item.Cantidad,
-                            Convert.ToInt32(item.Total).ToString("C", nfi)
+                             item.Cantidad,
+                        "RD" + Convert.ToInt32(item.Precio).ToString("C", nfi),
+                        "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
                         );
 
                     }

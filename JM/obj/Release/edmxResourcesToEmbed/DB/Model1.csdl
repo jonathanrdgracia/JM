@@ -1053,6 +1053,7 @@
     <NavigationProperty Name="Abonado" Relationship="PresupuestoModel.FK_Proyecto_detalle_Abonado" FromRole="Proyecto_detalle" ToRole="Abonado" />
     <NavigationProperty Name="PagoDetalles" Relationship="PresupuestoModel.FK_PagoDetalle_Proyecto_detalle" FromRole="Proyecto_detalle" ToRole="PagoDetalle" />
     <NavigationProperty Name="ProyectoConPresupuesto" Relationship="PresupuestoModel.FK_Proyecto_detalle_ProyectoConPresupuesto" FromRole="Proyecto_detalle" ToRole="ProyectoConPresupuesto" />
+    <Property Name="Estado" Type="Int32" />
   </EntityType>
   <EntityType Name="ProyectoConPresupuesto">
     <Key>

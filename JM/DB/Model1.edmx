@@ -186,6 +186,7 @@
           <Property Name="IdProyectoDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdEmpleado" Type="int" />
           <Property Name="IdProyecto" Type="int" />
+          <Property Name="Estado" Type="int" />
         </EntityType>
         <EntityType Name="ProyectoConPresupuesto">
           <Key>
@@ -2271,6 +2272,7 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <NavigationProperty Name="Abonado" Relationship="PresupuestoModel.FK_Proyecto_detalle_Abonado" FromRole="Proyecto_detalle" ToRole="Abonado" />
           <NavigationProperty Name="PagoDetalles" Relationship="PresupuestoModel.FK_PagoDetalle_Proyecto_detalle" FromRole="Proyecto_detalle" ToRole="PagoDetalle" />
           <NavigationProperty Name="ProyectoConPresupuesto" Relationship="PresupuestoModel.FK_Proyecto_detalle_ProyectoConPresupuesto" FromRole="Proyecto_detalle" ToRole="ProyectoConPresupuesto" />
+          <Property Name="Estado" Type="Int32" />
         </EntityType>
         <EntityType Name="ProyectoConPresupuesto">
           <Key>
@@ -3642,6 +3644,7 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <EntitySetMapping Name="Proyecto_detalle">
             <EntityTypeMapping TypeName="PresupuestoModel.Proyecto_detalle">
               <MappingFragment StoreEntitySet="Proyecto_detalle">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
                 <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
                 <ScalarProperty Name="IdProyectoDetalle" ColumnName="IdProyectoDetalle" />

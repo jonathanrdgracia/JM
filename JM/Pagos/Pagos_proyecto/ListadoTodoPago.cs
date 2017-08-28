@@ -62,8 +62,8 @@ namespace JM.Pagos.Pagos_proyecto
                         (
                             i.Nombre+" "+i.Apellidos,
                             i.DiasTrabajados.ToString(),
-                            Convert.ToInt32(i.PagoPorDia.ToString()).ToString("C", nfi),
-                            Convert.ToInt32(i.Valor.ToString()).ToString("C", nfi),
+                            "RD"+Convert.ToInt32(i.PagoPorDia.ToString()).ToString("C", nfi),
+                            "RD"+Convert.ToInt32(i.Valor.ToString()).ToString("C", nfi),
                             i.Fecha.Value.Day.ToString()+"-"+i.Fecha.Value.Month.ToString()+"-"+i.Fecha.Value.Year.ToString()
                             
                         );
@@ -74,8 +74,8 @@ namespace JM.Pagos.Pagos_proyecto
                         (
                             i.Nombre + " " + i.Apellidos,
                             i.TotalDiasTrabajados.ToString(),
-                            Convert.ToInt32(i.TotalPagoPorDia.ToString()).ToString("C", nfi),
-                            Convert.ToInt32(i.TotalValor.ToString()).ToString("C", nfi),
+                            "RD" + Convert.ToInt32(i.TotalPagoPorDia.ToString()).ToString("C", nfi),
+                            "RD" + Convert.ToInt32(i.TotalValor.ToString()).ToString("C", nfi),
                             i.TotalCantidadPagos.ToString(),
                            i.Fecha.Value.Day.ToString() + "-" + i.Fecha.Value.Month.ToString() + "-" + i.Fecha.Value.Year.ToString()
 
@@ -91,7 +91,7 @@ namespace JM.Pagos.Pagos_proyecto
                         i.DiasTrabajados,
                       
                         "RD" + Convert.ToInt32(i.Valor.ToString()).ToString("C", nfi), // Convert.ToInt32(i.Valor.ToString()).ToString("C", nfi)
-                        i.CantidadPagos
+                        "RD" + Convert.ToInt32(i.CantidadPagos.ToString()).ToString("C", nfi)
                     );
                     Total += Convert.ToInt32(i.Valor);
                 }
@@ -169,8 +169,8 @@ namespace JM.Pagos.Pagos_proyecto
                         (
                             i.Nombre + " " + i.Apellidos,
                             i.TotalDiasTrabajados.ToString(),
-                            Convert.ToInt32(i.TotalPagoPorDia.ToString()).ToString("C", nfi),
-                            Convert.ToInt32(i.TotalValor.ToString()).ToString("C", nfi),
+                            "RD" + Convert.ToInt32(i.TotalPagoPorDia.ToString()).ToString("C", nfi),
+                            "RD" + Convert.ToInt32(i.TotalValor.ToString()).ToString("C", nfi),
                             i.TotalCantidadPagos.ToString(),
                             i.Fecha.Value.Day.ToString() + "-" + i.Fecha.Value.Month.ToString() + "-" + i.Fecha.Value.Year.ToString()
 
@@ -196,9 +196,9 @@ namespace JM.Pagos.Pagos_proyecto
                         (
                             i.Nombre + " " + i.Apellidos,
                             i.TotalDiasTrabajados.ToString(),
-                            Convert.ToInt32(i.TotalPagoPorDia.ToString()).ToString("C", nfi),
-                            Convert.ToInt32(i.TotalValor.ToString()).ToString("C", nfi),
-                            i.TotalCantidadPagos.ToString(),
+                            "RD" + Convert.ToInt32(i.TotalPagoPorDia.ToString()).ToString("C", nfi),
+                            "RD" + Convert.ToInt32(i.TotalValor.ToString()).ToString("C", nfi),
+                           i.TotalCantidadPagos.ToString(),
                             i.Fecha.Value.Day.ToString() + "-" + i.Fecha.Value.Month.ToString() + "-" + i.Fecha.Value.Year.ToString()
 
                         );
@@ -224,8 +224,8 @@ namespace JM.Pagos.Pagos_proyecto
                         (
                             i.Nombre + " " + i.Apellidos,
                             i.TotalDiasTrabajados.ToString(),
-                            Convert.ToInt32(i.TotalPagoPorDia.ToString()).ToString("C", nfi),
-                            Convert.ToInt32(i.TotalValor.ToString()).ToString("C", nfi),
+                            "RD" + Convert.ToInt32(i.TotalPagoPorDia.ToString()).ToString("C", nfi),
+                            "RD" + Convert.ToInt32(i.TotalValor.ToString()).ToString("C", nfi),
                             i.TotalCantidadPagos.ToString(),
                              i.Fecha.Value.Day.ToString() + "-" + i.Fecha.Value.Month.ToString() + "-" + i.Fecha.Value.Year.ToString()
 
@@ -252,8 +252,8 @@ namespace JM.Pagos.Pagos_proyecto
                         (
                             i.Nombre + " " + i.Apellidos,
                             i.TotalDiasTrabajados.ToString(),
-                            Convert.ToInt32(i.TotalPagoPorDia.ToString()).ToString("C", nfi),
-                            Convert.ToInt32(i.TotalValor.ToString()).ToString("C", nfi),
+                            "RD" + Convert.ToInt32(i.TotalPagoPorDia.ToString()).ToString("C", nfi),
+                            "RD" + Convert.ToInt32(i.TotalValor.ToString()).ToString("C", nfi),
                             i.TotalCantidadPagos.ToString(),
                             i.Fecha.Value.Day.ToString() + "-" + i.Fecha.Value.Month.ToString() + "-" + i.Fecha.Value.Year.ToString()
 
@@ -283,8 +283,8 @@ namespace JM.Pagos.Pagos_proyecto
                             (
                                 i.Nombre + " " + i.Apellidos,
                                 i.TotalDiasTrabajados.ToString(),
-                                Convert.ToInt32(i.PagoPorDia.ToString()).ToString("C", nfi),
-                                Convert.ToInt32(i.Valor.ToString()).ToString("C", nfi),
+                                "RD" + Convert.ToInt32(i.PagoPorDia.ToString()).ToString("C", nfi),
+                                "RD" + Convert.ToInt32(i.Valor.ToString()).ToString("C", nfi),
                                 i.TotalCantidadPagos.ToString(),
                                 i.Fecha.Value.Day.ToString() + "-" + i.Fecha.Value.Month.ToString() + "-" + i.Fecha.Value.Year.ToString()
 

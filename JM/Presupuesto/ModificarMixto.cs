@@ -506,7 +506,7 @@ namespace JM.Presupuesto
         {
             try
             {
-                int currentIndex = this.dataGridView1.CurrentCell.RowIndex;
+                int currentIndex = this.dataGridView2.CurrentCell.RowIndex;
                 contador2 = 0;
                 var jj = 0;
                

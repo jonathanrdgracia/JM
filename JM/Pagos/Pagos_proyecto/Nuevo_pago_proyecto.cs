@@ -82,7 +82,8 @@ namespace JM.Pagos.Pagos_proyecto
 
                     db.PagoMaestroes.Add(p);
                     db.SaveChanges();
-
+                    MessageBox.Show("Folder agregado correctamente");
+                    this.Close();
 
                     var IdPagoMaestro = db.PagoMaestroes.Where(c => c.Idproyecto == idProyecto).Select(c => c.id).FirstOrDefault();
 

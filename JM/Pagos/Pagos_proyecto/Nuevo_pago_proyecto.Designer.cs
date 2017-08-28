@@ -226,7 +226,7 @@
             this.Controls.Add(this.textBox7);
             this.Name = "Nuevo_pago_proyecto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Nuevo pago proyecto";
+            this.Text = "Nuevo folder de pago";
             this.Load += new System.EventHandler(this.Nuevo_pago_proyecto_Load);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
