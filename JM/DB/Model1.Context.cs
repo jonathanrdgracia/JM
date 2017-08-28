@@ -49,7 +49,6 @@ namespace JM.DB
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TipoEmpleado> TipoEmpleadoes { get; set; }
         public virtual DbSet<Unidad> Unidads { get; set; }
-        public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<Vendedore> Vendedores { get; set; }
         public virtual DbSet<g> g { get; set; }
         public virtual DbSet<hola> holas { get; set; }
@@ -63,6 +62,7 @@ namespace JM.DB
         public virtual DbSet<Vista_ListadoPresupuestoMateriales> Vista_ListadoPresupuestoMateriales { get; set; }
         public virtual DbSet<Vista_ListadoPresupuestoObra> Vista_ListadoPresupuestoObra { get; set; }
         public virtual DbSet<Pago> Pagoes { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
     
         public virtual ObjectResult<CompaniaDato_Result> CompaniaDato()
         {

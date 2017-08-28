@@ -1533,7 +1533,6 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <EntitySet Name="sysdiagrams" EntityType="PresupuestoModel.sysdiagram" />
           <EntitySet Name="TipoEmpleadoes" EntityType="PresupuestoModel.TipoEmpleado" />
           <EntitySet Name="Unidads" EntityType="PresupuestoModel.Unidad" />
-          <EntitySet Name="Usuarios" EntityType="PresupuestoModel.Usuario" />
           <EntitySet Name="Vendedores" EntityType="PresupuestoModel.Vendedore" />
           <EntitySet Name="g" EntityType="PresupuestoModel.g" />
           <EntitySet Name="holas" EntityType="PresupuestoModel.hola" />
@@ -1665,6 +1664,7 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
             <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="fechaid" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <EntitySet Name="Usuarios" EntityType="PresupuestoModel.Usuario" />
           </EntityContainer>
         <ComplexType Name="CompaniaDato_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -2339,16 +2339,6 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <Property Name="Unidad1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Tipo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Usuario">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Usuario1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Pass2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="Vendedore">
           <Key>
             <PropertyRef Name="IdVendedor" />
@@ -2835,6 +2825,16 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <Property Type="Int32" Name="TotalCantidadPagos" Nullable="true" />
           <Property Type="DateTime" Name="Fecha" Nullable="true" />
         </ComplexType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Usuario1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pass2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3714,17 +3714,6 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="PresupuestoModel.Usuario">
-              <MappingFragment StoreEntitySet="Usuario">
-                <ScalarProperty Name="Logo" ColumnName="Logo" />
-                <ScalarProperty Name="Pass2" ColumnName="Pass2" />
-                <ScalarProperty Name="Pass" ColumnName="Pass" />
-                <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Vendedores">
             <EntityTypeMapping TypeName="PresupuestoModel.Vendedore">
               <MappingFragment StoreEntitySet="Vendedores">
@@ -4020,6 +4009,17 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="PresupuestoModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Pass2" ColumnName="Pass2" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

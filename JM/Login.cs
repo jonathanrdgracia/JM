@@ -81,7 +81,7 @@ namespace JM
                 var query = from o in db.Usuarios
                             where o.Usuario1 == textBox1.Text && o.Pass == textBox22.Text
                             select o;
-
+                
                 if (materialCheck.Checked)
                 {
                     Properties.Settings.Default.UserName = textBox1.Text;
@@ -99,6 +99,7 @@ namespace JM
 
                 foreach (var i in query)
                 {
+                 
                         if ((textBox1.Text ==i.Usuario1) && (textBox22.Text == i.Pass))
                         {
                             Save_Data();
