@@ -401,18 +401,51 @@
     </AssociationSet>
     <FunctionImport Name="FiltroPagosPorProyecto" ReturnType="Collection(PresupuestoModel.FiltroPagosPorProyecto_Result)">
       <Parameter Name="id" Mode="In" Type="Int32" />
-      <Parameter Name="fechaUno" Mode="In" Type="String" />
-      <Parameter Name="fechaDos" Mode="In" Type="String" />
+      <Parameter Name="fechaUno" Mode="In" Type="DateTime" />
+      <Parameter Name="fechaDos" Mode="In" Type="DateTime" />
     </FunctionImport>
     <FunctionImport Name="FiltroNombrePagosPorProyecto" ReturnType="Collection(PresupuestoModel.FiltroNombrePagosPorProyecto_Result)">
       <Parameter Name="id" Mode="In" Type="Int32" />
-      <Parameter Name="nombre" Mode="In" Type="String" />
+      <Parameter Name="nombre" Mode="In" Type="DateTime" />
     </FunctionImport>
     <FunctionImport Name="FiltroPagosPorProyectoMesyAnio" ReturnType="Collection(PresupuestoModel.FiltroPagosPorProyectoMesyAnio_Result)">
       <Parameter Name="id" Mode="In" Type="Int32" />
       <Parameter Name="fechaid" Mode="In" Type="String" />
     </FunctionImport>
     <EntitySet Name="Pagoes" EntityType="PresupuestoModel.Pago" />
+    <FunctionImport Name="FiltroPagosPorProyectos" ReturnType="Collection(PresupuestoModel.FiltroPagosPorProyectos_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="fechaUno" Mode="In" Type="DateTime" />
+      <Parameter Name="fechaDos" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="FiltroNombrePagosPorProyectos" ReturnType="Collection(PresupuestoModel.FiltroNombrePagosPorProyectos_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="nombre" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="FiltroNombrePagosPorProyectos1" ReturnType="Collection(PresupuestoModel.FiltroNombrePagosPorProyectos1_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="nombre" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="FiltroNombrePagosPorProyecto1" ReturnType="Collection(PresupuestoModel.FiltroNombrePagosPorProyecto1_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="nombre" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="FiltroNombresPagosPorProyectos" ReturnType="Collection(PresupuestoModel.FiltroNombresPagosPorProyectos_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="nombre" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="FiltroPagosPorProyectosMesyAnio" ReturnType="Collection(PresupuestoModel.FiltroPagosPorProyectosMesyAnio_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="fechaid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="FiltroPagosPorProyectosMesyAnios" ReturnType="Collection(PresupuestoModel.FiltroPagosPorProyectosMesyAnios_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="fechaid" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="FiltroPagosPorProyectosMesesesAnios" ReturnType="Collection(PresupuestoModel.FiltroPagosPorProyectosMesesesAnios_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="fechaid" Mode="In" Type="DateTime" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="CompaniaDato_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
@@ -1487,7 +1520,7 @@
     <Property Type="Int32" Name="TotalDiasTrabajados" Nullable="true" />
     <Property Type="Int32" Name="TotalPagoPorDia" Nullable="true" />
     <Property Type="Int32" Name="TotalCantidadPagos" Nullable="true" />
-    <Property Type="String" Name="Fecha" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
   </ComplexType>
   <ComplexType Name="FiltroPagosPorProyectoMesyAnio_Result">
     <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
@@ -1510,4 +1543,76 @@
     <Property Name="IdProyecto" Type="Int32" />
     <Property Name="IdEmpleado" Type="Int32" />
   </EntityType>
+  <ComplexType Name="FiltroPagosPorProyectos_Result">
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TotalValor" Nullable="true" />
+    <Property Type="Int32" Name="TotalDiasTrabajados" Nullable="true" />
+    <Property Type="Int32" Name="TotalPagoPorDia" Nullable="true" />
+    <Property Type="Int32" Name="TotalCantidadPagos" Nullable="true" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="FiltroNombrePagosPorProyectos_Result">
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TotalValor" Nullable="true" />
+    <Property Type="Int32" Name="TotalDiasTrabajados" Nullable="true" />
+    <Property Type="Int32" Name="TotalPagoPorDia" Nullable="true" />
+    <Property Type="Int32" Name="TotalCantidadPagos" Nullable="true" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="FiltroNombrePagosPorProyectos1_Result">
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TotalValor" Nullable="true" />
+    <Property Type="Int32" Name="TotalDiasTrabajados" Nullable="true" />
+    <Property Type="Int32" Name="TotalPagoPorDia" Nullable="true" />
+    <Property Type="Int32" Name="TotalCantidadPagos" Nullable="true" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="FiltroNombrePagosPorProyecto1_Result">
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TotalValor" Nullable="true" />
+    <Property Type="Int32" Name="TotalDiasTrabajados" Nullable="true" />
+    <Property Type="Int32" Name="TotalPagoPorDia" Nullable="true" />
+    <Property Type="Int32" Name="TotalCantidadPagos" Nullable="true" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="FiltroNombresPagosPorProyectos_Result">
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TotalValor" Nullable="true" />
+    <Property Type="Int32" Name="TotalDiasTrabajados" Nullable="true" />
+    <Property Type="Int32" Name="TotalPagoPorDia" Nullable="true" />
+    <Property Type="Int32" Name="TotalCantidadPagos" Nullable="true" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="FiltroPagosPorProyectosMesyAnio_Result">
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Valor" Nullable="true" />
+    <Property Type="Int32" Name="TotalDiasTrabajados" Nullable="true" />
+    <Property Type="Int32" Name="PagoPorDia" Nullable="true" />
+    <Property Type="Int32" Name="TotalCantidadPagos" Nullable="true" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="FiltroPagosPorProyectosMesyAnios_Result">
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Valor" Nullable="true" />
+    <Property Type="Int32" Name="TotalDiasTrabajados" Nullable="true" />
+    <Property Type="Int32" Name="PagoPorDia" Nullable="true" />
+    <Property Type="Int32" Name="TotalCantidadPagos" Nullable="true" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="FiltroPagosPorProyectosMesesesAnios_Result">
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Valor" Nullable="true" />
+    <Property Type="Int32" Name="TotalDiasTrabajados" Nullable="true" />
+    <Property Type="Int32" Name="PagoPorDia" Nullable="true" />
+    <Property Type="Int32" Name="TotalCantidadPagos" Nullable="true" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
+  </ComplexType>
 </Schema>

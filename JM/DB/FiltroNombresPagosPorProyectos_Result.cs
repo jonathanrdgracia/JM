@@ -11,7 +11,7 @@ namespace JM.DB
 {
     using System;
     
-    public partial class FiltroNombrePagosPorProyecto_Result
+    public partial class FiltroNombresPagosPorProyectos_Result
     {
         public string Nombre { get; set; }
         public string Apellidos { get; set; }

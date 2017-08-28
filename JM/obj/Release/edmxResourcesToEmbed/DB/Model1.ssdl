@@ -673,16 +673,41 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
   </Function>
   <Function Name="FiltroNombrePagosPorProyecto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="nombre" Type="date" Mode="In" />
+  </Function>
+  <Function Name="FiltroNombrePagosPorProyectos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="FiltroNombresPagosPorProyectos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
     <Parameter Name="nombre" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="FiltroPagosPorProyecto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
-    <Parameter Name="fechaUno" Type="nvarchar" Mode="In" />
-    <Parameter Name="fechaDos" Type="nvarchar" Mode="In" />
+    <Parameter Name="fechaUno" Type="date" Mode="In" />
+    <Parameter Name="fechaDos" Type="date" Mode="In" />
   </Function>
   <Function Name="FiltroPagosPorProyectoMesyAnio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
     <Parameter Name="fechaid" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="FiltroPagosPorProyectos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="fechaUno" Type="date" Mode="In" />
+    <Parameter Name="fechaDos" Type="date" Mode="In" />
+  </Function>
+  <Function Name="FiltroPagosPorProyectosMesesesAnios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="fechaid" Type="date" Mode="In" />
+  </Function>
+  <Function Name="FiltroPagosPorProyectosMesyAnio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="fechaid" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="FiltroPagosPorProyectosMesyAnios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="fechaid" Type="date" Mode="In" />
   </Function>
   <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
   <Function Name="guardar_materiales_listado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">

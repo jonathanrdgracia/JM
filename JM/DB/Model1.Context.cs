@@ -1028,32 +1028,32 @@ namespace JM.DB
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Listado_PagosPorProyectos_Result>("Listado_PagosPorProyectos", idParameter);
         }
     
-        public virtual ObjectResult<FiltroPagosPorProyecto_Result> FiltroPagosPorProyecto(Nullable<int> id, string fechaUno, string fechaDos)
+        public virtual ObjectResult<FiltroPagosPorProyecto_Result> FiltroPagosPorProyecto(Nullable<int> id, Nullable<System.DateTime> fechaUno, Nullable<System.DateTime> fechaDos)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
                 new ObjectParameter("id", typeof(int));
     
-            var fechaUnoParameter = fechaUno != null ?
+            var fechaUnoParameter = fechaUno.HasValue ?
                 new ObjectParameter("fechaUno", fechaUno) :
-                new ObjectParameter("fechaUno", typeof(string));
+                new ObjectParameter("fechaUno", typeof(System.DateTime));
     
-            var fechaDosParameter = fechaDos != null ?
+            var fechaDosParameter = fechaDos.HasValue ?
                 new ObjectParameter("fechaDos", fechaDos) :
-                new ObjectParameter("fechaDos", typeof(string));
+                new ObjectParameter("fechaDos", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltroPagosPorProyecto_Result>("FiltroPagosPorProyecto", idParameter, fechaUnoParameter, fechaDosParameter);
         }
     
-        public virtual ObjectResult<FiltroNombrePagosPorProyecto_Result> FiltroNombrePagosPorProyecto(Nullable<int> id, string nombre)
+        public virtual ObjectResult<FiltroNombrePagosPorProyecto_Result> FiltroNombrePagosPorProyecto(Nullable<int> id, Nullable<System.DateTime> nombre)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
                 new ObjectParameter("id", typeof(int));
     
-            var nombreParameter = nombre != null ?
+            var nombreParameter = nombre.HasValue ?
                 new ObjectParameter("nombre", nombre) :
-                new ObjectParameter("nombre", typeof(string));
+                new ObjectParameter("nombre", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltroNombrePagosPorProyecto_Result>("FiltroNombrePagosPorProyecto", idParameter, nombreParameter);
         }
@@ -1069,6 +1069,114 @@ namespace JM.DB
                 new ObjectParameter("fechaid", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltroPagosPorProyectoMesyAnio_Result>("FiltroPagosPorProyectoMesyAnio", idParameter, fechaidParameter);
+        }
+    
+        public virtual ObjectResult<FiltroPagosPorProyectos_Result> FiltroPagosPorProyectos(Nullable<int> id, Nullable<System.DateTime> fechaUno, Nullable<System.DateTime> fechaDos)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var fechaUnoParameter = fechaUno.HasValue ?
+                new ObjectParameter("fechaUno", fechaUno) :
+                new ObjectParameter("fechaUno", typeof(System.DateTime));
+    
+            var fechaDosParameter = fechaDos.HasValue ?
+                new ObjectParameter("fechaDos", fechaDos) :
+                new ObjectParameter("fechaDos", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltroPagosPorProyectos_Result>("FiltroPagosPorProyectos", idParameter, fechaUnoParameter, fechaDosParameter);
+        }
+    
+        public virtual ObjectResult<FiltroNombrePagosPorProyectos_Result> FiltroNombrePagosPorProyectos(Nullable<int> id, Nullable<System.DateTime> nombre)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var nombreParameter = nombre.HasValue ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltroNombrePagosPorProyectos_Result>("FiltroNombrePagosPorProyectos", idParameter, nombreParameter);
+        }
+    
+        public virtual ObjectResult<FiltroNombrePagosPorProyectos1_Result> FiltroNombrePagosPorProyectos1(Nullable<int> id, string nombre)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltroNombrePagosPorProyectos1_Result>("FiltroNombrePagosPorProyectos1", idParameter, nombreParameter);
+        }
+    
+        public virtual ObjectResult<FiltroNombrePagosPorProyecto1_Result> FiltroNombrePagosPorProyecto1(Nullable<int> id, Nullable<System.DateTime> nombre)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var nombreParameter = nombre.HasValue ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltroNombrePagosPorProyecto1_Result>("FiltroNombrePagosPorProyecto1", idParameter, nombreParameter);
+        }
+    
+        public virtual ObjectResult<FiltroNombresPagosPorProyectos_Result> FiltroNombresPagosPorProyectos(Nullable<int> id, string nombre)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltroNombresPagosPorProyectos_Result>("FiltroNombresPagosPorProyectos", idParameter, nombreParameter);
+        }
+    
+        public virtual ObjectResult<FiltroPagosPorProyectosMesyAnio_Result> FiltroPagosPorProyectosMesyAnio(Nullable<int> id, string fechaid)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var fechaidParameter = fechaid != null ?
+                new ObjectParameter("fechaid", fechaid) :
+                new ObjectParameter("fechaid", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltroPagosPorProyectosMesyAnio_Result>("FiltroPagosPorProyectosMesyAnio", idParameter, fechaidParameter);
+        }
+    
+        public virtual ObjectResult<FiltroPagosPorProyectosMesyAnios_Result> FiltroPagosPorProyectosMesyAnios(Nullable<int> id, Nullable<System.DateTime> fechaid)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var fechaidParameter = fechaid.HasValue ?
+                new ObjectParameter("fechaid", fechaid) :
+                new ObjectParameter("fechaid", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltroPagosPorProyectosMesyAnios_Result>("FiltroPagosPorProyectosMesyAnios", idParameter, fechaidParameter);
+        }
+    
+        public virtual ObjectResult<FiltroPagosPorProyectosMesesesAnios_Result> FiltroPagosPorProyectosMesesesAnios(Nullable<int> id, Nullable<System.DateTime> fechaid)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var fechaidParameter = fechaid.HasValue ?
+                new ObjectParameter("fechaid", fechaid) :
+                new ObjectParameter("fechaid", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltroPagosPorProyectosMesesesAnios_Result>("FiltroPagosPorProyectosMesesesAnios", idParameter, fechaidParameter);
         }
     }
 }

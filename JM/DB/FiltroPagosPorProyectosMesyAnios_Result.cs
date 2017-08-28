@@ -11,13 +11,13 @@ namespace JM.DB
 {
     using System;
     
-    public partial class FiltroNombrePagosPorProyecto_Result
+    public partial class FiltroPagosPorProyectosMesyAnios_Result
     {
         public string Nombre { get; set; }
         public string Apellidos { get; set; }
-        public Nullable<int> TotalValor { get; set; }
+        public Nullable<int> Valor { get; set; }
         public Nullable<int> TotalDiasTrabajados { get; set; }
-        public Nullable<int> TotalPagoPorDia { get; set; }
+        public Nullable<int> PagoPorDia { get; set; }
         public Nullable<int> TotalCantidadPagos { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
     }
