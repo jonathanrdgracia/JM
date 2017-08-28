@@ -409,6 +409,10 @@
       <Parameter Name="id" Mode="In" Type="Int32" />
       <Parameter Name="nombre" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="FiltroPagosPorProyectoMesyAnio" ReturnType="Collection(PresupuestoModel.FiltroPagosPorProyectoMesyAnio_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="fechaid" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="CompaniaDato_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
@@ -1489,6 +1493,15 @@
     <Property Type="String" Name="Fecha" Nullable="true" MaxLength="15" />
   </ComplexType>
   <ComplexType Name="FiltroNombrePagosPorProyecto_Result">
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TotalValor" Nullable="true" />
+    <Property Type="Int32" Name="TotalDiasTrabajados" Nullable="true" />
+    <Property Type="Int32" Name="TotalPagoPorDia" Nullable="true" />
+    <Property Type="Int32" Name="TotalCantidadPagos" Nullable="true" />
+    <Property Type="String" Name="Fecha" Nullable="true" MaxLength="15" />
+  </ComplexType>
+  <ComplexType Name="FiltroPagosPorProyectoMesyAnio_Result">
     <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
     <Property Type="Int32" Name="TotalValor" Nullable="true" />

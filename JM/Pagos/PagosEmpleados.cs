@@ -48,7 +48,7 @@ namespace JM.Pagos
         private void PagosEmpleados_Load(object sender, EventArgs e)
         {
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.CustomFormat = "dd-MM- yyyy";
+            dateTimePicker1.CustomFormat = "dd-MM-yyyy";
             dateTimePicker1.Value = DateTime.Now;
         }
 
@@ -140,22 +140,21 @@ namespace JM.Pagos
             }
 
 
-            public void agregar() 
+            public void agregar()
             {
-               
-                
-                    EmpleadoLista.Add(new EmpleadoPago {
 
-                        Id=Convert.ToInt32(textBox3.Text),
-                        Nombre=textBox14.Text,
-                        Ocupacion=textBox5.Text,
-                        Pago=Convert.ToInt32(textBox2.Text),
-                        Fecha=dateTimePicker1.Text,
-                        Total = Convert.ToInt32(textBox2.Text) * Convert.ToInt32(textBox4.Text),
-                        DiasTrabajados = Convert.ToInt32(textBox4.Text)
+                Total = 0;
+                EmpleadoLista.Add(new EmpleadoPago {
 
-                    });
-
+                    Id=Convert.ToInt32(textBox3.Text),
+                    Nombre=textBox14.Text,
+                    Ocupacion=textBox5.Text,
+                    Pago=Convert.ToInt32(textBox2.Text),
+                    Fecha=dateTimePicker1.Text,
+                    Total = Convert.ToInt32(textBox2.Text) * Convert.ToInt32(textBox4.Text),
+                    DiasTrabajados = Convert.ToInt32(textBox4.Text)
+                       
+                });
 
                 this.dataGridView2.Rows.Clear();
                 foreach (var i in EmpleadoLista)
@@ -170,7 +169,10 @@ namespace JM.Pagos
                             "RD" + Convert.ToInt32(i.Total).ToString("C", nfi),
                             i.Fecha
                         );
+                    Total = Total + Convert.ToInt32(i.Total);
+
                 }
+            label22.Text = "Total pago a realizar: RD" + Total.ToString("C", nfi);
             textBox14.Text=string.Empty;
             textBox5.Text=string.Empty;
             textBox2.Text=string.Empty;
@@ -179,10 +181,14 @@ namespace JM.Pagos
                     
 
             }
-            public void eliminar()
-            {
-                var x0 = Convert.ToInt32(this.dataGridView2.CurrentRow.Cells[0].Value.ToString());
-                EmpleadoLista.RemoveAll(c => c.Id == x0);
+
+        public int Total { get; set; }
+
+        public void eliminar()
+        {
+                Total = 0;
+                int currentIndex = this.dataGridView2.CurrentCell.RowIndex;
+                EmpleadoLista.RemoveAt(currentIndex);
                 this.dataGridView2.Rows.Clear();
       
                 foreach (var i in EmpleadoLista)
@@ -192,10 +198,14 @@ namespace JM.Pagos
                             i.Id,
                             i.Nombre,
                             i.Ocupacion,
+                            i.DiasTrabajados,
                             Convert.ToInt32(i.Pago).ToString("C", nfi),
+                            Convert.ToInt32(i.Total).ToString("C", nfi),
                             i.Fecha
                         );
+                    Total = Total + Convert.ToInt32(i.Total);
                 }
+                label22.Text = "Total pago a realizar: RD" + Total.ToString("C", nfi);
             }
 
 
@@ -286,39 +296,51 @@ namespace JM.Pagos
             {
                 if (dataGridView2.RowCount!=0)
                 {
-                    _Empleado = new EmpleadoPago();
-                    int currentIndex = this.dataGridView2.CurrentCell.RowIndex;
-                    _Empleado.Id = Convert.ToInt32(textBox3.Text);
-                    _Empleado.Fecha = dateTimePicker1.Text;
-                    _Empleado.DiasTrabajados = Convert.ToInt32(textBox4.Text);
-                    _Empleado.Pago = Convert.ToInt32(textBox2.Text);
-                    _Empleado.Nombre = textBox14.Text;
-                    _Empleado.Ocupacion = textBox5.Text;
-                    _Empleado.Total = (Convert.ToInt32(textBox2.Text) * Convert.ToInt32(textBox4.Text));
-
-                    EmpleadoLista.RemoveAt(currentIndex);
-                    EmpleadoLista.Insert(currentIndex, _Empleado);
-                    this.dataGridView2.Rows.Clear();
-                    foreach (var i in EmpleadoLista)
+                    try
                     {
-                        dataGridView2.Rows.Add
-                            (
-                                i.Id,
-                                i.Nombre,
-                                i.Ocupacion,
-                                i.DiasTrabajados,
-                                "RD" + Convert.ToInt32(i.Pago).ToString("C", nfi),
-                                "RD" + Convert.ToInt32(i.Total).ToString("C", nfi),
-                                i.Fecha
-                            );
-                    }
-                    
-                    textBox4.Text = string.Empty;
-                    textBox2.Text= string.Empty;
-                    textBox3.Text= string.Empty;
-                    textBox14.Text= string.Empty;
-                    textBox5.Text= string.Empty;
+                        Total = 0;
+                        _Empleado = new EmpleadoPago();
+                        int currentIndex = this.dataGridView2.CurrentCell.RowIndex;
+                        _Empleado.Id = Convert.ToInt32(textBox3.Text);
+                        _Empleado.Fecha = dateTimePicker1.Text;
+                        _Empleado.DiasTrabajados = Convert.ToInt32(textBox4.Text);
+                        _Empleado.Pago = Convert.ToInt32(textBox2.Text);
+                        _Empleado.Nombre = textBox14.Text;
+                        _Empleado.Ocupacion = textBox5.Text;
+                        _Empleado.Total = (Convert.ToInt32(textBox2.Text) * Convert.ToInt32(textBox4.Text));
 
+                        EmpleadoLista.RemoveAt(currentIndex);
+                        EmpleadoLista.Insert(currentIndex, _Empleado);
+                        this.dataGridView2.Rows.Clear();
+                        foreach (var i in EmpleadoLista)
+                        {
+                            dataGridView2.Rows.Add
+                                (
+                                    i.Id,
+                                    i.Nombre,
+                                    i.Ocupacion,
+                                    i.DiasTrabajados,
+                                    "RD" + Convert.ToInt32(i.Pago).ToString("C", nfi),
+                                    "RD" + Convert.ToInt32(i.Total).ToString("C", nfi),
+                                    i.Fecha
+                                );
+                            Total = Total + Convert.ToInt32(i.Total);
+                        }
+
+                        label22.Text = "Total pago a realizar: RD" + Total.ToString("C", nfi);
+                        textBox4.Text = string.Empty;
+                        textBox2.Text = string.Empty;
+                        textBox3.Text = string.Empty;
+                        textBox14.Text = string.Empty;
+                        textBox5.Text = string.Empty;
+
+
+                    }
+                    catch (Exception)
+                    {
+                            
+                      
+                    }
                 }
             }
     }

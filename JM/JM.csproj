@@ -387,6 +387,9 @@
     <Compile Include="DB\FiltroNombrePagosPorProyecto_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\FiltroPagosPorProyectoMesyAnio_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\FiltroPagosPorProyecto_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

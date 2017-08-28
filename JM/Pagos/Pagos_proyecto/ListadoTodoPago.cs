@@ -42,6 +42,10 @@ namespace JM.Pagos.Pagos_proyecto
                 dateTimePicker1.CustomFormat = "dd-MM-yyyy";
                 dateTimePicker1.Value = DateTime.Now;
 
+                dateTimePicker3.Format = DateTimePickerFormat.Custom;
+                dateTimePicker3.CustomFormat = "dd-MM-yyyy";
+                dateTimePicker3.Value = DateTime.Now;
+
                 dateTimePicker2.Format = DateTimePickerFormat.Custom;
                 dateTimePicker2.CustomFormat = "dd-MM-yyyy";
                 dateTimePicker2.Value = DateTime.Now;
@@ -258,6 +262,45 @@ namespace JM.Pagos.Pagos_proyecto
                 Total = 0;
 
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var db = new PresupuestoEntities5())
+                {
+                    Total = 0;
+                    dataGridView3.Rows.Clear();
+                    var query3 = db.FiltroPagosPorProyectoMesyAnio(Idproyecto, dateTimePicker3.Text).OrderByDescending(c => c.Fecha);
+                    foreach (var i in query3.OrderByDescending(c => c.Fecha))
+                    {
+                        this.dataGridView3.Rows.Add
+                            (
+                                i.Nombre + " " + i.Apellidos,
+                                i.TotalDiasTrabajados.ToString(),
+                                Convert.ToInt32(i.TotalPagoPorDia.ToString()).ToString("C", nfi),
+                                Convert.ToInt32(i.TotalValor.ToString()).ToString("C", nfi),
+                                i.TotalCantidadPagos.ToString(),
+                                i.Fecha
+
+                            );
+                        Total = Total + Convert.ToInt32(i.TotalValor);
+                    }
+                    label1.Text = "Pago suma total: RD" + Total.ToString("C", nfi);
+                    Total = 0;
+                }
+            }
+            catch (Exception ew)
+            {
+
+                MessageBox.Show(ew.Message);
+            }
+        }
+
+        private void groupBox5_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

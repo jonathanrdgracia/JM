@@ -1057,5 +1057,18 @@ namespace JM.DB
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltroNombrePagosPorProyecto_Result>("FiltroNombrePagosPorProyecto", idParameter, nombreParameter);
         }
+    
+        public virtual ObjectResult<FiltroPagosPorProyectoMesyAnio_Result> FiltroPagosPorProyectoMesyAnio(Nullable<int> id, string fechaid)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var fechaidParameter = fechaid != null ?
+                new ObjectParameter("fechaid", fechaid) :
+                new ObjectParameter("fechaid", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltroPagosPorProyectoMesyAnio_Result>("FiltroPagosPorProyectoMesyAnio", idParameter, fechaidParameter);
+        }
     }
 }
