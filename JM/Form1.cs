@@ -450,5 +450,11 @@ namespace JM
             ListadoTodoPagoProyecto l = new ListadoTodoPagoProyecto();
             l.ShowDialog();
         }
+
+        private void verTodosLosPagosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ListadoTodoPagoCompleto c = new ListadoTodoPagoCompleto();
+            c.ShowDialog();
+        }
     }
 }

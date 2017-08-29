@@ -405,6 +405,9 @@
     <Compile Include="DB\FiltroNombresPagosPorProyectos_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\FiltroPagosMesesesAnios_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\FiltroPagosPorProyectoMesyAnio_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -421,6 +424,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\FiltroPagosPorProyecto_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\FiltroPagosTodoMesesesAnios_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Filtro_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\g.cs">
@@ -441,6 +450,9 @@
     <Compile Include="DB\holasi_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\ListadoPagosDetalles_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\ListadoPagosPorProyectoDetalles_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -454,6 +466,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\Listado_PagosPorProyectos_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Listado_Pagos_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\Materiale.cs">
@@ -762,6 +777,12 @@
     </Compile>
     <Compile Include="Pagos\Pagos_proyecto\ListadoTodoPago.Designer.cs">
       <DependentUpon>ListadoTodoPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pagos\Pagos_proyecto\ListadoTodoPagoCompleto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pagos\Pagos_proyecto\ListadoTodoPagoCompleto.Designer.cs">
+      <DependentUpon>ListadoTodoPagoCompleto.cs</DependentUpon>
     </Compile>
     <Compile Include="Pagos\Pagos_proyecto\ListadoTodoPagoProyecto.cs">
       <SubType>Form</SubType>
@@ -1119,6 +1140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pagos\Pagos_proyecto\ListadoTodoPago.resx">
       <DependentUpon>ListadoTodoPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pagos\Pagos_proyecto\ListadoTodoPagoCompleto.resx">
+      <DependentUpon>ListadoTodoPagoCompleto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pagos\Pagos_proyecto\ListadoTodoPagoProyecto.resx">
       <DependentUpon>ListadoTodoPagoProyecto.cs</DependentUpon>

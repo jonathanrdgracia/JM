@@ -1180,5 +1180,77 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Filtro" FunctionName="PresupuestoModel.Store.Filtro">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PresupuestoModel.Filtro_Result">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="TotalValor" ColumnName="TotalValor" />
+          <ScalarProperty Name="TotalDiasTrabajados" ColumnName="TotalDiasTrabajados" />
+          <ScalarProperty Name="TotalPagoPorDia" ColumnName="TotalPagoPorDia" />
+          <ScalarProperty Name="TotalCantidadPagos" ColumnName="TotalCantidadPagos" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="FiltroPagosMesesesAnios" FunctionName="PresupuestoModel.Store.FiltroPagosMesesesAnios">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PresupuestoModel.FiltroPagosMesesesAnios_Result">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="TotalDiasTrabajados" ColumnName="TotalDiasTrabajados" />
+          <ScalarProperty Name="PagoPorDia" ColumnName="PagoPorDia" />
+          <ScalarProperty Name="TotalCantidadPagos" ColumnName="TotalCantidadPagos" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Listado_Pagos" FunctionName="PresupuestoModel.Store.Listado_Pagos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PresupuestoModel.Listado_Pagos_Result">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdPago" ColumnName="IdPago" />
+          <ScalarProperty Name="DiasTrabajados" ColumnName="DiasTrabajados" />
+          <ScalarProperty Name="PagoPorDia" ColumnName="PagoPorDia" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ListadoPagosDetalles" FunctionName="PresupuestoModel.Store.ListadoPagosDetalles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PresupuestoModel.ListadoPagosDetalles_Result">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="DiasTrabajados" ColumnName="DiasTrabajados" />
+          <ScalarProperty Name="PagoPorDia" ColumnName="PagoPorDia" />
+          <ScalarProperty Name="CantidadPagos" ColumnName="CantidadPagos" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="FiltroPagosTodoMesesesAnios" FunctionName="PresupuestoModel.Store.FiltroPagosTodoMesesesAnios">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PresupuestoModel.FiltroPagosTodoMesesesAnios_Result">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="TotalDiasTrabajados" ColumnName="TotalDiasTrabajados" />
+          <ScalarProperty Name="PagoPorDia" ColumnName="PagoPorDia" />
+          <ScalarProperty Name="TotalCantidadPagos" ColumnName="TotalCantidadPagos" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

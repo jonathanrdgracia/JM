@@ -85,6 +85,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.verTodosLosPagosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -393,7 +394,8 @@
             // verTodosLosPagosToolStripMenuItem
             // 
             this.verTodosLosPagosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verPagosPorProyectosToolStripMenuItem});
+            this.verPagosPorProyectosToolStripMenuItem,
+            this.verTodosLosPagosToolStripMenuItem1});
             this.verTodosLosPagosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("verTodosLosPagosToolStripMenuItem.Image")));
             this.verTodosLosPagosToolStripMenuItem.Name = "verTodosLosPagosToolStripMenuItem";
             this.verTodosLosPagosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
@@ -650,6 +652,13 @@
             this.pictureBox2.TabIndex = 18;
             this.pictureBox2.TabStop = false;
             // 
+            // verTodosLosPagosToolStripMenuItem1
+            // 
+            this.verTodosLosPagosToolStripMenuItem1.Name = "verTodosLosPagosToolStripMenuItem1";
+            this.verTodosLosPagosToolStripMenuItem1.Size = new System.Drawing.Size(201, 22);
+            this.verTodosLosPagosToolStripMenuItem1.Text = "Ver todos los pagos";
+            this.verTodosLosPagosToolStripMenuItem1.Click += new System.EventHandler(this.verTodosLosPagosToolStripMenuItem1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -742,6 +751,7 @@
         private System.Windows.Forms.ToolStripMenuItem categoriasDeEmpleadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem agregarNuevaCategoriaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem verPagosPorProyectosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verTodosLosPagosToolStripMenuItem1;
     }
 }
 

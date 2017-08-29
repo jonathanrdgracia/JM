@@ -1178,5 +1178,50 @@ namespace JM.DB
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltroPagosPorProyectosMesesesAnios_Result>("FiltroPagosPorProyectosMesesesAnios", idParameter, fechaidParameter);
         }
+    
+        public virtual ObjectResult<Filtro_Result> Filtro(Nullable<System.DateTime> fechaUno, Nullable<System.DateTime> fechaDos)
+        {
+            var fechaUnoParameter = fechaUno.HasValue ?
+                new ObjectParameter("fechaUno", fechaUno) :
+                new ObjectParameter("fechaUno", typeof(System.DateTime));
+    
+            var fechaDosParameter = fechaDos.HasValue ?
+                new ObjectParameter("fechaDos", fechaDos) :
+                new ObjectParameter("fechaDos", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Filtro_Result>("Filtro", fechaUnoParameter, fechaDosParameter);
+        }
+    
+        public virtual ObjectResult<FiltroPagosMesesesAnios_Result> FiltroPagosMesesesAnios(Nullable<System.DateTime> fechaid)
+        {
+            var fechaidParameter = fechaid.HasValue ?
+                new ObjectParameter("fechaid", fechaid) :
+                new ObjectParameter("fechaid", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltroPagosMesesesAnios_Result>("FiltroPagosMesesesAnios", fechaidParameter);
+        }
+    
+        public virtual ObjectResult<Listado_Pagos_Result> Listado_Pagos(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Listado_Pagos_Result>("Listado_Pagos", idParameter);
+        }
+    
+        public virtual ObjectResult<ListadoPagosDetalles_Result> ListadoPagosDetalles()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListadoPagosDetalles_Result>("ListadoPagosDetalles");
+        }
+    
+        public virtual ObjectResult<FiltroPagosTodoMesesesAnios_Result> FiltroPagosTodoMesesesAnios(Nullable<System.DateTime> fechaid)
+        {
+            var fechaidParameter = fechaid.HasValue ?
+                new ObjectParameter("fechaid", fechaid) :
+                new ObjectParameter("fechaid", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltroPagosTodoMesesesAnios_Result>("FiltroPagosTodoMesesesAnios", fechaidParameter);
+        }
     }
 }

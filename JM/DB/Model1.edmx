@@ -677,6 +677,10 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
         <Function Name="FiltrarConceptoPago" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="valor" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="Filtro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fechaUno" Type="date" Mode="In" />
+          <Parameter Name="fechaDos" Type="date" Mode="In" />
+        </Function>
         <Function Name="FiltroNombrePagosPorProyecto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
           <Parameter Name="nombre" Type="date" Mode="In" />
@@ -688,6 +692,9 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
         <Function Name="FiltroNombresPagosPorProyectos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
           <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="FiltroPagosMesesesAnios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fechaid" Type="date" Mode="In" />
         </Function>
         <Function Name="FiltroPagosPorProyecto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
@@ -713,6 +720,9 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
         </Function>
         <Function Name="FiltroPagosPorProyectosMesyAnios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="fechaid" Type="date" Mode="In" />
+        </Function>
+        <Function Name="FiltroPagosTodoMesesesAnios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fechaid" Type="date" Mode="In" />
         </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
@@ -803,9 +813,13 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <Parameter Name="total" Type="int" Mode="In" />
           <Parameter Name="totalgeneral" Type="int" Mode="In" />
         </Function>
+        <Function Name="Listado_Pagos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
         <Function Name="Listado_PagosPorProyectos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
+        <Function Name="ListadoPagosDetalles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ListadoPagosPorProyecto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
@@ -1665,6 +1679,20 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
             <Parameter Name="fechaid" Mode="In" Type="DateTime" />
           </FunctionImport>
           <EntitySet Name="Usuarios" EntityType="PresupuestoModel.Usuario" />
+          <FunctionImport Name="Filtro" ReturnType="Collection(PresupuestoModel.Filtro_Result)">
+            <Parameter Name="fechaUno" Mode="In" Type="DateTime" />
+            <Parameter Name="fechaDos" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="FiltroPagosMesesesAnios" ReturnType="Collection(PresupuestoModel.FiltroPagosMesesesAnios_Result)">
+          <Parameter Name="fechaid" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Listado_Pagos" ReturnType="Collection(PresupuestoModel.Listado_Pagos_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListadoPagosDetalles" ReturnType="Collection(PresupuestoModel.ListadoPagosDetalles_Result)" />
+          <FunctionImport Name="FiltroPagosTodoMesesesAnios" ReturnType="Collection(PresupuestoModel.FiltroPagosTodoMesesesAnios_Result)">
+            <Parameter Name="fechaid" Mode="In" Type="DateTime" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="CompaniaDato_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -2835,6 +2863,58 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <Property Name="Pass2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <ComplexType Name="Filtro_Result">
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="TotalValor" Nullable="true" />
+          <Property Type="Int32" Name="TotalDiasTrabajados" Nullable="true" />
+          <Property Type="Int32" Name="TotalPagoPorDia" Nullable="true" />
+          <Property Type="Int32" Name="TotalCantidadPagos" Nullable="true" />
+          <Property Type="DateTime" Name="Fecha" Nullable="true" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="FiltroPagosMesesesAnios_Result">
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Valor" Nullable="true" />
+          <Property Type="Int32" Name="TotalDiasTrabajados" Nullable="true" />
+          <Property Type="Int32" Name="PagoPorDia" Nullable="true" />
+          <Property Type="Int32" Name="TotalCantidadPagos" Nullable="true" />
+          <Property Type="DateTime" Name="Fecha" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Listado_Pagos_Result">
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Valor" Nullable="true" />
+          <Property Type="DateTime" Name="Fecha" Nullable="true" />
+          <Property Type="String" Name="TipoEmpleado" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="IdPago" Nullable="false" />
+          <Property Type="Int32" Name="DiasTrabajados" Nullable="true" />
+          <Property Type="Int32" Name="PagoPorDia" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ListadoPagosDetalles_Result">
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TipoEmpleado" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Valor" Nullable="true" />
+          <Property Type="Int32" Name="DiasTrabajados" Nullable="true" />
+          <Property Type="Int32" Name="PagoPorDia" Nullable="true" />
+          <Property Type="Int32" Name="CantidadPagos" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="FiltroPagosTodoMesesesAnios_Result">
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Valor" Nullable="true" />
+          <Property Type="Int32" Name="TotalDiasTrabajados" Nullable="true" />
+          <Property Type="Int32" Name="PagoPorDia" Nullable="true" />
+          <Property Type="Int32" Name="TotalCantidadPagos" Nullable="true" />
+          <Property Type="DateTime" Name="Fecha" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4020,6 +4100,78 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Filtro" FunctionName="PresupuestoModel.Store.Filtro">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PresupuestoModel.Filtro_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="TotalValor" ColumnName="TotalValor" />
+                <ScalarProperty Name="TotalDiasTrabajados" ColumnName="TotalDiasTrabajados" />
+                <ScalarProperty Name="TotalPagoPorDia" ColumnName="TotalPagoPorDia" />
+                <ScalarProperty Name="TotalCantidadPagos" ColumnName="TotalCantidadPagos" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FiltroPagosMesesesAnios" FunctionName="PresupuestoModel.Store.FiltroPagosMesesesAnios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PresupuestoModel.FiltroPagosMesesesAnios_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="TotalDiasTrabajados" ColumnName="TotalDiasTrabajados" />
+                <ScalarProperty Name="PagoPorDia" ColumnName="PagoPorDia" />
+                <ScalarProperty Name="TotalCantidadPagos" ColumnName="TotalCantidadPagos" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Listado_Pagos" FunctionName="PresupuestoModel.Store.Listado_Pagos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PresupuestoModel.Listado_Pagos_Result">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdPago" ColumnName="IdPago" />
+                <ScalarProperty Name="DiasTrabajados" ColumnName="DiasTrabajados" />
+                <ScalarProperty Name="PagoPorDia" ColumnName="PagoPorDia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListadoPagosDetalles" FunctionName="PresupuestoModel.Store.ListadoPagosDetalles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PresupuestoModel.ListadoPagosDetalles_Result">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="DiasTrabajados" ColumnName="DiasTrabajados" />
+                <ScalarProperty Name="PagoPorDia" ColumnName="PagoPorDia" />
+                <ScalarProperty Name="CantidadPagos" ColumnName="CantidadPagos" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FiltroPagosTodoMesesesAnios" FunctionName="PresupuestoModel.Store.FiltroPagosTodoMesesesAnios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PresupuestoModel.FiltroPagosTodoMesesesAnios_Result">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="TotalDiasTrabajados" ColumnName="TotalDiasTrabajados" />
+                <ScalarProperty Name="PagoPorDia" ColumnName="PagoPorDia" />
+                <ScalarProperty Name="TotalCantidadPagos" ColumnName="TotalCantidadPagos" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
