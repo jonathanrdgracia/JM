@@ -54,7 +54,7 @@
             this.groupBox1.Size = new System.Drawing.Size(1062, 395);
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Listado de clientes registrados";
+            this.groupBox1.Text = "Listado de presupuestos";
             // 
             // button17
             // 
@@ -65,7 +65,7 @@
             this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button17.Image = ((System.Drawing.Image)(resources.GetObject("button17.Image")));
             this.button17.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button17.Location = new System.Drawing.Point(888, 352);
+            this.button17.Location = new System.Drawing.Point(980, 352);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(72, 34);
             this.button17.TabIndex = 45;
@@ -108,14 +108,14 @@
             // 
             // Column1
             // 
-            this.Column1.HeaderText = "Descripcion";
+            this.Column1.HeaderText = "Descripcion presupuesto";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.Width = 250;
             // 
             // Column3
             // 
-            this.Column3.HeaderText = "Cliente";
+            this.Column3.HeaderText = "Nombres clientes";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             this.Column3.Width = 160;
@@ -161,7 +161,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ListarCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ListarCliente";
+            this.Text = "Listado de presupuestos";
             this.Load += new System.EventHandler(this.ListarCliente_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

@@ -655,6 +655,9 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <Parameter Name="usuario" Type="nvarchar" Mode="In" />
           <Parameter Name="pass" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="BorrarProyecto_Detalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
         <Function Name="BorrarTodoMateriales_detalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
@@ -1691,7 +1694,10 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           </FunctionImport>
           <FunctionImport Name="ListadoPagosDetalles" ReturnType="Collection(PresupuestoModel.ListadoPagosDetalles_Result)" />
           <FunctionImport Name="FiltroPagosTodoMesesesAnios" ReturnType="Collection(PresupuestoModel.FiltroPagosTodoMesesesAnios_Result)">
-            <Parameter Name="fechaid" Mode="In" Type="DateTime" />
+          <Parameter Name="fechaid" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="BorrarProyecto_Detalle">
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="CompaniaDato_Result">
@@ -4172,6 +4178,7 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BorrarProyecto_Detalle" FunctionName="PresupuestoModel.Store.BorrarProyecto_Detalle" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -1223,5 +1223,14 @@ namespace JM.DB
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltroPagosTodoMesesesAnios_Result>("FiltroPagosTodoMesesesAnios", fechaidParameter);
         }
+    
+        public virtual int BorrarProyecto_Detalle(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("BorrarProyecto_Detalle", idParameter);
+        }
     }
 }

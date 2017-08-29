@@ -1252,5 +1252,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="BorrarProyecto_Detalle" FunctionName="PresupuestoModel.Store.BorrarProyecto_Detalle" />
   </EntityContainerMapping>
 </Mapping>

@@ -86,7 +86,7 @@ namespace JM.Proyecto
         {
             if (this.dataGridView1.RowCount == 0 || string.IsNullOrEmpty(textBox3.Text))
             {
-                MessageBox.Show("Todos los campos son requeridos", "Campos vacios",
+                MessageBox.Show("Debes seleccionar al menos un empleado y llenar todos los campos", "Campos vacios",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -121,7 +121,8 @@ namespace JM.Proyecto
                             {
 
                                 IdEmpleado = Convert.ToInt32(row.Cells[0].Value.ToString()),
-                                IdProyecto = this.IdProyecto
+                                IdProyecto = this.IdProyecto,
+                                Estado = 1
                             };
 
                             db.Proyecto_detalle.Add(Py);

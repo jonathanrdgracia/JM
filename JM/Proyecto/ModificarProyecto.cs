@@ -194,7 +194,7 @@ namespace JM.Proyecto
                         using (var db = new PresupuestoEntities5())
                         {
                             var de = (from c in db.Proyecto_detalle
-                                      where c.IdEmpleado == x0
+                                      where c.IdEmpleado == x0  && c.IdProyecto==IdProtecto
                                       select c).First();
                             de.Estado = 0;
                             db.SaveChanges();

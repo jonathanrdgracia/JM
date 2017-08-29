@@ -460,6 +460,9 @@
     <FunctionImport Name="FiltroPagosTodoMesesesAnios" ReturnType="Collection(PresupuestoModel.FiltroPagosTodoMesesesAnios_Result)">
       <Parameter Name="fechaid" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <FunctionImport Name="BorrarProyecto_Detalle">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="CompaniaDato_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />

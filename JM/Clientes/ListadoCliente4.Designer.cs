@@ -52,7 +52,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(594, 350);
+            this.button2.Location = new System.Drawing.Point(696, 350);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(72, 34);
             this.button2.TabIndex = 33;
@@ -136,7 +136,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "ListadoCliente4";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Listado de clientes";
+            this.Text = "Listado de empleados";
             this.Load += new System.EventHandler(this.ListadoCliente4_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

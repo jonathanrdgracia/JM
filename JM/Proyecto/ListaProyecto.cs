@@ -16,7 +16,14 @@ namespace JM.Proyecto
     public partial class ListaProyecto : Form
     {
         NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+        private int _idProyecto;
 
+        public int IProyecto
+        {
+            get { return _idProyecto; }
+            set { _idProyecto = value; }
+        }
+        
         public ListaProyecto()
         {
             InitializeComponent();
@@ -32,7 +39,7 @@ namespace JM.Proyecto
             catch (Exception)
             {
                 
-                
+              
             }
         }
 
