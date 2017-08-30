@@ -42,7 +42,7 @@ namespace JM.Proyecto.SubForms
                         TipoCliente=i.TipoCliente,
                         Telefono=i.Telefono,
                         FechaCreacion=i.FechaCreacion,
-                        Total=Convert.ToInt32(i.Total),
+                      
                         Direccion = i.Direccion
                         
                        
@@ -77,7 +77,7 @@ namespace JM.Proyecto.SubForms
                     i.TipoCliente,
                     i.Telefono,
                     i.FechaCreacion,
-                    i.Total,
+                 
                     i.Direccion
                     );
             }
@@ -129,7 +129,7 @@ namespace JM.Proyecto.SubForms
                 var x2 = this.dataGridView1.CurrentRow.Cells[2].Value.ToString();
                 var x3 = this.dataGridView1.CurrentRow.Cells[4].Value.ToString();
                 var x4 = this.dataGridView1.CurrentRow.Cells[6].Value.ToString();
-                var x7 = this.dataGridView1.CurrentRow.Cells[7].Value.ToString();
+                  var x7 = "";
 
 
 

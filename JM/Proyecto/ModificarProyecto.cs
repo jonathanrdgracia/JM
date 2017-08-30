@@ -200,10 +200,7 @@ namespace JM.Proyecto
                             Id = x0
                         });
 
-                        foreach (var i in ListadoEmpleado2)
-                        {
-                            MessageBox.Show("eliminados: " + i.Id);
-                        }
+                      
                         dataGridView1.Rows.Clear();
                         ListadoEmpleado.RemoveAt(currentIndex);
 
@@ -270,6 +267,16 @@ namespace JM.Proyecto
                 e.Handled = true;
             }
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

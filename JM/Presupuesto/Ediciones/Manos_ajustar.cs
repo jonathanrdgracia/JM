@@ -359,34 +359,54 @@ namespace JM.Presupuesto.Ediciones
 
         private void button3_Click(object sender, EventArgs e)
         {
-        
 
-           
-
-            using (var db = new PresupuestoEntities5())
+            DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas Valancear este presupuesto?", "Presupuesto", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-               DB.Presupuesto pa;
-               pa = (from x in db.Presupuestos
-                          where x.IdPresupuestos == ID_Que_Paso
-                          select x).First();
-                pa.TotalGeneral=totalGeneralDB;
-                db.SaveChanges();
-
-                foreach (var i in lista)
+                try
                 {
-                    DB.Obra_detalle materiales =
-                                (from c in db.Obra_detalle
-                                 where c.IdPresupuesto == ID_Que_Paso && c.id == i.id
-                                 select c).First();
+                    using (var db = new PresupuestoEntities5())
+                    {
+                        DB.Presupuesto pa;
+                        pa = (from x in db.Presupuestos
+                              where x.IdPresupuestos == ID_Que_Paso
+                              select x).First();
+                        pa.TotalGeneral = totalGeneralDB;
+                        db.SaveChanges();
 
-                    materiales.Precio = i.Precio * 1;
-                    materiales.Cantidad = i.Cantidad * 1;
-                    materiales.Total = i.Cantidad * i.Precio;
-                   
-                    db.SaveChanges();
+                        foreach (var i in lista)
+                        {
+                            DB.Obra_detalle materiales =
+                                        (from c in db.Obra_detalle
+                                         where c.IdPresupuesto == ID_Que_Paso && c.id == i.id
+                                         select c).First();
+
+                            materiales.Precio = i.Precio * 1;
+                            materiales.Cantidad = i.Cantidad * 1;
+                            materiales.Total = i.Cantidad * i.Precio;
+
+                            db.SaveChanges();
+                            MessageBox.Show("Presupuesto modificado con exito");
+                        }
+
+                    }
+
+                }
+                catch (Exception)
+                {
+
+
                 }
 
+
             }
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
+
+
+          
         }
 
         private void button1_Click(object sender, EventArgs e)

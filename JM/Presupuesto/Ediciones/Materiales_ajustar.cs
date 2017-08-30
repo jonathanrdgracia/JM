@@ -118,6 +118,8 @@ namespace JM.Presupuesto.Ediciones
 
         private void button2_Click(object sender, EventArgs e)
         {
+
+
             using (var db = new PresupuestoEntities5())
             {
                 DB.Presupuesto pa;

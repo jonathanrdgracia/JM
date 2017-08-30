@@ -111,7 +111,7 @@ namespace JM.Proyecto
 
 
                         /*Busco el id del proyecto*/
-                        this.IdProyecto = db.ProyectoConPresupuestoes.Where(c => c.Descripcion == descripcion).
+                            IdProyecto = db.ProyectoConPresupuestoes.Where(c => c.Descripcion == descripcion).
                             Where(c => c.Direccion == direccion).
                             Where(c => c.CantidadPresupuestada == Cantidad).
                             Where(c => c.FechaCreacion == f).Select(x => x.IdProyecto).FirstOrDefault();
@@ -126,7 +126,7 @@ namespace JM.Proyecto
                             {
 
                                 IdEmpleado = Convert.ToInt32(row.Cells[0].Value.ToString()),
-                                IdProyecto = this.IdProyecto,
+                                IdProyecto =IdProyecto,
                                 Estado = 1
                             };
 
@@ -209,34 +209,67 @@ namespace JM.Proyecto
 
         private void EjecutarEmpleado(List<EmpleadosEx> lista)
         {
-            dataGridView1.Rows.Clear();
-            foreach (var i in lista)
+            try
             {
-              
-                dataGridView1.Rows.Add
-                    (
-                    i.Id,
-                    i.Nombtre+" "+i.Apellido,
-                    i.Telefono,
-                    i.Tipo,
-                    i.Dirrecion
-                    );
+                using (var db = new PresupuestoEntities5())
+                {
+                   Cantidad = Convert.ToInt32(
+                        (from c in db.Presupuestos where c.IdPresupuestos == IdPresupuesto select c.TotalGeneral)
+                            .FirstOrDefault());
+
+                    textBox7.Text = Cantidad.ToString("C", nfi);
+                }
+
+                dataGridView1.Rows.Clear();
+                foreach (var i in lista)
+                {
+
+                    dataGridView1.Rows.Add
+                        (
+                        i.Id,
+                        i.Nombtre + " " + i.Apellido,
+                        i.Telefono,
+                        i.Tipo,
+                        i.Dirrecion
+                        );
+                }
+
+            }
+            catch (Exception esException)
+            {
+
+                MessageBox.Show("Ha ocurrido un error: " + esException.Message);
             }
         }
 
         private void ejecutar3(string dato, string dato2, string dato3, string dato4, string dato5,string dato7)
         {
+            try
+            {
+                using (var db = new PresupuestoEntities5())
+                {
+                    var query = Convert.ToInt32(
+                        (from c in db.Presupuestos where c.IdPresupuestos == IdPresupuesto select c.TotalGeneral)
+                            .FirstOrDefault());
 
-                Cantidad = Convert.ToInt32(dato5);
-                textBox1.Text=dato2;
-                textBox3.Text = dato3;
-                textBox2.Text = dato7;
-                textBox4.Text = dato4;
-                IdPresupuesto =Convert.ToInt32(dato);
-                textBox7.Text =Convert.ToInt32(dato5).ToString("C",nfi);
 
-         
-           
+                    textBox1.Text = dato2;
+                    textBox3.Text = dato3;
+                    textBox2.Text = dato5;
+                    textBox4.Text = dato4;
+                    textBox7.Text = query.ToString("C",nfi);
+                    IdPresupuesto = Convert.ToInt32(dato);
+
+                }
+
+            }
+            catch (Exception esException)
+            {
+
+                MessageBox.Show("Ha ocurrido un error: " + esException.Message);
+            }
+
+
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -261,6 +294,39 @@ namespace JM.Proyecto
         private void button1_Click_1(object sender, EventArgs e)
         {
          
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            
+               
+                
+                try
+                {
+                    int currentIndex = this.dataGridView1.CurrentCell.RowIndex;
+                    dataGridView1.Rows.RemoveAt(currentIndex);
+
+            }
+            catch (NullReferenceException)
+            {
+
+            }
+            catch (Exception)
+            {
+
+               
+            }
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

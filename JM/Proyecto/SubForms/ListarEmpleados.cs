@@ -125,20 +125,31 @@ namespace JM.Proyecto.SubForms
 
         private void button12_Click(object sender, EventArgs e)
         {
-            var x0 = this.dataGridView2.CurrentRow.Cells[0].Value.ToString();
-
-            this.Empleadolista.RemoveAll(c => c.Id.ToString() == x0);
-            this.dataGridView2.Rows.Clear();
-            foreach (var item in Empleadolista)
+           // var x0 = this.dataGridView2.CurrentRow.Cells[0].Value.ToString(); argumentaout
+            try
             {
-                this.dataGridView2.Rows.Add
-                    (
-                    item.Id,
-                    item.Nombre,
-                    item.TipoEmpleado,
-                    item.Telefono,
-                    item.Lugar
-                    );
+                int currentIndex = this.dataGridView2.CurrentCell.RowIndex;
+
+
+                this.Empleadolista.RemoveAt(currentIndex);
+                this.dataGridView2.Rows.Clear();
+                foreach (var item in Empleadolista)
+                {
+                    this.dataGridView2.Rows.Add
+                        (
+                        item.Id,
+                        item.Nombre,
+                        item.TipoEmpleado,
+                        item.Telefono,
+                        item.Lugar
+                        );
+                }
+
+            }
+            catch (Exception)
+            {
+                
+              
             }
         }
 
