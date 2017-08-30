@@ -475,7 +475,6 @@
             // 
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
-            "Afectar solo total general",
             "Afectar precio & total"});
             this.comboBox2.Location = new System.Drawing.Point(6, 25);
             this.comboBox2.Name = "comboBox2";

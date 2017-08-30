@@ -287,10 +287,10 @@ namespace JM.Presupuesto
                                 };
                                 db.Materiales_detalle.Add(md);
                                 db.SaveChanges();
-                                MessageBox.Show("Presupuesto agregado con exito");
-                                this.Close();
+                               
                             }
-
+                            MessageBox.Show("Presupuesto agregado con exito");
+                            this.Close();
 
                         }
                     }
@@ -362,12 +362,10 @@ namespace JM.Presupuesto
                                 };
                                 db.Obra_detalle.Add(md);
                                 db.SaveChanges();
+                             
+                            }
                                 MessageBox.Show("Presupuesto guardado con exito");
                                 this.Close();
-                            }
-
-
-                       
 
                         }
                     }

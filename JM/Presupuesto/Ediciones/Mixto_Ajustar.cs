@@ -923,6 +923,8 @@ namespace JM.Presupuesto.Ediciones
             if (dialogResult == DialogResult.Yes)
             {
                 this.dataGridView3.Rows.Clear();
+                this.dataGridView1.Rows.Clear();
+
                 foreach (var item in listaMateriales)
                 {
                     dataGridView3.Rows.Add
@@ -937,7 +939,7 @@ namespace JM.Presupuesto.Ediciones
                         );
 
                 }
-                this.dataGridView1.Rows.Clear();
+               
                 foreach (var item in listaObra)
                 {
                     dataGridView1.Rows.Add

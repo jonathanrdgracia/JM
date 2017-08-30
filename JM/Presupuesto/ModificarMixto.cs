@@ -641,7 +641,7 @@ namespace JM.Presupuesto
             {
                 this.dataGridView1.Rows.Clear();
                 this.dataGridView2.Rows.Clear();
-                foreach (var i in listaMateriales)
+                foreach (var i in ListaCompleta)
                 {
                     dataGridView1.Rows.Add
                         (
@@ -652,18 +652,7 @@ namespace JM.Presupuesto
                             i.Total = 0
                         );
                 }
-                foreach (var i in listaMaterialesNuevos)
-                {
-                    dataGridView1.Rows.Add
-                        (
-                            i.Descripcion,
-                            i.Unidad,
-                            i.Precio = 0,
-                            i.Cantidad = 0,
-                            i.Total = 0
-                        );
-                }
-                foreach (var i in listaObras)
+                foreach (var i in ListaCompleta2)
                 {
                     dataGridView2.Rows.Add
                         (
@@ -674,18 +663,8 @@ namespace JM.Presupuesto
                             i.Total = 0
                         );
                 }
-                foreach (var i in listaObrasNuevos)
-                {
-                    dataGridView2.Rows.Add
-                        (
-                            i.Descripcion,
-                            i.Unidad,
-                            i.Precio = 0,
-                            i.Cantidad = 0,
-                            i.Total = 0
-                        );
-                }
-                label40.Text = "Total general: RD$" + _db.ToString();
+            
+                label40.Text = "Total general: RD" + _db.ToString("C",nfi);
 
             }
         }

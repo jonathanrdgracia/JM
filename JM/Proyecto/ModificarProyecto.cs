@@ -142,17 +142,17 @@ namespace JM.Proyecto
                          db.SaveChanges();
 
 
-                         foreach (var i in ListadoEmpleado2)
-                         {
-                             DB.Proyecto_detalle PD = new Proyecto_detalle
-                             {
-                                 IdEmpleado = i.Id,
-                                 IdProyecto = idProyecto,
-                                 Estado = 1
-                             };
-                             db.Proyecto_detalle.Add(PD);
-                             db.SaveChanges();
-                         }
+                         //foreach (var i in ListadoEmpleado2)
+                         //{
+                         //    DB.Proyecto_detalle PD = new Proyecto_detalle
+                         //    {
+                         //        IdEmpleado = i.Id,
+                         //        IdProyecto = idProyecto,
+                         //        Estado = 1
+                         //    };
+                         //    db.Proyecto_detalle.Add(PD);
+                         //    db.SaveChanges();
+                         //}
                      }
                      MessageBox.Show("Proyecto modificado con exito");
                      this.Close();
@@ -207,18 +207,18 @@ namespace JM.Proyecto
 
                        
                         
-                        foreach (var i in ListadoEmpleado)
-                        {
-                            ListadoEmpleado2.RemoveAll(c => c.Id == x0);
-                            this.dataGridView1.Rows.Add
-                               (
-                               i.Id,
-                               i.Nombre,
-                               i.Telefono,
-                               i.TipoEmpleado,
-                               i.Lugar
-                               );
-                        }
+                        //foreach (var i in ListadoEmpleado)
+                        //{
+                        //    ListadoEmpleado2.RemoveAll(c => c.Id == x0);
+                        //    this.dataGridView1.Rows.Add
+                        //       (
+                        //       i.Id,
+                        //       i.Nombre,
+                        //       i.Telefono,
+                        //       i.TipoEmpleado,
+                        //       i.Lugar
+                        //       );
+                        //}
 
 
                       

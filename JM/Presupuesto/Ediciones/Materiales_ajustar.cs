@@ -131,7 +131,7 @@ namespace JM.Presupuesto.Ediciones
                 }
                 else if (materialRadioButton1.Checked && comboBox1.SelectedItem.Equals("Afectar solo total general"))
                 {
-                    DialogResult dialogResult = MessageBox.Show("(¿Seguro que deseas valancear este presupuesto?", "Presupuesto", MessageBoxButtons.YesNo); 
+                    DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas valancear este presupuesto?", "Presupuesto", MessageBoxButtons.YesNo); 
                     if(dialogResult == DialogResult.Yes) 
                     {
                         int cantidad = Convert.ToInt32(textBox3.Text);
@@ -150,7 +150,7 @@ namespace JM.Presupuesto.Ediciones
                 }
                 else if (materialRadioButton2.Checked && comboBox1.SelectedItem.Equals("Afectar solo total general"))
                 {
-                    DialogResult dialogResult = MessageBox.Show("(¿Seguro que deseas valancear este presupuesto?", "Some Title", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas valancear este presupuesto?", "Some Title", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
                         int cantidad = Convert.ToInt32(textBox3.Text);
