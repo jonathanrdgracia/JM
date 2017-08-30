@@ -69,30 +69,59 @@ namespace JM.Pagos
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
-                using (var db = new PresupuestoEntities5()) 
+            DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas realizar esto(s) pago(s)?", "Pagos", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (dataGridView2.CurrentRow != null)
                 {
-                    foreach (var item in EmpleadoLista)
-                    {
-                         DB.Pago pagos = new DB.Pago
-                        {
-                            IdProyecto=idProyecto,
-                            Valor=item.Total,
-                            Fecha=item.Fecha,
-                            IdEmpleado=item.Id,
-                            DiasTrabajados = item.DiasTrabajados,
-                            PagoPorDia = item.Pago
 
-                            
-                        };
-                         db.Pagoes.Add(pagos);
-                         db.SaveChanges();
+
+                    try
+                    {
+                        using (var db = new PresupuestoEntities5())
+                        {
+                            foreach (var item in EmpleadoLista)
+                            {
+                                DB.Pago pagos = new DB.Pago
+                                {
+                                    IdProyecto = idProyecto,
+                                    Valor = item.Total,
+                                    Fecha = item.Fecha,
+                                    IdEmpleado = item.Id,
+                                    DiasTrabajados = item.DiasTrabajados,
+                                    PagoPorDia = item.Pago
+
+
+                                };
+                                db.Pagoes.Add(pagos);
+                                db.SaveChanges();
+
+                            }
+                        }
+
+                        MessageBox.Show("Pagos realizados con exito");
+                        this.Close();
+
+                    }
+                    catch (Exception)
+                    {
+
 
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Debes agregar al menos un pago para un empleado", "Pago",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
-                MessageBox.Show("Pagos realizados con exito");
-                this.Close();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
+
+          
         }
             public class EmpleadoPago
             {

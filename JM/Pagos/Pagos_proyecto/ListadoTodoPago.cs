@@ -38,9 +38,14 @@ namespace JM.Pagos.Pagos_proyecto
         {
             using (var db = new PresupuestoEntities5())
             {
+                DateTime date = DateTime.Now;
+                var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
+                var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+
+
                 dateTimePicker1.Format = DateTimePickerFormat.Custom;
                 dateTimePicker1.CustomFormat = "dd-MM-yyyy";
-                dateTimePicker1.Value = DateTime.Now;
+                dateTimePicker1.Value = firstDayOfMonth;
 
                 dateTimePicker3.Format = DateTimePickerFormat.Custom;
                 dateTimePicker3.CustomFormat = "MMMM-yyyy";
@@ -48,17 +53,11 @@ namespace JM.Pagos.Pagos_proyecto
 
                 dateTimePicker2.Format = DateTimePickerFormat.Custom;
                 dateTimePicker2.CustomFormat = "dd-MM-yyyy";
-                dateTimePicker2.Value = DateTime.Now;
+                dateTimePicker2.Value = lastDayOfMonth;
 
-                var dateTime = (from c in db.Pagoes where c.IdProyecto == Idproyecto orderby c.Fecha  select c.Fecha).First();
-                if (dateTime != null)
-                {
-                    dateTimePicker1.Value = (DateTime) dateTime;
-                }
-                else
-                {
-                    dateTimePicker1.Value = DateTime.Now;
-                }
+                var T = (from c in db.ProyectoConPresupuestoes where c.IdProyecto == Idproyecto select c.CantidadPresupuestada).First();
+               
+               
                 this.label4.Text = "Pagos relacionados al proyecto: " + Descripcion;
                 var query2 = db.ListadoPagosPorProyectoDetalles(Idproyecto);
                 var query = db.Listado_PagosPorProyectos(Idproyecto).OrderByDescending(c=>c.Fecha);
@@ -88,6 +87,7 @@ namespace JM.Pagos.Pagos_proyecto
                            i.Fecha.Value.Day.ToString() + "-" + i.Fecha.Value.Month.ToString() + "-" + i.Fecha.Value.Year.ToString()
 
                         );
+                    TotalDinamico = TotalDinamico + Convert.ToInt32(i.TotalValor.ToString());
                 }
 
                 foreach (var i in query2)
@@ -105,10 +105,13 @@ namespace JM.Pagos.Pagos_proyecto
                 }
                 label22.Text = "Pago suma total: RD" + Total.ToString("C", nfi);
                 label2.Text = "Pago suma total: RD" + Total.ToString("C", nfi);
-                label1.Text = "Pago suma total: RD" + Total.ToString("C", nfi);
+                label1.Text = "Pago suma total: RD" + TotalDinamico.ToString("C", nfi);
+                label5.Text = "Cantidad aprobada:  RD" + Convert.ToInt32(T).ToString("C", nfi);
 
             }
         }
+
+        public int TotalDinamico { get; set; }
 
         public int Total { get; set; }
 

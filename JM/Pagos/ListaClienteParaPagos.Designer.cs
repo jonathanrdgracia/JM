@@ -125,7 +125,7 @@
             this.groupBox1.Size = new System.Drawing.Size(696, 334);
             this.groupBox1.TabIndex = 51;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Listado de empleados";
             // 
             // ListaClienteParaPagos
             // 
@@ -136,7 +136,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "ListaClienteParaPagos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Listado de clientes";
+            this.Text = "Listado de empleados";
             this.Load += new System.EventHandler(this.ListaClienteParaPagos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.groupBox1.ResumeLayout(false);

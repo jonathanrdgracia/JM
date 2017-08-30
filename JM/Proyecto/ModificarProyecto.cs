@@ -18,7 +18,7 @@ namespace JM.Proyecto
         public string Nombtre { get; set; }
         public string Telefono { get; set; }
         List<DB.Abonado> ListadoEmpleado = new List<DB.Abonado>();
-        private DB.Abonado ListadoEmpleado2;
+        private List<DB.Abonado> ListadoEmpleado2 = new List<DB.Abonado>();
         public ModificarProyecto()
         {
             InitializeComponent();
@@ -75,7 +75,7 @@ namespace JM.Proyecto
                 this.dataGridView1.Rows.Add
                     (
                         i.Id,
-                        i.Nombre,
+                        i.Nombre+" "+i.Apellidos,
                         i.Telefono,
                         i.TipoEmpleado,
                         i.Lugar
@@ -131,6 +131,7 @@ namespace JM.Proyecto
                 DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas modificar este proyecto?", "Proyecto", MessageBoxButtons.YesNo);
                  if (dialogResult == DialogResult.Yes)
                  {
+                     int cantidad = Convert.ToInt32(textBox7.Text);
                      using (var db = new PresupuestoEntities5())
                      {
                          PP = (from c in db.ProyectoConPresupuestoes
@@ -139,20 +140,26 @@ namespace JM.Proyecto
 
                          PP.Descripcion = textBox1.Text;
                          PP.Direccion = textBox2.Text;
+                         PP.CantidadPresupuestada = cantidad;
                          db.SaveChanges();
 
 
-                         //foreach (var i in ListadoEmpleado2)
-                         //{
-                         //    DB.Proyecto_detalle PD = new Proyecto_detalle
-                         //    {
-                         //        IdEmpleado = i.Id,
-                         //        IdProyecto = idProyecto,
-                         //        Estado = 1
-                         //    };
-                         //    db.Proyecto_detalle.Add(PD);
-                         //    db.SaveChanges();
-                         //}
+                         foreach (var i in ListadoEmpleado)//Agrego empleado
+                         {
+                             DB.Proyecto_detalle PD = new Proyecto_detalle
+                             {
+                                 IdEmpleado = i.Id,
+                                 IdProyecto = idProyecto,
+                                 Estado = 1
+                             };
+                             db.Proyecto_detalle.Add(PD);
+                             db.SaveChanges();
+                         }
+
+                         foreach (var i in ListadoEmpleado2)//de esta menera paso todos los empleados 'eliminados' a un estado 0
+                         {
+                             db.EstadoCero(IdProtecto, i.Id);
+                         }
                      }
                      MessageBox.Show("Proyecto modificado con exito");
                      this.Close();
@@ -181,17 +188,26 @@ namespace JM.Proyecto
                    DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas eliminar este empleado del proyecto?", "Proyecto", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    ListadoEmpleado2 = new DB.Abonado();
-
-                    dataGridView1.Rows.Clear();
-                    var x0 = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                    int currentIndex = this.dataGridView1.CurrentCell.RowIndex;
-                    
-                    ListadoEmpleado2.Id = x0;
-                    ListadoEmpleado.RemoveAt(currentIndex);
-
                     try
                     {
+                      
+
+                       
+                        var x0 = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                        int currentIndex = this.dataGridView1.CurrentCell.RowIndex;
+                        ListadoEmpleado2.Add(new DB.Abonado
+                        {
+                            Id = x0
+                        });
+
+                        foreach (var i in ListadoEmpleado2)
+                        {
+                            MessageBox.Show("eliminados: " + i.Id);
+                        }
+                        dataGridView1.Rows.Clear();
+                        ListadoEmpleado.RemoveAt(currentIndex);
+
+                   
                     //    using (var db = new PresupuestoEntities5())
                     //    {
                     //        var de = (from c in db.Proyecto_detalle
@@ -205,31 +221,31 @@ namespace JM.Proyecto
                     //    this.Close();
 
 
-                       
-                        
-                        //foreach (var i in ListadoEmpleado)
-                        //{
-                        //    ListadoEmpleado2.RemoveAll(c => c.Id == x0);
-                        //    this.dataGridView1.Rows.Add
-                        //       (
-                        //       i.Id,
-                        //       i.Nombre,
-                        //       i.Telefono,
-                        //       i.TipoEmpleado,
-                        //       i.Lugar
-                        //       );
-                        //}
+
+
+                        foreach (var i in ListadoEmpleado)
+                        {
+                           
+                            this.dataGridView1.Rows.Add
+                               (
+                               i.Id,
+                               i.Nombre,
+                               i.Telefono,
+                               i.TipoEmpleado,
+                               i.Lugar
+                               );
+                        }
 
 
                       
-                        MessageBox.Show("Empleado eliminado con exito");
+                       
                       
 
                     }
-                    catch (Exception)
+                    catch (Exception g)
                     {
-                        
-                       
+
+                        MessageBox.Show(g.Message);
                     }
                   
                 }
@@ -238,6 +254,22 @@ namespace JM.Proyecto
 
                 }
             }
+        }
+
+        private void textBox7_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+             (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+
         }
     }
 }

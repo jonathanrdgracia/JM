@@ -59,7 +59,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(578, 255);
+            this.dataGridView1.Size = new System.Drawing.Size(578, 361);
             this.dataGridView1.TabIndex = 59;
             // 
             // Column1
@@ -99,7 +99,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(6, 280);
+            this.button2.Location = new System.Drawing.Point(6, 386);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(103, 34);
             this.button2.TabIndex = 60;
@@ -115,7 +115,7 @@
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(590, 320);
+            this.groupBox1.Size = new System.Drawing.Size(590, 426);
             this.groupBox1.TabIndex = 61;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Seleccione un proyecto para crear un folder de pagos";
@@ -130,7 +130,7 @@
             this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button17.Image = ((System.Drawing.Image)(resources.GetObject("button17.Image")));
             this.button17.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button17.Location = new System.Drawing.Point(512, 280);
+            this.button17.Location = new System.Drawing.Point(512, 386);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(72, 34);
             this.button17.TabIndex = 63;
@@ -144,7 +144,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(614, 344);
+            this.ClientSize = new System.Drawing.Size(614, 450);
             this.Controls.Add(this.groupBox1);
             this.Name = "CrearFolderPago";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

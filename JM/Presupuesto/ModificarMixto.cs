@@ -380,25 +380,9 @@ namespace JM.Presupuesto
 
                 contador1 = 0;
                 var jj = 0;
-              
-
-
-              
-                //foreach (var i in q2)
-                //{
-                //    jj = jj + Convert.ToInt32(i.Total);
-                //}
-
              
 
-
-
-
-
                 ListaCompleta.RemoveAt(currentIndex);
-
-
-
 
                 this.dataGridView1.Rows.Clear();
 

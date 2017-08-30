@@ -71,8 +71,7 @@ namespace JM.Pagos.Pagos_proyecto
             using (var db = new PresupuestoEntities5()) 
             {
 
-               
-
+                
                 
                    
                     DB.PagoMaestro p = new DB.PagoMaestro

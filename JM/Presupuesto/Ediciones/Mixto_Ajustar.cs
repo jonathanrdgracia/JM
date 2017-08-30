@@ -744,168 +744,159 @@ namespace JM.Presupuesto.Ediciones
 
         private void button3_Click(object sender, EventArgs e)
         {
-            try
+            DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas Ajustar este presupuesto?", "Presupuesto", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-               
-                var cantidadtotal = g1 + g2;
-                using (var db = new PresupuestoEntities5())
+                try
                 {
-                    DB.Presupuesto pa;
-                    pa = (from x in db.Presupuestos
-                          where x.IdPresupuestos == ID_Que_Paso
-                          select x).First();
 
-
-                    var miId = Convert.ToInt32(db.Presupuestos.Where(c => c.IdPresupuestos == ID_Que_Paso).Select(x => x.TotalGeneral).FirstOrDefault());
-                    if (!materialRadioButton4.Checked && !materialRadioButton2.Checked && !materialRadioButton1.Checked && !materialRadioButton3.Checked)
+                    var cantidadtotal = g1 + g2;
+                    using (var db = new PresupuestoEntities5())
                     {
-                        foreach (var i in listaObra)
-                        {
-
-
-                            DB.Obra_detalle materiales =
-                                           (from c in db.Obra_detalle
-                                            where c.IdPresupuesto == ID_Que_Paso && c.id == i.id
-                                            select c).First();
-
-                            materiales.Precio = i.Precio * 1;
-                            materiales.Cantidad = i.Cantidad * 1;
-                            materiales.Total = i.Cantidad * i.Precio;
-
-                            db.SaveChanges();
-                          
-
-                        }
-
-
-                        foreach (var i in listaMateriales)
-                        {
-
-                            DB.Materiales_detalle materialesd =
-                                (from c in db.Materiales_detalle
-                                 where c.IdPresupuesto == ID_Que_Paso && c.Id == i.Id
-
-                                 select c).First();
-
-
-
-                            materialesd.Precio = i.Precio * 1;
-                            materialesd.Cantidad = i.Cantidad * 1;
-                            materialesd.Total = i.Cantidad * i.Precio;
-
-                            db.SaveChanges();
-                          
-                        }
-                      
-                       
-                    }
-                    else if (materialRadioButton1.Checked && comboBox1.SelectedItem.Equals("Afectar solo total general"))
-                    {
-                        int cantidad = Convert.ToInt32(textBox3.Text);
-                        pa.TotalGeneral = pa.TotalGeneral - cantidad;
-
-                        db.SaveChanges();
-                       
-
-                    }
-                    else if (materialRadioButton2.Checked && comboBox1.SelectedItem.Equals("Afectar solo total general"))
-                    {
-                        int cantidad = Convert.ToInt32(textBox3.Text);
-                        pa.TotalGeneral = pa.TotalGeneral + cantidad;
-
-                        db.SaveChanges();
-                      
-                    }
-                    else if (materialRadioButton4.Checked && comboBox2.SelectedItem.Equals("Afectar solo total general"))
-                    {
-
-                        int cantidad = Convert.ToInt32(textBox3.Text);
-                        pa.TotalGeneral = pa.TotalGeneral - cantidad;
-
-                        db.SaveChanges();
-                       
-                    }
-                    else if (materialRadioButton3.Checked && comboBox2.SelectedItem.Equals("Afectar solo total general"))
-                    {
-                        int cantidad = Convert.ToInt32(textBox3.Text);
-
-                        pa.TotalGeneral = pa.TotalGeneral + cantidad;
-
-                        db.SaveChanges();
-                        
-                    }
-                    else
-                    {
-                        foreach (var i in listaObra)
-                        {
-
-
-                            DB.Obra_detalle materiales =
-                                           (from c in db.Obra_detalle
-                                            where c.IdPresupuesto == ID_Que_Paso && c.id == i.id
-                                            select c).First();
-
-                            materiales.Precio = i.Precio * 1;
-                            materiales.Cantidad = i.Cantidad * 1;
-                            materiales.Total = i.Cantidad * i.Precio;
-
-                            db.SaveChanges();
-
-
-                        }
-
-                       
-
-                        foreach (var i in listaMateriales)
-                        {
-
-                            DB.Materiales_detalle materialesd =
-                                (from c in db.Materiales_detalle
-                                 where c.IdPresupuesto == ID_Que_Paso && c.Id == i.Id
-
-                                 select c).First();
-
-
-
-                            materialesd.Precio = i.Precio * 1;
-                            materialesd.Cantidad = i.Cantidad * 1;
-                            materialesd.Total = i.Cantidad * i.Precio;
-
-                            db.SaveChanges();
-                        }
-                       
-
+                        DB.Presupuesto pa;
                         pa = (from x in db.Presupuestos
                               where x.IdPresupuestos == ID_Que_Paso
                               select x).First();
-                   
+
+                        var miId = Convert.ToInt32(db.Presupuestos.Where(c => c.IdPresupuestos == ID_Que_Paso).Select(x => x.TotalGeneral).FirstOrDefault());
+                        if (!materialRadioButton4.Checked && !materialRadioButton2.Checked && !materialRadioButton1.Checked && !materialRadioButton3.Checked)
+                        {
+                            foreach (var i in listaObra)
+                            {
+
+                                DB.Obra_detalle materiales =
+                                (from c in db.Obra_detalle
+                                 where c.IdPresupuesto == ID_Que_Paso && c.id == i.id
+                                 select c).First();
+
+                                materiales.Precio = i.Precio * 1;
+                                materiales.Cantidad = i.Cantidad * 1;
+                                materiales.Total = i.Cantidad * i.Precio;
+
+                                db.SaveChanges();
+
+                            }
+
+                            foreach (var i in listaMateriales)
+                            {
+
+                                DB.Materiales_detalle materialesd =
+                                (from c in db.Materiales_detalle
+                                 where c.IdPresupuesto == ID_Que_Paso && c.Id == i.Id
+
+                                 select c).First();
+
+                                materialesd.Precio = i.Precio * 1;
+                                materialesd.Cantidad = i.Cantidad * 1;
+                                materialesd.Total = i.Cantidad * i.Precio;
+
+                                db.SaveChanges();
+
+                            }
+
+                        }
+                        else if (materialRadioButton1.Checked && comboBox1.SelectedItem.Equals("Afectar solo total general"))
+                        {
+                            int cantidad = Convert.ToInt32(textBox3.Text);
+                            pa.TotalGeneral = pa.TotalGeneral - cantidad;
+
+                            db.SaveChanges();
+
+                        }
+                        else if (materialRadioButton2.Checked && comboBox1.SelectedItem.Equals("Afectar solo total general"))
+                        {
+                            int cantidad = Convert.ToInt32(textBox3.Text);
+                            pa.TotalGeneral = pa.TotalGeneral + cantidad;
+
+                            db.SaveChanges();
+
+                        }
+                        else if (materialRadioButton4.Checked && comboBox2.SelectedItem.Equals("Afectar solo total general"))
+                        {
+
+                            int cantidad = Convert.ToInt32(textBox3.Text);
+                            pa.TotalGeneral = pa.TotalGeneral - cantidad;
+
+                            db.SaveChanges();
+
+                        }
+                        else if (materialRadioButton3.Checked && comboBox2.SelectedItem.Equals("Afectar solo total general"))
+                        {
+                            int cantidad = Convert.ToInt32(textBox3.Text);
+
+                            pa.TotalGeneral = pa.TotalGeneral + cantidad;
+
+                            db.SaveChanges();
+
+                        }
+                        else
+                        {
+                            foreach (var i in listaObra)
+                            {
+
+                                DB.Obra_detalle materiales =
+                                (from c in db.Obra_detalle
+                                 where c.IdPresupuesto == ID_Que_Paso && c.id == i.id
+                                 select c).First();
+
+                                materiales.Precio = i.Precio * 1;
+                                materiales.Cantidad = i.Cantidad * 1;
+                                materiales.Total = i.Cantidad * i.Precio;
+
+                                db.SaveChanges();
+
+                            }
+
+                            foreach (var i in listaMateriales)
+                            {
+
+                                DB.Materiales_detalle materialesd =
+                                (from c in db.Materiales_detalle
+                                 where c.IdPresupuesto == ID_Que_Paso && c.Id == i.Id
+
+                                 select c).First();
+
+                                materialesd.Precio = i.Precio * 1;
+                                materialesd.Cantidad = i.Cantidad * 1;
+                                materialesd.Total = i.Cantidad * i.Precio;
+
+                                db.SaveChanges();
+                            }
+
+                            pa = (from x in db.Presupuestos
+                                  where x.IdPresupuestos == ID_Que_Paso
+                                  select x).First();
+
+                        }
+                        MessageBox.Show("Presupuesto ajustado con exito");
+                        this.Close();
 
                     }
-                    MessageBox.Show("Presupuesto ajustado con exito");
-                    this.Close();
 
+                }
+                catch (NullReferenceException es)
+                {
 
+                    MessageBox.Show("Todos los campos son requeridos", "Presupuesto",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (FormatException este)
+                {
+                    MessageBox.Show("Verifique que todos los datos sean correctos ", "Presupuesto",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Algo ha salido mal " + ex.Message, "Presupuesto",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }
-            catch (NullReferenceException es)
+            else if (dialogResult == DialogResult.No)
             {
 
-                MessageBox.Show("Todos los campos son requeridos", "Presupuesto",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (FormatException este)
-            {
-                MessageBox.Show("Verifique que todos los datos sean correctos ", "Presupuesto",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Algo ha salido mal " + ex.Message, "Presupuesto",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)

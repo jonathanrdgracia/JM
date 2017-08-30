@@ -23,27 +23,32 @@ namespace JM.Pagos.Pagos_proyecto
         {
             using (var db = new PresupuestoEntities5())
             {
+                DateTime date = DateTime.Now;
+                var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
+                var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+
                 dateTimePicker1.Format = DateTimePickerFormat.Custom;
                 dateTimePicker1.CustomFormat = "dd-MM-yyyy";
-                dateTimePicker1.Value = DateTime.Now;
+                dateTimePicker1.Value = firstDayOfMonth;
 
-                dateTimePicker3.Format = DateTimePickerFormat.Custom;
-                dateTimePicker3.CustomFormat = "MMMM-yyyy";
-                dateTimePicker3.Value = DateTime.Now;
-
+             
                 dateTimePicker2.Format = DateTimePickerFormat.Custom;
                 dateTimePicker2.CustomFormat = "dd-MM-yyyy";
-                dateTimePicker2.Value = DateTime.Now;
+                dateTimePicker2.Value = lastDayOfMonth;
 
-                var dateTime = (from c in db.Pagoes orderby c.Fecha select c.Fecha).First();
-                if (dateTime != null)
-                {
-                    dateTimePicker1.Value = (DateTime)dateTime;
-                }
-                else
-                {
-                    dateTimePicker1.Value = DateTime.Now;
-                }
+   
+
+
+                //var dateTime = (from c in db.Pagoes orderby c.Fecha  select c.Fecha).First();
+                //if (dateTime != null)
+                //{
+                //    dateTimePicker1.Value = (DateTime)dateTime;
+                //}
+                //else
+                //{
+                //    dateTimePicker1.Value = DateTime.Now;
+                //}
+
                 //this.label4.Text = "Pagos relacionados al proyecto: " + Descripcion;
                 //var query2 = db.ListadoPagosPorProyectoDetalles(Idproyecto);
                 var query = db.Listado_Pagos(2).OrderByDescending(c => c.Fecha);
@@ -75,6 +80,7 @@ namespace JM.Pagos.Pagos_proyecto
                             i.Fecha.Value.Day.ToString() + "-" + i.Fecha.Value.Month.ToString() + "-" + i.Fecha.Value.Year.ToString()
 
                         );
+                    TotalDinamico = Convert.ToInt32(i.TotalValor) + TotalDinamico;
                 }
 
                 //foreach (var i in query2)
@@ -92,10 +98,12 @@ namespace JM.Pagos.Pagos_proyecto
                 //}
                 //label22.Text = "Pago suma total: RD" + Total.ToString("C", nfi);
                 //label2.Text = "Pago suma total: RD" + Total.ToString("C", nfi);
-                //label1.Text = "Pago suma total: RD" + Total.ToString("C", nfi);
+                label2.Text = "Pago suma total: RD" + TotalDinamico.ToString("C", nfi);
 
             }
         }
+
+        public int TotalDinamico { get; set; }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -138,11 +146,11 @@ namespace JM.Pagos.Pagos_proyecto
             {
                 using (var db = new PresupuestoEntities5())
                 {
-                    var fecha = Convert.ToDateTime("01-" + dateTimePicker3.Value);
+                 
 
                     Total = 0;
                     dataGridView3.Rows.Clear();
-                    var query3 = db.FiltroPagosTodoMesesesAnios(dateTimePicker3.Value).OrderByDescending(c => c.Fecha);
+                    var query3 = db.FiltroPagosTodoMesesesAnios(dateTimePicker1.Value).OrderByDescending(c => c.Fecha);
                     foreach (var i in query3)
                     {
                         this.dataGridView3.Rows.Add
@@ -166,6 +174,11 @@ namespace JM.Pagos.Pagos_proyecto
 
                 MessageBox.Show(ew.Message);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

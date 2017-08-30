@@ -84,10 +84,15 @@ namespace JM.Proyecto
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (this.dataGridView1.RowCount == 0 || string.IsNullOrEmpty(textBox3.Text))
+            if (string.IsNullOrEmpty(textBox3.Text))
             {
-                MessageBox.Show("Debes seleccionar al menos un empleado y llenar todos los campos", "Campos vacios",
+                MessageBox.Show("Todos los campos son requeridos", "Campos vacios",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }else if (this.dataGridView1.RowCount == 0)
+            {
+                MessageBox.Show("Debes seleccionar al menos un empleado", "Listado vacio",
+                  MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             else
             {
@@ -102,7 +107,7 @@ namespace JM.Proyecto
                     using (var db = new PresupuestoEntities5()) //para devolver el ID del proyecto en IdProyecto
                     {
                         db.GuardarProyecto(IdPresupuesto, Cantidad, direccion, descripcion, f, 1);
-                        db.SaveChanges();//Guardo la cabecera del proyecto
+                        db.SaveChanges(); //Guardo la cabecera del proyecto
 
 
                         /*Busco el id del proyecto*/
@@ -129,12 +134,12 @@ namespace JM.Proyecto
                             db.SaveChanges();
 
                         }
-                  
+
                         /*Pasa el presupuesto a estado=2 (ya tiene folder de pago)*/
                         DB.Presupuesto p = new DB.Presupuesto();
                         p = (from c in db.Presupuestos
-                             where c.IdPresupuestos == this.IdPresupuesto
-                             select c).First();
+                            where c.IdPresupuestos == this.IdPresupuesto
+                            select c).First();
                         p.Estado = 2;
                         db.SaveChanges();
                     }
@@ -145,8 +150,8 @@ namespace JM.Proyecto
                 }
                 catch (Exception)
                 {
-                    
-                    
+
+
                 }
             }
             /**/ 
