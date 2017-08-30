@@ -1232,5 +1232,18 @@ namespace JM.DB
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("BorrarProyecto_Detalle", idParameter);
         }
+    
+        public virtual int EstadoCero(Nullable<int> idProyecto, Nullable<int> idEmpleado)
+        {
+            var idProyectoParameter = idProyecto.HasValue ?
+                new ObjectParameter("idProyecto", idProyecto) :
+                new ObjectParameter("idProyecto", typeof(int));
+    
+            var idEmpleadoParameter = idEmpleado.HasValue ?
+                new ObjectParameter("idEmpleado", idEmpleado) :
+                new ObjectParameter("idEmpleado", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EstadoCero", idProyectoParameter, idEmpleadoParameter);
+        }
     }
 }

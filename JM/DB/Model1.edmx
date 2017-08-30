@@ -668,6 +668,10 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
         <Function Name="descripcionDireccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
+        <Function Name="EstadoCero" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idProyecto" Type="int" Mode="In" />
+          <Parameter Name="idEmpleado" Type="int" Mode="In" />
+        </Function>
         <Function Name="Filtrar_Abonado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="StudentID" Type="nvarchar" Mode="In" />
         </Function>
@@ -1697,7 +1701,11 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
           <Parameter Name="fechaid" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="BorrarProyecto_Detalle">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EstadoCero">
+            <Parameter Name="idProyecto" Mode="In" Type="Int32" />
+            <Parameter Name="idEmpleado" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="CompaniaDato_Result">
@@ -4179,6 +4187,7 @@ warning 6002: The table/view 'Presupuesto.dbo.Vista_ListadoPresupuestoObra' does
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="BorrarProyecto_Detalle" FunctionName="PresupuestoModel.Store.BorrarProyecto_Detalle" />
+          <FunctionImportMapping FunctionImportName="EstadoCero" FunctionName="PresupuestoModel.Store.EstadoCero" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

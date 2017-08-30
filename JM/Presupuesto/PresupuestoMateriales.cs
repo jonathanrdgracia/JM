@@ -111,6 +111,7 @@ namespace JM.Presupuesto
         {
             try
             {
+
                 var x0 = this.dataGridView3.CurrentRow.Cells[0].Value.ToString();
                 _materiales.RemoveAll(c => c.Descripcion == x0);
 

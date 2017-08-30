@@ -18,7 +18,7 @@ namespace JM.Proyecto
         public string Nombtre { get; set; }
         public string Telefono { get; set; }
         List<DB.Abonado> ListadoEmpleado = new List<DB.Abonado>();
-        List<DB.Abonado> ListadoEmpleado2 = new List<DB.Abonado>();
+        private DB.Abonado ListadoEmpleado2;
         public ModificarProyecto()
         {
             InitializeComponent();
@@ -42,7 +42,8 @@ namespace JM.Proyecto
                     var query = db.SP_ModificarProyectoCliente(idProyecto).FirstOrDefault();
                     Nombtre = query.Nombre;
                     Telefono = query.Telefono;
-
+                    
+                    
                     textBox3.Text = Nombtre;
                     textBox4.Text = Telefono;
                     foreach (var i in db.SP_ModificarProyecto(idProyecto))
@@ -95,7 +96,7 @@ namespace JM.Proyecto
         {
             int a = Convert.ToInt32(id);
             dataGridView1.Rows.Clear();
-            ListadoEmpleado2.Add(new DB.Abonado
+            ListadoEmpleado.Add(new DB.Abonado
             {
                 Id = a,
                 Nombre =dato,
@@ -104,16 +105,7 @@ namespace JM.Proyecto
                 Lugar = dato4
             });
 
-            foreach (var i in ListadoEmpleado2)
-            {
-                dataGridView1.Rows.Add(
-                    i.Id,
-                    i.Nombre,
-                    i.Telefono,
-                    i.TipoEmpleado,
-                    i.Lugar
-                    );
-            }
+         
             foreach (var i in ListadoEmpleado)
             {
 
@@ -134,6 +126,7 @@ namespace JM.Proyecto
 
             try
             {
+                
                  DB.ProyectoConPresupuesto PP;
                 DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas modificar este proyecto?", "Proyecto", MessageBoxButtons.YesNo);
                  if (dialogResult == DialogResult.Yes)
@@ -188,23 +181,33 @@ namespace JM.Proyecto
                    DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas eliminar este empleado del proyecto?", "Proyecto", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
+                    ListadoEmpleado2 = new DB.Abonado();
+
+                    dataGridView1.Rows.Clear();
                     var x0 = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                    int currentIndex = this.dataGridView1.CurrentCell.RowIndex;
+                    
+                    ListadoEmpleado2.Id = x0;
+                    ListadoEmpleado.RemoveAt(currentIndex);
+
                     try
                     {
-                        using (var db = new PresupuestoEntities5())
-                        {
-                            var de = (from c in db.Proyecto_detalle
-                                      where c.IdEmpleado == x0  && c.IdProyecto==IdProtecto
-                                      select c).First();
-                            de.Estado = 0;
-                            db.SaveChanges();
-                        }
-                        MessageBox.Show("Empleado eliminado con exito");
-                        this.Close();
-                    }
-                    catch (Exception)
-                    {
-                        foreach (var i in ListadoEmpleado2)
+                    //    using (var db = new PresupuestoEntities5())
+                    //    {
+                    //        var de = (from c in db.Proyecto_detalle
+                    //                  where c.IdEmpleado == x0  && c.IdProyecto==IdProtecto orderby c.IdProyectoDetalle descending 
+                    //                  select c).First();
+                            
+                    //        de.Estado = 0;
+                    //        db.SaveChanges();
+                    //    }
+                    //    MessageBox.Show("Empleado eliminado con exito");
+                    //    this.Close();
+
+
+                       
+                        
+                        foreach (var i in ListadoEmpleado)
                         {
                             ListadoEmpleado2.RemoveAll(c => c.Id == x0);
                             this.dataGridView1.Rows.Add
@@ -216,9 +219,16 @@ namespace JM.Proyecto
                                i.Lugar
                                );
                         }
-                        dataGridView1.Rows.Clear();
+
+
+                      
                         MessageBox.Show("Empleado eliminado con exito");
-                        this.Close();
+                      
+
+                    }
+                    catch (Exception)
+                    {
+                        
                        
                     }
                   

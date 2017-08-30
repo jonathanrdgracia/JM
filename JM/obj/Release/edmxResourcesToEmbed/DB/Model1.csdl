@@ -463,6 +463,10 @@
     <FunctionImport Name="BorrarProyecto_Detalle">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="EstadoCero">
+      <Parameter Name="idProyecto" Mode="In" Type="Int32" />
+      <Parameter Name="idEmpleado" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="CompaniaDato_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
