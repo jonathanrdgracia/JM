@@ -28,6 +28,7 @@ namespace JM.DB
         public Nullable<int> Estado { get; set; }
         public Nullable<int> CantidadPresupuestada { get; set; }
         public string FechaCreacion { get; set; }
+        public int TotalValance { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PagoMaestro> PagoMaestroes { get; set; }

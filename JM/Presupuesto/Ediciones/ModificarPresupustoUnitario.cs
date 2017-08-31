@@ -36,6 +36,7 @@ namespace JM.Presupuesto.Ediciones
         private Materiales_detalle _materialEditado;
         public string Telefono { get; set; }
         List<empleadosC> Jefes = new List<empleadosC>();
+        public int TotalBalance { get; set; }
         //List<Materiales_detalle>materiales = new List<Materiales_detalle>();
 
         public ModificarPresupustoUnitario()
@@ -170,7 +171,7 @@ namespace JM.Presupuesto.Ediciones
                             join t3 in db.Presupuestos on t2.IdPresupuesto equals t3.IdPresupuestos
                             join t4 in db.TipoEmpleadoes on t1.IdTipoEmpleado equals t4.IdTipoEmpleado
                             where t3.IdPresupuestos == id
-                            select new { t1.Id, t1.Nombre , t1.Apellidos, t1.Telefono, t4.Tipo };
+                            select new { t1.Id, t1.Nombre , t1.Apellidos, t1.Telefono, t4.Tipo,t3.TotalValance };
 
 
                 foreach (var i in query)
@@ -182,7 +183,7 @@ namespace JM.Presupuesto.Ediciones
                         Ocupacion=i.Tipo
 
                     });
-
+                    TotalBalance = i.TotalValance;
                 }
 
                 foreach (var item in Jefes)
@@ -200,6 +201,8 @@ namespace JM.Presupuesto.Ediciones
             }
 
         }
+
+      
 
         private void ModificarPresupustoUnitario_Load(object sender, EventArgs e)
         {
@@ -242,28 +245,7 @@ namespace JM.Presupuesto.Ediciones
           
             c.ShowDialog();
         }
-        //        private void ejecutar(int id, string nombre, string telefono, string ocupacion)
-        //{
-           
-        //    Jefes.Add(new empleadosC { 
-        //    ID=id,
-        //    Nombre=nombre,
-        //    Telefono=telefono,
-        //    Ocupacion=ocupacion
-        //    });
-        //    this.dataGridView1.Rows.Clear();
-        //    foreach (var i in Jefes)
-        //    {
-        //        dataGridView1.Rows.Add
-        //            (
-        //                i.ID,
-        //                i.Nombre,
-        //                i.Telefono,
-        //                i.Ocupacion
-        //            );
-        //    }
-            
-        //}
+
 
                 private void button13_Click(object sender, EventArgs e)
                 {
@@ -287,18 +269,7 @@ namespace JM.Presupuesto.Ediciones
                            
                         });
 
-                        //foreach (var i in listaMateriales)
-                        //{
-                        //    dataGridView3.Rows.Add(
-                        //        i.Descripcion, i.Unidad,
-                        //        i.Cantidad, 
-                        //        Convert.ToInt32(i.Precio).ToString("C",nfi), 
-                        //        Convert.ToInt32(i.Total).ToString("C"),nfi
-                        //    );
-                           
-                        //    contador1 = contador1 + Convert.ToInt32(i.Total);
-                        //}
-
+                    
                         foreach (var i in ListaCompleta)
                         {
                             dataGridView3.Rows.Add(i.Descripcion,
@@ -309,7 +280,7 @@ namespace JM.Presupuesto.Ediciones
                                 contador1 = contador1 + Convert.ToInt32(i.Total);
                         }
 
-                        label27.Text = "Total: RD" + contador1.ToString("C", nfi);
+                        label27.Text = "Total: RD" + ( TotalBalance + contador1).ToString("C", nfi);
                         textBox22.Text = string.Empty;
                         textBox21.Text = string.Empty;
                         textBox20.Text = string.Empty;

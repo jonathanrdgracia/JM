@@ -1063,6 +1063,7 @@
     <NavigationProperty Name="Materiales_detalle" Relationship="PresupuestoModel.FK_Presupuestos_listado_Presupuestos" FromRole="Presupuesto" ToRole="Materiales_detalle" />
     <NavigationProperty Name="Obra_detalle" Relationship="PresupuestoModel.FK_Obra_detalle_Presupuestos" FromRole="Presupuesto" ToRole="Obra_detalle" />
     <NavigationProperty Name="ProyectoConPresupuestoes" Relationship="PresupuestoModel.FK_ProyectoConPresupuesto_Presupuestos" FromRole="Presupuesto" ToRole="ProyectoConPresupuesto" />
+    <Property Name="TotalValance" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Proyecto_detalle">
     <Key>
@@ -1090,6 +1091,7 @@
     <NavigationProperty Name="PagoMaestroes" Relationship="PresupuestoModel.FK_PagoMaestro_ProyectoConPresupuesto" FromRole="ProyectoConPresupuesto" ToRole="PagoMaestro" />
     <NavigationProperty Name="Presupuesto" Relationship="PresupuestoModel.FK_ProyectoConPresupuesto_Presupuestos" FromRole="ProyectoConPresupuesto" ToRole="Presupuesto" />
     <NavigationProperty Name="Proyecto_detalle" Relationship="PresupuestoModel.FK_Proyecto_detalle_ProyectoConPresupuesto" FromRole="ProyectoConPresupuesto" ToRole="Proyecto_detalle" />
+    <Property Name="TotalValance" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="ProyectoDetalleSinPresupuesto">
     <Key>

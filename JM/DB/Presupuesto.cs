@@ -30,6 +30,7 @@ namespace JM.DB
         public Nullable<int> Estado { get; set; }
         public string Direccion { get; set; }
         public Nullable<int> TotalGeneral { get; set; }
+        public int TotalValance { get; set; }
     
         public virtual Cliente Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

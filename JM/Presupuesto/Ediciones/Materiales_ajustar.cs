@@ -22,6 +22,7 @@ namespace JM.Presupuesto.Ediciones
         public double Residuo { get; set; }
         public double Resultado { get; set; }
         public int totalGeneralDB { get; set; }
+        public int TotalBalance { get; set; }
         public double ValorNuevo { get; set; }
         public double ValorNuevo2 { get; set; }
         public double Total { get; set; }
@@ -53,7 +54,7 @@ namespace JM.Presupuesto.Ediciones
             using (var db = new PresupuestoEntities5())
             {
                 q =Convert.ToInt32(db.Presupuestos.Where(c => c.IdPresupuestos == ID_Que_Paso).Select(x => x.TotalGeneral).FirstOrDefault());
-               
+                TotalBalance = Convert.ToInt32(db.Presupuestos.Where(c => c.IdPresupuestos == ID_Que_Paso).Select(x => x.TotalValance).FirstOrDefault());
                 foreach (var item in db.SP_ListarObraMateriales(ID_Que_Paso,Tipo).Where(c => c.Tipo == 1))
                 {
                     lista.Add(new Obra_detalle
@@ -66,12 +67,13 @@ namespace JM.Presupuesto.Ediciones
                        Total = item.Total
 
                    });
-                    TotalGeneral += Convert.ToInt32(item.Total);
+                   TotalGeneral += Convert.ToInt32(item.Total); 
 
                 }
+                
                 nfi.CurrencyDecimalDigits = 2;
                 totalGeneralDB = TotalGeneral;
-                label22.Text = TotalGeneral.ToString("C", nfi);
+                label22.Text = (q + TotalBalance ).ToString("C", nfi);
 
                 foreach (var item in lista)
                 {
@@ -137,8 +139,14 @@ namespace JM.Presupuesto.Ediciones
                     if(dialogResult == DialogResult.Yes) 
                     {
                         int cantidad = Convert.ToInt32(textBox3.Text);
-                        pa.TotalGeneral = pa.TotalGeneral - cantidad;
-
+                       
+                        if(pa.TotalGeneral != 0)
+                        pa.TotalValance = (int)(pa.TotalGeneral - cantidad);
+                        else
+                        {
+                            pa.TotalValance = (int)(pa.TotalValance - cantidad);
+                        }
+                        pa.TotalGeneral = 0;
                         db.SaveChanges();
                         MessageBox.Show("Actualizado correctamente");
                         this.Close();
@@ -152,12 +160,18 @@ namespace JM.Presupuesto.Ediciones
                 }
                 else if (materialRadioButton2.Checked && comboBox1.SelectedItem.Equals("Afectar solo total general"))
                 {
-                    DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas valancear este presupuesto?", "Some Title", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas valancear este presupuesto?", "Presupuesto", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
                         int cantidad = Convert.ToInt32(textBox3.Text);
-                        pa.TotalGeneral = pa.TotalGeneral + cantidad;
 
+                        if (pa.TotalGeneral != 0)
+                            pa.TotalValance = (int)(pa.TotalGeneral + cantidad);
+                        else
+                        {
+                            pa.TotalValance = (int)(pa.TotalValance + cantidad);
+                        }
+                        pa.TotalGeneral = 0;
                         db.SaveChanges();
                         MessageBox.Show("Actualizado correctamente");
                         this.Close();
@@ -185,7 +199,8 @@ namespace JM.Presupuesto.Ediciones
                     }
 
 
-                    pa.TotalGeneral = totalGeneralDB;
+                    pa.TotalGeneral = TotalBalance +  totalGeneralDB;
+                    pa.TotalValance = 0;
                     db.SaveChanges();
 
                     MessageBox.Show("Actualizado correctamente");

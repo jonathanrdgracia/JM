@@ -94,7 +94,7 @@
             this.groupBox8.Size = new System.Drawing.Size(743, 378);
             this.groupBox8.TabIndex = 50;
             this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Agregue nuevos articulos al listado de materiales";
+            this.groupBox8.Text = "Modificar listado de materiales";
             // 
             // button2
             // 

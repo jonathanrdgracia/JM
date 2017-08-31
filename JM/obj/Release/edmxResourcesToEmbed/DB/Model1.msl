@@ -791,6 +791,7 @@
     <EntitySetMapping Name="Presupuestos">
       <EntityTypeMapping TypeName="PresupuestoModel.Presupuesto">
         <MappingFragment StoreEntitySet="Presupuestos">
+          <ScalarProperty Name="TotalValance" ColumnName="TotalValance" />
           <ScalarProperty Name="TotalGeneral" ColumnName="TotalGeneral" />
           <ScalarProperty Name="Direccion" ColumnName="Direccion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
@@ -814,6 +815,7 @@
     <EntitySetMapping Name="ProyectoConPresupuestoes">
       <EntityTypeMapping TypeName="PresupuestoModel.ProyectoConPresupuesto">
         <MappingFragment StoreEntitySet="ProyectoConPresupuesto">
+          <ScalarProperty Name="TotalValance" ColumnName="TotalValance" />
           <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
           <ScalarProperty Name="CantidadPresupuestada" ColumnName="CantidadPresupuestada" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />

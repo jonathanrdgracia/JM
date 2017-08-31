@@ -517,7 +517,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Obra_Modificar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Modificar presupuesto";
+            this.Text = "Modificar listado de mano de obra";
             this.Load += new System.EventHandler(this.Obra_Modificar_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

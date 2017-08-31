@@ -24,7 +24,8 @@ namespace JM.Presupuesto
             get { return Razon; }
             set { Razon = value; }
         }
-        
+
+        public int TotalBalance { get; set; }
         public List<empleadosC> Jefes = new List<empleadosC>();
         public Double TotalGenetal { get; set; }
         public int IdPresupuesto { get; set; }

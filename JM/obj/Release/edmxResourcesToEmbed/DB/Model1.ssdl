@@ -173,6 +173,7 @@
     <Property Name="Estado" Type="int" />
     <Property Name="Direccion" Type="nvarchar" MaxLength="70" />
     <Property Name="TotalGeneral" Type="int" />
+    <Property Name="TotalValance" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Proyecto_detalle">
     <Key>
@@ -194,6 +195,7 @@
     <Property Name="Estado" Type="int" />
     <Property Name="CantidadPresupuestada" Type="int" />
     <Property Name="FechaCreacion" Type="nvarchar" MaxLength="50" />
+    <Property Name="TotalValance" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ProyectoDetalleSinPresupuesto">
     <Key>
