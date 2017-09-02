@@ -135,7 +135,7 @@ namespace JM.Presupuesto.Ediciones
                 }
                 else if (materialRadioButton1.Checked && comboBox1.SelectedItem.Equals("Afectar solo total general"))
                 {
-                    DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas valancear este presupuesto?", "Presupuesto", MessageBoxButtons.YesNo); 
+                    DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas balancear este presupuesto?", "Presupuesto", MessageBoxButtons.YesNo); 
                     if(dialogResult == DialogResult.Yes) 
                     {
                         int cantidad = Convert.ToInt32(textBox3.Text);
@@ -160,7 +160,7 @@ namespace JM.Presupuesto.Ediciones
                 }
                 else if (materialRadioButton2.Checked && comboBox1.SelectedItem.Equals("Afectar solo total general"))
                 {
-                    DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas valancear este presupuesto?", "Presupuesto", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show("¿Seguro que deseas balancear este presupuesto?", "Presupuesto", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
                         int cantidad = Convert.ToInt32(textBox3.Text);
@@ -224,6 +224,8 @@ namespace JM.Presupuesto.Ediciones
                     Patron = TotalGeneral + Ingreso;
 
                     TotalGeneral = 0;
+
+                   
 
                     // Console.WriteLine("Total {0}, PAtron{1}", Total.ToString(), Patron.ToString());
                     int vuelta = 0;
@@ -334,17 +336,17 @@ namespace JM.Presupuesto.Ediciones
                 else if (materialRadioButton2.Checked && comboBox1.SelectedItem.Equals("Afectar solo total general"))
                 {
 
-                    //TotalGeneral = TotalGeneral + Ingreso;
-                    //totalGeneralDB = TotalGeneral;
+                   
 
-                    //label22.Text = TotalGeneral.ToString("C", nfi);
+                    label22.Text = ( Ingreso + TotalBalance + q).ToString("C", nfi);
                 }
                 else if (materialRadioButton1.Checked && comboBox1.SelectedItem.Equals("Afectar solo total general"))
                 {
-                    //TotalGeneral = TotalGeneral + Ingreso;
+                  
+                 //TotalGeneral = TotalGeneral + Ingreso;
 
                     //totalGeneralDB =TotalGeneral;
-                    //label22.Text = TotalGeneral.ToString("C", nfi);
+                    label22.Text = (TotalBalance + q - Ingreso).ToString("C", nfi);
                 }
                 else if (materialRadioButton1.Checked && comboBox1.SelectedItem.Equals("Afectar precio & total"))
                 {
