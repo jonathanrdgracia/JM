@@ -102,7 +102,7 @@ namespace JM.Proyecto
                     var descripcion = textBox1.Text;
                     var direccion = textBox2.Text;
 
-
+                MessageBox.Show("este es el Id: " + IdPresupuesto);
 
                     using (var db = new PresupuestoEntities5()) //para devolver el ID del proyecto en IdProyecto
                     {
@@ -148,9 +148,9 @@ namespace JM.Proyecto
 
 
                 }
-                catch (Exception)
+                catch (Exception er)
                 {
-
+                    MessageBox.Show("Algo ha salido mal: " + er.Message);
 
                 }
             }

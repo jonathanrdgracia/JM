@@ -451,7 +451,7 @@ namespace JM.Presupuesto.Ediciones
                             item.id.ToString(),
                             item.Descripcion,
                             item.Unidad,
-                             item.Cantidad,
+                            item.Cantidad,
                         "RD" + Convert.ToInt32(item.Precio).ToString("C", nfi),
                         "RD" + Convert.ToInt32(item.Total).ToString("C", nfi)
                         );
@@ -479,7 +479,7 @@ namespace JM.Presupuesto.Ediciones
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Algo ha salido mal " + ex.Message, "Presupuesto",
+                MessageBox.Show("Algo ha salido mal :" + ex.Message, "Presupuesto",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
