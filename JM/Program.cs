@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JM.Splash;
 
 namespace JM
 {
-    static class Program
+    class Program 
     {
         /// <summary>
         /// The main entry point for the application.
@@ -14,9 +15,14 @@ namespace JM
         [STAThread]
         static void Main()
         {
+            Versiculos v = new Versiculos();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Splash.SplashScreen());
+            Application.Run(new SplashScreen());
+         
+                
+            
+
         }
     }
 }

@@ -155,14 +155,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JM.exe" size="2589104">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JM.exe" size="2589616">
       <assemblyIdentity name="JM" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>fv4cGpn+XK0AubORBPdftE76X6yNgYoD5hMoNsbKxeA=</dsig:DigestValue>
+        <dsig:DigestValue>iFkRkIK5IbGS7yanzx13AcDeiFgXMJp4URYOG/4F7EM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

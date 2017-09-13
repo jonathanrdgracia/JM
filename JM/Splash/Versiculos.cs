@@ -8,6 +8,12 @@ namespace JM.Splash
 {
     class Versiculos
     {
+        public int Aleatorio()
+        {
+            Random R = new Random();
+            int numero = R.Next(1, 11);
+            return numero;
+        }
 
         public string Versos(int valor) 
         {
